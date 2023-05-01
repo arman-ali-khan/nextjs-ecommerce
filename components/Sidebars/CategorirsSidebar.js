@@ -46,7 +46,7 @@ const CategorirsSidebar = () => {
                 <Link className='border-teal-600 w-full px-2 py-4 border-b flex items-center gap-2' href={'#'}><GiFruitBowl size={25} /> Fruits</Link>
             </li>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-4 border-b flex items-center gap-2' href={'#'}> <GiMedicines /> Medicines</Link>
+                <Link className='border-teal-600 w-full px-2 py-4 border-b flex items-center gap-2' href={'#'}> <GiMedicines size={25} /> Medicines</Link>
             </li>
            </ul>
            </>

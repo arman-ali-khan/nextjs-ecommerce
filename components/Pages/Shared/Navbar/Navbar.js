@@ -35,7 +35,7 @@ const handleCategoriesSidebar = () =>{
   return (
     <>
       <div className="fixed md:static bottom-2 w-full md:flex items-center justify-between md:mx-auto md:container border-2 border-teal-600 px-6 py-1 rounded-full">
-        <div className="fixed md:static py-3 w-full bg-teal-600 md:bg-transparent md:w-auto left-0 flex justify-center items-center md:justify-start top-1 rounded-full">
+        <div className="fixed md:static py-1 w-full bg-teal-600 md:bg-transparent md:w-auto left-0 flex justify-center items-center md:justify-start top-1 rounded-full">
           <CiShoppingTag size={35} />
           Logo
         </div>

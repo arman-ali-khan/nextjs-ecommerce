@@ -10,7 +10,7 @@ const CartSidebar = () => {
       </div>
       <div className="w-96 flex items-center gap-4">
         <div>
-        <h2 className="md:text-lg font-semibold">North wolf bagNorth wolf bagNorth wolf bag</h2>
+        <h2 className="md:text-lg font-semibold leading-4">North wolf bagNorth wolf bagNorth wolf bag</h2>
         
         <p className="md:text-2xl text-teal-600 font-bold">234$</p>
         </div>
