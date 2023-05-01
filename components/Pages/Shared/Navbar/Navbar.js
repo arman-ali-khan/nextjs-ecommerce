@@ -47,7 +47,7 @@ const handleCategoriesSidebar = () =>{
                 className="px-6 w-full py-2 border border-teal-600 rounded-l-full text-teal-700 focus-within:outline-none focus-within:border-teal-700 focus-within:bg-teal-50 "
                 type="search"
               />
-              <span className="border-4 border-teal-600 md:px-3 px-5 bg-teal-600 md:py-2 py-4 rounded-r-full cursor-pointer hover:bg-teal-700">
+              <span className="border-4 border-teal-600 md:px-3 px-5 bg-teal-600 py-2 rounded-r-full cursor-pointer hover:bg-teal-700">
                 <BsSearch size={20} />
               </span>
             </div>
