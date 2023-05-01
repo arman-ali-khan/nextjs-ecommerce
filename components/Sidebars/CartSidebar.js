@@ -10,9 +10,9 @@ const CartSidebar = () => {
       </div>
       <div className="w-96 flex items-center gap-4">
         <div>
-        <h2 className="text-lg font-semibold">North wolf bagNorth wolf bagNorth wolf bag</h2>
+        <h2 className="md:text-lg font-semibold">North wolf bagNorth wolf bagNorth wolf bag</h2>
         
-        <p className="text-2xl text-teal-600 font-bold">234$</p>
+        <p className="md:text-2xl text-teal-600 font-bold">234$</p>
         </div>
        
         <div className="text-lg w-9 flex flex-col justify-center text-center bg-teal-50 text-white mt-2">
