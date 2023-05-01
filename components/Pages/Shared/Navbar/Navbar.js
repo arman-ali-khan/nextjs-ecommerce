@@ -96,18 +96,18 @@ const handleCategoriesSidebar = () =>{
             <RiMenu4Line />{" "}
           </span>
           <span
-            className="text-4xl md:text-2xl hover:text-teal-600 px-4 py-2"
+            className="text-2xl md:text-2xl hover:text-teal-600 px-1 py-2"
             onClick={() => setShowSearch(!showSearch)}
           >
             <BsSearch />
           </span>
-          <span className="md:hidden text-4xl md hover:text-teal-600" text-2xl>
+          <span className="md:hidden text-2xl md hover:text-teal-600" text-2xl>
             <AiOutlineHome />
           </span>
-          <span onClick={handleCartSidebar} className="text-4xl md:text-2xl hover:text-teal-600 px-4 py-2">
+          <span onClick={handleCartSidebar} className="text-2xl md:text-2xl hover:text-teal-600 px-4 py-2">
             <BsCart />
           </span>
-          <span onClick={handleUserSidebar} className="text-4xl md:text-2xl hover:text-teal-600 px-4 py-2">
+          <span onClick={handleUserSidebar} className="text-2xl md:text-2xl hover:text-teal-600 px-4 py-2">
             <AiOutlineUserAdd />
           </span>
         </div>
