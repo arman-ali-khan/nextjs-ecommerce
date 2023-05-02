@@ -55,7 +55,7 @@ const handleCategoriesSidebar = () =>{
             <ul className=" items-center hidden md:flex py-2">
               <li>
                 <Link
-                  className="px-3 py-2 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60 "
+                  className={`px-3 py-2 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
                   href={"#"}
                 >
                   Home
@@ -63,7 +63,7 @@ const handleCategoriesSidebar = () =>{
               </li>
               <li>
                 <Link
-                  className="px-3 py-2 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60 "
+                  className={`px-3 py-2 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
                   href={"#"}
                 >
                   Shop
@@ -71,7 +71,7 @@ const handleCategoriesSidebar = () =>{
               </li>
               <li>
                 <Link
-                  className="px-3 py-2 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60 "
+                  className={`px-3 py-2 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
                   href={"#"}
                 >
                   About
@@ -79,7 +79,7 @@ const handleCategoriesSidebar = () =>{
               </li>
               <li>
                 <Link
-                  className="px-3 py-2 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60 "
+                  className={`px-3 py-2 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
                   href={"#"}
                 >
                   Blog
@@ -90,24 +90,24 @@ const handleCategoriesSidebar = () =>{
         </div>
         <div className="flex justify-between md:justify-normal z_index !z-50 w-full md:w-auto items-center gap-2">
           <span
-            className="text-2xl md:hidden hover:text-teal-600"
+            className={`text-2xl md:hidden hover:text-teal-600`}
             onClick={handleCategoriesSidebar}
           >
-            <RiMenu4Line />{" "}
+            <RiMenu4Line />
           </span>
           <span
-            className="text-2xl hover:text-teal-600 px-1 py-2"
+            className={`text-2xl hover:text-teal-600 ${showSearch && 'text-teal-600'} px-1 py-2`}
             onClick={() => setShowSearch(!showSearch)}
           >
             <BsSearch />
           </span>
-          <span className="md:hidden text-2xl md hover:text-teal-600" text-2xl>
+          <span className={`md:hidden text-2xl md hover:text-teal-600`} text-2xl>
             <AiOutlineHome />
           </span>
-          <span onClick={handleCartSidebar} className="text-2xl hover:text-teal-600 px-4 py-2">
+          <span onClick={handleCartSidebar} className={`text-2xl hover:text-teal-600 ${showCart && 'text-teal-600'} px-4 py-2`}>
             <BsCart />
           </span>
-          <span onClick={handleUserSidebar} className="text-2xl hover:text-teal-600 px-4 py-2">
+          <span onClick={handleUserSidebar} className={`text-2xl hover:text-teal-600 ${showUser && 'text-teal-600'} px-4 py-2`}>
             <AiOutlineUserAdd />
           </span>
         </div>
@@ -143,8 +143,8 @@ const handleCategoriesSidebar = () =>{
       {/* cart  */}
       <div
         className={`${
-          showCart ? "right-0" : "-right-[900px]"
-        } duration-300 md:hidden w-full z-20 px-3 py-2 top-12 h-screen fixed`}
+          showCart ? "right-0 md:right-0":"-right-[900px] md:-right-[9900px]"
+        } duration-300 w-full md:w-96 z-20 px-3 bg-base-100 py-2 top-12 md:top-14 h-screen fixed`}
       >
         <button
           className={`fixed top-0 -z-10 right-0 w-full h-screen ${
