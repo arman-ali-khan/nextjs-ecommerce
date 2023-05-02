@@ -1,9 +1,10 @@
 import React from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 
-const CartSidebar = () => {
+const CartSidebar = ({showCart, setShowCart}) => {
   return (
-   <div className="h-full">
+   <div className="h-full bg-base-100 relative">
+    
      <div className="flex gap-3 items-center border border-teal-600 px-3 py-1 rounded-md">
       <div className="w-20">
         <img className="w-full" src="https://i.ibb.co/SX762kX/Rectangle-36-1.png" alt="" />
@@ -26,6 +27,7 @@ const CartSidebar = () => {
       </div>
      
     </div>
+    <button onClick={()=>setShowCart(false)} className="absolute bottom-12 right-0  px-4 py-2 rounded bg-teal-600 text-white">Close</button>
    </div>
   );
 };

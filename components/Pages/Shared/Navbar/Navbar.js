@@ -33,8 +33,8 @@ const handleCategoriesSidebar = () =>{
     setShowUser(false)
 } 
   return (
-    <>
-      <div className="fixed md:static bottom-2 w-full md:flex items-center justify-between md:mx-auto md:container border-2 border-teal-600 px-6 py-1 rounded-full">
+    <div className="md:fixed  w-full flex justify-center md:top-0 md:bottom-auto">
+      <div className="fixed md:sticky md:top-0 md:bottom-auto bottom-2 w-full md:flex items-center justify-between md:mx-auto md:container border-2 border-teal-600 bg-white px-6 py-1 rounded-full">
         <div className="fixed md:static py-1 w-full bg-teal-600 md:bg-transparent md:w-auto left-0 flex justify-center items-center md:justify-start top-1 rounded-full">
           <CiShoppingTag size={35} />
           Logo
@@ -88,7 +88,7 @@ const handleCategoriesSidebar = () =>{
             </ul>
           )}
         </div>
-        <div className="flex justify-between md:justify-normal z-50 w-full md:w-auto items-center gap-2">
+        <div className="flex justify-between md:justify-normal z_index !z-50 w-full md:w-auto items-center gap-2">
           <span
             className="text-2xl md:hidden hover:text-teal-600"
             onClick={handleCategoriesSidebar}
@@ -116,10 +116,10 @@ const handleCategoriesSidebar = () =>{
       <div
         className={`${
           showSidebar ? "left-0" : "-left-96"
-        } duration-300 md:hidden  w-72 top-16 h-screen -z-10 fixed`}
+        } duration-300 md:hidden w-72 z-20 top-12 h-screen fixed`}
       >
         <button
-          className={`fixed top-0 left-0 w-full h-screen -z-30 ${
+          className={`fixed top-0 left-0 -z-10 w-full h-screen ${
             showSidebar || "hidden"
           }`}
           onClick={() => setShowSidebar(false)}
@@ -130,10 +130,10 @@ const handleCategoriesSidebar = () =>{
       <div
         className={`${
           showUser ? "right-0" : "-right-96"
-        } duration-300 md:hidden  w-72 top-16 h-screen -z-10 fixed`}
+        } duration-300 md:hidden z-20 w-72 top-12 h-screen fixed`}
       >
         <button
-          className={`fixed top-0 right-0 w-full h-screen -z-30 ${
+          className={`fixed top-0 -z-10 right-0 w-full h-screen ${
             showUser || "hidden"
           }`}
           onClick={() => setShowUser(false)}
@@ -144,17 +144,17 @@ const handleCategoriesSidebar = () =>{
       <div
         className={`${
           showCart ? "right-0" : "-right-[900px]"
-        } duration-300 md:hidden w-full px-3 py-2 top-16 h-screen -z-10 fixed`}
+        } duration-300 md:hidden w-full z-20 px-3 py-2 top-12 h-screen fixed`}
       >
         <button
-          className={`fixed top-0 right-0 w-full h-screen -z-30 ${
+          className={`fixed top-0 -z-10 right-0 w-full h-screen ${
             showCart || "hidden"
           }`}
           onClick={() => setShowCart(false)}
         ></button>
-        <CartSidebar />
+        <CartSidebar showCart={showCart} setShowCart={setShowCart} />
       </div>
-    </>
+    </div>
   );
 };
 
