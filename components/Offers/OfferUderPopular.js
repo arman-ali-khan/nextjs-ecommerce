@@ -6,13 +6,13 @@ const OfferUderPopular = () => {
     return (
         <div className='container mx-auto '>
            <div className='px-3 flex justify-between md:px-0'>
-                <h2 className='md:text-2xl px-4 py-2 md:uppercase text_primary flex items-center gap-2 border-b border-teal-600'> <span><GiPriceTag /></span> Offers</h2>
+                <h2 className='md:text-2xl px-4 py-2 md:uppercase text_primary flex items-center gap-2 border-b border_primary'> <span><GiPriceTag /></span> Offers</h2>
                 <div></div>
             </div>
             <div class="flex flex-wrap justify-center">
     
     <div class="flex-shrink-0 m-6 relative overflow-hidden bg-orange-500 rounded-lg max-w-md w-full sm:w-auto shadow-lg">
-      <span className='absolute flex items-center gap-1 top-1 left-1 bg-teal-50  border border-teal-600 rounded-full px-2 py-1'>
+      <span className='absolute flex items-center gap-1 top-1 left-1 bg-teal-50  border border_primary rounded-full px-2 py-1'>
         <span className='text-rose-600 '><CiDiscount1 size={30} /></span>
         5% Off
         </span>
@@ -33,7 +33,7 @@ const OfferUderPopular = () => {
       </div>
     </div>
     <div class="flex-shrink-0 m-6 relative overflow-hidden bg-teal-500 rounded-lg max-w-md w-full sm:w-auto shadow-lg">
-      <span className='absolute flex items-center gap-1 top-1 left-1 bg-teal-50  border border-teal-600 rounded-full px-2 py-1'>
+      <span className='absolute flex items-center gap-1 top-1 left-1 bg-teal-50  border border_primary rounded-full px-2 py-1'>
         <span className='text-rose-600 '><CiDiscount1 size={30} /></span>
         5% Off
         </span>
@@ -54,7 +54,7 @@ const OfferUderPopular = () => {
       </div>
     </div>
     <div class="flex-shrink-0 m-6 relative overflow-hidden bg-purple-500 rounded-lg max-w-md w-full sm:w-auto shadow-lg">
-      <span className='absolute flex items-center gap-1 top-1 left-1 bg-teal-50  border border-teal-600 rounded-full px-2 py-1'>
+      <span className='absolute flex items-center gap-1 top-1 left-1 bg-teal-50  border border_primary rounded-full px-2 py-1'>
         <span className='text-rose-600 '><CiDiscount1 size={30} /></span>
         5% Off
         </span>
@@ -75,7 +75,7 @@ const OfferUderPopular = () => {
       </div>
     </div>
     <div class="flex-shrink-0 m-6 relative overflow-hidden bg-blue-500 rounded-lg max-w-md w-full sm:w-auto shadow-lg">
-      <span className='absolute flex items-center gap-1 top-1 left-1 bg-teal-50  border border-teal-600 rounded-full px-2 py-1'>
+      <span className='absolute flex items-center gap-1 top-1 left-1 bg-teal-50  border border_primary rounded-full px-2 py-1'>
         <span className='text-rose-600 '><CiDiscount1 size={30} /></span>
         5% Off
         </span>

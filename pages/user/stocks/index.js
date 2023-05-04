@@ -1,14 +1,14 @@
 import UserLayout from '@/Layout/UserLayout';
 import React from 'react';
 
-const Profile = () => {
+const index = () => {
     return (
         <div>
-            <UserLayout>
-                Dashboard
-            </UserLayout>
+           <UserLayout>
+           My Stocks
+           </UserLayout>
         </div>
     );
 };
 
-export default Profile;
+export default index;

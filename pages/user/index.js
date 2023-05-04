@@ -4,9 +4,9 @@ import React from 'react';
 
 const user = () => {
     return (
-        <Layout>
+        <div>
             <Profile />
-        </Layout>
+        </div>
     );
 };
 
