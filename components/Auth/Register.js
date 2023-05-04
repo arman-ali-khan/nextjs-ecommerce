@@ -7,7 +7,7 @@ const Register = ({login,setLogin}) => {
         <div className="flex justify-center items-center h-full gap-2">
           <div className="flex flex-col gap-3">
           <div className='flex justify-between'>
-            <span onClick={()=>setLogin(!login)} className={`px-4 py-2 cursor-pointer select-none rounded-l bg-teal-600 border border-teal-600  text-white w-full`}>Login</span>
+            <span onClick={()=>setLogin(!login)} className={`px-4 py-2 cursor-pointer select-none rounded-l bg_primary border border-teal-600  text-white w-full`}>Login</span>
             <span className={`px-4 py-2  rounded-r text-black border border-teal-600 w-full`}>Register</span>
         </div>
             <div className="flex flex-col">
@@ -19,7 +19,7 @@ const Register = ({login,setLogin}) => {
               <input className="px-4 py-2 focus-within:outline-teal-600 rounded border border-teal-600 focus-within:border-transparent" type="password" />
             </div>
             <div>
-            <button className="px-4 py-2 duration-300 bg-teal-600 hover:bg-teal-700 rounded text-white w-full">Create Account</button>
+            <button className="px-4 py-2 duration-300 bg_primary hover:bg-teal-700 rounded text-white w-full">Create Account</button>
           </div>
           </div>
           

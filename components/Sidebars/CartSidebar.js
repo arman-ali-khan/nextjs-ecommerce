@@ -4,7 +4,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 const CartSidebar = ({showCart, setShowCart}) => {
   return (
    <div className="h-full relative overflow-auto section">
-    <div className="flex items-center sticky top-0 justify-between my-2 bg-teal-600 rounded pl-4">
+    <div className="flex items-center sticky top-0 justify-between my-2 bg_primary rounded pl-4">
       <p className="text-white">Shopping Cart</p>
     <button onClick={()=>setShowCart(false)} className="px-4 py-2 rounded bg-teal-500 text-white">Close</button>
     </div>
@@ -17,13 +17,13 @@ const CartSidebar = ({showCart, setShowCart}) => {
         <div>
         <h2 className="md:text-sm font-semibold leading-4 text-sm">North wolf bagNorth wolf bagNorth wolf bag</h2>
         
-        <p className="md:text-md text-teal-600 font-bold">234$</p>
+        <p className="md:text-md text_primary font-bold">234$</p>
         </div>
        
         <div className="text-lg w-9 flex flex-col justify-center text-center bg-teal-50 text-white mt-2">
-            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-t-full">-</button>
-            <p className="text-teal-600">10</p>
-            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-b-full">+</button>
+            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg_primary rounded-t-full">-</button>
+            <p className="text_primary">10</p>
+            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg_primary rounded-b-full">+</button>
         </div>
       </div>
       <div className="flex justify-end w-12">
@@ -39,13 +39,13 @@ const CartSidebar = ({showCart, setShowCart}) => {
         <div>
         <h2 className="md:text-sm font-semibold leading-4 text-sm">North wolf bagNorth wolf bagNorth wolf bag</h2>
         
-        <p className="md:text-md text-teal-600 font-bold">234$</p>
+        <p className="md:text-md text_primary font-bold">234$</p>
         </div>
        
         <div className="text-lg w-9 flex flex-col justify-center text-center bg-teal-50 text-white mt-2">
-            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-t-full">-</button>
-            <p className="text-teal-600">10</p>
-            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-b-full">+</button>
+            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg_primary rounded-t-full">-</button>
+            <p className="text_primary">10</p>
+            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg_primary rounded-b-full">+</button>
         </div>
       </div>
       <div className="flex justify-end w-12">
@@ -61,13 +61,13 @@ const CartSidebar = ({showCart, setShowCart}) => {
         <div>
         <h2 className="md:text-sm font-semibold leading-4 text-sm">North wolf bagNorth wolf bagNorth wolf bag</h2>
         
-        <p className="md:text-md text-teal-600 font-bold">234$</p>
+        <p className="md:text-md text_primary font-bold">234$</p>
         </div>
        
         <div className="text-lg w-9 flex flex-col justify-center text-center bg-teal-50 text-white mt-2">
-            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-t-full">-</button>
-            <p className="text-teal-600">10</p>
-            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-b-full">+</button>
+            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg_primary rounded-t-full">-</button>
+            <p className="text_primary">10</p>
+            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg_primary rounded-b-full">+</button>
         </div>
       </div>
       <div className="flex justify-end w-12">
@@ -83,13 +83,13 @@ const CartSidebar = ({showCart, setShowCart}) => {
         <div>
         <h2 className="md:text-sm font-semibold leading-4 text-sm">North wolf bagNorth wolf bagNorth wolf bag</h2>
         
-        <p className="md:text-md text-teal-600 font-bold">234$</p>
+        <p className="md:text-md text_primary font-bold">234$</p>
         </div>
        
         <div className="text-lg w-9 flex flex-col justify-center text-center bg-teal-50 text-white mt-2">
-            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-t-full">-</button>
-            <p className="text-teal-600">10</p>
-            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-b-full">+</button>
+            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg_primary rounded-t-full">-</button>
+            <p className="text_primary">10</p>
+            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg_primary rounded-b-full">+</button>
         </div>
       </div>
       <div className="flex justify-end w-12">
@@ -105,13 +105,13 @@ const CartSidebar = ({showCart, setShowCart}) => {
         <div>
         <h2 className="md:text-sm font-semibold leading-4 text-sm">North wolf bagNorth wolf bagNorth wolf bag</h2>
         
-        <p className="md:text-md text-teal-600 font-bold">234$</p>
+        <p className="md:text-md text_primary font-bold">234$</p>
         </div>
        
         <div className="text-lg w-9 flex flex-col justify-center text-center bg-teal-50 text-white mt-2">
-            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-t-full">-</button>
-            <p className="text-teal-600">10</p>
-            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-b-full">+</button>
+            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg_primary rounded-t-full">-</button>
+            <p className="text_primary">10</p>
+            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg_primary rounded-b-full">+</button>
         </div>
       </div>
       <div className="flex justify-end w-12">
@@ -127,13 +127,13 @@ const CartSidebar = ({showCart, setShowCart}) => {
         <div>
         <h2 className="md:text-sm font-semibold leading-4 text-sm">North wolf bagNorth wolf bagNorth wolf bag</h2>
         
-        <p className="md:text-md text-teal-600 font-bold">234$</p>
+        <p className="md:text-md text_primary font-bold">234$</p>
         </div>
        
         <div className="text-lg w-9 flex flex-col justify-center text-center bg-teal-50 text-white mt-2">
-            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-t-full">-</button>
-            <p className="text-teal-600">10</p>
-            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-b-full">+</button>
+            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg_primary rounded-t-full">-</button>
+            <p className="text_primary">10</p>
+            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg_primary rounded-b-full">+</button>
         </div>
       </div>
       <div className="flex justify-end w-12">
@@ -149,13 +149,13 @@ const CartSidebar = ({showCart, setShowCart}) => {
         <div>
         <h2 className="md:text-sm font-semibold leading-4 text-sm">North wolf bagNorth wolf bagNorth wolf bag</h2>
         
-        <p className="md:text-md text-teal-600 font-bold">234$</p>
+        <p className="md:text-md text_primary font-bold">234$</p>
         </div>
        
         <div className="text-lg w-9 flex flex-col justify-center text-center bg-teal-50 text-white mt-2">
-            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-t-full">-</button>
-            <p className="text-teal-600">10</p>
-            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-b-full">+</button>
+            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg_primary rounded-t-full">-</button>
+            <p className="text_primary">10</p>
+            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg_primary rounded-b-full">+</button>
         </div>
       </div>
       <div className="flex justify-end w-12">
@@ -171,13 +171,13 @@ const CartSidebar = ({showCart, setShowCart}) => {
         <div>
         <h2 className="md:text-sm font-semibold leading-4 text-sm">North wolf bagNorth wolf bagNorth wolf bag</h2>
         
-        <p className="md:text-md text-teal-600 font-bold">234$</p>
+        <p className="md:text-md text_primary font-bold">234$</p>
         </div>
        
         <div className="text-lg w-9 flex flex-col justify-center text-center bg-teal-50 text-white mt-2">
-            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-t-full">-</button>
-            <p className="text-teal-600">10</p>
-            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-b-full">+</button>
+            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg_primary rounded-t-full">-</button>
+            <p className="text_primary">10</p>
+            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg_primary rounded-b-full">+</button>
         </div>
       </div>
       <div className="flex justify-end w-12">
@@ -193,13 +193,13 @@ const CartSidebar = ({showCart, setShowCart}) => {
         <div>
         <h2 className="md:text-sm font-semibold leading-4 text-sm">North wolf bagNorth wolf bagNorth wolf bag</h2>
         
-        <p className="md:text-md text-teal-600 font-bold">234$</p>
+        <p className="md:text-md text_primary font-bold">234$</p>
         </div>
        
         <div className="text-lg w-9 flex flex-col justify-center text-center bg-teal-50 text-white mt-2">
-            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-t-full">-</button>
-            <p className="text-teal-600">10</p>
-            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-b-full">+</button>
+            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg_primary rounded-t-full">-</button>
+            <p className="text_primary">10</p>
+            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg_primary rounded-b-full">+</button>
         </div>
       </div>
       <div className="flex justify-end w-12">
@@ -215,13 +215,13 @@ const CartSidebar = ({showCart, setShowCart}) => {
         <div>
         <h2 className="md:text-sm font-semibold leading-4 text-sm">North wolf bagNorth wolf bagNorth wolf bag</h2>
         
-        <p className="md:text-md text-teal-600 font-bold">234$</p>
+        <p className="md:text-md text_primary font-bold">234$</p>
         </div>
        
         <div className="text-lg w-9 flex flex-col justify-center text-center bg-teal-50 text-white mt-2">
-            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-t-full">-</button>
-            <p className="text-teal-600">10</p>
-            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-b-full">+</button>
+            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg_primary rounded-t-full">-</button>
+            <p className="text_primary">10</p>
+            <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg_primary rounded-b-full">+</button>
         </div>
       </div>
       <div className="flex justify-end w-12">
@@ -230,7 +230,7 @@ const CartSidebar = ({showCart, setShowCart}) => {
      
     </div>
     </div>
-   <button className={`sticky bottom-12 w-full left-0 bg-teal-600 text-white rounded-full px-4 py-1 my-3 flex items-center justify-between ${showCart || "hidden"}`}>Proceed To Checkout <span className="bg-white px-4 text-teal-600 font-bold rounded-full text-lg py-2">$12345</span></button>
+   <button className={`sticky bottom-12 w-full left-0 bg_primary text-white rounded-full px-4 py-1 my-3 flex items-center justify-between ${showCart || "hidden"}`}>Proceed To Checkout <span className="bg-white px-4 text_primary font-bold rounded-full text-lg py-2">$12345</span></button>
    </div>
   );
 };

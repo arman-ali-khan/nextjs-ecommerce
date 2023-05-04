@@ -2,96 +2,123 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities{
-  .z_index{
+@layer components {
+  .text_primary {
+    @apply text-teal-600
+  }
+
+  .bg_primary {
+    @apply bg-teal-600
+  }
+}
+
+@layer utilities {
+
+  .bg-card {
+    background: radial-gradient(black, transparent 60%);
+    transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1);
+    opacity: 0.2;
+  }
+
+  .z_index {
     z-index: 999;
   }
+
   ::-webkit-scrollbar {
-  width: 14px;
-  border-radius: 30px;
-}
-::-webkit-scrollbar-track {
-  background-color: #b2faf4;
-  border: 1px solid #0d9488;
-  border-radius: 30px;
-}
+    width: 14px;
+    border-radius: 30px;
+  }
 
-::-webkit-scrollbar-thumb {
-  background-color: #0d9488;
-  border-radius: 30px;
-}
+  ::-webkit-scrollbar-track {
+    background-color: #b2faf4;
+    border: 1px solid #0d9488;
+    border-radius: 30px;
+  }
 
-/* Section scrollbar */
-.section::-webkit-scrollbar {
-  width: 10px;
-  border-radius: 30px;
-}
-.section::-webkit-scrollbar-track {
-  background-color: white;
-  border: 1px solid #0d9488;
-  border-radius: 30px;
-}
-.section::-webkit-scrollbar-thumb {
-  background-color: #0d9488;
-  border-radius: 30px;
-}
-/* slick slider */
-.slick-prev, .slick-next {
-  background-color: #fff;
-  border: none;
-  color: #000;
-  cursor: pointer;
-  font-size: 16px;
-  outline: none;
-  padding: 8px 16px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
+  ::-webkit-scrollbar-thumb {
+    background-color: #0d9488;
+    border-radius: 30px;
+  }
 
-.slick-prev:before, .slick-next:before{
-  color: #000!important;
-}
-.slick-next:before {
-  content: '⇁'!important;
-  color: #fff!important;
-}
-.slick-prev:before {
-  content: '↽'!important;
-  color: #fff!important;
-}
-.slick-prev {
-  left: 16px!important;
-  z-index: 99;
-  border: 1px solid #0d9488!important;
-  border-radius: 30px;
-  height: 20px!important;
-  padding: 20px!important;
-  background-color: #0d94896e!important;
-  align-items: center!important;
-  display: flex!important;
-  justify-content: center!important;
-}
+  /* Section scrollbar */
+  .section::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 30px;
+  }
 
-.slick-next {
-  right: 16px!important;
-  z-index: 99;
-  background-color: #0d94896e!important;
-  border: 1px solid #0d9488!important;
-  border-radius: 30px;
-  height: 20px!important;
-  padding: 20px!important;
-  align-items: center!important;
-  display: flex!important;
-  justify-content: center!important;
-}
+  .section::-webkit-scrollbar-track {
+    background-color: white;
+    border: 1px solid #0d9488;
+    border-radius: 30px;
+  }
 
-.slick-next:hover{
-  background-color: #0d9488!important;
-}
-.slick-prev:hover{
-  background-color: #0d9488!important;
-}
+  .section::-webkit-scrollbar-thumb {
+    background-color: #0d9488;
+    border-radius: 30px;
+  }
+
+  /* slick slider */
+  .slick-prev,
+  .slick-next {
+    background-color: #fff;
+    border: none;
+    color: #000;
+    cursor: pointer;
+    font-size: 16px;
+    outline: none;
+    padding: 8px 16px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .slick-prev:before,
+  .slick-next:before {
+    color: #000 !important;
+  }
+
+  .slick-next:before {
+    content: '⇁' !important;
+    color: #fff !important;
+  }
+
+  .slick-prev:before {
+    content: '↽' !important;
+    color: #fff !important;
+  }
+
+  .slick-prev {
+    left: 16px !important;
+    z-index: 99;
+    border: 1px solid #0d9488 !important;
+    border-radius: 30px;
+    height: 20px !important;
+    padding: 20px !important;
+    background-color: #0d94896e !important;
+    align-items: center !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  .slick-next {
+    right: 16px !important;
+    z-index: 99;
+    background-color: #0d94896e !important;
+    border: 1px solid #0d9488 !important;
+    border-radius: 30px;
+    height: 20px !important;
+    padding: 20px !important;
+    align-items: center !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  .slick-next:hover {
+    background-color: #0d9488 !important;
+  }
+
+  .slick-prev:hover {
+    background-color: #0d9488 !important;
+  }
 
 }
-

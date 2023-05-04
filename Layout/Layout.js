@@ -1,3 +1,4 @@
+import Footer from '@/components/Pages/Shared/Footer/Footer';
 import Navbar from '@/components/Pages/Shared/Navbar/Navbar';
 import Head from 'next/head';
 import React from 'react';
@@ -27,7 +28,7 @@ const Layout = ({children,title,description,thumb}) => {
                 {children}
             </main>
             <footer>
-
+            <Footer />
             </footer>
         </div>
     );

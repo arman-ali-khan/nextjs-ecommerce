@@ -38,12 +38,12 @@ const handleCategoriesSidebar = () =>{
       {/* Right side checkout button */}
       <div onClick={()=>setShowCart(true)} className="fixed cursor-pointer select-none right-0 top-1/2 md:block hidden  bg-teal-500 px-4 z-10 py-2 rounded-l-md">
           <p className="text-white font-bold flex items-center gap-2 py-2"> <span><BsCartCheckFill /></span> 15 Items</p>
-          <p className="bg-white px-3 py-1 rounded-md font-bold text-teal-600">$423</p>
+          <p className="bg-white px-3 py-1 rounded-md font-bold text_primary">$423</p>
         </div>
 
       <div className="fixed md:sticky md:top-0 md:bottom-auto bottom-2 w-full md:flex items-center justify-between md:mx-auto z-50 md:container border-2 border-teal-600 bg-white px-6 py-1 rounded-full">
         {/* Navbar start */}
-        <div className="fixed md:static py-1 w-full bg-teal-600 md:bg-transparent md:w-auto left-0 flex !z-50 justify-center items-center md:justify-start top-1 rounded-full">
+        <div className="fixed md:static py-1 w-full bg_primary md:bg-transparent md:w-auto left-0 flex !z-50 justify-center items-center md:justify-start top-1 rounded-full">
           {/* Logo */}
           <CiShoppingTag size={35} />
           Logo
@@ -61,7 +61,7 @@ const handleCategoriesSidebar = () =>{
                 className="px-6 w-full py-2 border border-teal-600 rounded-l-full text-teal-700 focus-within:outline-none focus-within:border-teal-700 focus-within:bg-teal-50 "
                 type="search"
               />
-              <span className="border-4 text-white border-teal-600 md:px-3 px-5 bg-teal-600 py-2 rounded-r-full cursor-pointer hover:bg-teal-700">
+              <span className="border-4 text-white border-teal-600 md:px-3 px-5 bg_primary py-2 rounded-r-full cursor-pointer hover:bg-teal-700">
                 <BsSearch size={20} />
               </span>
             </div>
@@ -70,7 +70,7 @@ const handleCategoriesSidebar = () =>{
               {/* Desktop nav link area */}
               <li>
                 <Link
-                  className={`px-3 py-2 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
+                  className={`px-3 py-2 hover:text_primary duration-300 rounded hover:bg-opacity-60`}
                   href={"#"}
                 >
                   Home
@@ -78,7 +78,7 @@ const handleCategoriesSidebar = () =>{
               </li>
               <li>
                 <Link
-                  className={`px-3 py-2 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
+                  className={`px-3 py-2 hover:text_primary duration-300 rounded hover:bg-opacity-60`}
                   href={"#"}
                 >
                   Shop
@@ -86,7 +86,7 @@ const handleCategoriesSidebar = () =>{
               </li>
               <li>
                 <Link
-                  className={`px-3 py-2 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
+                  className={`px-3 py-2 hover:text_primary duration-300 rounded hover:bg-opacity-60`}
                   href={"#"}
                 >
                   About
@@ -94,7 +94,7 @@ const handleCategoriesSidebar = () =>{
               </li>
               <li>
                 <Link
-                  className={`px-3 py-2 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
+                  className={`px-3 py-2 hover:text_primary duration-300 rounded hover:bg-opacity-60`}
                   href={"#"}
                 >
                   Blog
@@ -106,24 +106,24 @@ const handleCategoriesSidebar = () =>{
         {/* Mobile bottom navbar */}
         <div className="flex justify-between md:justify-normal z_index !z-50 w-full md:w-auto items-center gap-2">
           <span
-            className={`text-2xl md:hidden hover:text-teal-600`}
+            className={`text-2xl md:hidden hover:text_primary`}
             onClick={handleCategoriesSidebar}
           >
             <RiMenu4Line />
           </span>
           <span
-            className={`text-2xl hover:text-teal-600 ${showSearch && 'text-teal-600'} px-1 py-2`}
+            className={`text-2xl hover:text_primary ${showSearch && 'text_primary'} px-1 py-2`}
             onClick={() => setShowSearch(!showSearch)}
           >
             <BsSearch />
           </span>
-          <span className={`md:hidden text-2xl md hover:text-teal-600`} text-2xl>
+          <span className={`md:hidden text-2xl md hover:text_primary`} text-2xl>
             <AiOutlineHome />
           </span>
-          <span onClick={handleCartSidebar} className={`text-2xl hover:text-teal-600 ${showCart && 'text-teal-600'} px-4 py-2`}>
+          <span onClick={handleCartSidebar} className={`text-2xl hover:text_primary ${showCart && 'text_primary'} px-4 py-2`}>
             <BsCart />
           </span>
-          <span onClick={handleUserSidebar} className={`text-2xl hover:text-teal-600 ${showUser && 'text-teal-600'} px-4 py-2`}>
+          <span onClick={handleUserSidebar} className={`text-2xl hover:text_primary ${showUser && 'text_primary'} px-4 py-2`}>
             <AiOutlineUserAdd />
           </span>
         </div>
