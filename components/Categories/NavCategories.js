@@ -40,7 +40,7 @@ const NavCategories = () => {
     <div className="md:w-44 lg:w-64 ml-12 relative">
       <button
         onClick={() => setShowCategory(!showCategory)}
-        className={` px-7 border border-teal-600 font-bold w-full flex items-center justify-between py-1 rounded-full duration-300 ${showCategory ? 'bg_primary text-white': ''}`}
+        className={` px-7 border border_primary font-bold w-full flex items-center justify-between py-1 rounded-full duration-300 ${showCategory ? 'bg_primary text-white': ''}`}
       >
         <p>Categories</p> <span>{showCategory ? <BiUpArrow />:<BiDownArrow />}</span>
       </button>
@@ -51,7 +51,7 @@ const NavCategories = () => {
         }`}
       ></button>
       <div
-        className={`absolute bg-teal-50 border border-teal-600 rounded w-64 shadow-lg gap-1 ${
+        className={`absolute bg-teal-50 border border_primary rounded w-64 shadow-lg gap-1 ${
             showCategory || "hidden"
         }`}
       >

@@ -10,6 +10,10 @@
   .bg_primary {
     @apply bg-teal-600
   }
+
+  .border_primary {
+    @apply border-teal-600
+  }
 }
 
 @layer utilities {

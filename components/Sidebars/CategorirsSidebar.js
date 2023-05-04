@@ -6,11 +6,12 @@ import {GiFruitBowl, GiMedicines} from 'react-icons/gi'
 
 const CategorirsSidebar = () => {
     const [showMenu,setShowMenu] = useState(false)
+   
     return (
         <div className='h-full bg-white border-r'>
             <div className='grid grid-cols-2 bg-white'>
-                <button onClick={()=>setShowMenu(false)} className={`py-2  border-teal-600 border-b border-r ${showMenu || 'bg_primary text-white'} flex items-center gap-2 px-2`}> <span><BiCategory size={20} /></span> Categories</button>
-                <button onClick={()=>setShowMenu(true)} className={`py-2 border-teal-600 border-b ${showMenu && 'bg_primary text-white'} flex items-center gap-2 px-2`}><span><BiMenuAltRight size={20} /></span> Menu</button>
+                <button onClick={()=>setShowMenu(false)} className={`py-2  border_primary border-b border-r ${showMenu || 'bg_primary text-white'} flex items-center gap-2 px-2`}> <span><BiCategory size={20} /></span> Categories</button>
+                <button onClick={()=>setShowMenu(true)} className={`py-2 border_primary border-b ${showMenu && 'bg_primary text-white'} flex items-center gap-2 px-2`}><span><BiMenuAltRight size={20} /></span> Menu</button>
             </div>
            
           {
@@ -19,16 +20,16 @@ const CategorirsSidebar = () => {
              {/* Menu */}
            <ul>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-4 border-b flex items-center gap-2' href={'#'}>Menu</Link>
+                <Link className='border_primary w-full px-2 py-4 border-b flex items-center gap-2' href={'#'}>Menu</Link>
             </li>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-4 border-b flex items-center gap-2' href={'#'}>Menu</Link>
+                <Link className='border_primary w-full px-2 py-4 border-b flex items-center gap-2' href={'#'}>Menu</Link>
             </li>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-4 border-b flex items-center gap-2' href={'#'}>Menu</Link>
+                <Link className='border_primary w-full px-2 py-4 border-b flex items-center gap-2' href={'#'}>Menu</Link>
             </li>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-4 border-b flex items-center gap-2' href={'#'}>Menu</Link>
+                <Link className='border_primary w-full px-2 py-4 border-b flex items-center gap-2' href={'#'}>Menu</Link>
             </li>
            </ul>
            </>
@@ -37,16 +38,16 @@ const CategorirsSidebar = () => {
              {/* Categories */}
              <ul>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-1 text_primary flex  items-center gap-2' href={'#'}> <BiHomeAlt2 size={25} /> Home</Link>
+                <Link className='border_primary w-full px-2 py-1 text_primary flex  items-center gap-2' href={'#'}> <BiHomeAlt2 size={25} /> Home</Link>
             </li>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-1 text_primary flex items-center gap-2' href={'#'}><TbBread size={25} /> Bread</Link>
+                <Link className='border_primary w-full px-2 py-1 text_primary flex items-center gap-2' href={'#'}><TbBread size={25} /> Bread</Link>
             </li>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-1 text_primary flex items-center gap-2' href={'#'}><GiFruitBowl size={25} /> Fruits</Link>
+                <Link className='border_primary w-full px-2 py-1 text_primary flex items-center gap-2' href={'#'}><GiFruitBowl size={25} /> Fruits</Link>
             </li>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-1 text_primary flex items-center gap-2' href={'#'}> <GiMedicines size={25} /> Medicines</Link>
+                <Link className='border_primary w-full px-2 py-1 text_primary flex items-center gap-2' href={'#'}> <GiMedicines size={25} /> Medicines</Link>
             </li>
            </ul>
            </>
