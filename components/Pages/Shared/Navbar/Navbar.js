@@ -71,7 +71,7 @@ const handleCategoriesSidebar = () =>{
               <li>
                 <Link
                   className={`px-3 py-2 hover:text_primary duration-300 rounded hover:bg-opacity-60`}
-                  href={"#"}
+                  href={"/"}
                 >
                   Home
                 </Link>
@@ -87,17 +87,17 @@ const handleCategoriesSidebar = () =>{
               <li>
                 <Link
                   className={`px-3 py-2 hover:text_primary duration-300 rounded hover:bg-opacity-60`}
-                  href={"#"}
+                  href={"/offers"}
                 >
-                  About
+                  Offers
                 </Link>
               </li>
               <li>
                 <Link
                   className={`px-3 py-2 hover:text_primary duration-300 rounded hover:bg-opacity-60`}
-                  href={"#"}
+                  href={"/user"}
                 >
-                  Blog
+                  Profile
                 </Link>
               </li>
             </ul>
