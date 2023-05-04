@@ -41,9 +41,9 @@ const handleCategoriesSidebar = () =>{
           <p className="bg-white px-3 py-1 rounded-md font-bold text-teal-600">$423</p>
         </div>
 
-      <div className="fixed md:sticky md:top-0 md:bottom-auto bottom-2 w-full md:flex items-center justify-between md:mx-auto md:container border-2 border-teal-600 bg-white px-6 py-1 rounded-full">
+      <div className="fixed md:sticky md:top-0 md:bottom-auto bottom-2 w-full md:flex items-center justify-between md:mx-auto z-50 md:container border-2 border-teal-600 bg-white px-6 py-1 rounded-full">
         {/* Navbar start */}
-        <div className="fixed md:static py-1 w-full bg-teal-600 md:bg-transparent md:w-auto left-0 flex justify-center items-center md:justify-start top-1 rounded-full">
+        <div className="fixed md:static py-1 w-full bg-teal-600 md:bg-transparent md:w-auto left-0 flex !z-50 justify-center items-center md:justify-start top-1 rounded-full">
           {/* Logo */}
           <CiShoppingTag size={35} />
           Logo
