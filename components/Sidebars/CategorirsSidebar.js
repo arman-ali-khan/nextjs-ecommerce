@@ -37,16 +37,16 @@ const CategorirsSidebar = () => {
              {/* Categories */}
              <ul>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-4 border-b flex  items-center gap-2' href={'#'}> <BiHomeAlt2 size={25} /> Home</Link>
+                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex  items-center gap-2' href={'#'}> <BiHomeAlt2 size={25} /> Home</Link>
             </li>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-4 border-b flex items-center gap-2' href={'#'}><TbBread size={25} /> Bread</Link>
+                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'#'}><TbBread size={25} /> Bread</Link>
             </li>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-4 border-b flex items-center gap-2' href={'#'}><GiFruitBowl size={25} /> Fruits</Link>
+                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'#'}><GiFruitBowl size={25} /> Fruits</Link>
             </li>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-4 border-b flex items-center gap-2' href={'#'}> <GiMedicines size={25} /> Medicines</Link>
+                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'#'}> <GiMedicines size={25} /> Medicines</Link>
             </li>
            </ul>
            </>

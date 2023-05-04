@@ -1,12 +1,16 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import Layout from '@/Layout/Layout'
+import Hero from '@/components/Pages/Home/Hero/Hero'
+import Products from '@/components/Products/Products'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
    <Layout title={'Nextjs Ecommerce || Home'}>
+	<Hero />
+	<Products />
     <article className="max-w-2xl px-6  -z-40 py-24 mx-auto space-y-12 bg-gray-100 text-gray-900">
 	<div className="w-full mx-auto space-y-4 text-center">
 		<p className="text-xs font-semibold tracking-wider uppercase">#TailwindCSS</p>
