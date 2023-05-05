@@ -10,12 +10,12 @@ const ProductCard = ({items}) => {
 
             <div className='flex items-center justify-between px-3'>
                 <div>
-                <h4 className='text_primary font-bold'>$79.24 <span className='text-gray-500 font-thin line-through'>$60</span></h4>
+                <h4 className='text-teal-600 font-bold'>$79.24 <span className='text-gray-500 font-thin line-through'>$60</span></h4>
                 <p className='text-lg font-bold'>Nivea Soap</p>
                 </div>
                
             </div>
-            <div className='flex cursor-pointer select-none justify-between items-center bg-gray-100 duration-300 border border_primary  pl-4 hover:bg_primary rounded hover:text-white text_primary'>
+            <div className='flex cursor-pointer select-none justify-between items-center bg-gray-100 duration-300 border border-teal-600  pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600'>
                     <button>Add To Cart</button>
                     <span className=' px-4 py-2'><MdOutlineAdd size={20} /></span>
                 </div>

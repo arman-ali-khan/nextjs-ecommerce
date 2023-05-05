@@ -49,9 +49,9 @@ const HeroCategories = () => {
       >
         <ul className="grid grid-cols-3 gap-1 md:grid-cols-none">
           {categories.map((category) => (
-            <Link className="border border_primary md:border-none flex items-center rounded" key={category.id} href={`/category/${category.label}`}>
+            <Link className="border border-teal-600 md:border-none flex items-center rounded" key={category.id} href={`/category/${category.label}`}>
               <li className="md:px-4 w-full py-2 rounded bg-white">
-                <span className="flex flex-col md:flex-row items-center hover:underline hover:text_primary md:gap-3">
+                <span className="flex flex-col md:flex-row items-center hover:underline hover:text-teal-600 md:gap-3">
                   <img className="w-8 h-8" src={category.icon} alt="" />
 
                   <p className="md:font-bold leading-4 md:hidden">{category.title.slice(0,12)}{category.title.length>12 ? "...":""}</p>

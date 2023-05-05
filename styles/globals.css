@@ -2,19 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  .text_primary {
-    @apply text-teal-600
-  }
-
-  .bg_primary {
-    @apply bg-teal-600
-  }
-
-  .border_primary {
-    @apply border-teal-600
-  }
-}
 
 @layer utilities {
 
@@ -137,4 +124,8 @@
   .order-image2{
     position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;
   }
+  .-translate-x-64 {
+    --tw-translate-x: -16rem/* -256px */;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
 }

@@ -8,13 +8,13 @@ import { RiParenthesesLine } from "react-icons/ri";
 import { TbCurrencyTaka, TbGardenCart } from "react-icons/tb";
 function UserLayout({children}) {
   const [showMony, setShowMoney] = useState(false);
-  const [moneClass, setMoneyClass] = useState("");
+  const [moneyClass, setMoneyClass] = useState("");
   const [moneyLoading, setMoneyLoading] = useState(false);
 
   const handleMoneyShow = () =>{
       setMoneyLoading(true);
     const timer = setTimeout(() => {
-        setMoneyClass("-translate-x-64");
+        setMoneyClass("!-left-64");
       }, 5000);
       return () => {
           clearTimeout(timer)
@@ -24,15 +24,20 @@ function UserLayout({children}) {
 
   return (
     <Layout title={"User"}>
-      <div className="my-16 container mx-auto">
-        <div className="w-full relative h-44 bg-blue-200 flex justify-center">
-          <div className="absolute md:-bottom-16 -bottom-8">
+      <div className="container mx-auto mt-12 py-3">
+        <div className="w-full -z-20 relative h-44 flex-shrink-0 my-2 overflow-hidden bg-teal-500 rounded-lg  shadow-lg flex justify-center">
+        <svg class="absolute top-0 -z-20 left-0 mb-0 opacity-10" viewBox="0 0 375 283" fill="none" >
+        <rect x="159.52" y="175" width="200" height="200" rx="8" transform="rotate(-45 159.52 175)" fill="white"/>
+        <rect y="107.48" width="200" height="200" rx="8" transform="rotate(-45 0 107.48)" fill="white"/>
+      </svg>
+        <div class=" absolute w-full  z-50 h-full top-0 left-0 bg-card" ></div>
+          <div className=" md:-bottom-16 -bottom-8">
             <img
-              className="md:w-44 mx-auto w-20 md:h-44 h-20 rounded-full overflow-hidden bg-teal-100 border-2 border-teal-600"
+              className="md:w-44  z-50 mx-auto w-20 md:h-44 h-20 rounded-full overflow-hidden bg-teal-100 border-2 border-teal-600"
               src="http://static.everypixel.com/ep-pixabay/0329/8099/0858/84037/3298099085884037069-head.png"
               alt=""
             />
-            <div className="w-full overflow-hidden bg-teal-100 px-12 py-4">
+            <div className="w-full relative overflow-hidden bg-base-100  px-6 rounded-md my-3 py-4">
               <h2 className="text-xl md:text-2xl font-bold">Arman Ali Khan</h2>
               <div className={`mx-auto flex justify-center relative`}>
                 <p
@@ -44,10 +49,10 @@ function UserLayout({children}) {
                 <button
                   onClickCapture={() => setMoneyLoading(true)}
                   onClick={handleMoneyShow}
-                  className={`absolute left-0 text-white bg-teal-600 h-6 rounded-full top-0 duration-300 w-full ${moneClass}`}
+                  className={`absolute text-white bg-teal-600 h-6 rounded-full top-0 duration-300 w-full  ${moneyClass==='' ?'left-0':'-left-96'}`}
                 >
                   {moneyLoading ? (
-                    <span className="h-3 px-3  rounded-full border border_primary animate-pulse bg-teal-500 border-dashed">Money Loading...</span>
+                    <span className="h-3 px-3  rounded-full border border-teal-600 animate-pulse bg-teal-600 border-dashed">Money Loading...</span>
                   ) : (
                     "See your money"
                   )}
@@ -125,25 +130,25 @@ function UserLayout({children}) {
         <div className="md:w-44 w-full">
         <ul>
             <Link href={'/user'}>
-            <li className="py-3 px-2 border-b hover:text_primary duration-300 flex items-center gap-2">
+            <li className="py-3 px-2 border-b hover:text-teal-600 duration-300 flex items-center gap-2">
             <MdOutlineSpaceDashboard size={20} />
                 Dashboard
                 </li>
             </Link>
             <Link href={'/user/orders'}>
-            <li className="py-3 px-2 border-b hover:text_primary duration-300  flex items-center gap-2">
+            <li className="py-3 px-2 border-b hover:text-teal-600 duration-300  flex items-center gap-2">
             <TbGardenCart size={20} />
                 My Orders
                 </li>
             </Link>
             <Link href={'/user/earns'}>
-            <li className="py-3 px-2 border-b hover:text_primary duration-300  flex items-center gap-2">
+            <li className="py-3 px-2 border-b hover:text-teal-600 duration-300  flex items-center gap-2">
             <TbCurrencyTaka size={20} />
                 My Toal Earn
                 </li>
             </Link>
             <Link href={'/user/stocks'}>
-            <li className="py-3 px-2 border-b hover:text_primary duration-300  flex items-center gap-2">
+            <li className="py-3 px-2 border-b hover:text-teal-600 duration-300  flex items-center gap-2">
             <AiOutlineStock size={20} />
                 My Stocks
                 </li>
