@@ -1,10 +1,13 @@
-import React from 'react';
+
 import ProductCard from './ProductCard';
 import { BiTrendingUp } from 'react-icons/bi';
 import { BsArrowRight } from 'react-icons/bs';
 import Link from 'next/link';
+import {  useProducts } from '@/context/ProductsProvider';
 
 const Products = () => {
+   const {state} = useProducts()
+    const products  = state.products;
     return (
         <section className='container mx-auto md:my-12 my-3'>
             {/* Title */}
@@ -16,7 +19,9 @@ const Products = () => {
             <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2'>
            
             {
-                [...Array(10).keys()].map((items,i)=><ProductCard key={i} items={items} />)
+            state.loading ? [...Array(products.length).keys()].map((product,i)=><ProductCard key={i} product={product} />)
+            :
+               products.map((product,i)=><ProductCard key={i} product={product} />)
             }
         </div>
         <div className='flex justify-center my-2'>
