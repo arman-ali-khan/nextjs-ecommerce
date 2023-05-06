@@ -49,7 +49,7 @@ function UserLayout({children}) {
                 <button
                   onClickCapture={() => setMoneyLoading(true)}
                   onClick={handleMoneyShow}
-                  className={`absolute text-white bg-teal-600 h-6 rounded-full top-0 duration-300 w-full  ${moneyclassName==='' ?'left-0':'-left-96'}`}
+                  className={`absolute text-white bg-teal-600 h-6 rounded-full top-0 duration-300 w-full  ${setMoneyClass==='' ?'left-0':'-left-96'}`}
                 >
                   {moneyLoading ? (
                     <span className="h-3 px-3  rounded-full border border-teal-600 animate-pulse bg-teal-600 border-dashed">Money Loading...</span>
