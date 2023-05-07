@@ -1,5 +1,6 @@
 import  actionTypes  from "@/state/ProductState/actionTypes";
 import { initialState, productsReducer } from "@/state/ProductState/productsReducer";
+import axios from "axios";
 import { createContext, useContext, useEffect, useReducer, useState } from "react";
 
 export const PRODUCT_CONTEXT  = createContext()
@@ -10,9 +11,11 @@ const ProductsProvider = ({children}) => {
     const [state,dispatch] = useReducer(productsReducer,initialState)
     console.log(state)
 
+ 
+
     useEffect(()=>{
         dispatch({type:actionTypes.FETCHING_START})
-        fetch('products.json')
+        fetch('/api/products')
         .then(res=>res.json())
         .then(data=>dispatch({type:actionTypes.FETCHING_SUCCESS,payload:data}))
         .catch(()=>{

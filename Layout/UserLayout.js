@@ -1,4 +1,5 @@
 import Layout from "@/Layout/Layout";
+import AdminNavbar from "@/components/Pages/Shared/AdminNav/AdminNavbar";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { AiOutlineStock } from "react-icons/ai";
@@ -23,21 +24,19 @@ function UserLayout({children}) {
   }
 
   return (
-    <Layout title={"User"}>
-      <div className="container mx-auto mt-12 py-3">
-        <div className="w-full -z-20 relative h-44 flex-shrink-0 my-2 overflow-hidden bg-teal-500 rounded-lg  shadow-lg flex justify-center">
-        <svg className="absolute top-0 -z-20 left-0 mb-0 opacity-10" viewBox="0 0 375 283" fill="none" >
-        <rect x="159.52" y="175" width="200" height="200" rx="8" transform="rotate(-45 159.52 175)" fill="white"/>
-        <rect y="107.48" width="200" height="200" rx="8" transform="rotate(-45 0 107.48)" fill="white"/>
-      </svg>
-        <div className=" absolute w-full  z-50 h-full top-0 left-0 bg-card" ></div>
-          <div className=" md:-bottom-16 -bottom-8">
+    <div>
+       <AdminNavbar />
+      <div className="container mx-auto mt-12 py-3 relative">
+        <div className=" md:-bottom-20 -bottom-8 relative">
+        <div className="w-full mb-20  absolute -z-10 md:h-64 h-44 flex-shrink-0 my-5  bg-teal-500 rounded-lg  shadow-lg flex justify-center">
+        
+        </div>
             <img
-              className="md:w-44  z-50 mx-auto w-20 md:h-44 h-20 rounded-full overflow-hidden bg-teal-100 border-2 border-teal-600"
+              className="md:w-44  mx-auto w-20  object-cover h-[11rem] rounded-full overflow-hidden bg-teal-100 border-2 border-teal-600"
               src="http://static.everypixel.com/ep-pixabay/0329/8099/0858/84037/3298099085884037069-head.png"
               alt=""
             />
-            <div className="w-full relative overflow-hidden bg-base-100  px-6 rounded-md my-3 py-4">
+            <div className="w-64 mx-auto text-center bg-teal-100   overflow-hidden relative  px-6 rounded-md my-3 py-4">
               <h2 className="text-xl md:text-2xl font-bold">Arman Ali Khan</h2>
               <div className={`mx-auto flex justify-center relative`}>
                 <p
@@ -49,7 +48,7 @@ function UserLayout({children}) {
                 <button
                   onClickCapture={() => setMoneyLoading(true)}
                   onClick={handleMoneyShow}
-                  className={`absolute text-white bg-teal-600 h-6 rounded-full top-0 duration-300 w-full  ${setMoneyClass==='' ?'left-0':'-left-96'}`}
+                  className={`absolute text-white bg-teal-600 h-6 rounded-full top-0 duration-300 w-full  ${moneyClass==='' ?'left-0':'-left-96'}`}
                 >
                   {moneyLoading ? (
                     <span className="h-3 px-3  rounded-full border border-teal-600 animate-pulse bg-teal-600 border-dashed">Money Loading...</span>
@@ -60,8 +59,7 @@ function UserLayout({children}) {
               </div>
             </div>
           </div>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 my-12 md:my-20 gap-2">
+        <div className="grid grid-cols-2 md:grid-cols-4 my-[4rem]  gap-2">
           <div>
             <div className="flex items-center py-4 pl-10 bg-teal-100 rounded-md ">
               <div className="flex items-center justify-center w-12 h-12 bg-green-100 rounded-full">
@@ -126,7 +124,7 @@ function UserLayout({children}) {
         <div>
            <h2 className="text-2xl"> User Dashboard</h2>
         </div>
-        <div className="md:flex gap-3">
+        <div className="md:flex gap-3 ">
         <div className="md:w-44 w-full">
         <ul>
             <Link href={'/user'}>
@@ -164,7 +162,7 @@ function UserLayout({children}) {
       </div>
       </div>
      
-    </Layout>
+    </div>
   );
 }
 export default UserLayout;

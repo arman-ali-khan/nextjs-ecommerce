@@ -1,0 +1,10 @@
+datasource db {
+  provider = "prisma-client-js"
+  url = "mongodb+srv://nobinUdyokta:V1OkeqUQ9HE54fXk@cluster0.tgkwl01.mongodb.net/?retryWrites=true&w=majority"
+}
+ 
+model User {
+  id    String  @id @map("_id")
+  name  String
+  email String @unique
+}
