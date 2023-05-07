@@ -6,7 +6,7 @@ import "react-image-gallery/styles/css/image-gallery.css";
 
 const Product = ({data:product}) => {
   return (
-    <Layout title={product.title} description={product.description} thumb={product.images[0].original}>
+    <Layout title={product.title} description={product.description} thumb={product.images[0].thumbnail}>
       <div class="w-full mt-12 rounded-lg p-3 lg:p-12 bg-white">
         <div class="flex flex-col xl:flex-row">
           <div class="flex-shrink-0 xl:pr-10 lg:block w-full mx-auto md:w-6/12 lg:w-5/12 xl:w-4/12">
