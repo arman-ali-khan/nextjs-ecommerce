@@ -3,21 +3,22 @@ import { BsStar, BsStarFill } from "react-icons/bs";
 import { MdOutlineAdd } from "react-icons/md";
 import ProductModal from "./SingleProduct/ProductModal";
 import Link from "next/link";
+import Modal from "./SingleProduct/Modal";
 
 const ProductCard = ({ product }) => {
-  const [data, setData] = useState("");
-  console.log(data);
+ const [id,setId]  = useState('')
   return (
+    <>
     <div
       className={`shadow-xl rounded-md
       }`}
     >
       <label
-        className="cursor-pointer"
-        onClick={() => setData(product.price)}
+      onClick={()=>setId(product.id)}
+        className="cursor-pointer "
         htmlFor="productModal"
       >
-        <div className={`h-60 bg-base-100 hover:scale-125 duration-300`}>
+        <div className={`h-60 bg-base-100 `}>
           <img src={product.images[0].original} alt="" />
         </div>
 
@@ -67,27 +68,13 @@ const ProductCard = ({ product }) => {
         </span>
       </div>
       <div>
-        {/* Put this part before </body> tag */}
-        <input type="checkbox" id="productModal" className="modal-toggle " />
-        <label htmlFor="productModal" className="modal cursor-pointer">
-          <label className="modal-box relative w-11/12 max-w-5xl" htmlFor="">
-            <h3 className="text-lg font-bold">{product.model}</h3>
-            <p className="py-4">
-              You've been selected for a chance to get one year of subscription
-              to use Wikipedia for free!
-            </p>
-            <div className="flex justify-end">
-              <label
-                className="px-4 py-2 text-white rounded bg-teal-600"
-                htmlFor="productModal"
-              >
-                Close
-              </label>
-            </div>
-          </label>
-        </label>
       </div>
+    
     </div>
+      {
+        id && <Modal id={id} setId={setId} />
+      }
+      </>
   );
 };
 

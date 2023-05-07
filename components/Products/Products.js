@@ -57,7 +57,7 @@ const Products = () => {
               </div>
           </div>)
             :
-               products?.map((product,i)=><ProductCard key={i} product={product} />)
+               products?.map((product,i)=><ProductCard key={product.id} product={product} />)
             }
         </div>
         <div className='flex justify-center my-2'>
