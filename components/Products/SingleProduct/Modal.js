@@ -52,9 +52,9 @@ const Modal = ({ id, setId }) => {
             </svg>
           </button>
         </div>
-          <div class="flex flex-col lg:flex-row md:flex-row w-full max-w-4xl overflow-hidden">
+          <div class="flex flex-col lg:flex-row md:flex-row w-full max-w-4xl ">
             <div
-              class="flex-shrink-0 w-96 flex items-center justify-center h-auto cursor-pointer"
+              class="flex-shrink-0 md:w-96 flex items-center justify-center h-auto cursor-pointer"
               href="/product/rainbow-chard"
             >
               <span className="span-order w-44">

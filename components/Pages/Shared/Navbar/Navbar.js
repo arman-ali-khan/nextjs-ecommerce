@@ -11,6 +11,7 @@ import CartSidebar from "@/components/Sidebars/CartSidebar";
 import NavCategories from "@/components/Categories/NavCategories";
 import Image from "next/image";
 import { MdOutlineLocationOn } from "react-icons/md";
+import Location from "../Location/Location";
 
 const Navbar = () => {
   const [showSearch, setShowSearch] = useState(false);
@@ -49,13 +50,13 @@ const handleCategoriesSidebar = () =>{
           {/* Logo */}
           <Link href={'/'}><img className="w-9 md:w-16" src={'/logo.svg'} alt=""/></Link>
           {/*Location mobile  */}
-          <button className="border md:hidden text-white md:text-black border-white md:border-teal-600 rounded-full px-4 py-1 flex gap-1 items-center"><MdOutlineLocationOn /> Location</button>
+          <div className="md:hidden"><Location /></div>
         </div>
         {/* Desktop fixed categories */}
         <div className=" hidden md:flex items-center gap-4">
           <NavCategories />
           {/*Location desktop  */}
-          <button className="border hidden md:flex text-white md:text-black border-white md:border-teal-600 rounded-full px-4 py-1  gap-1 items-center"><MdOutlineLocationOn /> Location</button>
+          <div className="hidden md:block"><Location /></div>
         </div>
         {/* Search box */}
         <div className=" w-full flex justify-center">
