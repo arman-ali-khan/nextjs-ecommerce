@@ -19,7 +19,7 @@ const category = ({ data: category, category: title }) => {
       <div className="w-full md:flex flex-col container mx-auto gap-2 my-12">
         <div class="flex items-center justify-between my-3 bg-orange-100 border border-gray-100 rounded p-3">
           <h6 class="text-sm ">
-            Total <span class="font-bold">13</span> items Found
+            Total <span class="font-bold">{category.length}</span> items Found
           </h6>
           <span class="text-sm ">
             <select class="py-0 text-sm select select-sm font-medium block w-full rounded border-0 bg-white pr-10 cursor-pointer focus:ring-0">
