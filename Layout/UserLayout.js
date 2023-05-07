@@ -1,4 +1,5 @@
 import Layout from "@/Layout/Layout";
+import AdminNavbar from "@/components/Pages/Shared/AdminNav/AdminNavbar";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { AiOutlineStock } from "react-icons/ai";
@@ -23,20 +24,19 @@ function UserLayout({children}) {
   }
 
   return (
-    <Layout title={"User"}>
+    <div>
+       <AdminNavbar />
       <div className="container mx-auto mt-12 py-3 relative">
-       
         <div className=" md:-bottom-20 -bottom-8 relative">
         <div className="w-full mb-20  absolute -z-10 md:h-64 h-44 flex-shrink-0 my-5  bg-teal-500 rounded-lg  shadow-lg flex justify-center">
         
-         
         </div>
             <img
-              className="md:w-44  z-50 mx-auto w-20 md:h-44 h-20 rounded-full overflow-hidden bg-teal-100 border-2 border-teal-600"
+              className="md:w-44  mx-auto w-20  object-cover h-[11rem] rounded-full overflow-hidden bg-teal-100 border-2 border-teal-600"
               src="http://static.everypixel.com/ep-pixabay/0329/8099/0858/84037/3298099085884037069-head.png"
               alt=""
             />
-            <div className="w-64 mx-auto text-center bg-teal-100   overflow-hidden relative  px-6 rounded-md my-3 py-4 z-50">
+            <div className="w-64 mx-auto text-center bg-teal-100   overflow-hidden relative  px-6 rounded-md my-3 py-4">
               <h2 className="text-xl md:text-2xl font-bold">Arman Ali Khan</h2>
               <div className={`mx-auto flex justify-center relative`}>
                 <p
@@ -59,7 +59,7 @@ function UserLayout({children}) {
               </div>
             </div>
           </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 py-12  gap-2">
+        <div className="grid grid-cols-2 md:grid-cols-4 my-[4rem]  gap-2">
           <div>
             <div className="flex items-center py-4 pl-10 bg-teal-100 rounded-md ">
               <div className="flex items-center justify-center w-12 h-12 bg-green-100 rounded-full">
@@ -124,7 +124,7 @@ function UserLayout({children}) {
         <div>
            <h2 className="text-2xl"> User Dashboard</h2>
         </div>
-        <div className="md:flex gap-3">
+        <div className="md:flex gap-3 ">
         <div className="md:w-44 w-full">
         <ul>
             <Link href={'/user'}>
@@ -162,7 +162,7 @@ function UserLayout({children}) {
       </div>
       </div>
      
-    </Layout>
+    </div>
   );
 }
 export default UserLayout;

@@ -7,7 +7,9 @@ import {  useProducts } from '@/context/ProductsProvider';
 
 const Products = () => {
    const {state} = useProducts()
-    const products  = state.products;
+    const products  = state.products.allFiles;
+    const count = state.products.count
+    console.log(count)
     return (
         <section className='container mx-auto md:my-12 my-3 overflow-hidden'>
             {/* Title */}
@@ -19,9 +21,43 @@ const Products = () => {
             <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2'>
            
             {
-            state.loading ? [...Array(products.length).keys()].map((product,i)=><ProductCard key={i} product={product} />)
+            state.loading ? [...Array(10).keys()].map((product,i)=> <div key={i}
+            className={`shadow-xl h-72 rounded-md bg-gray-300 animate-pulse`}
+          >
+            <label className="cursor-pointer" htmlFor="productModal">
+              <div
+                className={`h-56 bg-base-300 animate-pulse`}
+              >
+              </div>
+      
+              <div
+                className={`flex items-center justify-between px-3 `}
+              >
+                <div>
+                  <div
+                    className="flex justify-between items-center "
+                  >
+                    <h4 className="text-teal-600 font-bold">
+                      
+                      <span className="text-gray-500 text-sm font-thin line-through">
+                       
+                      </span>
+                    </h4>
+                    <div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </label>
+            <div
+              className={`flex cursor-pointer select-none justify-between items-center bg-gray-100 duration-300 border border-teal-600  pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600 `}
+            >
+            </div>
+            <div>
+              </div>
+          </div>)
             :
-               products.map((product,i)=><ProductCard key={i} product={product} />)
+               products?.map((product,i)=><ProductCard key={i} product={product} />)
             }
         </div>
         <div className='flex justify-center my-2'>

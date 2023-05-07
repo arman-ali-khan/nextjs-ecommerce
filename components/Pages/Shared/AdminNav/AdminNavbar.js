@@ -9,9 +9,10 @@ import CategorirsSidebar from "@/components/Sidebars/CategorirsSidebar";
 import UserSidebar from "@/components/Sidebars/UserSidebar";
 import CartSidebar from "@/components/Sidebars/CartSidebar";
 import NavCategories from "@/components/Categories/NavCategories";
+import AdminSidebar from "@/components/Dashboard/Admin/AdminSidebar/AdminSidebar";
 import Image from "next/image";
 
-const Navbar = () => {
+const AdminNavbar = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const [showUser, setShowUser] = useState(false);
@@ -138,7 +139,7 @@ const handleCategoriesSidebar = () =>{
           }`}
           onClick={() => setShowSidebar(false)}
         ></button>
-        <CategorirsSidebar />
+        <AdminSidebar />
       </div>
       {/* mobile + desktop user sidebar */}
       <div
@@ -172,4 +173,4 @@ const handleCategoriesSidebar = () =>{
   );
 };
 
-export default Navbar;
+export default AdminNavbar;

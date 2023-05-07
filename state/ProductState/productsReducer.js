@@ -2,7 +2,7 @@ import  actionTypes  from "./actionTypes"
 
 export const initialState = {
     loading:false,
-    products: [],
+    products: {},
     error:false
 }
 export const productsReducer=(state,action)=>{

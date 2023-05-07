@@ -1,11 +1,12 @@
 import UserLayout from '@/Layout/UserLayout';
+import Link from 'next/link';
 import React from 'react';
 import { TbCurrencyTaka } from 'react-icons/tb';
 
 const index = () => {
     return (
            <UserLayout>
-           <div className="overflow-x-auto w-full">
+           <div className="overflow-x-auto w-full my-4 mb-12">
   <table className="table w-full">
     {/* head */}
     <thead>
@@ -24,7 +25,7 @@ const index = () => {
         <td>May 4, 2023</td>
         <td>Processing</td>
         <td className='flex items-center font-bold'> <TbCurrencyTaka className='font-bold' size={20}/> 12345</td>
-        <td><button className='bg-blue-100 text-blue-600 rounded-full px-2 py-0.5'>Details</button></td>
+        <td><Link href={'/order'}><button className='bg-blue-100 text-blue-600 rounded-full px-2 py-0.5'>Details</button></Link></td>
       </tr>
       {/* row 2 */}
       <tr>
@@ -32,7 +33,7 @@ const index = () => {
         <td>May 4, 2023</td>
         <td>Pending</td>
         <td className='flex items-center font-bold'> <TbCurrencyTaka className='font-bold' size={20}/> 12345</td>
-        <td><button className='bg-blue-100 text-blue-600 rounded-full px-2 py-0.5'>Details</button></td>
+        <td><Link href={'/order'}><button className='bg-blue-100 text-blue-600 rounded-full px-2 py-0.5'>Details</button></Link></td>
       </tr>
       {/* row 3 */}
       <tr>
@@ -40,7 +41,7 @@ const index = () => {
         <td>May 4, 2023</td>
         <td>Delivered</td>
         <td className='flex items-center font-bold'> <TbCurrencyTaka className='font-bold' size={20}/> 12345</td>
-        <td><button className='bg-blue-100 text-blue-600 rounded-full px-2 py-0.5'>Details</button></td>
+        <td><Link href={'/order'}><button className='bg-blue-100 text-blue-600 rounded-full px-2 py-0.5'>Details</button></Link></td>
       </tr>
     </tbody>
   </table>
