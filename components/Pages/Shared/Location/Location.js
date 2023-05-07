@@ -38,7 +38,7 @@ const Location = () => {
         onClick={() => setShowCategory(!showCategory)}
         className={` px-3 border border-white md:border-teal-600 font-bold flex items-center justify-between py-1 rounded-full duration-300 ${showCategory ? 'bg-teal-600 text-white': ' text-white md:text-black '}`}
       >
-        <p className="flex items-center gap-1"><BiLocationPlus /> Categories</p> <span></span>
+        <p className="flex items-center gap-1"><BiLocationPlus /> Kumorgonj</p> <span></span>
       </button>
       <button
         onClick={() => setShowCategory(false)}
