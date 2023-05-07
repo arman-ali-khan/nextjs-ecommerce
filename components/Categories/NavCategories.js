@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { BiDownArrow, BiUpArrow } from "react-icons/bi";
+import { TbCategory } from "react-icons/tb";
 
 const NavCategories = () => {
   const [showCategory, setShowCategory] = useState(false);
@@ -37,12 +38,12 @@ const NavCategories = () => {
     },
   ];
   return (
-    <div className="md:w-44 lg:w-64 ml-12 relative">
+    <div className="md:w-44 lg:w-64  relative">
       <button
         onClick={() => setShowCategory(!showCategory)}
         className={` px-7 border border-teal-600 font-bold w-full flex items-center justify-between py-1 rounded-full duration-300 ${showCategory ? 'bg-teal-600 text-white': ''}`}
       >
-        <p>Categories</p> <span>{showCategory ? <BiUpArrow />:<BiDownArrow />}</span>
+        <p className="flex items-center gap-1"><TbCategory /> Categories</p> <span>{showCategory ? <BiUpArrow />:<BiDownArrow />}</span>
       </button>
       <button
         onClick={() => setShowCategory(false)}

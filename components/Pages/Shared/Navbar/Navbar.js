@@ -10,6 +10,7 @@ import UserSidebar from "@/components/Sidebars/UserSidebar";
 import CartSidebar from "@/components/Sidebars/CartSidebar";
 import NavCategories from "@/components/Categories/NavCategories";
 import Image from "next/image";
+import { MdOutlineLocationOn } from "react-icons/md";
 
 const Navbar = () => {
   const [showSearch, setShowSearch] = useState(false);
@@ -44,13 +45,17 @@ const handleCategoriesSidebar = () =>{
 
       <div className="fixed md:sticky md:top-0 md:bottom-auto bottom-2 w-full md:flex items-center justify-between md:mx-auto z-50 md:container border-2 border-teal-600 bg-white px-6 py-1 rounded-full">
         {/* Navbar start */}
-        <div className="fixed md:static py-1 w-full bg-teal-600 md:bg-transparent md:w-auto left-0 flex !z-50 justify-center items-center md:justify-start top-1 rounded-full">
+        <div className="fixed md:hidden lg:flex md:static py-1 w-full bg-teal-600 md:bg-transparent md:w-auto left-0 flex !z-50 justify-between px-4 items-center md:justify-start top-1 rounded-full">
           {/* Logo */}
-          <Link href={'/'}><Image src={'/logo.svg'} height={60} width={60} alt=""></Image></Link>
+          <Link href={'/'}><img className="w-9 md:w-16" src={'/logo.svg'} alt=""/></Link>
+          {/*Location mobile  */}
+          <button className="border md:hidden text-white md:text-black border-white md:border-teal-600 rounded-full px-4 py-1 flex gap-1 items-center"><MdOutlineLocationOn /> Location</button>
         </div>
         {/* Desktop fixed categories */}
-        <div className="md:block hidden">
+        <div className=" hidden md:flex items-center gap-4">
           <NavCategories />
+          {/*Location desktop  */}
+          <button className="border hidden md:flex text-white md:text-black border-white md:border-teal-600 rounded-full px-4 py-1  gap-1 items-center"><MdOutlineLocationOn /> Location</button>
         </div>
         {/* Search box */}
         <div className=" w-full flex justify-center">
@@ -70,7 +75,7 @@ const handleCategoriesSidebar = () =>{
               {/* Desktop nav link area */}
               <li>
                 <Link
-                  className={`px-3 py-2 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
+                  className={`px-3 py-2 md:px-2 lg:px-3 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
                   href={"/"}
                 >
                   Home
@@ -78,7 +83,7 @@ const handleCategoriesSidebar = () =>{
               </li>
               <li>
                 <Link
-                  className={`px-3 py-2 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
+                  className={`px-3 py-2 md:px-2 lg:px-3 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
                   href={"#"}
                 >
                   Shop
@@ -86,7 +91,7 @@ const handleCategoriesSidebar = () =>{
               </li>
               <li>
                 <Link
-                  className={`px-3 py-2 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
+                  className={`px-3 py-2 md:px-2 lg:px-3 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
                   href={"/offers"}
                 >
                   Offers
@@ -94,7 +99,7 @@ const handleCategoriesSidebar = () =>{
               </li>
               <li>
                 <Link
-                  className={`px-3 py-2 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
+                  className={`px-3 py-2 md:px-2 lg:px-3 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
                   href={"/user"}
                 >
                   Profile

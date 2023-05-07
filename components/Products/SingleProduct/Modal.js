@@ -7,8 +7,12 @@ import "react-image-gallery/styles/css/image-gallery.css";
 
 const Modal = ({ id, setId }) => {
     const [modalData, setModalData] = useState({});
+    const [loading,setLoading] = useState(true)
     useEffect(() => {
-      axios.get(`/api/product/${id}`).then((res) => setModalData(res.data));
+      axios.get(`/api/product/${id}`).then((res) => {
+        setModalData(res.data)
+        setLoading(false)
+      });
     }, []);
     console.log(modalData);
   return (
@@ -21,19 +25,19 @@ const Modal = ({ id, setId }) => {
    
       <div class="min-h-screen px-4 ">
         <div onClick={()=>setId('')}
-          class="fixed inset-0 bg-black  cursor-pointer ease-out duration-300 opacity-25"
+          class="fixed inset-0 bg-black cursor-pointer ease-out duration-300 opacity-25"
           id="headlessui-dialog-overlay-12"
           aria-hidden="true"
         ></div>
         <span class="inline-block h-screen align-middle " aria-hidden="true">
           
         </span>
-        <div class="inline-block overflow-y-auto h-full align-middle transition-all transform bg-white shadow-xl rounded-2xl opacity-100 relative scale-100">
-        <div class=" right-5 absolute top-5">
+        <div class="inline-block overflow-y-auto h-full align-middle transition-all transform bg-white shadow-xl  rounded-2xl opacity-100 relative scale-100">
+        <div class=" right-5 absolute z-[999999] top-5">
           <button
             onClick={()=>setId('')}
             type="button"
-            class="inline-flex justify-center px-2 py-2 text-base font-medium text-red-500 bg-white border border-teal-600 rounded-full hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+            class="inline-flex  justify-center px-2 py-2 text-base font-medium text-red-500 bg-white border border-teal-600 rounded-full hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
           >
             <svg
               stroke="currentColor"
@@ -55,9 +59,10 @@ const Modal = ({ id, setId }) => {
             >
               <span className="span-order w-44">
              {
-              modalData.images ?  <ImageGallery className="h-96 w-44" showNav={false} autoPlay={true} showPlayButton={false} items={modalData?.images} />
-              :
-              <div className="h-96 w-full bg-base-300 animate-pulse"></div>
+              loading && <div className="h-96 w-full bg-base-300 animate-pulse"></div>
+             }
+             {
+              modalData.images &&  <ImageGallery className="h-96 w-44" showNav={false} autoPlay={true} showPlayButton={false} items={modalData?.images} />
              }
               </span>
             </div>
