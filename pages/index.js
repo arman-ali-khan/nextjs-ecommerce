@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
-   <Layout title={'Nextjs Ecommerce || Home'}>
+   <Layout title={'Nobin Udyokta || Home'} thumb={'/social.png'} description={'Most popular e-Commerce website in Mithapukur'}>
 	<Hero />
 	<Products />
 	<OfferUderPopular />
