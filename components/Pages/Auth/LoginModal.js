@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Login = ({login,setLogin}) => {
+const LoginModal = ({login,setLogin}) => {
     return (
         <div className="h-full relative bg-white border-l md:rounded-md md:border-teal-400 md:hover:border-teal-600 duration-200 md:border-2 md:hover:border-4">
 		
@@ -29,4 +29,4 @@ const Login = ({login,setLogin}) => {
     );
 };
 
-export default Login;
+export default LoginModal;

@@ -47,7 +47,7 @@ const handleCategoriesSidebar = () =>{
         {/* Navbar start */}
         <div className="fixed md:static py-1 w-full bg-teal-600 md:bg-transparent md:w-auto left-0 flex !z-50 justify-center items-center md:justify-start top-1 rounded-full">
           {/* Logo */}
-          <Link href={'/'}><Image src={'/logo.svg'} height={60} width={60} alt=""></Image></Link>
+          <Link href={'/'}><img className="w-9 md:w-16" src={'/logo.svg'} alt=""/></Link>
         </div>
         {/* Desktop fixed categories */}
         <div className="md:block hidden">

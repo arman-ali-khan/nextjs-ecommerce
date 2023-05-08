@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Login from "../Auth/Login";
-import Register from "../Auth/Register";
+import LoginModal from "../Pages/Auth/LoginModal";
+import RegisterModal from "../Pages/Auth/RegisterModal";
 
 const UserSidebar = () => {
 	const [login,setLogin] = useState(true)
@@ -11,7 +11,7 @@ const UserSidebar = () => {
     <button  className="px-4 py-2 rounded bg-teal-500 text-white">Close</button>
     </div>
 	{
-		login ? <Login login={login} setLogin={setLogin} />: <Register login={login} setLogin={setLogin} />
+		login ? <LoginModal login={login} setLogin={setLogin} />: <RegisterModal login={login} setLogin={setLogin} />
 	}
    </>
   );

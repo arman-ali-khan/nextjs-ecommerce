@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Register = ({login,setLogin}) => {
+const RegisterModal = ({login,setLogin}) => {
     return (
         <div className="h-full relative bg-white border-l md:rounded-md md:border-teal-400 md:hover:border-teal-600 duration-200 md:border-2 md:hover:border-4">
 		
@@ -28,4 +28,4 @@ const Register = ({login,setLogin}) => {
     );
 };
 
-export default Register;
+export default RegisterModal;
