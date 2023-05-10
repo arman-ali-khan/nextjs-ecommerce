@@ -4,20 +4,22 @@ import { BsCart, BsCartCheck, BsCartCheckFill, BsFillSearchHeartFill, BsMenuApp 
 import { CiShoppingTag } from "react-icons/ci";
 import { BsSearch } from "react-icons/bs";
 import { RiMenu4Line } from "react-icons/ri";
-import { AiOutlineHome, AiOutlineUserAdd } from "react-icons/ai";
+import { AiOutlineHome, AiOutlineUser, AiOutlineUserAdd } from "react-icons/ai";
 import CategorirsSidebar from "@/components/Sidebars/CategorirsSidebar";
 import UserSidebar from "@/components/Sidebars/UserSidebar";
 import CartSidebar from "@/components/Sidebars/CartSidebar";
 import NavCategories from "@/components/Categories/NavCategories";
 import AdminSidebar from "@/components/Dashboard/Admin/AdminSidebar/AdminSidebar";
 import Image from "next/image";
+import { useAllContext } from "@/context/ContextProvider";
 
 const AdminNavbar = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const [showUser, setShowUser] = useState(false);
   const [showCart, setShowCart] = useState(false);
-
+  // context
+  const {user,logOut} = useAllContext()
 //  hide sidebars
 const handleCategoriesSidebar = () =>{
     setShowSidebar(!showSidebar)
@@ -35,6 +37,10 @@ const handleCategoriesSidebar = () =>{
     setShowCart(!showCart)
     setShowUser(false)
 } 
+
+const handleLogout = () =>{
+  logOut()
+}
   return (
     <div className="md:fixed z-50 w-full flex justify-center md:top-0 md:bottom-auto">
       {/* Right side checkout button */}
@@ -122,9 +128,25 @@ const handleCategoriesSidebar = () =>{
           <span className={`text-2xl cursor-pointer hover:text-teal-600 ${showCart && 'text-teal-600'} px-4 py-2`} onClick={handleCartSidebar}>
             <BsCart />
           </span>
-          <span className={`text-2xl cursor-pointer hover:text-teal-600 ${showUser && 'text-teal-600'} px-4 py-2`} onClick={handleUserSidebar} >
+          {
+            user?.uid ? 
+            <div className="dropdown py-0 flex dropdown-top md:dropdown-bottom dropdown-left">
+  <label className={`text-2xl cursor-pointer hover:text-teal-600 ${showUser && 'text-teal-600'} px-4 py-2`} tabIndex={0} ><AiOutlineUser /></label>
+  <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+  <Link href={'/user'} className={`text-2xl cursor-pointer hover:text-teal-600 ${showUser && 'text-teal-600'} px-4 py-2`} >
+            Profile
+          </Link>
+    <li>
+      <button onClick={handleLogout}>Logout</button>
+    </li>
+  </ul>
+</div>
+          
+          :
+          <Link href={'/account/login'} className={`text-2xl cursor-pointer hover:text-teal-600 ${showUser && 'text-teal-600'} px-4 py-2`}  >
             <AiOutlineUserAdd />
-          </span>
+          </Link>
+          }
         </div>
       </div>
       {/* mobile category sidebar */}
