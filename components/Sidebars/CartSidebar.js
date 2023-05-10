@@ -6,7 +6,6 @@ import { AiOutlineDelete } from "react-icons/ai";
 const CartSidebar = ({ showCart, setShowCart }) => {
   const { state, dispatch } = useAllContext();
   const products = state.cart;
-  const count = products.filter((product) => product._id === product._id);
 
 
   // all product price 
@@ -27,7 +26,7 @@ let totalPrice = products.reduce(function(prev, current) {
         </button>
       </div>
       {products.length < 1 ? (
-        <div class="overflow-y-scroll h-full flex-grow scrollbar-hide w-full max-h-full">
+        <div class=" h-full flex-grow scrollbar-hide w-full max-h-full">
           <div class="flex flex-col h-full justify-center">
             <div class="flex flex-col items-center">
               <div class="flex justify-center items-center w-20 h-20 rounded-full bg-emerald-100">
@@ -84,7 +83,11 @@ let totalPrice = products.reduce(function(prev, current) {
                     +
                   </button>
                   {/* Count */}
-                  <p className="text-teal-600">{count.lenght}</p>
+                  <p className="text-teal-600">
+                    {
+                      state.cart.filter((item) => item._id === product._id).length
+                  }
+                  </p>
                   {/* Decrement btn */}
                   <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-b-full">
                     -
