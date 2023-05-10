@@ -256,7 +256,7 @@ const Navbar = () => {
       <div
         className={`${
           showCart ? "right-0 md:right-0" : "-right-[900px]"
-        } duration-300 w-full md:w-[500px] z-20 px-3 bg-base-100 py-2 top-12 md:top-14 h-screen fixed`}
+        } duration-300 w-full md:w-[500px] z-20 px-3 bg-base-100 py-2 top-10 md:top-10 h-screen fixed`}
       >
         <button
           className={`fixed top-0 -z-10 right-0 w-full h-screen ${

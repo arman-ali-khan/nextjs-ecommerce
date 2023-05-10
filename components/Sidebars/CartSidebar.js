@@ -15,7 +15,7 @@ let totalPrice = products.reduce(function(prev, current) {
 
 
   return (
-    <div className="h-full relative overflow-auto section">
+    <div className={`h-full relative ${products.length ? 'md:overflow-y-scroll pb-56 md:pb-0':'overflow-hidden'}  section`}>
       <div className="flex items-center sticky top-0 justify-between my-2 bg-teal-600 rounded pl-4">
         <p className="text-white">Shopping Cart</p>
         <button
@@ -26,7 +26,7 @@ let totalPrice = products.reduce(function(prev, current) {
         </button>
       </div>
       {products.length < 1 ? (
-        <div class=" h-full flex-grow scrollbar-hide w-full max-h-full">
+        <div class=" h-full flex-grow  scrollbar-hide w-full max-h-full">
           <div class="flex flex-col h-full justify-center">
             <div class="flex flex-col items-center">
               <div class="flex justify-center items-center w-20 h-20 rounded-full bg-emerald-100">
@@ -55,7 +55,7 @@ let totalPrice = products.reduce(function(prev, current) {
           </div>
         </div>
       ) : (
-        <div className="overflow-auto mb-12 h-full">
+        <div className="overflow-auto h-full">
           {products.map((product, i) => (
             <div
               key={product._id}
@@ -114,7 +114,7 @@ let totalPrice = products.reduce(function(prev, current) {
       )}
 
       <button
-        className={`sticky bottom-12 w-full left-0 bg-teal-600 text-white rounded-full px-4 py-1 my-3 flex items-center justify-between ${
+        className={`sticky bottom-16 md:bottom-12 w-full left-0 bg-teal-600 text-white rounded-full px-4 py-1 my-3 flex items-center justify-between ${
           showCart || "hidden"
         }`}
       >
