@@ -5,7 +5,7 @@ import { TbCurrencyTaka } from 'react-icons/tb';
 
 const index = () => {
     return (
-           <UserLayout>
+           <UserLayout title={'Orders'}>
            <div className="overflow-x-auto w-full my-4 mb-12">
   <table className="table w-full">
     {/* head */}

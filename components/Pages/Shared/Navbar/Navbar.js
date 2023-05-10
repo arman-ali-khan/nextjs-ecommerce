@@ -12,7 +12,8 @@ import NavCategories from "@/components/Categories/NavCategories";
 import Image from "next/image";
 import { MdOutlineLocationOn } from "react-icons/md";
 import Location from "../Location/Location";
-import { useProducts } from "@/context/ProductsProvider";
+import { useAllContext } from "@/context/ContextProvider";
+import { toast } from "react-hot-toast";
 
 const Navbar = () => {
   const [showSearch, setShowSearch] = useState(false);
@@ -20,7 +21,7 @@ const Navbar = () => {
   const [showUser, setShowUser] = useState(false);
   const [showCart, setShowCart] = useState(false);
 
-  const {user} = useProducts()
+  const {user,logOut} = useAllContext()
 
 //  hide sidebars
 const handleCategoriesSidebar = () =>{
@@ -39,6 +40,10 @@ const handleCategoriesSidebar = () =>{
     setShowCart(!showCart)
     setShowUser(false)
 } 
+
+const handleLogout = () =>{
+  logOut()
+}
   return (
     <div className="md:fixed z-50 w-full flex justify-center md:top-0 md:bottom-auto">
       {/* Right side checkout button */}
@@ -138,14 +143,16 @@ const handleCategoriesSidebar = () =>{
   <Link href={'/user'} className={`text-2xl cursor-pointer hover:text-teal-600 ${showUser && 'text-teal-600'} px-4 py-2`} >
             Profile
           </Link>
-    <li><a>Item 2</a></li>
+    <li>
+      <button onClick={handleLogout}>Logout</button>
+    </li>
   </ul>
 </div>
           
           :
-          <span className={`text-2xl cursor-pointer hover:text-teal-600 ${showUser && 'text-teal-600'} px-4 py-2`} onClick={handleUserSidebar} >
+          <Link href={'/account/login'} className={`text-2xl cursor-pointer hover:text-teal-600 ${showUser && 'text-teal-600'} px-4 py-2`}  >
             <AiOutlineUserAdd />
-          </span>
+          </Link>
           }
           
           

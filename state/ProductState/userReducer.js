@@ -3,7 +3,8 @@ import  actionTypes  from "./actionTypes"
 export const userInitialState = {
     loading:false,
     user: {},
-    error:false
+    error:false,
+    errorMessage: ''
 }
 export const userReducer=(state,action)=>{
     switch(action.type){
@@ -17,13 +18,14 @@ export const userReducer=(state,action)=>{
             return {
                 ...state,
                 loading:false,
-                user: action.payload,
+                user: action.payload.user,
                 error:false,
             }
         case actionTypes.GETTING_USER_ERROR:
             return {
                 ...state,
                 loading:false,
+                errorMessage: action.payload.errorMessage,
                 error:true,
             }
         default:

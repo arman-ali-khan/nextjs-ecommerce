@@ -3,10 +3,10 @@ import ProductCard from './ProductCard';
 import { BiTrendingUp } from 'react-icons/bi';
 import { BsArrowRight } from 'react-icons/bs';
 import Link from 'next/link';
-import {  useProducts } from '@/context/ProductsProvider';
+import {  useAllContext } from '@/context/ContextProvider';
 
 const Products = () => {
-   const {state} = useProducts()
+   const {state} = useAllContext()
     const products  = state.products.allFiles;
     const count = state.products.count
     console.log(count)
