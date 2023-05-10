@@ -4,8 +4,23 @@ import { MdOutlineAdd } from "react-icons/md";
 import ProductModal from "./SingleProduct/ProductModal";
 import Link from "next/link";
 import Modal from "./SingleProduct/Modal";
+import { useAllContext } from "@/context/ContextProvider";
+import actionTypes from "@/state/ProductState/actionTypes";
+import { toast } from "react-hot-toast";
 
 const ProductCard = ({ product }) => {
+ 
+
+  const {dispatch,state} = useAllContext()
+  console.log(state)
+
+
+  const handleAddToCart = () => {
+    dispatch({type:actionTypes.ADD_TO_CART,payload:product})
+    toast.success("Added to Cart")
+  }
+ 
+  
  const [id,setId]  = useState('')
   return (
     <>
@@ -50,6 +65,7 @@ const ProductCard = ({ product }) => {
                 </span>
               </div>
             </div>
+            {/* product title */}
             <Link
               href={`/product/${product.id}`}
               className="md:text-base inline-block leading-4 text-teal-600 text-sm font-bold"
@@ -59,7 +75,10 @@ const ProductCard = ({ product }) => {
           </div>
         </div>
       </label>
+      {/* Add to cart */}
       <div
+      onClick={handleAddToCart}
+      
         className={`flex cursor-pointer select-none justify-between items-center bg-gray-100 duration-300 border border-teal-600  pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600`}
       >
         <button>Add To Cart</button>

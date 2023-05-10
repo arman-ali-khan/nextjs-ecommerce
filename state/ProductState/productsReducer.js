@@ -3,7 +3,8 @@ import  actionTypes  from "./actionTypes"
 export const initialState = {
     loading:false,
     products: {},
-    error:false
+    error:false,
+    cart:[]
 }
 export const productsReducer=(state,action)=>{
     switch(action.type){
@@ -25,6 +26,16 @@ export const productsReducer=(state,action)=>{
                 ...state,
                 loading:false,
                 error:true,
+            }
+        case actionTypes.ADD_TO_CART:
+            return {
+                ...state,
+                cart: [... state.cart, action.payload],
+            }
+        case actionTypes.REMOVE_FROM_CART:
+            return {
+                ...state,
+                cart: state.cart.filter(product=>product._id !== action.payload._id)
             }
         default:
             return state;
