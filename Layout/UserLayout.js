@@ -52,7 +52,7 @@ function UserLayout({children,title,description,thumb}) {
         
         </div>
         {
-          user.uid ? 
+          user?.uid ? 
           <img
               className="md:w-44  flex justify-center mx-auto w-20  object-cover h-[11rem] rounded-full overflow-hidden bg-teal-100 border-2 border-teal-600"
               src={dbUser?.photo}

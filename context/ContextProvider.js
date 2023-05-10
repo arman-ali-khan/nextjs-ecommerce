@@ -121,9 +121,3 @@ export const useAllContext = () => {
 
 export default ProductsProvider;
 
-export const getLoginUser = ({ user }) => {
-  if (user.uid) {
-    return user;
-  }
-  return;
-};
