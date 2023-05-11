@@ -1,39 +1,87 @@
+import { useAllContext } from "@/context/ContextProvider";
+import actionTypes from "@/state/ProductState/actionTypes";
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
+import { MdOutlineAdd, MdOutlineRemove } from "react-icons/md";
 import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
 
 
 const Modal = ({ id, setId }) => {
+
+  const {state, dispatch} = useAllContext()
+
+    // modal data product 
     const [modalData, setModalData] = useState({});
     const [loading,setLoading] = useState(true)
+
     useEffect(() => {
       axios.get(`/api/product/${id}`).then((res) => {
         setModalData(res.data)
         setLoading(false)
       });
     }, []);
-    console.log(modalData);
+
+
+ const selected = state.cart.find(cart => cart._id === modalData._id);
+
+
+ const  added = selected?.quantity>0
+
+
+ const handleAddToCart = () => {
+  dispatch({type:actionTypes.ADD_TO_CART,payload:modalData})
+  toast.success("Added to Cart")
+}
+
+const handleRemoveFromCart = () => {
+  dispatch({type:actionTypes.DECREMENT_CART,payload:modalData})
+  toast.success("Remove one product")
+}
   return (
     <div
-      class="fixed inset-0 z-30 my-20 md:my-0 overflow-y-auto text-center"
+      class="fixed inset-0 z-30 my-20 md:my-0 rounded-2xl overflow-y-auto text-center"
       id="headlessui-dialog-10"
       role="dialog"
       aria-modal="true"
     >
-   
-      <div class="min-h-screen px-4 ">
+   <div class=" right-5 sticky z-[999999] md:hidden  top-0 flex justify-between items-center bg-white py-2 px-4">
+    <div>
+      <p>{modalData.title}</p>
+    </div>
+          <button
+            onClick={()=>setId('')}
+            type="button"
+            class="inline-flex  justify-center px-2 py-2 text-base font-medium text-red-500 bg-white border border-teal-600 rounded-full hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+          >
+            <svg
+              stroke="currentColor"
+              fill="currentColor"
+              stroke-width="0"
+              viewBox="0 0 512 512"
+              height="1em"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M289.94 256l95-95A24 24 0 00351 127l-95 95-95-95a24 24 0 00-34 34l95 95-95 95a24 24 0 1034 34l95-95 95 95a24 24 0 0034-34z"></path>
+            </svg>
+          </button>
+        </div>
+      <div class="min-h-screen md:px-4 relative">
+     
         <div onClick={()=>setId('')}
           class="fixed inset-0 bg-black cursor-pointer ease-out duration-300 opacity-25"
           id="headlessui-dialog-overlay-12"
           aria-hidden="true"
         ></div>
         <span class="inline-block h-screen align-middle " aria-hidden="true">
-          
+       
         </span>
-        <div class="inline-block overflow-y-auto h-full align-middle transition-all transform bg-white shadow-xl  rounded-2xl opacity-100 relative scale-100">
-        <div class=" right-5 absolute z-[999999] top-5">
+        <div class="inline-block overflow-y-auto h-full md:rounded-2xl align-middle transition-all transform bg-white shadow-xl rounded-b-2xl opacity-100  scale-100">
+        <div class=" right-5 absolute z-[999999] hidden md:flex top-0 justify-between items-center bg-white py-2 px-4">
+    
           <button
             onClick={()=>setId('')}
             type="button"
@@ -175,55 +223,43 @@ const Modal = ({ id, setId }) => {
             </div>
             <div class="mb-1"></div>
             <div class="flex items-center mt-4">
-              <div class="flex items-center justify-between space-s-3 sm:space-s-4 w-full">
-                <div class="group flex items-center justify-between rounded-md overflow-hidden flex-shrink-0 border w-32 md:w-auto h-11 md:h-12 border-gray-300">
-                  <button
-                    disabled=""
-                    class="flex items-center justify-center flex-shrink-0 h-full transition ease-in-out duration-300 focus:outline-none w-8 md:w-12 text-heading border-e border-gray-300 hover:text-gray-500"
-                  >
-                    <span class="text-dark text-base">
-                      <svg
-                        stroke="currentColor"
-                        fill="none"
-                        stroke-width="2"
-                        viewBox="0 0 24 24"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        height="1em"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                      </svg>
-                    </span>
-                  </button>
-                  <p class="font-semibold flex items-center justify-center h-full transition-colors duration-250 ease-in-out cursor-default flex-shrink-0 text-base text-heading w-8 md:w-20 xl:w-24">
-                    1
-                  </p>
-                  <button
-                    class="flex items-center justify-center h-full flex-shrink-0 transition ease-in-out duration-300 focus:outline-none w-8 md:w-12 text-heading border-s border-gray-300 hover:text-gray-500"
-                    tabindex="0"
-                  >
-                    <span class="text-dark text-base">
-                      <svg
-                        stroke="currentColor"
-                        fill="none"
-                        stroke-width="2"
-                        viewBox="0 0 24 24"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        height="1em"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                      </svg>
-                    </span>
-                  </button>
-                </div>
-                <button class="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-teal-500 hover:bg-teal-600 w-full h-12">
-                  Add to Cart
+              <div class="flex items-center flex-col sm:flex-row gap-3 sm:gap-0 justify-between space-s-3 sm:space-s-4 w-full">
+
+                {/* Add to cart btn */}
+              {
+        added ? 
+        <div
+     
+      
+        className={`flex cursor-pointer w-56 select-none justify-between items-center bg-gray-100 duration-300 border border-teal-600 py-4 md:py-3.5 lg:py-4 hover:text-white h-12 rounded-md text-white `}
+      >
+        {/* Derement btn */}
+        <button   onClick={()=>handleRemoveFromCart()} className="px-3 rounded-md py-3.5 bg-teal-600">
+          <MdOutlineRemove size={20} />
+        </button>
+        {/* Count */}
+        <span className="text-teal-600 font-bold">{selected?.quantity}</span>
+        {/* increment btn */}
+        <button  onClick={()=>handleAddToCart()} className="px-3 rounded-md py-3.5 bg-teal-600"> 
+          <MdOutlineAdd size={20} />
+        </button>
+       
+      </div>
+      :
+      <div
+      onClick={handleAddToCart}
+      
+        className={`text-sm leading-4 flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-teal-500 hover:bg-teal-600 w-56 h-12`}
+      >
+        <button>Add To Cart</button>
+        <span className=" px-4 py-2">
+          <MdOutlineAdd size={20} />
+        </span>
+      </div>
+      }
+      
+                <button class="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-teal-500 hover:bg-teal-600 w-44 h-12">
+                  Add to Wishlist
                 </button>
               </div>
             </div>

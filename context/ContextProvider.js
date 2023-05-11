@@ -77,8 +77,6 @@ const ProductsProvider = ({ children,data }) => {
   }, []);
 
   
-  
-
 
   useEffect(() => {
     dispatch({ type: actionTypes.FETCHING_START });
@@ -128,13 +126,3 @@ export const useAllContext = () => {
 
 export default ProductsProvider;
 
-
-export async function getStaticProps() {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_PRO}/api/products`);
-  const data = await response.json();
-  return {
-    props: {
-      data,
-    } 
-  };
-}

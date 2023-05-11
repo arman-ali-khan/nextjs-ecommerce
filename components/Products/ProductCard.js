@@ -38,14 +38,10 @@ const ProductCard = ({ product }) => {
       className={`shadow-xl rounded-md
       }`}
     >
-      <label
-      onClick={()=>setId(product.id)}
-        className="cursor-pointer "
-        htmlFor="productModal"
-      >
-        <div className={`h-60 bg-base-100 `}>
+      <div >
+        <label onClick={()=>setId(product.id)} htmlFor="productModal" className={`h-60 bg-base-100 cursor-pointer`}>
           <img src={product.images[0].original} alt="" />
-        </div>
+        </label>
 
         <div className={`flex items-center justify-between px-3`}>
           <div>
@@ -84,7 +80,7 @@ const ProductCard = ({ product }) => {
             </Link>
           </div>
         </div>
-      </label>
+      </div>
       {/* Add to cart */}
       {
         added ? 
