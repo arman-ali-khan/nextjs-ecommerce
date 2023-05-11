@@ -3,20 +3,30 @@ import actionTypes from "@/state/ProductState/actionTypes";
 import React from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import SingleCart from "./SingleCart";
+import Link from "next/link";
 
 const CartSidebar = ({ showCart, setShowCart }) => {
-  const { state, dispatch } = useAllContext();
+  const { state, dispatch,user } = useAllContext();
   const products = state.cart;
 
+  const selected = state.cart.find(
+    (cart) => cart._id === products.find((product) => product.id === cart._id)
+  );
 
-  // all product price 
-let totalPrice = products.reduce(function(prev, current) {
-  return prev + +current.price
-}, 0);
 
+  // all product price
+  let totalPrice = products.reduce(function (prev, current) {
+    return prev + +current.price;
+  }, 0);
 
   return (
-    <div className={`h-full relative ${products.length ? 'md:overflow-y-scroll pb-56 md:pb-0':'overflow-hidden'}  section`}>
+    <div
+      className={`h-full relative ${
+        products.length
+          ? "md:overflow-y-scroll pb-56 md:pb-0"
+          : "overflow-hidden"
+      }  section`}
+    >
       <div className="flex items-center sticky top-0 justify-between my-2 bg-teal-600 rounded pl-4">
         <p className="text-white">Shopping Cart</p>
         <button
@@ -57,20 +67,41 @@ let totalPrice = products.reduce(function(prev, current) {
         </div>
       ) : (
         <div className="overflow-auto h-full">
-          {products.map((product, i) =><SingleCart product={product} key={i} /> )}
+          {products.map((product, i) => (
+            <SingleCart product={product} key={i} />
+          ))}
         </div>
       )}
 
+      {
+        user?.uid ? 
+       <Link href={'#'}>  <button
+       className={`sticky bottom-16 md:bottom-12 w-full left-0 bg-teal-600 text-white rounded-full px-4 py-1 my-3 flex items-center justify-between ${
+         (showCart && products.length) || "hidden"
+       }`}
+     >
+       Proceed To Checkout{" "}
+       <span className="bg-white px-4 text-teal-600 font-bold rounded-full text-lg py-2">
+         ${totalPrice}
+       </span>
+     </button></Link>
+      :
+     <Link href={'/account/login'}>
       <button
         className={`sticky bottom-16 md:bottom-12 w-full left-0 bg-teal-600 text-white rounded-full px-4 py-1 my-3 flex items-center justify-between ${
-          showCart || "hidden"
+          (showCart && products.length) || "hidden"
         }`}
       >
-        Proceed To Checkout{" "}
+      Login and Proceed To Checkout
         <span className="bg-white px-4 text-teal-600 font-bold rounded-full text-lg py-2">
           ${totalPrice}
         </span>
       </button>
+      </Link>
+      }
+
+     
+      
     </div>
   );
 };

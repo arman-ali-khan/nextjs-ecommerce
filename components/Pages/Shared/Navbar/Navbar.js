@@ -20,15 +20,22 @@ import { MdOutlineLocationOn } from "react-icons/md";
 import Location from "../Location/Location";
 import { useAllContext } from "@/context/ContextProvider";
 import { toast } from "react-hot-toast";
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
+  // router 
+  const router = useRouter()
   const [showSearch, setShowSearch] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const [showUser, setShowUser] = useState(false);
   const [showCart, setShowCart] = useState(false);
 
   // context
-  const { user, logOut, state } = useAllContext();
+  const { user, logOut, state ,setSearch} = useAllContext();
+
+
+
 
   //  hide sidebars
   const handleCategoriesSidebar = () => {
@@ -55,6 +62,18 @@ const Navbar = () => {
   let price = state.cart.reduce(function (prev, current) {
     return prev + +current.price;
   }, 0);
+
+
+    // search 
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+ 
+
+ const handleSearch  = (data) =>{
+   setSearch(data?.search)
+   router.push('/search')
+
+ }
 
   return (
     <div className="md:fixed z-50 w-full flex justify-center md:top-0 md:bottom-auto">
@@ -98,16 +117,17 @@ const Navbar = () => {
         {/* Search box */}
         <div className=" w-full flex justify-center">
           {showSearch ? (
-            <div className="flex !z-[999999999] fixed md:static top-1 left-0 w-full items-center md:w-64 lg:w-72 xl:w-96">
+            <form onSubmit={handleSubmit(handleSearch)} className="flex !z-[999999999] fixed md:static top-1 left-0 w-full items-center md:w-64 lg:w-72 xl:w-96">
               <input
+                {...register("search", { required: true })}
                 placeholder="Search for products (e.g. fish, apple, oil)"
                 className="px-6 w-full py-2 border border-teal-600 rounded-l-full text-teal-700 focus-within:outline-none focus-within:border-teal-700 focus-within:bg-teal-50 "
                 type="search"
               />
-              <span className="border-4 text-white border-teal-600 md:px-3 px-5 bg-teal-600 py-2 rounded-r-full cursor-pointer hover:bg-teal-700">
+              <button  onClick={()=>handleSearch()} className="border-4 text-white disabled:bg-gray-300 disabled:border-gray-300 disabled:cursor-not-allowed border-teal-600 md:px-3 px-5 bg-teal-600 py-2 rounded-r-full cursor-pointer hover:bg-teal-700">
                 <BsSearch size={20} />
-              </span>
-            </div>
+              </button>
+            </form>
           ) : (
             <ul className=" items-center hidden md:flex py-2">
               {/* Desktop nav link area */}

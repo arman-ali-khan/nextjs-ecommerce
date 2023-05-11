@@ -273,7 +273,7 @@ const handleRemoveFromCart = () => {
                       type="button"
                       class="text-gray-600  font-medium underline ml-2 hover:text-teal-600"
                     >
-                     {category.label}
+                      <Link href={`/category/${category.label}`}> {category.value}</Link>
                     </button>)
                    }
                     

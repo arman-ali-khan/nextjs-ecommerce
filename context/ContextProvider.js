@@ -38,6 +38,9 @@ const ProductsProvider = ({ children,data }) => {
   // User
   const [userState, userDispatch] = useReducer(userReducer, userInitialState);
 
+  // get search data
+  const [search,setSearch] = useState('')
+
   const updateUser = (info) => {
     updateProfile(authentication.currentUser, info)
       .then(() => {
@@ -114,6 +117,7 @@ const ProductsProvider = ({ children,data }) => {
     logOut,
     dbUser,
     loading,
+    search,setSearch
   };
 
   return <ALL_CONTEXT.Provider value={value}>{children}</ALL_CONTEXT.Provider>;
