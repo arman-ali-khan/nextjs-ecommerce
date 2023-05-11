@@ -60,7 +60,7 @@ const Navbar = () => {
 
   // all product price
   let price = state.cart.reduce(function (prev, current) {
-    return prev + +current.price;
+    return prev + +current.price * current.quantity;
   }, 0);
 
 

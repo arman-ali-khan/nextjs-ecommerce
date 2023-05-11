@@ -15,16 +15,23 @@ const index = () => {
   const router = useRouter()
   const {loginUser,userDispatch,userState } = useAllContext()
 
+  // get params url
+  const {n} = router.query
+console.log(n)
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
   const handleLoginUser = (data) =>{
+    
+
     userDispatch({type:actionTypes.GETTING_USER_START})
     const email = data.email
     const password = data.password
     loginUser(email,password)
     .then((userCredential) => {
       // Signed in 
+     
       const user = userCredential.user;
+      
       userDispatch({type:actionTypes.GETTING_USER_SUCCESS,payload:{user}})
       toast.success('Login success')
       axios.post(`${process.env.NEXT_PUBLIC_API_PRO}/api/jwt`,{user:user.email},{
@@ -32,12 +39,14 @@ const index = () => {
           'content-type':'application/json'
       },}).then((response) => {
        setCookie(response.data)
+      
       }, (error) => {
         const errorMessage = error.message;
         console.log(errorMessage)
       })
-      // router.push('/')
-      // ...
+      if(n){
+        router.push(`/search`)
+       }
     })
     .catch((error) => {
       const errorMessage = error.message;

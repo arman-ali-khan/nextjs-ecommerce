@@ -9,15 +9,15 @@ const CartSidebar = ({ showCart, setShowCart }) => {
   const { state, dispatch,user } = useAllContext();
   const products = state.cart;
 
-  const selected = state.cart.find(
-    (cart) => cart._id === products.find((product) => product.id === cart._id)
-  );
 
 
+ 
   // all product price
   let totalPrice = products.reduce(function (prev, current) {
-    return prev + +current.price;
+    return prev + +current.price * current.quantity;
   }, 0);
+ 
+  console.log(totalPrice)
 
   return (
     <div
@@ -82,11 +82,11 @@ const CartSidebar = ({ showCart, setShowCart }) => {
      >
        Proceed To Checkout{" "}
        <span className="bg-white px-4 text-teal-600 font-bold rounded-full text-lg py-2">
-         ${totalPrice}
+         ${totalPrice }
        </span>
      </button></Link>
       :
-     <Link href={'/account/login'}>
+     <Link href={'/account/login?r=order'}>
       <button
         className={`sticky bottom-16 md:bottom-12 w-full left-0 bg-teal-600 text-white rounded-full px-4 py-1 my-3 flex items-center justify-between ${
           (showCart && products.length) || "hidden"
