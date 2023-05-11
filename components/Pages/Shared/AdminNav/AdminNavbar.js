@@ -12,14 +12,18 @@ import NavCategories from "@/components/Categories/NavCategories";
 import AdminSidebar from "@/components/Dashboard/Admin/AdminSidebar/AdminSidebar";
 import Image from "next/image";
 import { useAllContext } from "@/context/ContextProvider";
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 
 const AdminNavbar = () => {
+  const router = useRouter()
   const [showSearch, setShowSearch] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const [showUser, setShowUser] = useState(false);
   const [showCart, setShowCart] = useState(false);
+
   // context
-  const {user,logOut} = useAllContext()
+  const { user, logOut, state ,setSearch} = useAllContext();
 //  hide sidebars
 const handleCategoriesSidebar = () =>{
     setShowSidebar(!showSidebar)
@@ -41,6 +45,24 @@ const handleCategoriesSidebar = () =>{
 const handleLogout = () =>{
   logOut()
 }
+
+
+  // all product price
+  let price = state.cart.reduce(function (prev, current) {
+    return prev + +current.price * current.quantity;
+  }, 0);
+
+
+    // search 
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+ 
+
+ const handleSearch  = (data) =>{
+   setSearch(data?.search)
+   router.push('/search')
+
+ }
   return (
     <div className="md:fixed z-50 w-full flex justify-center md:top-0 md:bottom-auto">
       {/* Right side checkout button */}
@@ -62,22 +84,23 @@ const handleLogout = () =>{
         {/* Search box */}
         <div className=" w-full flex justify-center">
           {showSearch ? (
-            <div className="flex !z-[999999999] fixed md:static top-1 left-0 w-full items-center md:w-64 lg:w-72 xl:w-96">
+            <form onSubmit={handleSubmit(handleSearch)} className="flex !z-[999999999] fixed md:static top-1 left-0 w-full items-center md:w-64 lg:w-72 xl:w-96">
               <input
+                {...register("search", { required: true })}
                 placeholder="Search for products (e.g. fish, apple, oil)"
                 className="px-6 w-full py-2 border border-teal-600 rounded-l-full text-teal-700 focus-within:outline-none focus-within:border-teal-700 focus-within:bg-teal-50 "
                 type="search"
               />
-              <span className="border-4 text-white border-teal-600 md:px-3 px-5 bg-teal-600 py-2 rounded-r-full cursor-pointer hover:bg-teal-700">
+              <button  onClick={()=>handleSearch()} className="border-4 text-white disabled:bg-gray-300 disabled:border-gray-300 disabled:cursor-not-allowed border-teal-600 md:px-3 px-5 bg-teal-600 py-2 rounded-r-full cursor-pointer hover:bg-teal-700">
                 <BsSearch size={20} />
-              </span>
-            </div>
+              </button>
+            </form>
           ) : (
             <ul className=" items-center hidden md:flex py-2">
               {/* Desktop nav link area */}
               <li>
                 <Link
-                  className={`px-3 py-2 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
+                  className={`px-3 py-2 md:px-2 lg:px-3 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
                   href={"/"}
                 >
                   Home
@@ -85,7 +108,7 @@ const handleLogout = () =>{
               </li>
               <li>
                 <Link
-                  className={`px-3 py-2 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
+                  className={`px-3 py-2 md:px-2 lg:px-3 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
                   href={"#"}
                 >
                   Shop
@@ -93,7 +116,7 @@ const handleLogout = () =>{
               </li>
               <li>
                 <Link
-                  className={`px-3 py-2 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
+                  className={`px-3 py-2 md:px-2 lg:px-3 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
                   href={"/offers"}
                 >
                   Offers
@@ -101,7 +124,7 @@ const handleLogout = () =>{
               </li>
               <li>
                 <Link
-                  className={`px-3 py-2 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
+                  className={`px-3 py-2 md:px-2 lg:px-3 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
                   href={"/user"}
                 >
                   Profile
@@ -111,42 +134,79 @@ const handleLogout = () =>{
           )}
         </div>
         {/* Mobile bottom navbar */}
-        <div className="flex justify-between md:justify-normal z_index !z-50 w-full md:w-auto items-center gap-2">
-          <span className={`text-2xl cursor-pointer md:hidden hover:text-teal-600`}
+        <div className="flex justify-between md:justify-normal z_index !z-50 w-full md:w-auto items-center ">
+          <span
+            className={`text-2xl cursor-pointer flex justify-center py-2 w-full md:hidden hover:text-teal-600`}
             onClick={handleCategoriesSidebar}
           >
             <RiMenu4Line />
           </span>
-          <span className={`text-2xl cursor-pointer hover:text-teal-600 ${showSearch && 'text-teal-600'} px-1 py-2`}
+          <span
+            className={`text-2xl cursor-pointer w-full flex justify-center hover:text-teal-600 ${
+              showSearch && "text-teal-600"
+            } px-1 py-2`}
             onClick={() => setShowSearch(!showSearch)}
           >
             <BsSearch />
           </span>
-          <span className={`md:hidden cursor-pointer text-2xl md hover:text-teal-600`} text-2xl>
+          <Link
+            className={`md:hidden cursor-pointer flex py-2 justify-center w-full text-2xl md hover:text-teal-600`} href={'/'}><span
+            text-2xl
+          >
             <AiOutlineHome />
-          </span>
-          <span className={`text-2xl cursor-pointer hover:text-teal-600 ${showCart && 'text-teal-600'} px-4 py-2`} onClick={handleCartSidebar}>
+          </span></Link>
+          <span
+            className={`text-2xl relative cursor-pointer h-full w-full hover:text-teal-600 ${
+              showCart && "text-teal-600"
+            } flex justify-center py-2`}
+            onClick={handleCartSidebar}
+          >
             <BsCart />
+            <span
+              className={`absolute top-0 right-0  w-full flex justify-center text-sm py-1 rounded-full ${
+                state.cart.length === 0 ? "" : " bg-rose-100"
+              } text-rose-600`}
+            >
+              {state.cart.length === 0 ? "" : state.cart.length}
+            </span>
           </span>
-          {
-            user?.uid ? 
+          {user?.uid ? (
             <div className="dropdown py-0 flex dropdown-top md:dropdown-bottom dropdown-left">
-  <label className={`text-2xl cursor-pointer hover:text-teal-600 ${showUser && 'text-teal-600'} px-4 py-2`} tabIndex={0} ><AiOutlineUser /></label>
-  <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-  <Link href={'/user'} className={`text-2xl cursor-pointer hover:text-teal-600 ${showUser && 'text-teal-600'} px-4 py-2`} >
-            Profile
-          </Link>
-    <li>
-      <button onClick={handleLogout}>Logout</button>
-    </li>
-  </ul>
-</div>
-          
-          :
-          <Link href={'/account/login'} className={`text-2xl cursor-pointer hover:text-teal-600 ${showUser && 'text-teal-600'} px-4 py-2`}  >
-            <AiOutlineUserAdd />
-          </Link>
-          }
+              <label
+                className={`text-2xl cursor-pointer hover:text-teal-600 ${
+                  showUser && "text-teal-600"
+                } px-4 py-2`}
+                tabIndex={0}
+              >
+                <AiOutlineUser />
+              </label>
+              <ul
+                tabIndex={0}
+                className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <Link
+                  href={"/user"}
+                  className={`text-2xl cursor-pointer hover:text-teal-600 ${
+                    showUser && "text-teal-600"
+                  } px-4 py-2`}
+                >
+                  Profile
+                </Link>
+                <li>
+                  <button onClick={handleLogout}>Logout</button>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <Link
+              href={"/account/login"}
+              className={`text-2xl cursor-pointer hover:text-teal-600 ${
+                showUser && "text-teal-600"
+              } px-4 py-2`}
+            >
+              <AiOutlineUserAdd />
+            </Link>
+          )}
         </div>
       </div>
       {/* mobile category sidebar */}

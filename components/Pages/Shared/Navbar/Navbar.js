@@ -167,36 +167,36 @@ const Navbar = () => {
           )}
         </div>
         {/* Mobile bottom navbar */}
-        <div className="flex justify-between md:justify-normal z_index !z-50 w-full md:w-auto items-center gap-2">
+        <div className="flex justify-between md:justify-normal z_index !z-50 w-full md:w-auto items-center ">
           <span
-            className={`text-2xl cursor-pointer md:hidden hover:text-teal-600`}
+            className={`text-2xl cursor-pointer flex justify-center py-2 w-full md:hidden hover:text-teal-600`}
             onClick={handleCategoriesSidebar}
           >
             <RiMenu4Line />
           </span>
           <span
-            className={`text-2xl cursor-pointer hover:text-teal-600 ${
+            className={`text-2xl cursor-pointer w-full flex justify-center hover:text-teal-600 ${
               showSearch && "text-teal-600"
             } px-1 py-2`}
             onClick={() => setShowSearch(!showSearch)}
           >
             <BsSearch />
           </span>
-          <span
-            className={`md:hidden cursor-pointer text-2xl md hover:text-teal-600`}
+          <Link
+            className={`md:hidden cursor-pointer flex py-2 justify-center w-full text-2xl md hover:text-teal-600`} href={'/'}><span
             text-2xl
           >
             <AiOutlineHome />
-          </span>
+          </span></Link>
           <span
-            className={`text-2xl relative cursor-pointer hover:text-teal-600 ${
+            className={`text-2xl relative cursor-pointer h-full w-full hover:text-teal-600 ${
               showCart && "text-teal-600"
-            } px-4 py-2`}
+            } flex justify-center py-2`}
             onClick={handleCartSidebar}
           >
             <BsCart />
             <span
-              className={`absolute top-0 right-0 text-sm px-2 py-1 rounded-full ${
+              className={`absolute top-0 right-0  w-full flex justify-center text-sm py-1 rounded-full ${
                 state.cart.length === 0 ? "" : " bg-rose-100"
               } text-rose-600`}
             >
