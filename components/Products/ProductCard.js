@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BsStar, BsStarFill } from "react-icons/bs";
-import { MdOutlineAdd } from "react-icons/md";
+import { MdOutlineAdd, MdOutlineRemove } from "react-icons/md";
 import ProductModal from "./SingleProduct/ProductModal";
 import Link from "next/link";
 import Modal from "./SingleProduct/Modal";
@@ -9,15 +9,25 @@ import actionTypes from "@/state/ProductState/actionTypes";
 import { toast } from "react-hot-toast";
 
 const ProductCard = ({ product }) => {
- 
-
+  
+  
   const {dispatch,state} = useAllContext()
-  console.log(state)
+  
 
+ const selected = state.cart.find(cart => cart._id === product._id);
+
+
+ const  added = selected?.quantity>0
+ console.log(added)
 
   const handleAddToCart = () => {
     dispatch({type:actionTypes.ADD_TO_CART,payload:product})
     toast.success("Added to Cart")
+  }
+
+  const handleRemoveFromCart = () => {
+    dispatch({type:actionTypes.DECREMENT_CART,payload:product})
+    toast.success("Remove one product")
   }
  
   
@@ -76,6 +86,26 @@ const ProductCard = ({ product }) => {
         </div>
       </label>
       {/* Add to cart */}
+      {
+        added ? 
+        <div
+     
+      
+        className={`flex cursor-pointer select-none justify-between items-center bg-gray-100 duration-300 border border-teal-600  rounded text-white `}
+      >
+        {/* Derement btn */}
+        <button   onClick={()=>handleRemoveFromCart()} className="px-3 py-2 bg-teal-600">
+          <MdOutlineRemove size={20} />
+        </button>
+        {/* Count */}
+        <span className="text-teal-600 font-bold">{selected?.quantity}</span>
+        {/* increment btn */}
+        <button  onClick={()=>handleAddToCart()} className="px-3 py-2 bg-teal-600"> 
+          <MdOutlineAdd size={20} />
+        </button>
+       
+      </div>
+      :
       <div
       onClick={handleAddToCart}
       
@@ -86,6 +116,8 @@ const ProductCard = ({ product }) => {
           <MdOutlineAdd size={20} />
         </span>
       </div>
+      }
+      
       <div>
       </div>
     

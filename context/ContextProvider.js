@@ -28,7 +28,7 @@ import { toast } from "react-hot-toast";
 
 export const ALL_CONTEXT = createContext();
 
-const ProductsProvider = ({ children }) => {
+const ProductsProvider = ({ children,data }) => {
   // loadin until the get user from firebase
   const [loading, setLoading] = useState(true);
 
@@ -76,18 +76,25 @@ const ProductsProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
+  
+  
+
+
   useEffect(() => {
     dispatch({ type: actionTypes.FETCHING_START });
-    fetch("/api/products")
-      .then((res) => res.json())
-      .then((data) =>
-        dispatch({ type: actionTypes.FETCHING_SUCCESS, payload: data })
-      )
-      .catch(() => {
-        dispatch({ type: actionTypes.FETCHING_ERROR });
-      });
-  }, []);
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/api/products');
+        const jsonData = await response.json();
+        console.log(jsonData);
+        dispatch({ type: actionTypes.FETCHING_SUCCESS, payload: jsonData})
+      } catch (error) {
+        dispatch({ type: actionTypes.FETCHING_ERROR, payload: error})
+      }
+    };
 
+    fetchData();
+  }, []);
 
 
   const [dbUser, setDbUser] = useState({});
@@ -121,3 +128,13 @@ export const useAllContext = () => {
 
 export default ProductsProvider;
 
+
+export async function getStaticProps() {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_PRO}/api/products`);
+  const data = await response.json();
+  return {
+    props: {
+      data,
+    } 
+  };
+}

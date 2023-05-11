@@ -79,7 +79,7 @@ let totalPrice = products.reduce(function(prev, current) {
 
                 <div className="text-lg w-9 flex flex-col justify-center text-center bg-teal-50 text-white mt-2">
                   {/* Increment btn */}
-                  <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-t-full">
+                  <button onClick={()=>dispatch({type:actionTypes.ADD_TO_CART,payload:product})} className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-t-full">
                     +
                   </button>
                   {/* Count */}
@@ -89,7 +89,7 @@ let totalPrice = products.reduce(function(prev, current) {
                   }
                   </p>
                   {/* Decrement btn */}
-                  <button className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-b-full">
+                  <button onClick={()=>dispatch({type:actionTypes.DECREMENT_CART,payload:product})} className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-b-full">
                     -
                   </button>
                 </div>
