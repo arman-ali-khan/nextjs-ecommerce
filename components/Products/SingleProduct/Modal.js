@@ -47,7 +47,7 @@ const handleRemoveFromCart = () => {
       role="dialog"
       aria-modal="true"
     >
-   <div class=" right-5 sticky z-[999999] md:hidden  top-0 flex justify-between items-center bg-white py-2 px-4">
+   <div class={` right-5 sticky z-[999999] md:hidden  top-0 flex justify-between items-center bg-white py-2 px-4 ${loading && 'hidden'}`}>
     <div>
       <p>{modalData.title}</p>
     </div>
@@ -79,7 +79,7 @@ const handleRemoveFromCart = () => {
         <span class="inline-block h-screen align-middle " aria-hidden="true">
        
         </span>
-        <div class="inline-block overflow-y-auto h-full md:rounded-2xl align-middle transition-all transform bg-white shadow-xl rounded-b-2xl opacity-100  scale-100">
+        <div class={`inline-block overflow-y-auto h-full md:rounded-2xl align-middle transition-all transform bg-white shadow-xl rounded-b-2xl opacity-100  scale-100 ${loading && 'rounded-2xl'}`}>
         <div class=" right-5 absolute z-[999999] hidden md:flex top-0 justify-between items-center bg-white py-2 px-4">
     
           <button
