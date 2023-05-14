@@ -75,7 +75,7 @@ const CartSidebar = ({ showCart, setShowCart }) => {
 
       {
         user?.uid ? 
-       <Link href={'#'}>  <button
+       <Link href={'/order'}>  <button
        className={`sticky bottom-16 md:bottom-12 w-full left-0 bg-teal-600 text-white rounded-full px-4 py-1 my-3 flex items-center justify-between ${
          (showCart && products.length) || "hidden"
        }`}
@@ -86,7 +86,7 @@ const CartSidebar = ({ showCart, setShowCart }) => {
        </span>
      </button></Link>
       :
-     <Link href={'/account/login?r=order'}>
+     <Link href={'/account/login?next=order'}>
       <button
         className={`sticky bottom-16 md:bottom-12 w-full left-0 bg-teal-600 text-white rounded-full px-4 py-1 my-3 flex items-center justify-between ${
           (showCart && products.length) || "hidden"

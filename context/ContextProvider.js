@@ -99,12 +99,25 @@ const ProductsProvider = ({ children,data }) => {
 
 
   const [dbUser, setDbUser] = useState({});
+
+// get token from cookie
+const token =  accessCookie('accessToken')
+
+
   useEffect(() => {
-    axios
-      .get(`/api/getUser/${user?.email}`)
-      .then((res) => setDbUser(res.data))
-  }, [user?.email]);
-  console.log(dbUser)
+   axios.get(`/api/getUser/${user?.email}`,{
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+   })
+   .then(res=>setDbUser(res.data))
+   .catch(function (error) {
+    if (error.response.status===401) {
+      return logOut()
+    }
+  })
+  }, [user?.email,token]);
 
   const value = {
     state,

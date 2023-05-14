@@ -16,8 +16,9 @@ const index = () => {
   const {loginUser,userDispatch,userState } = useAllContext()
 
   // get params url
-  const {n} = router.query
-console.log(n)
+  const {next} = router.query
+console.log(next)
+
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
   const handleLoginUser = (data) =>{
@@ -39,14 +40,20 @@ console.log(n)
           'content-type':'application/json'
       },}).then((response) => {
        setCookie(response.data)
+       const token =  accessCookie('accessToken')
+       if(token) {
+        if(next){
+          router.push(`/${next}`)
+         }else{
+          router.push('/')
+         }
+       }
       
       }, (error) => {
         const errorMessage = error.message;
         console.log(errorMessage)
       })
-      if(n){
-        router.push(`/search`)
-       }
+     
     })
     .catch((error) => {
       const errorMessage = error.message;

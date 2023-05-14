@@ -34,8 +34,8 @@ const Navbar = () => {
   // context
   const { user, logOut, state ,setSearch} = useAllContext();
 
-
-
+const orderPath = router.pathname
+console.log(orderPath)
 
   //  hide sidebars
   const handleCategoriesSidebar = () => {
@@ -80,7 +80,7 @@ const Navbar = () => {
       {/* Right side cart button */}
       <div
         onClick={() => setShowCart(true)}
-        className="fixed cursor-pointer select-none right-0 top-1/2 md:block hidden  bg-teal-500 px-4 z-10 py-2 rounded-l-md"
+        className={`fixed cursor-pointer select-none right-0 top-1/2 md:block hidden  bg-teal-500 px-4 z-10 py-2 rounded-l-md ${orderPath==='/order' && 'md:hidden'} `}
       >
         <p className="text-white font-bold flex items-center gap-2 py-2">
           {" "}
@@ -94,7 +94,7 @@ const Navbar = () => {
         </p>
       </div>
 
-      <div className="fixed md:sticky md:top-0 md:bottom-auto bottom-2 w-full md:flex items-center justify-between md:mx-auto z-50 md:container border-2 border-teal-600 bg-white px-6 py-1 rounded-full">
+      <div className="fixed md:sticky md:top-0 md:bottom-auto bottom-2 w-full md:flex items-center justify-between md:mx-auto z-50 md:container border-2 border-teal-600 bg-white md:px-6 py-1 rounded-full">
         {/* Navbar start */}
         <div className="fixed md:hidden lg:flex md:static py-1 w-full bg-teal-600 md:bg-transparent md:w-auto left-0 flex !z-50 justify-between px-4 items-center md:justify-start top-1 rounded-full">
           {/* Logo */}
@@ -175,7 +175,7 @@ const Navbar = () => {
             <RiMenu4Line />
           </span>
           <span
-            className={`text-2xl cursor-pointer w-full flex justify-center hover:text-teal-600 ${
+            className={`text-2xl cursor-pointer  md:px-4 w-full flex justify-center hover:text-teal-600 ${
               showSearch && "text-teal-600"
             } px-1 py-2`}
             onClick={() => setShowSearch(!showSearch)}
@@ -183,20 +183,20 @@ const Navbar = () => {
             <BsSearch />
           </span>
           <Link
-            className={`md:hidden cursor-pointer flex py-2 justify-center w-full text-2xl md hover:text-teal-600`} href={'/'}><span
+            className={`md:hidden cursor-pointer flex  py-2 justify-center w-full text-2xl md hover:text-teal-600`} href={'/'}><span
             text-2xl
           >
             <AiOutlineHome />
           </span></Link>
           <span
-            className={`text-2xl relative cursor-pointer h-full w-full hover:text-teal-600 ${
+            className={`text-2xl relative cursor-pointer h-full w-full hover:text-teal-600 md:px-4 ${
               showCart && "text-teal-600"
             } flex justify-center py-2`}
             onClick={handleCartSidebar}
           >
             <BsCart />
             <span
-              className={`absolute top-0 right-0  w-full flex justify-center text-sm py-1 rounded-full ${
+              className={`absolute top-0 right-0 px-2 py-1 flex justify-center text-sm rounded-full ${
                 state.cart.length === 0 ? "" : " bg-rose-100"
               } text-rose-600`}
             >

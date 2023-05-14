@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BiDownArrow, BiLocationPlus, BiUpArrow } from "react-icons/bi";
 import { TbCategory } from "react-icons/tb";
 
@@ -32,13 +32,21 @@ const Location = () => {
       label: "Gopalpur",
     },
   ];
+
+  const handleLocation = (data)=>{
+    localStorage.setItem("location",JSON.stringify(data));
+  }
+
+
+
+
   return (
     <div className=" relative">
       <button
         onClick={() => setShowCategory(!showCategory)}
         className={` px-3 border border-white md:border-teal-600 font-bold flex items-center justify-between py-1 rounded-full duration-300 ${showCategory ? 'bg-teal-600 text-white': ' text-white md:text-black '}`}
       >
-        <p className="flex items-center gap-1"><BiLocationPlus /> Kumorgonj</p> <span></span>
+        {/* <p className="flex items-center gap-1"><BiLocationPlus /> {location?.title}</p> <span></span> */}
       </button>
       <button
         onClick={() => setShowCategory(false)}
@@ -53,7 +61,7 @@ const Location = () => {
       >
         <ul>
           {categories.map((category) => (
-            <button key={category.id} className="w-full" >
+            <button onClick={()=>handleLocation(category)} key={category.id} className="w-full" >
               <li className="px-4 py-2 rounded border-b bg-white">
                 <span className="flex items-center hover:underline hover:text-teal-600 gap-3">
                   <p className="font-bold">{category.title}</p>

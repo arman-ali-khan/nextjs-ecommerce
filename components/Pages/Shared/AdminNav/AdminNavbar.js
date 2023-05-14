@@ -71,7 +71,7 @@ const handleLogout = () =>{
           <p className="bg-white px-3 py-1 rounded-md font-bold text-teal-600">$423</p>
         </div>
 
-      <div className="fixed md:sticky md:top-0 md:bottom-auto bottom-2 w-full md:flex items-center justify-between md:mx-auto z-50 md:container border-2 border-teal-600 bg-white px-6 py-1 rounded-full">
+      <div className="fixed md:sticky md:top-0 md:bottom-auto bottom-2 w-full md:flex items-center justify-between md:mx-auto z-50 md:container border-2 border-teal-600 bg-white md:px-6 py-1 rounded-full">
         {/* Navbar start */}
         <div className="fixed md:static py-1 w-full bg-teal-600 md:bg-transparent md:w-auto left-0 flex !z-50 justify-center items-center md:justify-start top-1 rounded-full">
           {/* Logo */}
@@ -142,7 +142,7 @@ const handleLogout = () =>{
             <RiMenu4Line />
           </span>
           <span
-            className={`text-2xl cursor-pointer w-full flex justify-center hover:text-teal-600 ${
+            className={`text-2xl cursor-pointer md:px-4 w-full flex justify-center hover:text-teal-600 ${
               showSearch && "text-teal-600"
             } px-1 py-2`}
             onClick={() => setShowSearch(!showSearch)}
