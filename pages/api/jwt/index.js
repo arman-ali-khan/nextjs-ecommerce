@@ -8,7 +8,7 @@ export default async function handler(req, res) {
 
   if (req.method === "POST") {
     const user = req.body;
-    const token  = jwt.sign(user,process.env.ACCESS_TOKEN,{expiresIn:'5h'})
+    const token  = jwt.sign(user,process.env.ACCESS_TOKEN,{expiresIn:'5d'})
     res.status(200).json(token);
     
   } else {
