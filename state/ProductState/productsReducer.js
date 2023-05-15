@@ -7,10 +7,7 @@ export const initialState = {
   cart: [],
 };
 export const productsReducer = (state, action) => {
-  // set state cart in localstorage
-  
 
-  
   // find selected products
   const selectedProduct = state.cart.find(
     (product) => product._id === action.payload?._id
@@ -46,7 +43,7 @@ export const productsReducer = (state, action) => {
         selectedProduct.quantity += 1;
 
         return {
-          ...products,
+          ...state,
           cart: [... newCart, selectedProduct],
         };
       }
