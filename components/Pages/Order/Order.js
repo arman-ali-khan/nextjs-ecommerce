@@ -81,7 +81,7 @@ const orderData = {
   .then((response) => {
     console.log(response);
     toast.success('Order added successfully')
-    router.push('/user/orders')
+    router.push(`/user/orders`)
   }, (error) => {
    console.log(error)
   })

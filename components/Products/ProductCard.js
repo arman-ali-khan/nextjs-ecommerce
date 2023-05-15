@@ -11,7 +11,7 @@ import { toast } from "react-hot-toast";
 const ProductCard = ({ product }) => {
   
   
-  const {dispatch,state} = useAllContext()
+  const {dispatch,state,dbUser} = useAllContext()
   
 
  const selected = state.cart.find(cart => cart._id === product._id);
@@ -20,9 +20,22 @@ const ProductCard = ({ product }) => {
  const  added = selected?.quantity>0
 
 
+ const products = state.cart;
+
+
+// all product price
+let totalPrice = products.reduce(function (prev, current) {
+  return prev + +current.price * current.quantity;
+}, 0);
+
+// add product to cart with enough money
   const handleAddToCart = () => {
+   if(dbUser.balence < totalPrice){
+    toast.error('Not enough money to add to cart')
+   }else{
     dispatch({type:actionTypes.ADD_TO_CART,payload:product})
     toast.success("Added to Cart")
+   }
   }
 
   const handleRemoveFromCart = () => {

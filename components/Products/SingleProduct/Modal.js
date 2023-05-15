@@ -11,7 +11,7 @@ import "react-image-gallery/styles/css/image-gallery.css";
 
 const Modal = ({ id, setId }) => {
 
-  const {state, dispatch} = useAllContext()
+  const {state, dispatch,dbUser} = useAllContext()
 
     // modal data product 
     const [modalData, setModalData] = useState({});
@@ -30,12 +30,26 @@ const Modal = ({ id, setId }) => {
 
  const  added = selected?.quantity>0
 
+ const products = state.cart;
 
- const handleAddToCart = () => {
-  dispatch({type:actionTypes.ADD_TO_CART,payload:modalData})
-  toast.success("Added to Cart")
-}
 
+ // all product price
+ let totalPrice = products.reduce(function (prev, current) {
+   return prev + +current.price * current.quantity;
+ }, 0);
+
+ 
+// add product to cart with enough money
+const handleAddToCart = () => {
+  if(dbUser.balence < totalPrice){
+   toast.error('Not enough money to add to cart')
+  }else{
+   dispatch({type:actionTypes.ADD_TO_CART,payload:modalData})
+   toast.success("Added to Cart")
+  }
+ }
+
+ // remove product from cart
 const handleRemoveFromCart = () => {
   dispatch({type:actionTypes.DECREMENT_CART,payload:modalData})
   toast.success("Remove one product")
