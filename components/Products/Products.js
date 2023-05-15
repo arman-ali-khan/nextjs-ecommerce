@@ -9,7 +9,7 @@ const Products = () => {
    const {state} = useAllContext()
    const {products:product,loading,error} = state;
     const products  = product.allFiles;
-    console.log(state)
+    
     const count = product.count
     
     let content ;
@@ -69,7 +69,7 @@ const Products = () => {
                 <Link href={'#'} className='md:text-2xl md:uppercase text-teal-600 hover:bg-teal-600 hover:text-white duration-300 rounded border-b border-teal-600 px-4 py-2 flex items-center gap-2'>See More <span><BsArrowRight /></span> </Link>
             </div>
             {/* Card */}
-            <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2'>
+            <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 sm:gap-2'>
            
             { content}
         </div>

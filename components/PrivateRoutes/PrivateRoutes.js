@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 
 const PrivateRoutes = ({ children }) => {
   const router = useRouter();
-  const { user, loading } = useAllContext();
+  const { loading,dbUser:user } = useAllContext();
 
   if (loading) {
     return (

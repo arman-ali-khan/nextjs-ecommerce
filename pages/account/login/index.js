@@ -1,6 +1,7 @@
 import Layout from '@/Layout/Layout';
 import { useAllContext } from '@/context/ContextProvider';
-import setCookie, { accessCookie } from '@/hooks/setCookie';
+import setToken from '@/hooks/setToken';
+import setCookie, { accessToken } from '@/hooks/setToken';
 import actionTypes from '@/state/ProductState/actionTypes';
 import axios from 'axios';
 import Link from 'next/link';
@@ -39,8 +40,9 @@ console.log(next)
         headers:{
           'content-type':'application/json'
       },}).then((response) => {
-       setCookie(response.data)
-       const token =  accessCookie('accessToken')
+        setToken(response.data)
+       const token = accessToken('accessToken')
+       console.log(token)
        if(token) {
         if(next){
           router.push(`/${next}`)

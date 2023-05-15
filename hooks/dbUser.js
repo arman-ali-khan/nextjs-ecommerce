@@ -1,13 +1,13 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { accessCookie } from './setCookie';
+import { accessToken } from './setToken';
 import { useAllContext } from '@/context/ContextProvider';
 import { toast } from 'react-hot-toast';
 
 
 const dbUser = (email) => {
   
-    const token =  accessCookie('accessToken')
+    const token = accessToken('accessToken')
 
 
     const [dbUser,setDbUser] = useState({})

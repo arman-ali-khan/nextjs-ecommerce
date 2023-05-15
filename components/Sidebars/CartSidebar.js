@@ -17,7 +17,7 @@ const CartSidebar = ({ showCart, setShowCart }) => {
     return prev + +current.price * current.quantity;
   }, 0);
  
-  console.log(totalPrice)
+
 
   return (
     <div

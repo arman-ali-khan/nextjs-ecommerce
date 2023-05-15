@@ -1,6 +1,6 @@
 import { authentication } from "@/firebase/firebase.config";
 import dbUser from "@/hooks/dbUser";
-import { accessCookie } from "@/hooks/setCookie";
+import { accessToken } from "@/hooks/setToken";
 import actionTypes from "@/state/ProductState/actionTypes";
 import {
   initialState,
@@ -101,7 +101,7 @@ const ProductsProvider = ({ children,data }) => {
   const [dbUser, setDbUser] = useState({});
 
 // get token from cookie
-const token =  accessCookie('accessToken')
+const token =accessToken('accessToken')
 
 
   useEffect(() => {

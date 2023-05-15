@@ -18,7 +18,7 @@ const ProductCard = ({ product }) => {
 
 
  const  added = selected?.quantity>0
- console.log(added)
+
 
   const handleAddToCart = () => {
     dispatch({type:actionTypes.ADD_TO_CART,payload:product})
@@ -45,7 +45,7 @@ const ProductCard = ({ product }) => {
 
         <div className={`flex items-center justify-between px-3`}>
           <div>
-            <div className="flex !justify-between gap-3 tooltip items-center ">
+            <div className="sm:flex flex-col sm:flex-row gap-0 md:!justify-between justify-start sm:gap-3 tooltip items-center ">
               <h4
                 className="text-teal-600 flex gap-1 text-sm font-bold tooltip"
                 data-tip={`Original Price ${product.price}৳ Discount Price ${
@@ -76,7 +76,7 @@ const ProductCard = ({ product }) => {
               href={`/product/${product.id}`}
               className="md:text-base inline-block leading-4 text-teal-600 text-sm font-bold"
             >
-              {product.title}
+              {product.title.slice(0,20)}{parseInt(product.title.length)>=19 && '..'}
             </Link>
           </div>
         </div>

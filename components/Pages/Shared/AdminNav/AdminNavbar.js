@@ -9,11 +9,13 @@ import CategorirsSidebar from "@/components/Sidebars/CategorirsSidebar";
 import UserSidebar from "@/components/Sidebars/UserSidebar";
 import CartSidebar from "@/components/Sidebars/CartSidebar";
 import NavCategories from "@/components/Categories/NavCategories";
-import AdminSidebar from "@/components/Dashboard/Admin/AdminSidebar/AdminSidebar";
 import Image from "next/image";
 import { useAllContext } from "@/context/ContextProvider";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
+import UserSideNav from "./Navtype/UserSideNav";
+import AdminSideNav from "./Navtype/AdminSideNav";
+import AgentSideNav from "./Navtype/AgentSideNav";
 
 const AdminNavbar = () => {
   const router = useRouter()
@@ -23,7 +25,7 @@ const AdminNavbar = () => {
   const [showCart, setShowCart] = useState(false);
 
   // context
-  const { user, logOut, state ,setSearch} = useAllContext();
+  const { user, logOut, state ,setSearch,dbUser} = useAllContext();
 //  hide sidebars
 const handleCategoriesSidebar = () =>{
     setShowSidebar(!showSidebar)
@@ -221,7 +223,17 @@ const handleLogout = () =>{
           }`}
           onClick={() => setShowSidebar(false)}
         ></button>
-        <AdminSidebar />
+        {/*  Sidenav */}
+        {
+          dbUser.type === "admin" && <AdminSideNav />
+        }
+        {
+          dbUser.type === "agent" && <AgentSideNav />
+        }
+        {
+          dbUser.type === "user" && <UserSideNav />
+        }
+        
       </div>
       {/* mobile + desktop user sidebar */}
       <div

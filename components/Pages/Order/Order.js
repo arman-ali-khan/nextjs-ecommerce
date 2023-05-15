@@ -1,17 +1,23 @@
 import PrivateRoutes from '@/components/PrivateRoutes/PrivateRoutes';
 import { useAllContext } from '@/context/ContextProvider';
-import { accessCookie } from '@/hooks/setCookie';
+import {  accessToken } from '@/hooks/setToken';
 import axios from 'axios';
 import Image from 'next/image';
+import {generate} from 'ocrgenerator';
+
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { BDLocations } from 'react-bd-location'
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
+import { v4 as uuidv4 } from 'uuid';
+import moment from 'moment';
 
 
 const Order = () => {
     const {state,dbUser,user} = useAllContext()
+
+
     // // next router
     const router = useRouter()
 
@@ -36,14 +42,36 @@ const Order = () => {
 const [location,setLocation] = useState([])
 
 // get token from cookie
-const token =  accessCookie('accessToken')
-console.log(token)
+const token = accessToken('accessToken')
+
+// phone number
+const number = dbUser?.data?.phone
+
+// get date 
+
+const date =  new Date()
+
+    // get invoice number
+
+    const invoiceNo = generate(`${user.email}:${date.getMinutes()}`);
+
 
   const onSubmit = data => {
 const orderData = {
     data,location,
     products:state.cart,
-    agent:dbUser.agent
+    agent:dbUser.agent,
+    date: date,
+    email:user.email,
+    status:'Processing',
+    total:total,
+    id:uuidv4(),
+    invoice:invoiceNo,
+    shipping: delivery,
+    discount: discount,
+    service: service,
+    payment:"bkash"
+
 }
     axios.post(`/api/order/create?email=${user.email}`,orderData,{
         headers:{ 
@@ -53,7 +81,7 @@ const orderData = {
   .then((response) => {
     console.log(response);
     toast.success('Order added successfully')
-    // router.push('/')
+    router.push('/user/orders')
   }, (error) => {
    console.log(error)
   })

@@ -35,7 +35,7 @@ const Navbar = () => {
   const { user, logOut, state ,setSearch} = useAllContext();
 
 const orderPath = router.pathname
-console.log(orderPath)
+
 
   //  hide sidebars
   const handleCategoriesSidebar = () => {
