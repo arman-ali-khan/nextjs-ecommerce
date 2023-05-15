@@ -7,6 +7,10 @@ export const initialState = {
   cart: [],
 };
 export const productsReducer = (state, action) => {
+  // set state cart in localstorage
+  
+
+  
   // find selected products
   const selectedProduct = state.cart.find(
     (product) => product._id === action.payload?._id
@@ -32,8 +36,9 @@ export const productsReducer = (state, action) => {
         error: true,
       };
     case actionTypes.ADD_TO_CART:
-        console.log(selectedProduct)
+    
       if (selectedProduct) {
+        
         const newCart = state.cart.filter(
           (product) => product._id !== selectedProduct._id
         );
@@ -41,7 +46,7 @@ export const productsReducer = (state, action) => {
         selectedProduct.quantity += 1;
 
         return {
-          ...state,
+          ...products,
           cart: [... newCart, selectedProduct],
         };
       }
