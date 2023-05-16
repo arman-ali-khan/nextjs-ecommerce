@@ -1,5 +1,8 @@
 import Layout from "@/Layout/Layout";
 import AdminNavbar from "@/components/Pages/Shared/AdminNav/AdminNavbar";
+import AdminSideNav from "@/components/Pages/Shared/AdminNav/Navtype/AdminSideNav";
+import AgentSideNav from "@/components/Pages/Shared/AdminNav/Navtype/AgentSideNav";
+import UserSideNav from "@/components/Pages/Shared/AdminNav/Navtype/UserSideNav";
 import PrivateRoutes from "@/components/PrivateRoutes/PrivateRoutes";
 import { useAllContext } from "@/context/ContextProvider";
 import Head from "next/head";
@@ -33,7 +36,7 @@ function UserLayout({ children, title, description, thumb }) {
     <PrivateRoutes>
       <AdminNavbar />
       <Head>
-        <title>{title || `Profile of ${dbUser.name}`}</title>
+        <title>{title || `Loading...`}</title>
         <meta name="description" content={description} key="desc" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
@@ -90,32 +93,15 @@ function UserLayout({ children, title, description, thumb }) {
         </div>
         <div className="md:flex gap-3 ">
           <div className="md:w-44 w-full hidden md:block">
-            <ul className="grid grid-cols-2 md:block md:w-44 w-full">
-              <Link href={"/user"}>
-                <li className="py-3 px-2 border-b hover:text-teal-600 duration-300 flex items-center gap-2">
-                  <MdOutlineSpaceDashboard size={20} />
-                  Dashboard
-                </li>
-              </Link>
-              <Link href={"/user/orders"}>
-                <li className="py-3 px-2 border-b hover:text-teal-600 duration-300  flex items-center gap-2">
-                  <TbGardenCart size={20} />
-                  My Orders
-                </li>
-              </Link>
-              <Link href={"/user/earns"}>
-                <li className="py-3 px-2 border-b hover:text-teal-600 duration-300  flex items-center gap-2">
-                  <TbCurrencyTaka size={20} />
-                  My Toal Earn
-                </li>
-              </Link>
-              <Link href={"/user/stocks"}>
-                <li className="py-3 px-2 border-b hover:text-teal-600 duration-300  flex items-center gap-2">
-                  <AiOutlineStock size={20} />
-                  My Stocks
-                </li>
-              </Link>
-            </ul>
+          {
+            dbUser.type === 'admin' && <AdminSideNav />
+          }
+          {
+            dbUser.type === 'agent' && <AgentSideNav />
+          }
+          {
+            dbUser.type === 'user' && <UserSideNav />
+          }
           </div>
           <div className="w-full">{children}</div>
         </div>

@@ -18,7 +18,6 @@ const index = () => {
 
   // get params url
   const {next} = router.query
-console.log(next)
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
@@ -36,7 +35,7 @@ console.log(next)
       
       userDispatch({type:actionTypes.GETTING_USER_SUCCESS,payload:{user}})
       toast.success('Login success')
-      axios.post(`${process.env.NEXT_PUBLIC_API_PRO}/api/jwt`,{user:user.email},{
+      axios.post(`${process.env.NEXT_PUBLIC_API_DEV}/api/jwt`,{user:user.email},{
         headers:{
           'content-type':'application/json'
       },}).then((response) => {
@@ -47,7 +46,7 @@ console.log(next)
         if(next){
           router.push(`/${next}`)
          }else{
-          router.push('/')
+          router.push('/user')
          }
        }
       

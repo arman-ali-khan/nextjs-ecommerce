@@ -27,14 +27,15 @@ const ProductCard = ({ product }) => {
 let totalPrice = products.reduce(function (prev, current) {
   return prev + +current.price * current.quantity;
 }, 0);
-
+console.log(totalPrice,dbUser.balence)
 // add product to cart with enough money
   const handleAddToCart = () => {
-   if(dbUser.balence < totalPrice){
-    toast.error('Not enough money to add to cart')
-   }else{
+   if(dbUser.balence > totalPrice){
     dispatch({type:actionTypes.ADD_TO_CART,payload:product})
     toast.success("Added to Cart")
+   
+   }else{
+    toast.error('Not enough money to add to cart')
    }
   }
 
@@ -61,13 +62,13 @@ let totalPrice = products.reduce(function (prev, current) {
             <div className="sm:flex flex-col sm:flex-row gap-0 md:!justify-between justify-start sm:gap-3 tooltip items-center ">
               <h4
                 className="text-teal-600 flex gap-1 text-sm font-bold tooltip"
-                data-tip={`Original Price ${product.price}৳ Discount Price ${
-                  product.price - 100
+                data-tip={`Original Price ${ product.oldPrice}৳ Discount Price ${
+                  product.price
                 }৳`}
               >
                 ৳{product.price}
                 <span className="text-gray-500 text-sm font-thin line-through">
-                  ৳{product.price - 100}
+                  ৳{product.oldPrice}
                 </span>
               </h4>
               <div>

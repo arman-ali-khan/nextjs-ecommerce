@@ -9,6 +9,7 @@ import actionTypes from "@/state/ProductState/actionTypes";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/router";
+import setToken, { accessToken } from "@/hooks/setToken";
 
 const index = () => {
   const router = useRouter()
@@ -20,6 +21,9 @@ const index = () => {
     formState: { errors },
   } = useForm();
 
+
+  // get params url
+  const {next} = router.query
 
 
   const handleRegister = (data) => {
@@ -53,7 +57,7 @@ const index = () => {
         uid:userCredential.user.uid
       }
       // send data in database 
-      axios.post(`${process.env.NEXT_PUBLIC_API_PRO}/api/user/create`, userData,{
+      axios.post(`${process.env.NEXT_PUBLIC_API_DEV}/api/user/create`, userData,{
         headers:{
           'content-type':'application/json'
       },
@@ -61,7 +65,26 @@ const index = () => {
       .then((response) => {
         console.log(response);
         toast.success('Account Successfully Created')
-        router.push('/')
+        axios.post(`${process.env.NEXT_PUBLIC_API_DEV}/api/jwt`,{user:user.email},{
+          headers:{
+            'content-type':'application/json'
+        },})
+        .then((response) => {
+          setToken(response.data)
+         const token = accessToken('accessToken')
+         console.log(token)
+         if(token) {
+          if(next){
+            router.push(`/${next}`)
+           }else{
+            router.push('/')
+           }
+         }
+        
+        }, (error) => {
+          const errorMessage = error.message;
+          console.log(errorMessage)
+        })
       }, (error) => {
         const errorMessage = error.message;
         userDispatch({type:actionTypes.GETTING_USER_ERROR,payload:{errorMessage}})
@@ -72,7 +95,8 @@ const index = () => {
     // info
     const info ={displayName:name,photoURL:photo}
     // update user info
-    updateUser(info).then(() => {
+    updateUser(info)
+    .then(() => {
      // update user firebase
      
     }).catch((error) => {
