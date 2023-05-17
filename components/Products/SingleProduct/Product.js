@@ -81,8 +81,10 @@ const handleAddToCart = () => {
                       </span>
                     </div>
                   </div>
-                  <div class=" product-price font-bold">
+                  <div class=" product-price font-bold flex items-center gap-2">
                     <span class="inline-block text-2xl">${product.price}</span>
+                    <span>{product?.qunatityPrice}</span>
+                    <span>{product?.unit}</span>
                   </div>
                   <div class="mb-4"></div>
                   <div>
