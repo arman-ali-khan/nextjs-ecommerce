@@ -35,7 +35,7 @@ const index = () => {
       
       userDispatch({type:actionTypes.GETTING_USER_SUCCESS,payload:{user}})
       toast.success('Login success')
-      axios.post(`${process.env.NEXT_PUBLIC_API_DEV}/api/jwt`,{user:user.email},{
+      axios.post(`${process.env.NEXT_PUBLIC_API_PRO}/api/jwt`,{user:user.email},{
         headers:{
           'content-type':'application/json'
       },}).then((response) => {

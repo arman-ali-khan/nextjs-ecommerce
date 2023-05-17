@@ -11,7 +11,7 @@ const dbUser = (email) => {
 
 
     const [dbUser,setDbUser] = useState({})
-    axios.get(`${process.env.NEXT_PUBLIC_API_DEV}/api/getUser/${email}`,{
+    axios.get(`${process.env.NEXT_PUBLIC_API_PRO}/api/getUser/${email}`,{
         headers: {authorization: `Bearer ${token}`}
       })
     .then(res=>setDbUser(res.data))

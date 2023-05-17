@@ -57,7 +57,7 @@ const index = () => {
         uid:userCredential.user.uid
       }
       // send data in database 
-      axios.post(`${process.env.NEXT_PUBLIC_API_DEV}/api/user/create`, userData,{
+      axios.post(`${process.env.NEXT_PUBLIC_API_PRO}/api/user/create`, userData,{
         headers:{
           'content-type':'application/json'
       },
@@ -65,7 +65,7 @@ const index = () => {
       .then((response) => {
         console.log(response);
         toast.success('Account Successfully Created')
-        axios.post(`${process.env.NEXT_PUBLIC_API_DEV}/api/jwt`,{user:user.email},{
+        axios.post(`${process.env.NEXT_PUBLIC_API_PRO}/api/jwt`,{user:user.email},{
           headers:{
             'content-type':'application/json'
         },})
