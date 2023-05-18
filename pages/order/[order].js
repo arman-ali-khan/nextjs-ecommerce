@@ -244,7 +244,7 @@ const index = () => {
           <svg
             stroke="currentColor"
             fill="currentColor"
-            stroke-width="0"
+            strokeWidth="0"
             viewBox="0 0 512 512"
             height="1em"
             width="1em"
@@ -252,9 +252,9 @@ const index = () => {
           >
             <path
               fill="none"
-              stroke-linecap="round"
+              strokeLinecap="round"
               stroke-linejoin="round"
-              stroke-width="32"
+              strokeWidth="32"
               d="M320 336h76c55 0 100-21.21 100-75.6s-53-73.47-96-75.6C391.11 99.74 329 48 256 48c-69 0-113.44 45.79-128 91.2-60 5.7-112 35.88-112 98.4S70 336 136 336h56m0 64.1l64 63.9 64-63.9M256 224v224.03"
             ></path>
           </svg>
@@ -269,7 +269,7 @@ const index = () => {
           <svg
             stroke="currentColor"
             fill="currentColor"
-            stroke-width="0"
+            strokeWidth="0"
             viewBox="0 0 512 512"
             height="1em"
             width="1em"
@@ -278,7 +278,7 @@ const index = () => {
             <path
               fill="none"
               stroke-linejoin="round"
-              stroke-width="32"
+              strokeWidth="32"
               d="M384 368h24a40.12 40.12 0 0040-40V168a40.12 40.12 0 00-40-40H104a40.12 40.12 0 00-40 40v160a40.12 40.12 0 0040 40h24"
             ></path>
             <rect
@@ -288,14 +288,14 @@ const index = () => {
               y="240"
               fill="none"
               stroke-linejoin="round"
-              stroke-width="32"
+              strokeWidth="32"
               rx="24.32"
               ry="24.32"
             ></rect>
             <path
               fill="none"
               stroke-linejoin="round"
-              stroke-width="32"
+              strokeWidth="32"
               d="M384 128v-24a40.12 40.12 0 00-40-40H168a40.12 40.12 0 00-40 40v24"
             ></path>
             <circle cx="392" cy="184" r="24"></circle>

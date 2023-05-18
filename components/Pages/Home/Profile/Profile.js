@@ -28,16 +28,16 @@ const token = accessToken('accessToken')
     return (
         <div>
             <UserLayout>
-            <div class="grid md:gap-4 mb-16 grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
-          <div class="flex h-full">
-            <div class="flex items-center border border-gray-200 w-full rounded-lg p-1 md:p-2">
-              <div class="flex items-center justify-center p-1 md:p-3 rounded-full md:h-12 h-6 w-6 text-xs md:w-12 md:text-xl text-center mr-1 md:mr-3 text-red-600 bg-red-100">
+            <div className="grid md:gap-4 mb-16 grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="flex h-full">
+            <div className="flex items-center border border-gray-200 w-full rounded-lg p-1 md:p-2">
+              <div className="flex items-center justify-center p-1 md:p-3 rounded-full md:h-12 h-6 w-6 text-xs md:w-12 md:text-xl text-center mr-1 md:mr-3 text-red-600 bg-red-100">
                 <svg
                   stroke="currentColor"
                   fill="none"
-                  stroke-width="2"
+                  strokeWidth="2"
                   viewBox="0 0 24 24"
-                  stroke-linecap="round"
+                  strokeLinecap="round"
                   stroke-linejoin="round"
                   height="1em"
                   width="1em"
@@ -49,24 +49,24 @@ const token = accessToken('accessToken')
                 </svg>
               </div>
               <div>
-                <h5 class="leading-none mb-2 text-sm md:text-base font-medium text-gray-700">
+                <h5 className="leading-none mb-2 text-sm md:text-base font-medium text-gray-700">
                   Total Order
                 </h5>
-                <p class="md:text-xl text-base font-bold leading-none text-gray-800">
+                <p className="md:text-xl text-base font-bold leading-none text-gray-800">
                   {orders?.length}
                 </p>
               </div>
             </div>
           </div>
-          <div class="flex h-full">
-            <div class="flex items-center border border-gray-200 w-full rounded-lg p-1 md:p-2">
-              <div class="flex items-center justify-center p-1 md:p-3 rounded-full md:h-12 h-6 w-6 text-xs md:w-12 md:text-xl text-center mr-1 md:mr-3 text-orange-500 bg-orange-100">
+          <div className="flex h-full">
+            <div className="flex items-center border border-gray-200 w-full rounded-lg p-1 md:p-2">
+              <div className="flex items-center justify-center p-1 md:p-3 rounded-full md:h-12 h-6 w-6 text-xs md:w-12 md:text-xl text-center mr-1 md:mr-3 text-orange-500 bg-orange-100">
                 <svg
                   stroke="currentColor"
                   fill="none"
-                  stroke-width="2"
+                  strokeWidth="2"
                   viewBox="0 0 24 24"
-                  stroke-linecap="round"
+                  strokeLinecap="round"
                   stroke-linejoin="round"
                   height="1em"
                   width="1em"
@@ -78,24 +78,24 @@ const token = accessToken('accessToken')
                 </svg>
               </div>
               <div>
-                <h5 class="leading-none mb-2 text-sm md:text-base font-medium text-gray-700">
+                <h5 className="leading-none mb-2 text-sm md:text-base font-medium text-gray-700">
                   Pending Order
                 </h5>
-                <p class="md:text-xl text-base font-bold leading-none text-gray-800">
+                <p className="md:text-xl text-base font-bold leading-none text-gray-800">
                   12
                 </p>
               </div>
             </div>
           </div>
-          <div class="flex h-full">
-            <div class="flex items-center border border-gray-200 w-full rounded-lg p-1 md:p-2">
-              <div class="flex items-center justify-center p-1 md:p-3 rounded-full md:h-12 h-6 w-6 text-xs md:w-12 md:text-xl text-center mr-1 md:mr-3 text-blue-600 bg-blue-100">
+          <div className="flex h-full">
+            <div className="flex items-center border border-gray-200 w-full rounded-lg p-1 md:p-2">
+              <div className="flex items-center justify-center p-1 md:p-3 rounded-full md:h-12 h-6 w-6 text-xs md:w-12 md:text-xl text-center mr-1 md:mr-3 text-blue-600 bg-blue-100">
                 <svg
                   stroke="currentColor"
                   fill="none"
-                  stroke-width="2"
+                  strokeWidth="2"
                   viewBox="0 0 24 24"
-                  stroke-linecap="round"
+                  strokeLinecap="round"
                   stroke-linejoin="round"
                   height="1em"
                   width="1em"
@@ -108,24 +108,24 @@ const token = accessToken('accessToken')
                 </svg>
               </div>
               <div>
-                <h5 class="leading-none mb-2 text-sm md:text-base font-medium text-gray-700">
+                <h5 className="leading-none mb-2 text-sm md:text-base font-medium text-gray-700">
                   Processing Order
                 </h5>
-                <p class="md:text-xl text-base font-bold leading-none text-gray-800">
+                <p className="md:text-xl text-base font-bold leading-none text-gray-800">
                   6
                 </p>
               </div>
             </div>
           </div>
-          <div class="flex h-full">
-            <div class="flex items-center border border-gray-200 w-full rounded-lg p-1 md:p-2">
-              <div class="flex items-center justify-center p-1 md:p-3 rounded-full md:h-12 h-6 w-6 text-xs md:w-12 md:text-xl text-center mr-1 md:mr-3 text-teal-500 bg-teal-100">
+          <div className="flex h-full">
+            <div className="flex items-center border border-gray-200 w-full rounded-lg p-1 md:p-2">
+              <div className="flex items-center justify-center p-1 md:p-3 rounded-full md:h-12 h-6 w-6 text-xs md:w-12 md:text-xl text-center mr-1 md:mr-3 text-teal-500 bg-teal-100">
                 <svg
                   stroke="currentColor"
                   fill="none"
-                  stroke-width="2"
+                  strokeWidth="2"
                   viewBox="0 0 24 24"
-                  stroke-linecap="round"
+                  strokeLinecap="round"
                   stroke-linejoin="round"
                   height="1em"
                   width="1em"
@@ -135,10 +135,10 @@ const token = accessToken('accessToken')
                 </svg>
               </div>
               <div>
-                <h5 class="leading-none mb-2 text-sm md:text-base font-medium text-gray-700">
+                <h5 className="leading-none mb-2 text-sm md:text-base font-medium text-gray-700">
                   Complete Order
                 </h5>
-                <p class="md:text-xl text-base font-bold leading-none text-gray-800">
+                <p className="md:text-xl text-base font-bold leading-none text-gray-800">
                   23
                 </p>
               </div>

@@ -17,19 +17,19 @@ const category = ({ data: category, category: title }) => {
   return (
     <Layout title={`All files archived ${categoryTitle}`}>
       <div className="w-full md:flex flex-col container mx-auto gap-2 my-12 overflow-hidden">
-        <div class="flex items-center justify-between my-3 bg-orange-100 border border-gray-100 rounded p-3">
-          <h6 class="text-sm ">
-            Total <span class="font-bold">{category.length}</span> items Found
+        <div className="flex items-center justify-between my-3 bg-orange-100 border border-gray-100 rounded p-3">
+          <h6 className="text-sm ">
+            Total <span className="font-bold">{category.length}</span> items Found
           </h6>
-          <span class="text-sm ">
-            <select class="py-0 text-sm select select-sm font-medium block w-full rounded border-0 bg-white pr-10 cursor-pointer focus:ring-0">
-              <option class="px-3" value="All" hidden="">
+          <span className="text-sm ">
+            <select className="py-0 text-sm select select-sm font-medium block w-full rounded border-0 bg-white pr-10 cursor-pointer focus:ring-0">
+              <option className="px-3" value="All" hidden="">
                 Sort By Price
               </option>
-              <option class="px-3" value="Low">
+              <option className="px-3" value="Low">
                 Low to High
               </option>
-              <option class="px-3" value="High">
+              <option className="px-3" value="High">
                 High to Low
               </option>
             </select>

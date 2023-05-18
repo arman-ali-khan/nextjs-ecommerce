@@ -47,9 +47,9 @@ const handleAddToCart = () => {
       description={product.description}
       thumb={product.images[0].original}
     >
-      <div class="w-full mt-12 rounded-lg p-3 lg:p-12 bg-white">
-        <div class="flex flex-col xl:flex-row">
-          <div class="flex-shrink-0 xl:pr-10 lg:block w-full mx-auto md:w-6/12 lg:w-5/12 xl:w-4/12">
+      <div className="w-full mt-12 rounded-lg p-3 lg:p-12 bg-white">
+        <div className="flex flex-col xl:flex-row">
+          <div className="flex-shrink-0 xl:pr-10 lg:block w-full mx-auto md:w-6/12 lg:w-5/12 xl:w-4/12">
             <div className="span-order h-96">
               <ImageGallery
                 className="h-96"
@@ -60,66 +60,66 @@ const handleAddToCart = () => {
               />
             </div>
           </div>
-          <div class="w-full">
-            <div class="flex flex-col w-full md:flex-row lg:flex-row xl:flex-row">
-              <div class=" w-full  xl:pr-6 md:pr-6 md:w-2/3 mob-w-full">
+          <div className="w-full">
+            <div className="flex flex-col w-full md:flex-row lg:flex-row xl:flex-row">
+              <div className=" w-full  xl:pr-6 md:pr-6 md:w-2/3 mob-w-full">
                 <div>
-                  <div class="mb-6">
-                    <h1 class="leading-7 text-lg md:text-xl lg:text-2xl mb-1 font-semibold  text-gray-800">
+                  <div className="mb-6">
+                    <h1 className="leading-7 text-lg md:text-xl lg:text-2xl mb-1 font-semibold  text-gray-800">
                       {product.title}
                     </h1>
-                    <p class="uppercase  font-medium text-gray-500 text-sm">
+                    <p className="uppercase  font-medium text-gray-500 text-sm">
                       SKU :{" "}
-                      <span class="font-bold text-gray-600">{product.SKU}</span>
+                      <span className="font-bold text-gray-600">{product.SKU}</span>
                     </p>
-                    <div class="relative">
-                      <span class="bg-teal-100 text-teal-500 rounded-full inline-flex items-center justify-center px-2 py-0 text-xs font-semibold ">
+                    <div className="relative">
+                      <span className="bg-teal-100 text-teal-500 rounded-full inline-flex items-center justify-center px-2 py-0 text-xs font-semibold ">
                         Stock :
-                        <span class="text-red-500 dark:text-red-400 pl-1 font-bold">
+                        <span className="text-red-500 dark:text-red-400 pl-1 font-bold">
                           {product.stock}
                         </span>
                       </span>
                     </div>
                   </div>
-                  <div class=" product-price font-bold flex items-center gap-2">
-                    <span class="inline-block text-2xl">${product.price}</span>
+                  <div className=" product-price font-bold flex items-center gap-2">
+                    <span className="inline-block text-2xl">${product.price}</span>
                     <span>{product?.qunatityPrice}</span>
                     <span>{product?.unit}</span>
                   </div>
-                  <div class="mb-4"></div>
+                  <div className="mb-4"></div>
                   <div>
-                    <div class="text-sm leading-6 text-gray-500 md:leading-7">
+                    <div className="text-sm leading-6 text-gray-500 md:leading-7">
                       {product.description}
                       <br />
-                      <span class="read-or-hide">Show Less</span>
+                      <span className="read-or-hide">Show Less</span>
                     </div>
-                    <div class="flex items-center mt-4 justify-center">
-                      <div class="flex items-center  space-s-3 sm:space-s-4 w-full">
+                    <div className="flex items-center mt-4 justify-center">
+                      <div className="flex items-center  space-s-3 sm:space-s-4 w-full">
                         {/* Add to cart */}
                         {added ? (
                           <div
                             className={`flex cursor-pointer select-none justify-between items-center bg-gray-100 duration-300 border border-teal-600  rounded text-white `}
                           >
-                            <div class="group flex w-44 items-center justify-between rounded-md overflow-hidden flex-shrink-0 border h-11 md:h-12 ">
+                            <div className="group flex w-44 items-center justify-between rounded-md overflow-hidden flex-shrink-0 border h-11 md:h-12 ">
                               {/* Derement btn */}
                               <button
                                 onClick={() => handleRemoveFromCart()}
                                 disabled=""
-                                class="flex items-center justify-center flex-shrink-0 h-full transition ease-in-out duration-300 focus:outline-none w-8 md:w-12 text-heading border-e text-rose-700 hover:bg-rose-400 hover:text-black bg-rose-100 border-gray-500"
+                                className="flex items-center justify-center flex-shrink-0 h-full transition ease-in-out duration-300 focus:outline-none w-8 md:w-12 text-heading border-e text-rose-700 hover:bg-rose-400 hover:text-black bg-rose-100 border-gray-500"
                               >
-                                <span class="text-dark text-base">
+                                <span className="text-dark text-base">
                                   <MdOutlineRemove size={20} />
                                 </span>
                               </button>
                               {/* Count */}
-                              <p class="font-semibold text-black flex items-center justify-center h-full transition-colors duration-250 ease-in-out cursor-default flex-shrink-0 text-base text-heading w-8 Smd:w-20 xl:w-24">
+                              <p className="font-semibold text-black flex items-center justify-center h-full transition-colors duration-250 ease-in-out cursor-default flex-shrink-0 text-base text-heading w-8 Smd:w-20 xl:w-24">
                                 {selected?.quantity}
                               </p>
                               {/* increment btn */}
                               <button
                                 onClick={() => handleAddToCart()}
-                                class="flex items-center justify-center text-black h-full flex-shrink-0 transition ease-in-out duration-300 hover:bg-teal-600 hover:text-white focus:outline-none w-8 md:w-12 text-heading border-s border-black" >
-                                <span class="text-dark text-base">
+                                className="flex items-center justify-center text-black h-full flex-shrink-0 transition ease-in-out duration-300 hover:bg-teal-600 hover:text-white focus:outline-none w-8 md:w-12 text-heading border-s border-black" >
+                                <span className="text-dark text-base">
                                   <MdOutlineAdd size={20} />
                                 </span>
                               </button>
@@ -140,48 +140,48 @@ const handleAddToCart = () => {
                         )}
                       </div>
                       <div>
-                        <button class="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-teal-500 hover:bg-teal-600 w-44 h-12">
+                        <button className="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-teal-500 hover:bg-teal-600 w-44 h-12">
                           Add to Wishlist
                         </button>
                       </div>
                     </div>
-                    <div class="flex flex-col mt-4">
-                      <span class=" font-semibold py-1 text-sm d-block">
-                        <span class="text-gray-800">Category:</span>
+                    <div className="flex flex-col mt-4">
+                      <span className=" font-semibold py-1 text-sm d-block">
+                        <span className="text-gray-800">Category:</span>
                         {product.categories.map((category, i) => (
                           <button
                             key={i}
                             type="button"
-                            class="text-gray-600  font-medium underline ml-2 hover:text-teal-600"
+                            className="text-gray-600  font-medium underline ml-2 hover:text-teal-600"
                           >
                            <Link href={`/category/${category.label}`}> {category.value}</Link>
                           </button>
                         ))}
                       </span>
-                      <div class="flex flex-row">
+                      <div className="flex flex-row">
                         {product.tags.map((tag, i) => (
                           <span
                             key={i}
-                            class="bg-gray-50 mr-2 border-0 text-gray-600 rounded-full inline-flex items-center justify-center px-3 py-1 text-xs font-semibold  mt-2"
+                            className="bg-gray-50 mr-2 border-0 text-gray-600 rounded-full inline-flex items-center justify-center px-3 py-1 text-xs font-semibold  mt-2"
                           >
                             {tag.label}
                           </span>
                         ))}
                       </div>
                     </div>
-                    <div class="mt-8">
-                      <h3 class="text-base font-semibold mb-1 ">
+                    <div className="mt-8">
+                      <h3 className="text-base font-semibold mb-1 ">
                         Share your social network
                       </h3>
-                      <p class="font-sans text-sm text-gray-500">
+                      <p className="font-sans text-sm text-gray-500">
                         For get lots of traffic from social network share this
                         product
                       </p>
-                      <ul class="flex mt-4">
-                        <li class="flex items-center text-center border border-gray-100 rounded-full hover:bg-teal-500 mr-2 transition ease-in-out duration-500">
+                      <ul className="flex mt-4">
+                        <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-teal-500 mr-2 transition ease-in-out duration-500">
                           <button
                             aria-label="facebook"
-                            class="react-share__ShareButton  bg-transparent border-none p-0 text-base cursor-pointer"
+                            className="react-share__ShareButton  bg-transparent border-none p-0 text-base cursor-pointer"
                           >
                             <svg viewBox="0 0 64 64" width="32" height="32">
                               <circle
@@ -197,11 +197,11 @@ const handleAddToCart = () => {
                             </svg>
                           </button>
                         </li>
-                        <li class="flex items-center text-center border border-gray-100 rounded-full hover:bg-teal-500 mr-2 transition ease-in-out duration-500">
+                        <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-teal-500 mr-2 transition ease-in-out duration-500">
                           <button
                             quote=""
                             aria-label="twitter"
-                            class="react-share__ShareButton bg-transparent border-none p-0 text-base cursor-pointer"
+                            className="react-share__ShareButton bg-transparent border-none p-0 text-base cursor-pointer"
                           >
                             <svg viewBox="0 0 64 64" width="32" height="32">
                               <circle
@@ -217,11 +217,11 @@ const handleAddToCart = () => {
                             </svg>
                           </button>
                         </li>
-                        <li class="flex items-center text-center border border-gray-100 rounded-full hover:bg-teal-500 mr-2 transition ease-in-out duration-500">
+                        <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-teal-500 mr-2 transition ease-in-out duration-500">
                           <button
                             quote=""
                             aria-label="reddit"
-                            class="react-share__ShareButton  bg-transparent border-none p-0 text-base cursor-pointer"
+                            className="react-share__ShareButton  bg-transparent border-none p-0 text-base cursor-pointer"
                           >
                             <svg viewBox="0 0 64 64" width="32" height="32">
                               <circle
@@ -237,11 +237,11 @@ const handleAddToCart = () => {
                             </svg>
                           </button>
                         </li>
-                        <li class="flex items-center text-center border border-gray-100 rounded-full hover:bg-teal-500 mr-2 transition ease-in-out duration-500">
+                        <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-teal-500 mr-2 transition ease-in-out duration-500">
                           <button
                             quote=""
                             aria-label="whatsapp"
-                            class="react-share__ShareButton  bg-transparent border-none p-0 text-base cursor-pointer"
+                            className="react-share__ShareButton  bg-transparent border-none p-0 text-base cursor-pointer"
                           >
                             <svg viewBox="0 0 64 64" width="32" height="32">
                               <circle
@@ -257,11 +257,11 @@ const handleAddToCart = () => {
                             </svg>
                           </button>
                         </li>
-                        <li class="flex items-center text-center border border-gray-100 rounded-full hover:bg-teal-500 mr-2 transition ease-in-out duration-500">
+                        <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-teal-500 mr-2 transition ease-in-out duration-500">
                           <button
                             quote=""
                             aria-label="linkedin"
-                            class="react-share__ShareButton  bg-transparent border-none p-0 text-base cursor-pointer"
+                            className="react-share__ShareButton  bg-transparent border-none p-0 text-base cursor-pointer"
                           >
                             <svg viewBox="0 0 64 64" width="32" height="32">
                               <circle
@@ -282,17 +282,17 @@ const handleAddToCart = () => {
                   </div>
                 </div>
               </div>
-              <div class="w-full xl:w-5/12 lg:w-6/12 md:w-5/12">
-                <div class="mt-6 md:mt-0 lg:mt-0 bg-gray-50 border border-gray-100 p-4 lg:p-8 rounded-lg">
-                  <ul class="my-0">
-                    <li class="flex items-center py-3">
-                      <span class="text-xl text-gray-400 items-start mr-4">
+              <div className="w-full xl:w-5/12 lg:w-6/12 md:w-5/12">
+                <div className="mt-6 md:mt-0 lg:mt-0 bg-gray-50 border border-gray-100 p-4 lg:p-8 rounded-lg">
+                  <ul className="my-0">
+                    <li className="flex items-center py-3">
+                      <span className="text-xl text-gray-400 items-start mr-4">
                         <svg
                           stroke="currentColor"
                           fill="none"
-                          stroke-width="2"
+                          strokeWidth="2"
                           viewBox="0 0 24 24"
-                          stroke-linecap="round"
+                          strokeLinecap="round"
                           stroke-linejoin="round"
                           height="1em"
                           width="1em"
@@ -304,19 +304,19 @@ const handleAddToCart = () => {
                           <circle cx="18.5" cy="18.5" r="2.5"></circle>
                         </svg>
                       </span>
-                      <p class="font-sans leading-5 text-sm text-gray-500">
+                      <p className="font-sans leading-5 text-sm text-gray-500">
                         Free shipping apply to all orders over shipping
-                        <span class="font-semibold">$100</span>
+                        <span className="font-semibold">$100</span>
                       </p>
                     </li>
-                    <li class="flex items-center py-3">
-                      <span class="text-xl text-gray-400 items-start mr-4">
+                    <li className="flex items-center py-3">
+                      <span className="text-xl text-gray-400 items-start mr-4">
                         <svg
                           stroke="currentColor"
                           fill="none"
-                          stroke-width="2"
+                          strokeWidth="2"
                           viewBox="0 0 24 24"
-                          stroke-linecap="round"
+                          strokeLinecap="round"
                           stroke-linejoin="round"
                           height="1em"
                           width="1em"
@@ -326,19 +326,19 @@ const handleAddToCart = () => {
                           <polyline points="9 22 9 12 15 12 15 22"></polyline>
                         </svg>
                       </span>
-                      <p class="font-sans leading-5 text-sm text-gray-500">
+                      <p className="font-sans leading-5 text-sm text-gray-500">
                         Home Delivery within{" "}
-                        <span class="font-semibold">1 Hour</span>
+                        <span className="font-semibold">1 Hour</span>
                       </p>
                     </li>
-                    <li class="flex items-center py-3">
-                      <span class="text-xl text-gray-400 items-start mr-4">
+                    <li className="flex items-center py-3">
+                      <span className="text-xl text-gray-400 items-start mr-4">
                         <svg
                           stroke="currentColor"
                           fill="none"
-                          stroke-width="2"
+                          strokeWidth="2"
                           viewBox="0 0 24 24"
-                          stroke-linecap="round"
+                          strokeLinecap="round"
                           stroke-linejoin="round"
                           height="1em"
                           width="1em"
@@ -348,18 +348,18 @@ const handleAddToCart = () => {
                           <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
                         </svg>
                       </span>
-                      <p class="font-sans leading-5 text-sm text-gray-500">
+                      <p className="font-sans leading-5 text-sm text-gray-500">
                         Cash on Delivery Available
                       </p>
                     </li>
-                    <li class="flex items-center py-3">
-                      <span class="text-xl text-gray-400 items-start mr-4">
+                    <li className="flex items-center py-3">
+                      <span className="text-xl text-gray-400 items-start mr-4">
                         <svg
                           stroke="currentColor"
                           fill="none"
-                          stroke-width="2"
+                          strokeWidth="2"
                           viewBox="0 0 24 24"
-                          stroke-linecap="round"
+                          strokeLinecap="round"
                           stroke-linejoin="round"
                           height="1em"
                           width="1em"
@@ -371,19 +371,19 @@ const handleAddToCart = () => {
                           <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
                         </svg>
                       </span>
-                      <p class="font-sans leading-5 text-sm text-gray-500">
-                        <span class="font-semibold">7</span> Days returns money
+                      <p className="font-sans leading-5 text-sm text-gray-500">
+                        <span className="font-semibold">7</span> Days returns money
                         back guarantee
                       </p>
                     </li>
-                    <li class="flex items-center py-3">
-                      <span class="text-xl text-gray-400 items-start mr-4">
+                    <li className="flex items-center py-3">
+                      <span className="text-xl text-gray-400 items-start mr-4">
                         <svg
                           stroke="currentColor"
                           fill="none"
-                          stroke-width="2"
+                          strokeWidth="2"
                           viewBox="0 0 24 24"
-                          stroke-linecap="round"
+                          strokeLinecap="round"
                           stroke-linejoin="round"
                           height="1em"
                           width="1em"
@@ -394,18 +394,18 @@ const handleAddToCart = () => {
                           <line x1="1" y1="1" x2="23" y2="23"></line>
                         </svg>
                       </span>
-                      <p class="font-sans leading-5 text-sm text-gray-500">
+                      <p className="font-sans leading-5 text-sm text-gray-500">
                         Warranty not available this item
                       </p>
                     </li>
-                    <li class="flex items-center py-3">
-                      <span class="text-xl text-gray-400 items-start mr-4">
+                    <li className="flex items-center py-3">
+                      <span className="text-xl text-gray-400 items-start mr-4">
                         <svg
                           stroke="currentColor"
                           fill="none"
-                          stroke-width="2"
+                          strokeWidth="2"
                           viewBox="0 0 24 24"
-                          stroke-linecap="round"
+                          strokeLinecap="round"
                           stroke-linejoin="round"
                           height="1em"
                           width="1em"
@@ -437,18 +437,18 @@ const handleAddToCart = () => {
                           ></line>
                         </svg>
                       </span>
-                      <p class="font-sans leading-5 text-sm text-gray-500">
+                      <p className="font-sans leading-5 text-sm text-gray-500">
                         Guaranteed 100% organic from natural products.
                       </p>
                     </li>
-                    <li class="flex items-center py-3">
-                      <span class="text-xl text-gray-400 items-start mr-4">
+                    <li className="flex items-center py-3">
+                      <span className="text-xl text-gray-400 items-start mr-4">
                         <svg
                           stroke="currentColor"
                           fill="none"
-                          stroke-width="2"
+                          strokeWidth="2"
                           viewBox="0 0 24 24"
-                          stroke-linecap="round"
+                          strokeLinecap="round"
                           stroke-linejoin="round"
                           height="1em"
                           width="1em"
@@ -458,7 +458,7 @@ const handleAddToCart = () => {
                           <circle cx="12" cy="10" r="3"></circle>
                         </svg>
                       </span>
-                      <p class="font-sans leading-5 text-sm text-gray-500">
+                      <p className="font-sans leading-5 text-sm text-gray-500">
                         Delivery from our pick point Cecilia Chapman, 561-4535
                         Nulla LA, United States 96522
                       </p>

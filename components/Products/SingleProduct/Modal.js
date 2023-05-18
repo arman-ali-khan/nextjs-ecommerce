@@ -57,24 +57,24 @@ const handleRemoveFromCart = () => {
 }
   return (
     <div
-      class="fixed inset-0 z-30 my-20 md:my-0 rounded-2xl overflow-y-auto text-center"
+      className="fixed inset-0 z-30 my-20 md:my-0 rounded-2xl overflow-y-auto text-center"
       id="headlessui-dialog-10"
       role="dialog"
       aria-modal="true"
     >
-   <div class={` right-5 sticky z-[999999] md:hidden  top-0 flex justify-between items-center bg-white py-2 px-4 ${loading && 'hidden'}`}>
+   <div className={` right-5 sticky z-[999999] md:hidden  top-0 flex justify-between items-center bg-white py-2 px-4 ${loading && 'hidden'}`}>
     <div>
       <p>{modalData.title}</p>
     </div>
           <button
             onClick={()=>setId('')}
             type="button"
-            class="inline-flex  justify-center px-2 py-2 text-base font-medium text-red-500 bg-white border border-teal-600 rounded-full hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+            className="inline-flex  justify-center px-2 py-2 text-base font-medium text-red-500 bg-white border border-teal-600 rounded-full hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
           >
             <svg
               stroke="currentColor"
               fill="currentColor"
-              stroke-width="0"
+              strokeWidth="0"
               viewBox="0 0 512 512"
               height="1em"
               width="1em"
@@ -84,28 +84,28 @@ const handleRemoveFromCart = () => {
             </svg>
           </button>
         </div>
-      <div class="min-h-screen md:px-4 relative">
+      <div className="min-h-screen md:px-4 relative">
      
         <div onClick={()=>setId('')}
-          class="fixed inset-0 bg-black cursor-pointer ease-out duration-300 opacity-25"
+          className="fixed inset-0 bg-black cursor-pointer ease-out duration-300 opacity-25"
           id="headlessui-dialog-overlay-12"
           aria-hidden="true"
         ></div>
-        <span class="inline-block h-screen align-middle " aria-hidden="true">
+        <span className="inline-block h-screen align-middle " aria-hidden="true">
        
         </span>
-        <div class={`inline-block overflow-y-auto h-full md:rounded-2xl align-middle transition-all transform bg-white shadow-xl rounded-b-2xl opacity-100  scale-100 ${loading && 'rounded-2xl'}`}>
-        <div class=" right-5 absolute z-[999999] hidden md:flex top-0 justify-between items-center bg-white py-2 px-4">
+        <div className={`inline-block overflow-y-auto h-full md:rounded-2xl align-middle transition-all transform bg-white shadow-xl rounded-b-2xl opacity-100  scale-100 ${loading && 'rounded-2xl'}`}>
+        <div className=" right-5 absolute z-[999999] hidden md:flex top-0 justify-between items-center bg-white py-2 px-4">
     
           <button
             onClick={()=>setId('')}
             type="button"
-            class="inline-flex  justify-center px-2 py-2 text-base font-medium text-red-500 bg-white border border-teal-600 rounded-full hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+            className="inline-flex  justify-center px-2 py-2 text-base font-medium text-red-500 bg-white border border-teal-600 rounded-full hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
           >
             <svg
               stroke="currentColor"
               fill="currentColor"
-              stroke-width="0"
+              strokeWidth="0"
               viewBox="0 0 512 512"
               height="1em"
               width="1em"
@@ -116,75 +116,75 @@ const handleRemoveFromCart = () => {
           </button>
         </div>
         {
-          loading ?  <div class="flex flex-col lg:flex-row md:flex-row w-full max-w-4xl ">
+          loading ?  <div className="flex flex-col lg:flex-row md:flex-row w-full max-w-4xl ">
           <div
-            class="flex-shrink-0 md:w-96 flex items-center justify-center h-auto cursor-pointer"
+            className="flex-shrink-0 md:w-96 flex items-center justify-center h-auto cursor-pointer"
             href="/product/rainbow-chard"
           >
-               <span class="bg-emerald-100 w-full h-full animate-pulse text-emerald-500  inline-flex items-center justify-center px-2 py-0 text-xs font-semibold ">
+               <span className="bg-emerald-100 w-full h-full animate-pulse text-emerald-500  inline-flex items-center justify-center px-2 py-0 text-xs font-semibold ">
                  
-                 <span class="text-red-500 dark:text-red-400 pl-1 font-bold">
+                 <span className="text-red-500 dark:text-red-400 pl-1 font-bold">
                   
                  </span>
                </span>
           </div>
-          <div class="w-full flex flex-col p-5 md:p-8 text-left">
-            <div class="mb-2 md:mb-2.5 block -mt-1.5">
+          <div className="w-full flex flex-col p-5 md:p-8 text-left">
+            <div className="mb-2 md:mb-2.5 block -mt-1.5">
              
-              <div class="relative">
-                <span class="bg-emerald-100 w-20 h-6 animate-pulse text-emerald-500 rounded-full inline-flex items-center justify-center px-2 py-0 text-xs font-semibold ">
+              <div className="relative">
+                <span className="bg-emerald-100 w-20 h-6 animate-pulse text-emerald-500 rounded-full inline-flex items-center justify-center px-2 py-0 text-xs font-semibold ">
                  
-                  <span class="text-red-500 dark:text-red-400 pl-1 font-bold">
+                  <span className="text-red-500 dark:text-red-400 pl-1 font-bold">
                    
                   </span>
                 </span>
               </div>
             </div>
             {/* Description */}
-            <p class="text-sm leading-6 h-44 rounded-xl animate-pulse bg-gray-200 text-gray-500 md:leading-6">
+            <p className="text-sm leading-6 h-44 rounded-xl animate-pulse bg-gray-200 text-gray-500 md:leading-6">
             
             </p>
-            <div class="flex items-center my-4">
-              <div class=" product-price font-bold">
-                <span class="inline-block text-2xl"></span>
+            <div className="flex items-center my-4">
+              <div className=" product-price font-bold">
+                <span className="inline-block text-2xl"></span>
               </div>
             </div>
-            <div class="mb-1"></div>
-            <div class="flex items-center mt-4">
-              <div class="flex items-center justify-between space-s-3 sm:space-s-4 w-full">
-                <div class="group flex items-center justify-between rounded-md overflow-hidden flex-shrink-0 border w-32 md:w-auto h-11 md:h-12 border-gray-300">
+            <div className="mb-1"></div>
+            <div className="flex items-center mt-4">
+              <div className="flex items-center justify-between space-s-3 sm:space-s-4 w-full">
+                <div className="group flex items-center justify-between rounded-md overflow-hidden flex-shrink-0 border w-32 md:w-auto h-11 md:h-12 border-gray-300">
                   <button
                     disabled=""
-                    class="flex items-center justify-center flex-shrink-0 h-full transition ease-in-out duration-300 focus:outline-none w-8 md:w-12 text-heading border-e border-gray-300 hover:text-gray-500"
+                    className="flex items-center justify-center flex-shrink-0 h-full transition ease-in-out duration-300 focus:outline-none w-8 md:w-12 text-heading border-e border-gray-300 hover:text-gray-500"
                   >
-                    <span class="text-dark text-base">
+                    <span className="text-dark text-base">
                       
                     </span>
                   </button>
-                  <p class="font-semibold flex items-center justify-center h-full transition-colors duration-250 ease-in-out cursor-default flex-shrink-0 text-base text-heading w-8 md:w-20 xl:w-24">
+                  <p className="font-semibold flex items-center justify-center h-full transition-colors duration-250 ease-in-out cursor-default flex-shrink-0 text-base text-heading w-8 md:w-20 xl:w-24">
                     
                   </p>
                   <button
-                    class="flex items-center justify-center h-full flex-shrink-0 transition ease-in-out duration-300 focus:outline-none w-8 md:w-12 text-heading border-s border-gray-300 hover:text-gray-500"
+                    className="flex items-center justify-center h-full flex-shrink-0 transition ease-in-out duration-300 focus:outline-none w-8 md:w-12 text-heading border-s border-gray-300 hover:text-gray-500"
                     tabindex="0"
                   >
-                    <span class="text-dark text-base">
+                    <span className="text-dark text-base">
                     </span>
                   </button>
                 </div>
-                <button class="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-teal-500 hover:bg-teal-600 w-full h-12">
+                <button className="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-teal-500 hover:bg-teal-600 w-full h-12">
                  
                 </button>
               </div>
             </div>
-            <div class="flex items-center mt-4">
-              <div class="flex flex-col items-center justify-between space-s-3 sm:space-s-4 w-full">
+            <div className="flex items-center mt-4">
+              <div className="flex flex-col items-center justify-between space-s-3 sm:space-s-4 w-full">
                 <div>
-                  <span class=" font-semibold py-1 text-sm d-block">
+                  <span className=" font-semibold py-1 text-sm d-block">
                    
                     
                   </span>
-                  <div class="flex flex-row">
+                  <div className="flex flex-row">
                   
                   
                   </div>
@@ -197,9 +197,9 @@ const handleRemoveFromCart = () => {
           </div>
         </div>
           :
-          <div class="flex flex-col lg:flex-row md:flex-row w-full max-w-4xl ">
+          <div className="flex flex-col lg:flex-row md:flex-row w-full max-w-4xl ">
           <div
-            class="flex-shrink-0 md:w-96 flex items-center justify-center h-auto cursor-pointer"
+            className="flex-shrink-0 md:w-96 flex items-center justify-center h-auto cursor-pointer"
             href="/product/rainbow-chard"
           >
             <span className="span-order w-44">
@@ -211,34 +211,34 @@ const handleRemoveFromCart = () => {
            }
             </span>
           </div>
-          <div class="w-full flex flex-col p-5 md:p-8 text-left">
-            <div class="mb-2 md:mb-2.5 block -mt-1.5">
+          <div className="w-full flex flex-col p-5 md:p-8 text-left">
+            <div className="mb-2 md:mb-2.5 block -mt-1.5">
               <Link
-                class="text-heading text-teal-600 text-lg md:text-xl lg:text-2xl font-semibold  hover:text-blue-600 cursor-pointer"
+                className="text-heading text-teal-600 text-lg md:text-xl lg:text-2xl font-semibold  hover:text-blue-600 cursor-pointer"
                 href={`/product/${modalData.id}`}
               >
                {modalData.title}
               </Link>
-              <div class="relative">
-                <span class="bg-emerald-100 text-emerald-500 rounded-full inline-flex items-center justify-center px-2 py-0 text-xs font-semibold ">
+              <div className="relative">
+                <span className="bg-emerald-100 text-emerald-500 rounded-full inline-flex items-center justify-center px-2 py-0 text-xs font-semibold ">
                   Stock :
-                  <span class="text-red-500 dark:text-red-400 pl-1 font-bold">
+                  <span className="text-red-500 dark:text-red-400 pl-1 font-bold">
                     {modalData.stock}
                   </span>
                 </span>
               </div>
             </div>
-            <p class="text-sm leading-6 text-gray-500 md:leading-6">
+            <p className="text-sm leading-6 text-gray-500 md:leading-6">
              {modalData.description}
             </p>
-            <div class="flex items-center my-4">
-              <div class=" product-price font-bold">
-                <span class="inline-block text-2xl">${modalData.price}</span>
+            <div className="flex items-center my-4">
+              <div className=" product-price font-bold">
+                <span className="inline-block text-2xl">${modalData.price}</span>
               </div>
             </div>
-            <div class="mb-1"></div>
-            <div class="flex items-center mt-4">
-              <div class="flex items-center flex-col sm:flex-row gap-3 sm:gap-0 justify-between space-s-3 sm:space-s-4 w-full">
+            <div className="mb-1"></div>
+            <div className="flex items-center mt-4">
+              <div className="flex items-center flex-col sm:flex-row gap-3 sm:gap-0 justify-between space-s-3 sm:space-s-4 w-full">
 
                 {/* Add to cart btn */}
               {
@@ -273,30 +273,30 @@ const handleRemoveFromCart = () => {
       </div>
       }
       
-                <button class="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-teal-500 hover:bg-teal-600 w-44 h-12">
+                <button className="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-teal-500 hover:bg-teal-600 w-44 h-12">
                   Add to Wishlist
                 </button>
               </div>
             </div>
-            <div class="flex items-center mt-4">
-              <div class="flex flex-col items-center justify-between space-s-3 sm:space-s-4 w-full">
+            <div className="flex items-center mt-4">
+              <div className="flex flex-col items-center justify-between space-s-3 sm:space-s-4 w-full">
                 <div>
-                  <span class=" font-semibold py-1 text-sm d-block">
-                    <span class="text-gray-700"> Category:</span>
+                  <span className=" font-semibold py-1 text-sm d-block">
+                    <span className="text-gray-700"> Category:</span>
                     {
                       modalData.categories?.map((category,i)=> <button key={i}
                       type="button"
-                      class="text-gray-600  font-medium underline ml-2 hover:text-teal-600"
+                      className="text-gray-600  font-medium underline ml-2 hover:text-teal-600"
                     >
                       <Link href={`/category/${category.label}`}> {category.value}</Link>
                     </button>)
                    }
                     
                   </span>
-                  <div class="flex flex-row">
+                  <div className="flex flex-row">
                   
                    {
-                      modalData.tags?.map((tag,i)=> <span key={i} class="bg-gray-50 mr-2 border-0 text-gray-600 rounded-full inline-flex items-center justify-center px-3 py-1 text-xs font-semibold  mt-2">
+                      modalData.tags?.map((tag,i)=> <span key={i} className="bg-gray-50 mr-2 border-0 text-gray-600 rounded-full inline-flex items-center justify-center px-3 py-1 text-xs font-semibold  mt-2">
                       {tag.value}
                     </span>)
                    }
@@ -304,7 +304,7 @@ const handleRemoveFromCart = () => {
                 </div>
                 <div>
                   <Link href={`/product/${modalData.id}`}>
-                  <button class="font-sans bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded font-medium text-sm text-white">
+                  <button className="font-sans bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded font-medium text-sm text-white">
                     Details
                   </button>
                   </Link>

@@ -37,15 +37,15 @@ const CartSidebar = ({ showCart, setShowCart }) => {
         </button>
       </div>
       {products.length < 1 ? (
-        <div class=" h-full flex-grow  scrollbar-hide w-full max-h-full">
-          <div class="flex flex-col h-full justify-center">
-            <div class="flex flex-col items-center">
-              <div class="flex justify-center items-center w-20 h-20 rounded-full bg-emerald-100">
-                <span class="text-emerald-600 text-4xl block">
+        <div className=" h-full flex-grow  scrollbar-hide w-full max-h-full">
+          <div className="flex flex-col h-full justify-center">
+            <div className="flex flex-col items-center">
+              <div className="flex justify-center items-center w-20 h-20 rounded-full bg-emerald-100">
+                <span className="text-emerald-600 text-4xl block">
                   <svg
                     stroke="currentColor"
                     fill="currentColor"
-                    stroke-width="0"
+                    strokeWidth="0"
                     viewBox="0 0 512 512"
                     height="1em"
                     width="1em"
@@ -55,10 +55,10 @@ const CartSidebar = ({ showCart, setShowCart }) => {
                   </svg>
                 </span>
               </div>
-              <h3 class=" font-semibold text-gray-700 text-lg pt-5">
+              <h3 className=" font-semibold text-gray-700 text-lg pt-5">
                 Your cart is empty
               </h3>
-              <p class="px-12 text-center text-sm text-gray-500 pt-2">
+              <p className="px-12 text-center text-sm text-gray-500 pt-2">
                 No items added in your cart. Please add product to your cart
                 list.
               </p>

@@ -164,9 +164,9 @@ const index = () => {
             </label>
             {/* Gender */}
             <label>Gender</label>
-            <fieldset class="flex items-center gap-4">
-              <legend class="sr-only">Gender</legend>
-              <div class="flex items-center">
+            <fieldset className="flex items-center gap-4">
+              <legend className="sr-only">Gender</legend>
+              <div className="flex items-center">
                 <select
                   className="select border border-teal-600"
                   {...register("gender", { required: true })}
