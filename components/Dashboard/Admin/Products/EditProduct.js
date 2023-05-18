@@ -10,11 +10,14 @@ import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { MdCancel } from "react-icons/md";
 import CreatableSelect from 'react-select/creatable';
 import UserLayout from "@/Layout/UserLayout";
+import { useRouter } from "next/router";
+import { accessToken } from "@/hooks/setToken";
 
 const EditProduct = ({product}) => {
-  const { state } = useAllContext();
+  const { state,user } = useAllContext();
  
-
+// router
+const router = useRouter();
 
   const animatedComponents = makeAnimated();
   const categoriesData = [
@@ -70,6 +73,10 @@ const EditProduct = ({product}) => {
       });
   };
 
+  // access token
+  const token = accessToken('accessToken')
+  // react hoot form
+
   const {
     register,
     handleSubmit,
@@ -99,14 +106,21 @@ const EditProduct = ({product}) => {
     };
     console.log(productData)
     axios
-      .put(`/api/product/update?id=${product.id}`, productData)
+      .put(`/api/product/update?id=${product.id}&email=${user.email}`, productData,{
+        headers: {
+                  authorization: `Bearer ${token}`,
+                },
+      })
       .then((response) => {
         console.log(response.data);
-        toast.success("Product created successfully");
+        toast.success("Product Updated successfully");
         setProductLoading(false);
+        router.push('/admin/products')
       })
       .catch((err) => {
         setProductLoading(false);
+        console.log(err);
+        toast.error("Something went wrong");
       });
   };
 
@@ -286,7 +300,7 @@ const EditProduct = ({product}) => {
             disabled={!categories.length || !tags.length || !imageUrl.length}
             className="px-5 py-3 disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed rounded text-teal-600 hover:bg-teal-200 bg-teal-100"
             type="submit"
-            value={`${productLoading ? "Adding..." : "Add New Product"}`}
+            value={`${productLoading ? "Updating..." : "Update Product"}`}
           />
         </div>
       </form>
