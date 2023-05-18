@@ -21,7 +21,7 @@ export default editId;
 
 export async function getServerSideProps({ params }) {
     const { editId } = params;
-    const response = await fetch(`http://localhost:3000/api/product/${editId}`);
+    const response = await fetch(`/api/product/${editId}`);
     const product = await response.json();
   
     return {
