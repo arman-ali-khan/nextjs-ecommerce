@@ -34,7 +34,7 @@ const token = accessToken('accessToken')
         setProducts(res.data.allFiles)
         setLoading(false)
           })
-  },[])
+  },[loading])
 
   const [productLoading,setProductLoading] = useState(false)
 

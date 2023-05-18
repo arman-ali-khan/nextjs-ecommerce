@@ -21,7 +21,7 @@ export default editId;
 
 export async function getServerSideProps({ params }) {
     const { editId } = params;
-    const response = await fetch(`/api/product/${editId}`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_PRO}/api/product/${editId}`);
     const product = await response.json();
   
     return {
