@@ -51,7 +51,9 @@ const token = accessToken('accessToken')
        <td className='!py-0'>
         <span className='flex items-center'>
         <Link href={`/product/${product.id}`}><button className='bg-blue-100 text-blue-600 rounded-full px-2 py-0.5'>View</button></Link>
-        <button className='bg-teal-100 text-base text-teal-600 px-2 py-1 rounded-full hover:bg-teal-200'><BiPencil /></button>
+       <Link href={`/admin/edit/${product.id}`}>
+       <button className='bg-teal-100 text-base text-teal-600 px-2 py-1 rounded-full hover:bg-teal-200'><BiPencil /></button>
+       </Link>
         <button className='bg-rose-100 text-base text-rose-600 px-2 py-1 rounded-full hover:bg-rose-200'><BiTrash /></button>
         </span>
         </td>

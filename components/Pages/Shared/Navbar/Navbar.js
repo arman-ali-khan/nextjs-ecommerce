@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import {
+  BsBell,
   BsCart,
   BsCartCheck,
   BsCartCheckFill,
@@ -32,7 +33,7 @@ const Navbar = () => {
   const [showCart, setShowCart] = useState(false);
 
   // context
-  const { user, logOut, state ,setSearch} = useAllContext();
+  const { user, logOut, state ,setSearch, dbUser} = useAllContext();
 
 const orderPath = router.pathname
 
@@ -96,28 +97,28 @@ const orderPath = router.pathname
 
       <div className="fixed md:sticky md:top-0 md:bottom-auto bottom-2 w-full md:flex items-center justify-between md:mx-auto z-50 md:container border-2 border-teal-600 bg-white md:px-6 py-1 rounded-full">
         {/* Navbar start */}
-        <div className="fixed md:hidden lg:flex md:static py-1 w-full bg-teal-600 md:bg-transparent md:w-auto left-0 flex !z-50 justify-between px-4 items-center md:justify-start top-1 rounded-full">
+        <div className="fixed md:hidden lg:flex md:static py-1 w-full bg-teal-600 md:bg-transparent md:w-auto left-0 flex !z-50 justify-between px-4 items-center md:justify-start top-0 rounded-full">
           {/* Logo */}
           <Link href={"/"}>
             <img className="w-9 md:w-16" src={"/logo.svg"} alt="" />
           </Link>
-          {/*Location mobile  */}
+          {/*Notification mobile  */}
           <div className="md:hidden">
-            <Location />
+            <BsBell className="text-2xl text-white" />
           </div>
         </div>
         {/* Desktop fixed categories */}
         <div className=" hidden md:flex items-center gap-4">
           <NavCategories />
-          {/*Location desktop  */}
+          {/*Notification desktop  */}
           <div className="hidden md:block">
-            <Location />
+            <BsBell className="text-2xl" />
           </div>
         </div>
         {/* Search box */}
         <div className=" w-full flex justify-center">
           {showSearch ? (
-            <form onSubmit={handleSubmit(handleSearch)} className="flex !z-[999999999] fixed md:static top-1 left-0 w-full items-center md:w-64 lg:w-72 xl:w-96">
+            <form onSubmit={handleSubmit(handleSearch)} className="flex !z-[999999999] fixed md:static top-0 left-0 w-full items-center md:w-64 lg:w-72 xl:w-96">
               <input
                 {...register("search", { required: true })}
                 placeholder="Search for products (e.g. fish, apple, oil)"
@@ -219,11 +220,11 @@ const orderPath = router.pathname
               >
                 <Link
                   href={"/user"}
-                  className={`text-2xl cursor-pointer hover:text-teal-600 ${
+                  className={`font-bold cursor-pointer hover:text-teal-600 ${
                     showUser && "text-teal-600"
                   } px-4 py-2`}
                 >
-                  Profile
+                  {user.displayName} <span className="text-blue-400"> ({dbUser.balence})</span>
                 </Link>
                 <li>
                   <button onClick={handleLogout}>Logout</button>

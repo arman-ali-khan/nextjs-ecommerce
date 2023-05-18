@@ -26,7 +26,7 @@ const index = () => {
                 <Link href={'#'} className='md:text-2xl md:uppercase text-teal-600 hover:bg-teal-600 hover:text-white duration-300 rounded border-b border-teal-600 px-4 py-2 flex items-center gap-2'>See More <span><BsArrowRight /></span> </Link>
             </div>
             {/* Card */}
-            <div className='grid grid-cols-2 my-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2'>
+            <div className='grid grid-cols-2 my-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 overflow-hidden'>
            
             {
                 searchData.map(product=><ProductCard key={product._id} product={product} />)

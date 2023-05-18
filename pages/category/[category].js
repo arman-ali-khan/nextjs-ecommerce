@@ -16,7 +16,7 @@ const category = ({ data: category, category: title }) => {
   console.log(categoryTitle);
   return (
     <Layout title={`All files archived ${categoryTitle}`}>
-      <div className="w-full md:flex flex-col container mx-auto gap-2 my-12">
+      <div className="w-full md:flex flex-col container mx-auto gap-2 my-12 overflow-hidden">
         <div class="flex items-center justify-between my-3 bg-orange-100 border border-gray-100 rounded p-3">
           <h6 class="text-sm ">
             Total <span class="font-bold">{category.length}</span> items Found

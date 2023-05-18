@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { useState } from "react";
-import { BsCart, BsCartCheck, BsCartCheckFill, BsFillSearchHeartFill, BsMenuApp } from "react-icons/bs";
+import { BsBell, BsCart, BsCartCheck, BsCartCheckFill, BsFillSearchHeartFill, BsMenuApp } from "react-icons/bs";
 import { CiShoppingTag } from "react-icons/ci";
 import { BsSearch } from "react-icons/bs";
 import { RiMenu4Line } from "react-icons/ri";
@@ -48,6 +48,8 @@ const handleLogout = () =>{
   logOut()
 }
 
+const orderPath = router.pathname
+
 
   // all product price
   let price = state.cart.reduce(function (prev, current) {
@@ -67,21 +69,27 @@ const handleLogout = () =>{
  }
   return (
     <div className="md:fixed z-50 w-full flex justify-center md:top-0 md:bottom-auto">
-      {/* Right side checkout button */}
-      <div onClick={()=>setShowCart(true)} className="fixed cursor-pointer select-none right-0 top-1/2 md:block hidden  bg-teal-500 px-4 z-10 py-2 rounded-l-md">
-          <p className="text-white font-bold flex items-center gap-2 py-2"> <span><BsCartCheckFill /></span> 15 Items</p>
-          <p className="bg-white px-3 py-1 rounded-md font-bold text-teal-600">$423</p>
-        </div>
+    
 
       <div className="fixed md:sticky md:top-0 md:bottom-auto bottom-2 w-full md:flex items-center justify-between md:mx-auto z-50 md:container border-2 border-teal-600 bg-white md:px-6 py-1 rounded-full">
         {/* Navbar start */}
-        <div className="fixed md:static py-1 w-full bg-teal-600 md:bg-transparent md:w-auto left-0 flex !z-50 justify-center items-center md:justify-start top-1 rounded-full">
+        <div className="fixed md:hidden lg:flex md:static py-1 w-full bg-teal-600 md:bg-transparent md:w-auto left-0 flex !z-50 justify-between px-4 items-center md:justify-start top-0 rounded-full">
           {/* Logo */}
-          <Link href={'/'}><img className="w-9 md:w-16" src={'/logo.svg'} alt=""/></Link>
+          <Link href={"/"}>
+            <img className="w-9 md:w-16" src={"/logo.svg"} alt="" />
+          </Link>
+          {/*Notification mobile  */}
+          <div className="md:hidden">
+            <BsBell className="text-2xl text-white" />
+          </div>
         </div>
         {/* Desktop fixed categories */}
-        <div className="md:block hidden">
+        <div className="hidden md:flex items-center gap-4">
           <NavCategories />
+          {/*Notification desktop  */}
+          <div className="hidden md:block">
+          <BsBell className="text-2xl" />
+          </div>
         </div>
         {/* Search box */}
         <div className=" w-full flex justify-center">
@@ -186,13 +194,13 @@ const handleLogout = () =>{
                 tabIndex={0}
                 className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
               >
-                <Link
+               <Link
                   href={"/user"}
-                  className={`text-2xl cursor-pointer hover:text-teal-600 ${
+                  className={`font-bold cursor-pointer hover:text-teal-600 ${
                     showUser && "text-teal-600"
                   } px-4 py-2`}
                 >
-                  Profile
+                  {user.displayName} <span className="text-blue-400"> ({dbUser.balence})</span>
                 </Link>
                 <li>
                   <button onClick={handleLogout}>Logout</button>
