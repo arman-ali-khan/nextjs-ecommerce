@@ -28,7 +28,18 @@ import { toast } from "react-hot-toast";
 
 export const ALL_CONTEXT = createContext();
 
+
+
 const ProductsProvider = ({ children,data }) => {
+
+  // show nav category 
+const [showCategory, setShowCategory] = useState(false);
+
+
+// update money
+const[updateMoney,setUpdateMoney] = useState(false);
+
+
   // loadin until the get user from firebase
   const [loading, setLoading] = useState(true);
 
@@ -87,7 +98,6 @@ const ProductsProvider = ({ children,data }) => {
       try {
         const response = await fetch('/api/products');
         const jsonData = await response.json();
-        console.log(jsonData);
         dispatch({ type: actionTypes.FETCHING_SUCCESS, payload: jsonData})
       } catch (error) {
         dispatch({ type: actionTypes.FETCHING_ERROR, payload: error})
@@ -95,7 +105,7 @@ const ProductsProvider = ({ children,data }) => {
     };
 
     fetchData();
-  }, []);
+  }, [loading]);
 
 
   const [dbUser, setDbUser] = useState({});
@@ -117,7 +127,7 @@ const token =accessToken('accessToken')
       return logOut()
     }
   })
-  }, [user?.email,token]);
+  }, [user?.email,token,updateMoney]);
 
  
 
@@ -132,7 +142,13 @@ const token =accessToken('accessToken')
     logOut,
     dbUser,
     loading,
-    search,setSearch
+    setLoading,
+    search,
+    setSearch,
+    showCategory, 
+    setShowCategory,
+    setUpdateMoney,
+    updateMoney,
   };
 
   return <ALL_CONTEXT.Provider value={value}>{children}</ALL_CONTEXT.Provider>;

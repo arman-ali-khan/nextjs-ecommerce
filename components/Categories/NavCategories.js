@@ -4,11 +4,12 @@ import React, { useEffect, useState } from "react";
 import { BiDownArrow, BiUpArrow } from "react-icons/bi";
 import { TbCategory } from "react-icons/tb";
 import CategoryList from "./CategoryList";
+import { useAllContext } from "@/context/ContextProvider";
 
 const NavCategories = () => {
   const [loading,setLoading] = useState(false)
-  const [showCategory, setShowCategory] = useState(false);
-
+  const {showCategory,setShowCategory}  = useAllContext()
+  const [categories,setCategories] = useState([])
 
   useEffect(() => {
     setLoading(true)
@@ -16,6 +17,7 @@ const NavCategories = () => {
     .then((response) =>{
       console.log(response.data)
       setLoading(false)
+      setCategories(response.data)
     })
        .catch((error) => {
         console.log(error)
@@ -37,7 +39,7 @@ const NavCategories = () => {
         }`}
       ></button>
       <div
-        className={`absolute bg-teal-50 border border-teal-600 rounded w-64 shadow-lg gap-1 ${
+        className={`absolute bg-teal-50 border border-teal-600 rounded-xl w-64 shadow-lg gap-1 ${
             showCategory || "hidden"
         }`}
       >
@@ -46,9 +48,9 @@ const NavCategories = () => {
             <div className="border-4 border-teal-600 rounded-full h-12 w-12 border-dashed animate-spin"></div>
            </div>
            :
-           <CategoryList />
+           <CategoryList categories={categories} />
         }
-       
+      
       </div>
     </div>
   );

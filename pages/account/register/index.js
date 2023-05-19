@@ -49,7 +49,7 @@ const index = () => {
         email,
         phone,
         stock:0,
-        balence:0,
+        balance:0,
         agent: '01701034883',
         id:'1234567890',
         revenue:0,

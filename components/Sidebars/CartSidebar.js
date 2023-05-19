@@ -67,7 +67,7 @@ const CartSidebar = ({ showCart, setShowCart }) => {
         </div>
       ) : (
         <div className="overflow-auto h-full">
-          {products.map((product, i) => (
+          {products.sort((a,b)=>a.id-b.id).map((product, i) => (
             <SingleCart product={product} key={i} />
           ))}
         </div>
@@ -82,7 +82,7 @@ const CartSidebar = ({ showCart, setShowCart }) => {
      >
        Proceed To Checkout{" "}
        <span className="bg-white px-4 text-teal-600 font-bold rounded-full text-lg py-2">
-         ${totalPrice }
+         ${totalPrice.toFixed(2)}
        </span>
      </button></Link>
       :
@@ -94,7 +94,7 @@ const CartSidebar = ({ showCart, setShowCart }) => {
       >
       Login and Proceed To Checkout
         <span className="bg-white px-4 text-teal-600 font-bold rounded-full text-lg py-2">
-          ${totalPrice}
+          ${totalPrice.toFixed(2)}
         </span>
       </button>
       </Link>

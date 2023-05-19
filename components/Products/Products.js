@@ -51,7 +51,7 @@ const Products = () => {
     </div>)
     }
     if(error){
-      content = <p className='text-red-600 text-center'>Error</p>
+      content = <p className='text-red-600 text-center'>Error While Load Data</p>
     }
 
     if(!loading && !error && products?.length===0){

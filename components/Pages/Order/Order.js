@@ -15,7 +15,7 @@ import moment from 'moment';
 
 
 const Order = () => {
-    const {state,dbUser,user} = useAllContext()
+    const {state,dbUser,user,setUpdateMoney,updateMoney} = useAllContext()
 
 
     // // next router
@@ -55,10 +55,13 @@ const date =  new Date()
 
     const invoiceNo = generate(`${user.email}:${date.getMinutes()}`);
 
-
+// exept balance
+const exeptBalance = (parseFloat((dbUser.balance-total).toFixed(2)))
+console.log(exeptBalance)
   const onSubmit = data => {
 const orderData = {
     data,location,
+    address:data.address,
     products:state.cart,
     agent:dbUser.agent,
     date: date,
@@ -70,8 +73,7 @@ const orderData = {
     shipping: delivery,
     discount: discount,
     service: service,
-    payment:"bkash"
-
+    payment:"Cash"
 }
     axios.post(`/api/order/create?email=${user.email}`,orderData,{
         headers:{ 
@@ -80,13 +82,22 @@ const orderData = {
   })
   .then((response) => {
     console.log(response);
-    toast.success('Order added successfully')
-    router.push(`/user/orders`)
+    // update profile 
+    axios.put(`/api/order/orderAndUpdate?email=${user.email}`,{exeptBalance})
+    .then((response) => {
+        console.log(response.data);
+        setUpdateMoney(!updateMoney)
+        toast.success('Order added successfully')
+        // router.push(`/user/orders`)
+    })
+       .catch((error) => {
+        console.log(error);
+    })
   }, (error) => {
    console.log(error)
   })
 }
-  
+
     return (
        <PrivateRoutes>
          <form  onSubmit={handleSubmit(onSubmit)} className='flex flex-col md:flex-row'>
@@ -106,8 +117,8 @@ const orderData = {
                      <BDLocations onChange={(e) => setLocation([... location, e])} />
                  </div>
                  <div className='flex flex-col'>
-                     <label>Village</label>
-                     <input {...register("village", { required: true })} placeholder='Village Name' className='input input-bordered' type="text" />
+                     <label>Address</label>
+                     <input {...register("address", { required: true })} placeholder='123 Boulevard Rd, Beverley Hills' className='input input-bordered' type="text" />
                  </div>
                  <div className='flex flex-col'>
                      <label>Optional Message</label>
@@ -130,7 +141,7 @@ const orderData = {
          </h3></div>
          <div className="text-right">
              <span className="block">৳{product.price}</span>
-             <span className="text-sm text-gray-600">৳{product.price * product.quantity}</span>
+             <span className="text-sm text-gray-600">৳{(product.price * product.quantity).toFixed(2)}</span>
          </div>
      </li>)
     }

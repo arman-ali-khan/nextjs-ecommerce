@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import makeAnimated from "react-select/animated";
 import Creatable from 'react-select/creatable';
@@ -9,25 +9,29 @@ import { toast } from "react-hot-toast";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { MdCancel } from "react-icons/md";
 import CreatableSelect from 'react-select/creatable';
+import { Router, useRouter } from "next/router";
 
 const AddProducts = () => {
   const { state } = useAllContext();
   const { products: product } = state;
 
+  // router 
+  const router = useRouter()
+
   // get id
   const count = product.count;
 
   const animatedComponents = makeAnimated();
-  const categoriesData = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
-  ];
-  const tagsData = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
-  ];
+
+  // get categories
+  const [categoriesData,setCategoriesData] = useState();
+ useEffect(()=>{
+  axios.get('/api/categories')
+  .then(response => setCategoriesData(response.data))
+   .catch(error => console.log(error))
+ },[])
+ 
+ 
 
   // get categories
   const [categories, setCategories] = useState([]);
@@ -107,6 +111,7 @@ const AddProducts = () => {
         console.log(response.data);
         toast.success("Product created successfully");
         setProductLoading(false);
+        router.push('/admin/products');
       })
       .catch((err) => {
         setProductLoading(false);
@@ -255,7 +260,7 @@ const AddProducts = () => {
               closeMenuOnSelect={false}
               components={animatedComponents}
               isMulti
-              options={tagsData}
+              options={categoriesData}
             />
           </label>
         </div>

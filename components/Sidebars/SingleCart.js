@@ -35,7 +35,7 @@ const SingleCart = ({product}) => {
               {product.title}
             </h2>
 
-            <p className="md:text-md text-teal-600 font-bold">{product.price * selected.quantity}$</p>
+            <p className="md:text-md text-teal-600 font-bold">{(product.price * selected.quantity).toFixed(2)}$</p>
           </div>
 
           <div className="text-lg w-9 flex flex-col justify-center text-center bg-teal-50 text-white mt-2">

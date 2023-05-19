@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsStar, BsStarFill } from "react-icons/bs";
 import { MdOutlineAdd, MdOutlineRemove } from "react-icons/md";
 import Link from "next/link";
@@ -6,11 +6,14 @@ import Modal from "./SingleProduct/Modal";
 import { useAllContext } from "@/context/ContextProvider";
 import actionTypes from "@/state/ProductState/actionTypes";
 import { toast } from "react-hot-toast";
+import { BiHeart } from "react-icons/bi";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import axios from "axios";
 
 const ProductCard = ({ product }) => {
   
   
-  const {dispatch,state,dbUser} = useAllContext()
+  const {dispatch,state,dbUser,user,setLoading,loading} = useAllContext()
   
 
  const selected = state.cart.find(cart => cart._id === product._id);
@@ -26,33 +29,37 @@ const ProductCard = ({ product }) => {
 let totalPrice = products.reduce(function (prev, current) {
   return prev + +current.price * current.quantity;
 }, 0);
-console.log(totalPrice,dbUser.balence)
+console.log(totalPrice,dbUser.balance)
 // add product to cart with enough money
-  const handleAddToCart = () => {
-   if(dbUser.balence <= totalPrice){
-    toast.error('Not enough money to add to cart')
-   
-    }
-     else if(dbUser.balence > totalPrice){
-   
-    dispatch({type:actionTypes.ADD_TO_CART,payload:product})
-    toast.success("Added to Cart")
-   }
+const handleAddToCart = () => {
+  if(dbUser.balance >= totalPrice){
+   dispatch({type:actionTypes.ADD_TO_CART,payload:product})
+   toast.success("Added to Cart")
+  
+  }else if(!user.email){
+   toast.error('Login First')
   }
+  else{
+    toast.error('Not enough money to add to cart')
+   }
+ }
 
   const handleRemoveFromCart = () => {
     dispatch({type:actionTypes.DECREMENT_CART,payload:product})
     toast.success("Remove one product")
   }
- 
+
+
   
  const [id,setId]  = useState('')
+
+
+
+
   return (
     <>
     <div
-      className={`shadow-xl rounded-md
-      }`}
-    >
+      className={`shadow-xl rounded-md relative`}>
       <div >
         <label onClick={()=>setId(product.id)} className={`h-60 bg-base-100 cursor-pointer`}>
           <img src={product.images[0].original} alt="" />

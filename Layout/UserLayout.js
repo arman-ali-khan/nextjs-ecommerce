@@ -67,7 +67,7 @@ function UserLayout({ children, title, description, thumb }) {
                 onClickCapture={() => setMoneyLoading(false)}
                 onClick={() => setMoneyClass("")}
               >
-                Your balence is ${dbUser?.balence}
+                Your balance is ${dbUser?.balance}
               </p>
               <button
                 onClickCapture={() => setMoneyLoading(true)}

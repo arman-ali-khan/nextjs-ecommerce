@@ -35,7 +35,7 @@ const Modal = ({ id, setId }) => {
 
   // add product to cart with enough money
   const handleAddToCart = () => {
-   if (dbUser.balence >= totalPrice) {
+   if (dbUser.balance >= totalPrice) {
       dispatch({ type: actionTypes.ADD_TO_CART, payload: modalData });
       toast.success("Added to Cart");
     } else {
