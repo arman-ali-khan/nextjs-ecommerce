@@ -4,7 +4,7 @@ import React from "react";
 
 const newProduct = () => {
   return (
-    <UserLayout>
+    <UserLayout title={'Add New Product'}>
      <AddProducts />
     </UserLayout>
   );

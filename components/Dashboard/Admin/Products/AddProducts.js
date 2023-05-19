@@ -160,21 +160,6 @@ const AddProducts = () => {
         </div>
         <div className="flex w-full">
          
-          <label className="w-full flex flex-col">
-            Per:
-            <select className="select w-full select-bordered">
-              <option onClick={()=>qunatity('')}>Select Qunatity</option>
-              <option onClick={()=>qunatity('1/2')}>1/2</option>
-              <option onClick={()=>qunatity('1')}>1</option>
-              <option onClick={()=>qunatity('1.5')}>1.5</option>
-              <option onClick={()=>qunatity('2')}>2</option>
-              <option onClick={()=>qunatity('2.5')}>2.5</option>
-              <option onClick={()=>qunatity('3')}>3</option>
-              <option onClick={()=>qunatity('4')}>4</option>
-              <option onClick={()=>qunatity('4.5')}>4.5</option>
-              <option onClick={()=>qunatity('5')}>5</option>
-            </select>
-          </label>
          
           <label className="w-full flex flex-col">
             Unit:

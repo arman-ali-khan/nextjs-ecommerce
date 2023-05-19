@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { BsStar, BsStarFill } from "react-icons/bs";
 import { MdOutlineAdd, MdOutlineRemove } from "react-icons/md";
-import ProductModal from "./SingleProduct/ProductModal";
 import Link from "next/link";
 import Modal from "./SingleProduct/Modal";
 import { useAllContext } from "@/context/ContextProvider";
@@ -30,12 +29,14 @@ let totalPrice = products.reduce(function (prev, current) {
 console.log(totalPrice,dbUser.balence)
 // add product to cart with enough money
   const handleAddToCart = () => {
-   if(dbUser.balence > totalPrice){
+   if(dbUser.balence <= totalPrice){
+    toast.error('Not enough money to add to cart')
+   
+    }
+     else if(dbUser.balence > totalPrice){
+   
     dispatch({type:actionTypes.ADD_TO_CART,payload:product})
     toast.success("Added to Cart")
-   
-   }else{
-    toast.error('Not enough money to add to cart')
    }
   }
 
@@ -53,7 +54,7 @@ console.log(totalPrice,dbUser.balence)
       }`}
     >
       <div >
-        <label onClick={()=>setId(product.id)} htmlFor="productModal" className={`h-60 bg-base-100 cursor-pointer`}>
+        <label onClick={()=>setId(product.id)} className={`h-60 bg-base-100 cursor-pointer`}>
           <img src={product.images[0].original} alt="" />
         </label>
 

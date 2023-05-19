@@ -54,7 +54,6 @@ const handleAddToCart = () => {
               <ImageGallery
                 className="h-96"
                 showNav={false}
-                autoPlay={true}
                 showPlayButton={false}
                 items={product.images}
               />

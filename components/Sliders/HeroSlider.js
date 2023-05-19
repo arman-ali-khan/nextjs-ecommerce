@@ -15,16 +15,16 @@ const HeroSlider = () => {
   };
 
   const images = [
-    { id: 1, url: 'https://images.unsplash.com/photo-1661956602868-6ae368943878?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=60', alt: 'Image 1' },
-    { id: 2, url: 'https://images.unsplash.com/photo-1661956602868-6ae368943878?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=60', alt: 'Image 2' },
-    { id: 3, url: 'https://images.unsplash.com/photo-1661956602868-6ae368943878?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=60', alt: 'Image 3' },
+    { id: 1, url: 'https://www.apnabazar.se/malmo/wp-content/uploads/2018/08/slider1.jpg', alt: 'Image 1' },
+    { id: 2, url: 'https://t8e5h5n7.stackpathcdn.com/wp-content/uploads/2017/06/slider-1-min-1.jpg', alt: 'Image 2' },
+    { id: 3, url: 'https://www.bluemountainpeak.com/pub/media/homepage_slider/fruit-and-vegetable-banner.jpg', alt: 'Image 3' },
   ];
 
   return (
     <Slider {...settings}>
     {images.map((image) => (
-      <div className='h-56 md:h-96' key={image.id}>
-        <img className='w-full' src={image.url} alt={image.alt} />
+      <div className='h-56 md:h-96 rounded-md' key={image.id}>
+        <img className='w-full h-full object-cover rounded-md' src={image.url} alt={image.alt} />
       </div>
     ))}
   </Slider>

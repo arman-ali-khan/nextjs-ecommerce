@@ -17,7 +17,7 @@ const Products = () => {
       content = [...Array(10).keys()].map((product,i)=> <div key={i}
       className={`shadow-xl h-72 rounded-md bg-gray-300 animate-pulse`}
     >
-      <label className="cursor-pointer" htmlFor="productModal">
+      <label className="cursor-pointer" >
         <div
           className={`h-56 bg-base-300 animate-pulse`}
         >

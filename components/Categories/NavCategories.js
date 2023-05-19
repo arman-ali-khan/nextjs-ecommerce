@@ -3,17 +3,17 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { BiDownArrow, BiUpArrow } from "react-icons/bi";
 import { TbCategory } from "react-icons/tb";
+import CategoryList from "./CategoryList";
 
 const NavCategories = () => {
   const [loading,setLoading] = useState(false)
   const [showCategory, setShowCategory] = useState(false);
-  const [categories,setCategories] = useState([])
+
 
   useEffect(() => {
     setLoading(true)
     axios.get("/api/categories")
     .then((response) =>{
-      setCategories(response.data)
       console.log(response.data)
       setLoading(false)
     })
@@ -46,18 +46,7 @@ const NavCategories = () => {
             <div className="border-4 border-teal-600 rounded-full h-12 w-12 border-dashed animate-spin"></div>
            </div>
            :
-            <ul>
-          {categories.map((category) => (
-            <Link key={category.id} href={`/category/${category.label}`}>
-            <li className="px-4 py-4 rounded border-b bg-white">
-              <span className="flex items-center hover:underline hover:text-teal-600 gap-3">
-                <img className="w-8 h-8" src={category.icon} alt="" />
-                <p className="font-bold">{category.value}</p>
-              </span>
-            </li>
-          </Link>
-          ))}
-        </ul>
+           <CategoryList />
         }
        
       </div>

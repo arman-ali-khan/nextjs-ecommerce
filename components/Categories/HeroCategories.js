@@ -1,19 +1,23 @@
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import CategoryList from "./CategoryList";
 
 const HeroCategories = () => {
-  const [showCategory, setShowCategory] = useState(false);
+  const [loading,setLoading] = useState(false)
 
-  const [categories,setCategories] = useState([])
 
   useEffect(() => {
+    setLoading(true)
     axios.get("/api/categories")
     .then((response) =>{
-      setCategories(response.data)
       console.log(response.data)
+      setLoading(false)
     })
-       .catch((error) => console.log(error))
+       .catch((error) => {
+        console.log(error)
+        setLoading(false)
+      })
   },[])
  
   return (
@@ -22,21 +26,13 @@ const HeroCategories = () => {
       <div
         className={` bg-teal-50 rounded my-3 md:my-0 w-full gap-1 `}
       >
-        <ul className="grid grid-cols-3 gap-1 md:grid-cols-none">
-          {categories?.map((category,i) => (
-            <Link className="border border-teal-600 md:border-none flex items-center rounded" key={i} href={`/category/${category.value}`}>
-              <li className="md:px-4 w-full py-2 rounded bg-white">
-                <span className="flex flex-col md:flex-row items-center hover:underline hover:text-teal-600 md:gap-3">
-                  <img className="w-8 h-8" src={category.icon} alt="" />
-
-                  <p className="md:font-bold leading-4 md:hidden">{category.value}</p>
-
-                  <p className="md:font-bold leading-4 hidden md:block">{category.label}</p>
-                </span>
-              </li>
-            </Link>
-          ))}
-        </ul>
+        {
+           loading ? <div className="h-44 w-full flex items-center justify-center">
+            <div className="border-4 border-teal-600 rounded-full h-12 w-12 border-dashed animate-spin"></div>
+           </div>
+           :
+           <CategoryList />
+        }
       </div>
     </div>
   );
