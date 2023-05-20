@@ -10,11 +10,11 @@ import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { MdCancel } from "react-icons/md";
 import CreatableSelect from 'react-select/creatable';
 import { Router, useRouter } from "next/router";
+import { v4 as uuidv4 } from 'uuid';
 
 const AddProducts = () => {
   const { state } = useAllContext();
   const { products: product } = state;
-
   // router 
   const router = useRouter()
 
@@ -82,7 +82,7 @@ const AddProducts = () => {
     formState: { errors },
   } = useForm();
 
-  const id = (count + 1).toString();
+  const id = uuidv4().split('-')[0]
   console.log(id);
   const onSubmit = (data) => {
     setProductLoading(true);
@@ -102,7 +102,7 @@ const AddProducts = () => {
       size:[],
       color:[],
       weight:[],
-      unit: unit,
+      unit: data.unit,
       qunatityPrice: qunatity,
     };
     axios
