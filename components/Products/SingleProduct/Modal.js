@@ -35,12 +35,8 @@ const Modal = ({ id, setId }) => {
 
   // add product to cart with enough money
   const handleAddToCart = () => {
-   if (dbUser.balance >= totalPrice) {
       dispatch({ type: actionTypes.ADD_TO_CART, payload: modalData });
       toast.success("Added to Cart");
-    } else {
-      toast.error("Not enough money to add to cart");
-    }
   };
 
   // remove product from cart
@@ -215,8 +211,9 @@ const Modal = ({ id, setId }) => {
                 </p>
                 <div className="flex items-center my-4">
                   <div className=" product-price font-bold">
+                    {/* Price */}
                     <span className="inline-block text-2xl">
-                      ${modalData.price}
+                      ${(modalData.price)} <span className="text-xs">Per {modalData.unit}</span>
                     </span>
                   </div>
                 </div>

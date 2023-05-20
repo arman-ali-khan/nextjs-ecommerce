@@ -38,16 +38,16 @@ const AdminSideNav = () => {
              {/* Categories */}
              <ul className='flex flex-col gap-2'>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex  items-center gap-2' href={'#'}> <BiHomeAlt2 size={25} /> Dashboard</Link>
+                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex  items-center gap-2' href={'/user'}> <BiHomeAlt2 size={25} /> Dashboard</Link>
             </li>
             <li>
                 <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'#'}><TbBread size={25} />Message</Link>
             </li>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'#'}><GiFruitBowl size={25} />My Clients</Link>
+                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'#'}><GiFruitBowl size={25} />My Stocks</Link>
             </li>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'#'}> <GiMedicines size={25} />Orders</Link>
+                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/user/orders'}> <GiMedicines size={25} />My Orders</Link>
             </li>
             <li>
                 <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'#'}> <GiMedicines size={25} />Money Order</Link>

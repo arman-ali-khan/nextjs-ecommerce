@@ -59,7 +59,7 @@ const Products = () => {
     }
 
     if(!loading && !error && products?.length){
-      content =   products?.map((product,i)=><ProductCard key={product.id} product={product} />)
+      content =   products?.map((product,i)=><ProductCard key={i} product={product} />)
     }
     return (
         <section className='container mx-auto md:my-12 my-3 overflow-hidden'>

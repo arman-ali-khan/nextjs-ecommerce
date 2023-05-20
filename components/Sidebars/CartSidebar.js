@@ -6,7 +6,7 @@ import SingleCart from "./SingleCart";
 import Link from "next/link";
 
 const CartSidebar = ({ showCart, setShowCart }) => {
-  const { state, dispatch,user } = useAllContext();
+  const { state, dispatch,user,dbUser } = useAllContext();
   const products = state.cart;
 
 
@@ -75,7 +75,18 @@ const CartSidebar = ({ showCart, setShowCart }) => {
 
       {
         user?.uid ? 
-       <Link href={'/order'}>  <button
+       dbUser.balance < totalPrice ?   <button
+       className={`sticky bottom-16 md:bottom-12 w-full left-0 bg-gray-300 text-black rounded-full px-4 py-1 my-3 flex items-center justify-between ${
+         (showCart && products.length) || "hidden"
+       }`}
+     >
+       Not enough balance({dbUser.balance})
+       <span className="bg-white px-4 text-teal-600 font-bold rounded-full text-lg py-2">
+         ${totalPrice.toFixed(2)}
+       </span>
+     </button>
+     :
+     <Link href={'/order'}>  <button
        className={`sticky bottom-16 md:bottom-12 w-full left-0 bg-teal-600 text-white rounded-full px-4 py-1 my-3 flex items-center justify-between ${
          (showCart && products.length) || "hidden"
        }`}

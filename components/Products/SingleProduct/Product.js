@@ -27,13 +27,8 @@ let totalPrice = products.reduce(function (prev, current) {
 
 // add product to cart with enough money
 const handleAddToCart = () => {
-  if(dbUser.balance >= totalPrice){
    dispatch({type:actionTypes.ADD_TO_CART,payload:product})
    toast.success("Added to Cart")
-  
-  }else{
-   toast.error('Not enough money to add to cart')
-  }
  }
 
   const handleRemoveFromCart = () => {

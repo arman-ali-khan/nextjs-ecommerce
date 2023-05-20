@@ -32,16 +32,8 @@ let totalPrice = products.reduce(function (prev, current) {
 console.log(totalPrice,dbUser.balance)
 // add product to cart with enough money
 const handleAddToCart = () => {
-  if(dbUser.balance >= totalPrice){
    dispatch({type:actionTypes.ADD_TO_CART,payload:product})
    toast.success("Added to Cart")
-  
-  }else if(!user.email){
-   toast.error('Login First')
-  }
-  else{
-    toast.error('Not enough money to add to cart')
-   }
  }
 
   const handleRemoveFromCart = () => {
@@ -124,17 +116,18 @@ const handleAddToCart = () => {
        
       </div>
       :
-      <div
-      onClick={handleAddToCart}
+    <div
+    onClick={handleAddToCart}
+    
+      className={`flex cursor-pointer select-none justify-between items-center bg-gray-100 duration-300 border border-teal-600  pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600`}
+    >
+      <button>Add To Cart</button>
+      <span className=" px-4 py-2">
+        <MdOutlineAdd size={20} />
+      </span>
+    </div>
+  }
       
-        className={`flex cursor-pointer select-none justify-between items-center bg-gray-100 duration-300 border border-teal-600  pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600`}
-      >
-        <button>Add To Cart</button>
-        <span className=" px-4 py-2">
-          <MdOutlineAdd size={20} />
-        </span>
-      </div>
-      }
       
       <div>
       </div>

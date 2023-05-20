@@ -19,7 +19,25 @@ export default async function handler(req, res) {
     }
     
     const order = req.body;
+    // order money
+    const total = order.total 
+
+    // get user
+    const user = await db.collection('users').findOne({email:email})
+    // get exept balance
+    const exeptBalance = parseFloat(user.balance) - parseFloat(total)
+    console.log(exeptBalance.toFixed(2))
     const result = await db.collection("orders").insertOne(order);
+    // update balance
+    await db.collection('users').updateOne(
+      {email:email},
+      {
+        $set: {
+          balance: exeptBalance.toFixed(2),
+        },
+      },
+      {upsert: true}
+    )
     res.status(200).json(result);
   } else {
     res.setHeader("Allow", ["POST"]);

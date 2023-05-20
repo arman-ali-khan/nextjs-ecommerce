@@ -91,7 +91,7 @@ const orderPath = router.pathname
           {state.cart.length} Items
         </p>
         <p className="bg-white px-3 py-1 rounded-md font-bold text-teal-600">
-          ${price}
+          ${price.toFixed(2)}
         </p>
       </div>
 
