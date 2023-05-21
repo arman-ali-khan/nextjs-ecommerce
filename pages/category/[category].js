@@ -15,7 +15,7 @@ const category = ({ data: category, category: title }) => {
   const categoryTitle = title.split("-").join(" ").toUpperCase();
   console.log(categoryTitle);
   return (
-    <Layout title={`All files archived ${categoryTitle}`}>
+    <Layout title={`All products archived ${categoryTitle}`}>
       <div className="w-full md:flex flex-col container mx-auto gap-2 my-12 overflow-hidden">
         <div className="flex items-center justify-between my-3 bg-orange-100 border border-gray-100 rounded p-3">
           <h6 className="text-sm ">

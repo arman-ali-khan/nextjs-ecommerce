@@ -273,9 +273,9 @@ const Modal = ({ id, setId }) => {
                             type="button"
                             className="text-gray-600  font-medium underline ml-2 hover:text-teal-600"
                           >
-                            <Link href={`/category/${category.label}`}>
+                            <Link href={`/category/${category.value}`}>
                               {" "}
-                              {category.value}
+                              {category.label}
                             </Link>
                           </button>
                         ))}
