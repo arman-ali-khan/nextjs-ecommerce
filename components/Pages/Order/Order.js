@@ -128,7 +128,7 @@ const orderData = {
  <h2 className="md:text-2xl text-xl font-bold">Order items</h2>
  <ul className="flex flex-col pt-4 space-y-2">
     {
-        products.map(product =>  <li key={product._id} className="flex items-start justify-between">
+        products.map((product,i) =>  <li key={i} className="flex items-start justify-between">
          <div className='flex items-center gap-1'>
             <img className='w-6 h-6' src={product.images[0].original} alt={product.title} />
             <h3>{product.title}

@@ -7,7 +7,6 @@ const CategoryList = ({categories}) => {
     return (
         <ul className="grid grid-cols-3 gap-0 md:grid-cols-none">
         {categories?.map((category,i) => (
-         <>
            <Link className="border  border-teal-600 md:border-none flex items-center rounded" key={i} href={`/category/${category.value}`}>
             <li className="md:px-4 w-full py-1 border-b rounded-xl bg-white">
               <span className="flex flex-col md:flex-row items-center hover:underline hover:text-teal-600 md:gap-3">
@@ -20,7 +19,6 @@ const CategoryList = ({categories}) => {
             </li>
           </Link>
          
-         </>
         ))}
       </ul>
     );

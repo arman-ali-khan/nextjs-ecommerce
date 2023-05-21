@@ -60,8 +60,8 @@ const Location = () => {
         }`}
       >
         <ul>
-          {categories.map((category) => (
-            <button onClick={()=>handleLocation(category)} key={category.id} className="w-full" >
+          {categories.map((category,i) => (
+            <button onClick={()=>handleLocation(category)} key={i} className="w-full" >
               <li className="px-4 py-2 rounded border-b bg-white">
                 <span className="flex items-center hover:underline hover:text-teal-600 gap-3">
                   <p className="font-bold">{category.title}</p>

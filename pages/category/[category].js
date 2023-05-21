@@ -40,8 +40,8 @@ const category = ({ data: category, category: title }) => {
             <div>
               {/* Home tags */}
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2">
-                {category.map((product) => (
-                  <ProductCard product={product} key={product.id} />
+                {category.map((product,i) => (
+                  <ProductCard product={product} key={i} />
                 ))}
               </div>
               {/* pagination */}

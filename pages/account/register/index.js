@@ -1,6 +1,6 @@
 import Layout from "@/Layout/Layout";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { authentication } from "@/firebase/firebase.config";
@@ -21,6 +21,22 @@ const index = () => {
     formState: { errors },
   } = useForm();
 
+
+  // get agents
+  const [agents,setAgents] = useState([]);
+  const [agentLoad,setAgentsLoad] = useState(true);
+
+  useEffect(()=>{
+    axios.get('/api/agents')
+    .then(response => {
+      setAgents(response.data)
+      setAgentsLoad(false)
+    })
+       .catch(error => {
+      console.log(error)
+      setAgentsLoad(false)
+    })
+  },[])
 
   // get params url
   const {next} = router.query
@@ -50,45 +66,45 @@ const index = () => {
         phone,
         stock:0,
         balance:0,
-        agent: '01701034883',
         id:'1234567890',
         revenue:0,
         location:'',
-        uid:userCredential.user.uid
+        uid:userCredential.user.uid,
+        agent: data.agent,
       }
-      // send data in database 
-      axios.post(`${process.env.NEXT_PUBLIC_API_PRO}/api/user/create`, userData,{
+     // send data in database 
+     axios.post(`${process.env.NEXT_PUBLIC_API_PRO}/api/user/create`, userData,{
+      headers:{
+        'content-type':'application/json'
+    },
+    })
+    .then((response) => {
+      console.log(response);
+      toast.success('Account Successfully Created')
+      axios.post(`${process.env.NEXT_PUBLIC_API_PRO}/api/jwt`,{user:user.email},{
         headers:{
           'content-type':'application/json'
-      },
-      })
+      },})
       .then((response) => {
-        console.log(response);
-        toast.success('Account Successfully Created')
-        axios.post(`${process.env.NEXT_PUBLIC_API_PRO}/api/jwt`,{user:user.email},{
-          headers:{
-            'content-type':'application/json'
-        },})
-        .then((response) => {
-          setToken(response.data)
-         const token = accessToken('accessToken')
-         console.log(token)
-         if(token) {
-          if(next){
-            router.push(`/${next}`)
-           }else{
-            router.push('/')
-           }
+        setToken(response.data)
+       const token = accessToken('accessToken')
+       console.log(token)
+       if(token) {
+        if(next){
+          router.push(`/${next}`)
+         }else{
+          router.push('/')
          }
-        
-        }, (error) => {
-          const errorMessage = error.message;
-          console.log(errorMessage)
-        })
+       }
+      
       }, (error) => {
         const errorMessage = error.message;
-        userDispatch({type:actionTypes.GETTING_USER_ERROR,payload:{errorMessage}})
+        console.log(errorMessage)
       })
+    }, (error) => {
+      const errorMessage = error.message;
+      userDispatch({type:actionTypes.GETTING_USER_ERROR,payload:{errorMessage}})
+    })
     }
 
 
@@ -178,6 +194,38 @@ const index = () => {
                     Female
                   </option>
                 </select>
+              </div>
+            </fieldset>
+            {/* Agents */}
+            <label>Agent</label>
+            <fieldset className="flex items-center gap-4">
+              <legend className="sr-only">Gender</legend>
+              <div className="flex items-center">
+                {
+                  agentLoad ? <select
+                  className="select border border-teal-600"
+                  
+                >
+                  <option value="" key="">Agents are loading...</option>
+                </select> 
+                  :
+                  <select
+                  className="select border border-teal-600"
+                  {...register("agent", { required: true })}
+                >
+                {
+                  agents.map((agent,i) => {
+                    return (
+                      <option className="select" value={agent.email} key={i}>
+                        {agent.name}
+                      </option>
+                    );
+                  })
+                }
+                 
+                </select>
+                }
+                
               </div>
             </fieldset>
             {/* Password */}

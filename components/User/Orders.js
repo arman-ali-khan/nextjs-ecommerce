@@ -48,7 +48,7 @@ const token = accessToken('accessToken')
  <tbody>
    {/* row 1 */}
    {
-     orders?.map((order,i)=><tr key={order._id}>
+     orders?.map((order,i)=><tr key={i}>
        <th>{i+1}</th>
        <td>{moment(order.date).fromNow()}</td>
        <td>{order?.status}</td>

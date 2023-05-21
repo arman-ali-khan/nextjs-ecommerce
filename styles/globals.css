@@ -11,11 +11,6 @@
     opacity: 0.2;
   }
 
-  .image-gallery-slide img {
-    height: 400px;
-    width: 400px;
-    object-fit: cover;
-}
 
   .z_index {
     z-index: 999;
@@ -137,4 +132,19 @@
 .padding{
   padding-bottom: 90px!important;
 }
+}
+
+.image-gallery-slide img {
+  height: 400px!important;
+  width: 400px!important;
+  object-fit: cover!important;
+}
+span.image-gallery-thumbnail-inner img {
+  height: 70px!important;
+  width: 100%!important;
+  object-fit: cover!important;
+}
+
+.image-gallery-left-nav[disabled], .image-gallery-right-nav[disabled] {
+  display: none!important;
 }

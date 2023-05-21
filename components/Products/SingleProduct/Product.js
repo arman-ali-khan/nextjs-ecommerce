@@ -48,7 +48,8 @@ const handleAddToCart = () => {
             <div className="span-order h-96">
               <ImageGallery
                 className="h-96"
-                showNav={false}
+                showNav={true}
+                infinite={false}
                 showPlayButton={false}
                 items={product.images}
               />

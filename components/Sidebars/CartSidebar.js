@@ -103,7 +103,7 @@ const CartSidebar = ({ showCart, setShowCart }) => {
           (showCart && products.length) || "hidden"
         }`}
       >
-      Login and Proceed To Checkout
+      Login  before Checkout
         <span className="bg-white px-4 text-teal-600 font-bold rounded-full text-lg py-2">
           ${totalPrice.toFixed(2)}
         </span>

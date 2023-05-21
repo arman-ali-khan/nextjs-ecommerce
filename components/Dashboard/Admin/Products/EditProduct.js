@@ -241,7 +241,7 @@ const router = useRouter();
           {/* {" images "} */}
           <div className="flex flex-wrap items-center justify-center my-2">
             {imageUrl.map((image, i) => (
-              <div className="relative">
+              <div key={i} className="relative">
                 {/*  image remove btn */}
                 <span onClick={()=>handleImageUpdate(image.original)} className="absolute cursor-pointer top-0 right-0 text-xl text-rose-400"><MdCancel /></span>
 

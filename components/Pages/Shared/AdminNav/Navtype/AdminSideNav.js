@@ -52,6 +52,9 @@ const AdminSideNav = () => {
                 <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'#'}><MdSupportAgent size={25} />Agents</Link>
             </li>
             <li>
+                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/agent/getmyclient'}><MdSupportAgent size={25} />Clients</Link>
+            </li>
+            <li>
                 <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'#'}><TbMessageDots size={25} />Message</Link>
             </li>
             <li>

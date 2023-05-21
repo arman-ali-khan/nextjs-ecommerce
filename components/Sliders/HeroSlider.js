@@ -22,8 +22,8 @@ const HeroSlider = () => {
 
   return (
     <Slider {...settings}>
-    {images.map((image) => (
-      <div className='h-56 md:h-96 rounded-md' key={image.id}>
+    {images.map((image,i) => (
+      <div className='h-56 md:h-96 rounded-md' key={i}>
         <img className='w-full h-full object-cover rounded-md' src={image.url} alt={image.alt} />
       </div>
     ))}

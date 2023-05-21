@@ -182,7 +182,8 @@ const Modal = ({ id, setId }) => {
                   {modalData.images && (
                     <ImageGallery
                       className="h-96 w-44"
-                      showNav={false}
+                      showNav={true}
+                      infinite={false}
                       showPlayButton={false}
                       items={modalData?.images}
                     />
