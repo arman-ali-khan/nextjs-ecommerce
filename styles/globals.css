@@ -148,3 +148,11 @@ span.image-gallery-thumbnail-inner img {
 .image-gallery-left-nav[disabled], .image-gallery-right-nav[disabled] {
   display: none!important;
 }
+
+
+
+@media screen and (max-width: 600px) {
+  .h-image{
+    height: 80px;
+  }
+}

@@ -52,7 +52,7 @@ const index = () => {
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    const photo = "https://nextjs-ecommerce1.vercel.app/logo.svg";
+    const photo = "/logo.svg";
     userDispatch({type:actionTypes.GETTING_USER_SUCCESS,payload:{user}})
 
 

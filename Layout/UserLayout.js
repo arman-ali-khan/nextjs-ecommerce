@@ -36,28 +36,31 @@ function UserLayout({ children, title, description, thumb }) {
     <PrivateRoutes>
       <AdminNavbar />
       <Head>
-        <title>{title || `Loading...`}</title>
+        <title>{title || `Profile`}</title>
         <meta name="description" content={description} key="desc" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={thumb} />
       </Head>
-      <div className="container mx-auto mt-12 py-3 relative">
-        <div className=" md:-bottom-20 -bottom-8 relative">
-          <div className="w-full mb-20  absolute -z-10 md:h-64 h-44 flex-shrink-0 my-5  bg-teal-500 rounded-lg  shadow-lg flex justify-center"></div>
-          {user?.uid ? (
-            <img
-              className="md:w-44  flex justify-center mx-auto w-20  object-cover h-[11rem] rounded-full overflow-hidden bg-teal-100 border-2 border-teal-600"
+      <div className="container mx-auto mt-12 py-3 relative overflow-hidden">
+        <div className=" md:-bottom-20  -bottom-8 relative">
+          <div className="w-full mb-20  absolute -z-10  md:h-44 h-image flex-shrink-0 my-5  bg-teal-500 rounded-lg  shadow-lg flex justify-center"></div>
+          <div className="md:h-24 h-image bg-teal-600 rounded-md flex justify-center w-full">
+          {user?.photo ? (
+             <img
+              className="md:w-44  flex justify-center mx-auto w-20  object-cover  rounded-full overflow-hidden bg-teal-100 border-2 border-teal-600"
               src={dbUser?.photo}
               alt=""
             />
+          
           ) : (
-            <img
-              className="md:w-44  flex justify-center mx-auto w-20  object-cover h-[11rem] rounded-full overflow-hidden bg-teal-100 border-2 border-teal-600"
+             <img
+              className="md:w-44  flex justify-center mx-auto w-20  object-cover  rounded-full overflow-hidden bg-teal-100 border-2 border-teal-600"
               src="http://static.everypixel.com/ep-pixabay/0329/8099/0858/84037/3298099085884037069-head.png"
               alt=""
             />
           )}
+          </div>
           <div className="w-72 mx-auto text-center bg-teal-100   overflow-hidden relative  px-6 rounded-md my-3 py-4">
             <h2 className="text-xl md:text-2xl font-bold">{dbUser?.name}({dbUser.type})</h2>
             <p>{dbUser?.phone}</p>
@@ -92,7 +95,7 @@ function UserLayout({ children, title, description, thumb }) {
           <h2 className="text-2xl my-3 md:my-6"> User Dashboard</h2>
         </div>
         <div className="md:flex gap-3 ">
-          <div className="md:w-44 w-full hidden md:block">
+          <div className="md:w-44 w-full hidden md:block ">
           {
             dbUser.type === 'admin' && <AdminSideNav />
           }

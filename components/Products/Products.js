@@ -3,15 +3,21 @@ import ProductCard from './ProductCard';
 import { BiTrendingUp } from 'react-icons/bi';
 import { BsArrowRight } from 'react-icons/bs';
 import Link from 'next/link';
-import {  useAllContext } from '@/context/ContextProvider';
+import {  useAllContext, } from '@/context/ContextProvider';
 
 const Products = () => {
-   const {state} = useAllContext()
+   const {state,currentPage, setCurrentPage} = useAllContext()
    const {products:product,loading,error} = state;
     const products  = product.allFiles;
     
-    const count = product.count
-    
+
+console.log(currentPage)
+
+
+    const productCount = product
+const count = Math.ceil((productCount?.count || 10 )/ 5)
+console.log(Math.ceil((productCount?.count || 10) / 5))
+
     let content ;
     if(loading) {
       content = [...Array(10).keys()].map((product,i)=> <div key={i}
@@ -74,11 +80,11 @@ const Products = () => {
             { content}
         </div>
         <div className='flex justify-center my-2'>
-        <div className="btn-group">
-  <button className="bg-teal-600 px-4 py-2 text-white hover:bg-teal-700 duration-300 rounded-l-md">1</button>
-  <button className="bg-teal-800 px-4 py-2 text-white hover:bg-teal-700 duration-300">2</button>
-  <button className="bg-teal-600 px-4 py-2 text-white hover:bg-teal-700 duration-300">3</button>
-  <button className="bg-teal-600 px-4 py-2 text-white hover:bg-teal-700 duration-300 rounded-r-md">4</button>
+          
+        <div className="btn-group rounded-md">
+  {
+    [...Array(count).keys()].map((product,i)=> <button onClick={()=>setCurrentPage(i)} key={i} className={`bg-teal-600 px-4 py-2 btn border-none text-white hover:bg-teal-700 duration-300 ${currentPage===i &&'bg-teal-700'}`}>{i+1}</button>)
+  }
 </div>
         </div>
         </section>

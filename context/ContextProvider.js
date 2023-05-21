@@ -91,12 +91,14 @@ const[updateMoney,setUpdateMoney] = useState(false);
   }, []);
 
   
+  // pagination
+  const [currentPage,setCurrentPage] = useState(0)
 
   useEffect(() => {
     dispatch({ type: actionTypes.FETCHING_START });
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/products');
+        const response = await fetch(`/api/products?page=${currentPage}`);
         const jsonData = await response.json();
         dispatch({ type: actionTypes.FETCHING_SUCCESS, payload: jsonData})
       } catch (error) {
@@ -105,7 +107,7 @@ const[updateMoney,setUpdateMoney] = useState(false);
     };
 
     fetchData();
-  }, [loading]);
+  }, [loading,currentPage]);
 
 
   const [dbUser, setDbUser] = useState({});
@@ -129,6 +131,8 @@ const token =accessToken('accessToken')
   })
   }, [user?.email,token,updateMoney]);
 
+
+
  
 
   const value = {
@@ -149,6 +153,9 @@ const token =accessToken('accessToken')
     setShowCategory,
     setUpdateMoney,
     updateMoney,
+    // pagination
+    currentPage,
+    setCurrentPage,
   };
 
   return <ALL_CONTEXT.Provider value={value}>{children}</ALL_CONTEXT.Provider>;
