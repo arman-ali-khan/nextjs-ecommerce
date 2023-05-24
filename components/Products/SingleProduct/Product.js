@@ -120,7 +120,7 @@ const handleAddToCart = () => {
                               </button>
                             </div>
                           </div>
-                        ) : (
+                        ) : ( product.stock > 0 &&
                           <div className="flex items-center">
                             <div
                               onClick={handleAddToCart}

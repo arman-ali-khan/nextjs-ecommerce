@@ -25,7 +25,7 @@ function UserLayout({ children, title, description, thumb }) {
     setMoneyLoading(true);
     const timer = setTimeout(() => {
       setMoneyClass("!-left-64");
-    }, 5000);
+    }, 2000);
     return () => {
       clearTimeout(timer);
       setMoneyLoading(false);
@@ -65,29 +65,33 @@ function UserLayout({ children, title, description, thumb }) {
             <h2 className="text-xl md:text-2xl font-bold">{dbUser?.name}({dbUser.type})</h2>
             <p>{dbUser?.phone}</p>
             <p>{dbUser?.email}</p>
-            <div className={`mx-auto flex justify-center relative`}>
+            <div className={`mx-auto flex  justify-center relative`}>
               <p
+                className={`${dbUser?.balance < 20 ? 'bg-rose-300':'bg-blue-400 text-white px-2 py-1 rounded-full'}`}
                 onClickCapture={() => setMoneyLoading(false)}
                 onClick={() => setMoneyClass("")}
               >
-                Your balance is ${dbUser?.balance}
+                Your balance is <span className="font-bold">${dbUser?.balance}</span>
               </p>
+             
               <button
                 onClickCapture={() => setMoneyLoading(true)}
                 onClick={handleMoneyShow}
-                className={`absolute text-white bg-teal-600 h-6 rounded-full top-0 duration-300 w-full  ${
+                className={`absolute text-white py-2 inline-block bg-teal-600 rounded-full top-0 duration-300 w-full  ${
                   moneyClass === "" ? "left-0" : "-left-96"
                 }`}
               >
                 {moneyLoading ? (
-                  <span className="h-3 px-3  rounded-full border border-teal-600 animate-pulse bg-teal-600 border-dashed">
+                  <span className="h-3 px-3 py-2 rounded-full border border-teal-600 animate-pulse bg-teal-600 border-dashed">
                     Money Loading...
                   </span>
                 ) : (
                   "See your money"
                 )}
               </button>
+              
             </div>
+            
           </div>
         </div>
       

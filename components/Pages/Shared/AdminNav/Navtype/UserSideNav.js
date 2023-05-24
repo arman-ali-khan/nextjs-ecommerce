@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
 import {BiCategory, BiHomeAlt2, BiMenuAltRight} from 'react-icons/bi'
-import {TbBread} from 'react-icons/tb'
+import {TbBread, TbReportMoney} from 'react-icons/tb'
 import {GiFruitBowl, GiMedicines} from 'react-icons/gi'
+import { BsCartCheck } from 'react-icons/bs';
+import { CiPercent } from 'react-icons/ci';
 
 const AdminSideNav = () => {
     const [showMenu,setShowMenu] = useState(false)
@@ -36,7 +38,7 @@ const AdminSideNav = () => {
             :
            <>
              {/* Categories */}
-             <ul className='flex flex-col gap-2'>
+             <ul className='flex flex-col gap-2 w-64'>
             <li>
                 <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex  items-center gap-2' href={'/user'}> <BiHomeAlt2 size={25} /> Dashboard</Link>
             </li>
@@ -47,10 +49,13 @@ const AdminSideNav = () => {
                 <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'#'}><GiFruitBowl size={25} />My Stocks</Link>
             </li>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/user/orders'}> <GiMedicines size={25} />My Orders</Link>
+                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/user/orders'}> <BsCartCheck size={25} />My Orders</Link>
             </li>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'#'}> <GiMedicines size={25} />Money Order</Link>
+                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/user/orders'}> <CiPercent size={25} />My Revenue</Link>
+            </li>
+            <li>
+                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/user/moneyorder'}> <TbReportMoney size={25} />Money Orders</Link>
             </li>
            </ul>
            </>

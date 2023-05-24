@@ -1,10 +1,12 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
 import {BiCategory, BiHomeAlt2, BiMenuAltRight} from 'react-icons/bi'
-import {TbBread, TbCurrencyTaka, TbMessageDots, TbShoppingCartPlus} from 'react-icons/tb'
+import {TbBread, TbCurrencyTaka, TbMessageDots, TbReportMoney, TbShoppingCartPlus, TbUsers} from 'react-icons/tb'
 import {GiFruitBowl, GiMedicines} from 'react-icons/gi'
 import {FiShoppingCart, FiUsers} from 'react-icons/fi'
 import { MdOutlineDashboard, MdSupportAgent } from 'react-icons/md';
+import { BsCartCheck } from 'react-icons/bs';
+import { CiPercent } from 'react-icons/ci';
 
 const AdminSideNav = () => {
     const [showMenu,setShowMenu] = useState(false)
@@ -38,9 +40,9 @@ const AdminSideNav = () => {
             :
            <>
              {/* Categories */}
-             <ul className='flex flex-col gap-2'>
+             <ul className='flex flex-col gap-2  w-64'>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex  items-center gap-2' href={'#'}> <MdOutlineDashboard size={25} /> Dashboard</Link>
+                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex  items-center gap-2' href={'/user'}> <MdOutlineDashboard size={25} /> Dashboard</Link>
             </li>
             <li>
                 <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/admin/products'}><FiShoppingCart size={25} />Products</Link>
@@ -52,7 +54,7 @@ const AdminSideNav = () => {
                 <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'#'}><MdSupportAgent size={25} />Agents</Link>
             </li>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/agent/getmyclient'}><MdSupportAgent size={25} />Clients</Link>
+                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/agent/getmyclient'}><TbUsers size={25} />Clients</Link>
             </li>
             <li>
                 <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'#'}><TbMessageDots size={25} />Message</Link>
@@ -61,10 +63,13 @@ const AdminSideNav = () => {
                 <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'#'}><FiUsers size={25} />Users</Link>
             </li>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'#'}> <TbShoppingCartPlus size={25} />Orders</Link>
+                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/user/orders'}> <BsCartCheck size={25} />Orders</Link>
             </li>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'#'}> <TbCurrencyTaka size={25} />Money Order</Link>
+                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'#'}> <CiPercent size={25} />Revenue</Link>
+            </li>
+            <li>
+            <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/user/moneyorder'}> <TbReportMoney size={25} />Money Orders</Link>
             </li>
            </ul>
            </>

@@ -8,16 +8,27 @@ const GetMyClients = () => {
     const {user} = useAllContext()
     const [clients,setClients] = useState([])
 
+    // loading 
+    const [loading,setLoading] = useState(true)
+
     useEffect(()=>{
         axios.get(`/api/getMyClient?email=${user.email}`)
         .then(res=>{
             console.log(res.data)
             setClients(res.data)
-        })
-        .catch(err=>{
+            setLoading(false)
+          })
+          .catch(err=>{
             console.log(err)
+            setLoading(false)
         });
     },[])
+
+    const client = loading ?<span className='flex justify-center w-full'>
+       <span className='border-2 h-12 w-12 rounded-full border-teal-800 border-dashed animate-spin'></span> 
+    </span>
+    :
+     clients?.map((client,i)=><ClientTable client={client} key={i}/>) 
     return (
         <div>
             <UserLayout title={'Clients'}>
@@ -36,8 +47,9 @@ const GetMyClients = () => {
  </thead>
  <tbody>
    {/* row 1 */}
+
    {
-     clients?.map((client,i)=><ClientTable client={client} key={i}/>)
+     client
    }
  </tbody>
 </table>

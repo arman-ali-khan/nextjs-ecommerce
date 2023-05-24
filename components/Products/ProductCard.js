@@ -52,6 +52,18 @@ const handleAddToCart = () => {
     <>
     <div
       className={`shadow-xl rounded-md relative`}>
+        {/* stock */}
+        <div>
+          {product.stock > 0? (
+            <div className="absolute top-1 px-2 right-1 bg-green-500 rounded-full p-1 text-white text-xs">
+              In Stock
+            </div>
+          ) : (
+            <div className="absolute top-1 px-2 right-1 bg-red-500 rounded-full p-1 text-white text-xs">
+              Out of Stock
+              </div>
+          )}
+        </div>
       <div >
         <label onClick={()=>setId(product.id)} className={`h-60 bg-base-100 cursor-pointer`}>
           <img src={product.images[0].original} alt="" />
@@ -116,6 +128,9 @@ const handleAddToCart = () => {
        
       </div>
       :
+      
+        product.stock > 0 && 
+      
     <div
     onClick={handleAddToCart}
     

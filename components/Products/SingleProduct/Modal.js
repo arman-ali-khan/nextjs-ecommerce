@@ -246,6 +246,7 @@ const Modal = ({ id, setId }) => {
                         </button>
                       </div>
                     ) : (
+                      modalData.stock > 0 && 
                       <div
                         onClick={handleAddToCart}
                         className={`text-sm leading-4 flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-teal-500 hover:bg-teal-600 w-56 h-12`}

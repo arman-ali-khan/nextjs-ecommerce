@@ -8,12 +8,12 @@ const Profile = () => {
         // get context
   const { user } = useAllContext()
 
+
   // get token from cookie
 const token = accessToken('accessToken')
 
   const [orders,setOrders] = useState([])
 
-  console.log(orders)
   // get orders from mongodb
   useEffect(()=>{
     axios.get(`/api/order?email=${user.email}`,{
@@ -22,9 +22,19 @@ const token = accessToken('accessToken')
       }
     })
     .then(res=>{
-            setOrders(res.data)
+      setOrders(res.data)
           })
   },[])
+
+  const total = orders.length 
+
+  const processing = orders.filter(order => order.status === 'Processing').length 
+  
+  const outForDelivery = orders.filter(order => order.status === 'Out for delivery').length 
+
+  const delivered = orders.filter(order => order.status === 'Delivered').length 
+
+  console.log(delivered)
     return (
         <div>
             <UserLayout>
@@ -53,7 +63,7 @@ const token = accessToken('accessToken')
                   Total Order
                 </h5>
                 <p className="md:text-xl text-base font-bold leading-none text-gray-800">
-                  {orders?.length}
+                  {total}
                 </p>
               </div>
             </div>
@@ -82,7 +92,7 @@ const token = accessToken('accessToken')
                   Pending Order
                 </h5>
                 <p className="md:text-xl text-base font-bold leading-none text-gray-800">
-                  12
+                  {processing}
                 </p>
               </div>
             </div>
@@ -109,10 +119,10 @@ const token = accessToken('accessToken')
               </div>
               <div>
                 <h5 className="leading-none mb-2 text-sm md:text-base font-medium text-gray-700">
-                  Processing Order
+                  Out for Delivery
                 </h5>
                 <p className="md:text-xl text-base font-bold leading-none text-gray-800">
-                  6
+                  {outForDelivery}
                 </p>
               </div>
             </div>
@@ -139,7 +149,7 @@ const token = accessToken('accessToken')
                   Complete Order
                 </h5>
                 <p className="md:text-xl text-base font-bold leading-none text-gray-800">
-                  23
+                  {delivered}
                 </p>
               </div>
             </div>

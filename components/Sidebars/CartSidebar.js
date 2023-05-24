@@ -6,18 +6,13 @@ import SingleCart from "./SingleCart";
 import Link from "next/link";
 
 const CartSidebar = ({ showCart, setShowCart }) => {
-  const { state, dispatch,user,dbUser } = useAllContext();
+  const { state, dispatch, user, dbUser } = useAllContext();
   const products = state.cart;
 
-
-
- 
   // all product price
   let totalPrice = products.reduce(function (prev, current) {
     return prev + +current.price * current.quantity;
   }, 0);
- 
-
 
   return (
     <div
@@ -67,52 +62,82 @@ const CartSidebar = ({ showCart, setShowCart }) => {
         </div>
       ) : (
         <div className="overflow-auto h-full">
-          {products.sort((a,b)=>a.id-b.id).map((product, i) => (
-            <SingleCart product={product} key={i} />
-          ))}
+          {products
+            .sort((a, b) => a.id - b.id)
+            .map((product, i) => (
+              <SingleCart product={product} key={i} />
+            ))}
         </div>
       )}
 
-      {
-        user?.uid ? 
-       dbUser.balance < totalPrice ?   <button
-       className={`sticky bottom-16 md:bottom-12 w-full left-0 bg-gray-300 text-black rounded-full px-4 py-1 my-3 flex items-center justify-between ${
-         (showCart && products.length) || "hidden"
-       }`}
-     >
-       Not enough balance({dbUser.balance})
-       <span className="bg-white px-4 text-teal-600 font-bold rounded-full text-lg py-2">
-         ${totalPrice.toFixed(2)}
-       </span>
-     </button>
-     :
-     <Link href={'/order'}>  <button
-       className={`sticky bottom-16 md:bottom-12 w-full left-0 bg-teal-600 text-white rounded-full px-4 py-1 my-3 flex items-center justify-between ${
-         (showCart && products.length) || "hidden"
-       }`}
-     >
-       Proceed To Checkout{" "}
-       <span className="bg-white px-4 text-teal-600 font-bold rounded-full text-lg py-2">
-         ${totalPrice.toFixed(2)}
-       </span>
-     </button></Link>
-      :
-     <Link href={'/account/login?next=order'}>
-      <button
-        className={`sticky bottom-16 md:bottom-12 w-full left-0 bg-teal-600 text-white rounded-full px-4 py-1 my-3 flex items-center justify-between ${
-          (showCart && products.length) || "hidden"
-        }`}
-      >
-      Login  before Checkout
-        <span className="bg-white px-4 text-teal-600 font-bold rounded-full text-lg py-2">
-          ${totalPrice.toFixed(2)}
-        </span>
-      </button>
-      </Link>
-      }
-
-     
-      
+      {user?.uid ? (
+        dbUser.balance < totalPrice ? (
+          <button
+            className={`sticky bottom-16 md:bottom-12 w-full left-0 bg-gray-300 text-black rounded-full px-4 py-1 my-3 flex items-center justify-between ${
+              (showCart && products.length) || "hidden"
+            }`}
+          >
+            Not enough balance({dbUser.balance})
+            <span className="bg-white px-4 text-teal-600 font-bold rounded-full text-lg py-2">
+              ${totalPrice.toFixed(2)}
+            </span>
+          </button>
+        ) : (
+          <button
+            className={`sticky bottom-16 md:bottom-12 w-full left-0  flex items-center flex-col justify-between ${
+              (showCart && products.length) || "hidden"
+            }`}
+          >
+            <Link className="w-full" href={"/stock"}>
+              <button
+                className={`sticky bottom-16 hover:bg-blue-700 md:bottom-12 w-full left-0 bg-blue-600 text-white rounded-full px-4 py-1 mb-1 flex items-center justify-between gap-1 `}
+              >
+                Buy Stock
+                <span className="bg-white px-2 md:px-4 text-blue-600 font-bold rounded-full md:text-lg py-1 md:py-2">
+                  ${totalPrice.toFixed(2)}
+                </span>
+              </button>
+            </Link>
+            <Link className="w-full" href={"/order"}>
+              <button
+                className={`sticky bottom-16 hover:bg-teal-700 md:bottom-12 w-full left-0 bg-teal-600 text-white rounded-full gap-1 px-4 py-1 mb-1 flex items-center justify-between `}
+              >
+                Checkout
+                <span className="bg-white px-2 md:px-4 text-teal-600 font-bold rounded-full md:text-lg py-1 md:py-2">
+                  ${totalPrice.toFixed(2)}
+                </span>
+              </button>
+            </Link>
+          </button>
+        )
+      ) : (
+        <>
+          <Link href={"/account/login?next=stock"}>
+            <button
+              className={`sticky bottom-44 md:bottom-12 w-full left-0 bg-teal-600 text-white rounded-full px-4 py-1 my-3 flex items-center justify-between ${
+                (showCart && products.length) || "hidden"
+              }`}
+            >
+              Login before Checkout
+              <span className="bg-white px-4 text-teal-600 font-bold rounded-full text-lg py-2">
+                ${totalPrice.toFixed(2)}
+              </span>
+            </button>
+          </Link>
+          <Link href={"/account/login?next=order"}>
+            <button
+              className={`sticky bottom-16 md:bottom-12 w-full left-0 bg-teal-600 text-white rounded-full px-4 py-1 my-3 flex items-center justify-between ${
+                (showCart && products.length) || "hidden"
+              }`}
+            >
+              Login before Checkout
+              <span className="bg-white px-4 text-teal-600 font-bold rounded-full text-lg py-2">
+                ${totalPrice.toFixed(2)}
+              </span>
+            </button>
+          </Link>
+        </>
+      )}
     </div>
   );
 };
