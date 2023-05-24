@@ -1,5 +1,4 @@
 import { connectToDatabase } from "@/utils/db";
-import { verifyJWT } from "../jwt/verifyJWT";
 
 
 
