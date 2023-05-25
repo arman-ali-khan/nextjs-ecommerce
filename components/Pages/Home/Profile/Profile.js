@@ -6,11 +6,13 @@ import React, { useEffect, useState } from 'react';
 
 const Profile = () => {
         // get context
-  const { user } = useAllContext()
-
+  const { user,dUser } = useAllContext()
+console.log(user,dUser);
 
   // get token from cookie
-const token = accessToken('accessToken')
+const token = typeof window !== 'undefined' && localStorage.getItem('accessToken')
+
+console.log(token)
 
   const [orders,setOrders] = useState([])
 

@@ -50,7 +50,7 @@ const NewCategory = () => {
       });
     }
 
-    const token = accessToken('accessToken')
+    const token = localStorage.getItem('accessToken')
 
     const handleCreateCategory = (data) => {
         setCatLoading(true)

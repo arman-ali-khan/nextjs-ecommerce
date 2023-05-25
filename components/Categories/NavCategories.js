@@ -15,7 +15,6 @@ const NavCategories = () => {
     setLoading(true)
     axios.get("/api/categories")
     .then((response) =>{
-      console.log(response.data)
       setLoading(false)
       setCategories(response.data)
     })

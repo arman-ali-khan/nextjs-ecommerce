@@ -39,6 +39,9 @@ console.log(recipientOldBalance,recipientNewBalance,email)
     const user = await db.collection('users').findOne({email:email})
     
     const result = await db.collection("sendMoney").insertOne(sendData);
+
+    if(senderEmail){
+
     // update balance
     await db.collection('users').updateOne(
       {email:email},
@@ -68,6 +71,7 @@ console.log(recipientOldBalance,recipientNewBalance,email)
       {upsert: true}
     )
     res.status(200).json(result);
+    }
   } else {
     res.setHeader("Allow", ["POST"]);
     res.status(405).end(`Method ${req.method} Not Allowed`);

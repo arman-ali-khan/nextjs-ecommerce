@@ -67,7 +67,6 @@ const ClientOrders = () => {
     axios
       .patch(`/api/order/update?id=${id}`, { status })
       .then((response) => {
-        console.log(response.data);
         toast.success("Order status updated successfully");
         setUpdateOrders(!updateOrders);
         setUpdateLoading(false)

@@ -9,6 +9,6 @@ const setToken = (data) => {
 export default setToken;
 
 export const accessToken = (data) =>{
-        const token = typeof window !== 'undefined' && JSON.parse(localStorage.getItem(data))
+        const token = typeof window !== 'undefined' && localStorage.getItem(data)
         return token
 }   

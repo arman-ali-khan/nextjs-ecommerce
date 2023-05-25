@@ -1,6 +1,6 @@
 import { authentication } from "@/firebase/firebase.config";
-import dbUser from "@/hooks/dbUser";
 import { accessToken } from "@/hooks/setToken";
+import useToken from "@/hooks/useToken";
 import actionTypes from "@/state/ProductState/actionTypes";
 import {
   initialState,
@@ -25,6 +25,7 @@ import {
   useState,
 } from "react";
 import { toast } from "react-hot-toast";
+import useUser from "@/hooks/useUser";
 
 export const ALL_CONTEXT = createContext();
 
@@ -109,30 +110,41 @@ const[updateMoney,setUpdateMoney] = useState(false);
     fetchData();
   }, [loading,currentPage]);
 
+  // user loading
+  const [userLoading,setUserLoading] = useState(true)
 
   const [dbUser, setDbUser] = useState({});
 
-// get token from cookie
-const token =accessToken('accessToken')
-
-
+  // call data from local storage in nextjs
+  
   useEffect(() => {
-   axios.get(`/api/getUser/${user?.email}`,{
-    headers: {
-      "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
-    },
-   })
-   .then(res=>setDbUser(res.data))
-   .catch(function (error) {
-    if (error.response.status===401) {
-      return logOut()
+    if (user?.email) {
+      axios
+        .get(`${process.env.NEXT_PUBLIC_API_PRO}/api/getUser/${user?.email}`, {
+          headers: {
+            authorization: `Bearer ${
+              typeof window !== "undefined" &&
+              localStorage.getItem("accessToken")
+            }`,
+          },
+        })
+        .then((res) => {
+          setDbUser(res.data);
+          setUserLoading(false)
+        })
+        .catch((err) => {
+          console.log(err);
+          if (err.response.status === 401) {
+            toast.error("Access Token is invalid");
+            setUserLoading(false)
+          }
+        });
     }
-  })
-  }, [user?.email,token,updateMoney]);
+  }, [user?.email,updateMoney]);
+// get token from cookie
 
 
-
+console.log(dbUser)
  
 
   const value = {
@@ -156,6 +168,7 @@ const token =accessToken('accessToken')
     // pagination
     currentPage,
     setCurrentPage,
+    userLoading
   };
 
   return <ALL_CONTEXT.Provider value={value}>{children}</ALL_CONTEXT.Provider>;

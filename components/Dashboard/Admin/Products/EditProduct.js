@@ -74,7 +74,7 @@ const router = useRouter();
   };
 
   // access token
-  const token = accessToken('accessToken')
+  const token = localStorage.getItem('accessToken')
   // react hoot form
 
   const {
@@ -112,7 +112,6 @@ const router = useRouter();
                 },
       })
       .then((response) => {
-        console.log(response.data);
         toast.success("Product Updated successfully");
         setProductLoading(false);
         router.push('/admin/products')

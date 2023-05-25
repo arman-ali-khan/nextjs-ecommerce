@@ -14,7 +14,7 @@ const AllOrders = () => {
   const { user } = useAllContext()
 
   // get token from cookie
-const token = accessToken('accessToken')
+const token = localStorage.getItem('accessToken')
 
   const [orders,setOrders] = useState([])
 

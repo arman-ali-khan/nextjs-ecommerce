@@ -42,7 +42,7 @@ const Order = () => {
 const [location,setLocation] = useState([])
 
 // get token from cookie
-const token = accessToken('accessToken')
+const token = localStorage.getItem('accessToken')
 
 // phone number
 const number = dbUser?.data?.phone

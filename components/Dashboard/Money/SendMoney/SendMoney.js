@@ -3,8 +3,9 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
-import { BiCheckCircle } from "react-icons/bi";
+import { BiCheckCircle, BiSelection } from "react-icons/bi";
 import { GiCancel } from "react-icons/gi";
+import { ImCheckboxChecked, ImCheckboxUnchecked } from "react-icons/im";
 
 const SendMoney = () => {
   const { dbUser,setUpdateMoney,updateMoney, } = useAllContext();
@@ -60,7 +61,6 @@ const SendMoney = () => {
     if(dbUser.email){
       axios.post(`/api/money/send/create`,sendMoneyData)
     .then(response =>{
-      console.log(response.data);
       toast.success('Send success')
       setUpdateMoney(!updateMoney)
      
@@ -162,7 +162,7 @@ const SendMoney = () => {
             <button
             onClick={()=>handleSendMoney()}
               disabled={
-                balance < sendMoney || !selected || sendMoney < 50
+                balance < sendMoney || !selectedUser.name || sendMoney < 50
               }
               class="w-full cursor-pointer rounded-[4px] bg-teal-600 hover:bg-teal-700 px-3 py-[6px] text-center font-semibold text-white disabled:bg-gray-200 disabled:text-gray-600"
             >
@@ -173,6 +173,7 @@ const SendMoney = () => {
             }
           </div>
         </div>
+        
       </div>
 
       {/* recipient modal */}
@@ -212,24 +213,29 @@ const SendMoney = () => {
               </div>
               {selected ? (
                 <button
-                  className="flex justify-end bg-teal-600 text-white px-4 py-1 rounded"
+                  className="flex justify-end items-center gap-2 bg-teal-600 text-white px-4 py-1 rounded"
                   onClick={() => handleRemoveUser({})}
                 >
+                  <ImCheckboxChecked />
                   Selected
                 </button>
               ) : (
                 <button
-                  className="flex justify-end bg-teal-600 text-white px-4 py-1 rounded"
+                  className="flex justify-end items-center gap-2 bg-teal-500 text-white px-4 py-1 rounded"
                   onClick={() => setSelectedUser( recipient)}
                 >
-                  Select
+                 <ImCheckboxUnchecked /> Select
                 </button>
               )}
             </div>
           ) : (
             "No user found"
           )}
+          <div className="modal-action">
+      <label htmlFor="add-recipient" className="px-4 py-2 rounded bg-teal-600 text-white flex items-center gap-2 cursor-pointer"> <GiCancel size={20} /> Cancel</label>
+    </div>
         </label>
+        
       </label>
     </div>
   );

@@ -1,29 +1,26 @@
 import { useAllContext } from "@/context/ContextProvider";
+import useUser from "@/hooks/useUser";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 
 const PrivateRoutes = ({ children }) => {
   const router = useRouter();
-  const { loading,dbUser:user } = useAllContext();
+  const {user,dbUser,userLoading} = useAllContext()
+ 
 
-  if (loading) {
+  if (userLoading) {
+     return <div className="w-screen h-screen flex items-center justify-center">
       <div className="flex justify-center flex-col items-center">
         <div
-          className="spinner-border border-dashed border-primary animate-spin inline-block w-8 h-8 border-4 rounded-full"
+          className="spinner-border border-dashed border-teal-600 animate-spin inline-block w-8 h-8 border-4 rounded-full"
           role="status"
         ></div>
         <span className="visually-hidden">Loading...</span>
       </div>
+     </div>
     
   }
-
-  useEffect(() => {
-    if (!(user?.uid || loading)) {
-      router.push('/account/login');
-    }
-  }, [user?.uid, loading]);
-
   return children;
 };
 

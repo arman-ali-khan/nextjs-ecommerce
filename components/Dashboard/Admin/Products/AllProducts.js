@@ -21,7 +21,7 @@ const AllProducts = () => {
   const router = useRouter()
 
   // get token from cookie
-const token = accessToken('accessToken')
+const token = localStorage.getItem('accessToken')
 
   const [products,setProducts] = useState([])
 
@@ -46,7 +46,6 @@ const token = accessToken('accessToken')
                 },
       })
       .then((response) => {
-        console.log(response.data);
         toast.success("Product Deleted successfully");
         setProductLoading(false);
         router.push('/admin/products')

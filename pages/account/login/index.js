@@ -2,11 +2,12 @@ import Layout from '@/Layout/Layout';
 import { useAllContext } from '@/context/ContextProvider';
 import setToken from '@/hooks/setToken';
 import setCookie, { accessToken } from '@/hooks/setToken';
+import useToken from '@/hooks/useToken';
 import actionTypes from '@/state/ProductState/actionTypes';
 import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import Cookies from 'universal-cookie';
@@ -21,6 +22,11 @@ const index = () => {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
+  const [loginEmail,setLoginEmail] = useState('')
+
+  const [token]  = useToken(loginEmail)
+
+      console.log(token)
   const handleLoginUser = (data) =>{
     
 
@@ -35,26 +41,11 @@ const index = () => {
       
       userDispatch({type:actionTypes.GETTING_USER_SUCCESS,payload:{user}})
       toast.success('Login success')
-      axios.post(`${process.env.NEXT_PUBLIC_API_PRO}/api/jwt`,{user:user.email},{
-        headers:{
-          'content-type':'application/json'
-      },}).then((response) => {
-        setToken(response.data)
-       const token = accessToken('accessToken')
-       console.log(token)
-       if(token) {
-        if(next){
-          router.push(`/${next}`)
-         }else{
-          router.push('/user')
-         }
-       }
-      
-      }, (error) => {
-        const errorMessage = error.message;
-        console.log(errorMessage)
-      })
-     
+      setLoginEmail(email)
+      if(token){
+        router.push('/')
+      }
+
     })
     .catch((error) => {
       const errorMessage = error.message;

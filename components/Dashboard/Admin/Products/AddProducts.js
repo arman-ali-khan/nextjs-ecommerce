@@ -108,7 +108,6 @@ const AddProducts = () => {
     axios
       .post(`/api/products/create`, productData)
       .then((response) => {
-        console.log(response.data);
         toast.success("Product created successfully");
         setProductLoading(false);
         router.push('/admin/products');
