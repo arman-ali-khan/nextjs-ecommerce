@@ -104,7 +104,7 @@ const router = useRouter();
       unit: unit,
       qunatityPrice: qunatity,
     };
-    console.log(productData)
+
     axios
       .put(`/api/product/update?id=${product.id}&email=${user.email}`, productData,{
         headers: {

@@ -25,7 +25,6 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
 
   const [products,setProducts] = useState([])
 
-  console.log(products)
   // get orders from mongodb
   useEffect(()=>{
     

@@ -67,7 +67,6 @@ const NewCategory = () => {
             },
         })
         .then(res=>{
-            console.log(res.data)
             toast.success('Category created successfully')
             setCatLoading(false)
         })

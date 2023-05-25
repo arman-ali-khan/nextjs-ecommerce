@@ -18,7 +18,6 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
 
   const [orders,setOrders] = useState([])
 
-  console.log(orders)
   // get orders from mongodb
   useEffect(()=>{
     axios.get(`/api/orders?email=${user.email}`,{

@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   const { db } = await connectToDatabase();
 
   const {email} = req.query
-  console.log(email)
+
 
   if (req.method === "GET") {
     const user = await db.collection('users').findOne({email: email})

@@ -48,7 +48,7 @@ function UserLayout({ children, title, description, thumb }) {
           <div className="md:h-24 h-image bg-teal-600 rounded-md flex justify-center w-full">
           {user?.photo ? (
              <img
-              className="md:w-44  flex justify-center mx-auto w-20  object-cover  rounded-full overflow-hidden bg-teal-100 border-2 border-teal-600"
+              className="md:w-44 md:h-44 h-20 flex justify-center mx-auto w-20  object-cover  rounded-full overflow-hidden bg-teal-100 border-2 border-teal-600"
               src={dbUser?.photo}
               alt=""
             />
@@ -71,7 +71,7 @@ function UserLayout({ children, title, description, thumb }) {
                 onClickCapture={() => setMoneyLoading(false)}
                 onClick={() => setMoneyClass("")}
               >
-                Your balance is <span className="font-bold">${dbUser?.balance}</span>
+                Your balance is <span className="font-bold">${(dbUser?.balance)?.toFixed(2)}</span>
               </p>
              
               <button

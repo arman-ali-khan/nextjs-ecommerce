@@ -29,7 +29,7 @@ const ProductCard = ({ product }) => {
 let totalPrice = products.reduce(function (prev, current) {
   return prev + +current.price * current.quantity;
 }, 0);
-console.log(totalPrice,dbUser.balance)
+
 // add product to cart with enough money
 const handleAddToCart = () => {
    dispatch({type:actionTypes.ADD_TO_CART,payload:product})

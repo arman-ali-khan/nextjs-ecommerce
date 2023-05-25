@@ -7,12 +7,12 @@ import React, { useEffect, useState } from 'react';
 const Profile = () => {
         // get context
   const { user,dUser } = useAllContext()
-console.log(user,dUser);
+
 
   // get token from cookie
 const token = typeof window !== 'undefined' && localStorage.getItem('accessToken')
 
-console.log(token)
+
 
   const [orders,setOrders] = useState([])
 
@@ -36,7 +36,6 @@ console.log(token)
 
   const delivered = orders.filter(order => order.status === 'Delivered').length 
 
-  console.log(delivered)
     return (
         <div>
             <UserLayout>

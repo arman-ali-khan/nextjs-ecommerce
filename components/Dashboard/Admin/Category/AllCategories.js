@@ -36,7 +36,6 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
   const handleDeleteCategories = (id) =>{
     axios.delete(`/api/category/delete?id=${id}&email=${user.email}`)
     .then(res=>{
-        console.log(res.data)
         toast.success('Category deleted successfully')
     })
   }

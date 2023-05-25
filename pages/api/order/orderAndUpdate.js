@@ -6,7 +6,7 @@ import { connectToDatabase } from "@/utils/db";
     if (req.method === "PUT") {
         const {email}  = req.query;
         const { exeptBalance } = req.body;
-        console.log(email,exeptBalance)
+
 
        const filter = { email: email };
     const option = { upsert: true };

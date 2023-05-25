@@ -11,12 +11,12 @@ const Products = () => {
     const products  = product.allFiles;
     
 
-console.log(currentPage)
+
 
 
     const productCount = product
 const count = Math.ceil((productCount?.count || 10 )/ 5)
-console.log(Math.ceil((productCount?.count || 10) / 5))
+
 
     let content ;
     if(loading) {

@@ -18,7 +18,7 @@ const index = () => {
         axios.get(`/api/search/q?title=${search}`)
         .then(res=>setSearchData(res.data))
     },[search])
-    console.log(searchData)
+
     return (
         <Layout title={`Search results of ${search}`}>
              <div className='flex my-12 items-center justify-between px-3 md:px-0'>

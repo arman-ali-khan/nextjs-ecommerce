@@ -101,7 +101,6 @@ const index = () => {
             )
             .then(
               (response) => {
-                console.log(response);
                 toast.success("Account Successfully Created");
                 setToken(response.data);
                 setCreatedUserEmail(email);

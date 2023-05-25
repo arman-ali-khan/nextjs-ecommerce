@@ -140,11 +140,11 @@ const[updateMoney,setUpdateMoney] = useState(false);
           }
         });
     }
-  }, [user?.email,updateMoney]);
+  }, [user?.email,updateMoney,dbUser]);
 // get token from cookie
 
 
-console.log(dbUser)
+
  
 
   const value = {

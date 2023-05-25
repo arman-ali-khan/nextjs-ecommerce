@@ -28,7 +28,6 @@ const ClientOrders = () => {
     axios
       .get(`/api/agent/client/orders?client=${email}`)
       .then((res) => {
-        console.log(res.data);
         setClientsOrders(res.data);
         setLoading(false);
       })
@@ -43,7 +42,6 @@ const ClientOrders = () => {
     axios
       .delete(`/api/order/delete?id=${id}&email=${user.email}`)
       .then((res) => {
-        console.log(res.data);
         toast.success("Order deleted successfully");
         setUpdateOrders(!updateOrders);
       })

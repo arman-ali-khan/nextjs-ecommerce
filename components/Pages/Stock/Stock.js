@@ -88,7 +88,7 @@ const date =  new Date()
     }
     axios.post(`/api/stock/create`, stockData)
     .then(res=>{
-        console.log(res)
+     
         toast.success('Stock created successfully')
         setLoading(false)
     })
@@ -98,7 +98,7 @@ const date =  new Date()
         setLoading(false)
     })
 }
-console.log(oldStocks.products)
+
     return (
        <PrivateRoutes>
          <div  className='flex flex-col-reverse md:flex-row overflow-hidden'>

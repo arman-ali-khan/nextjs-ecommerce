@@ -83,7 +83,7 @@ const AddProducts = () => {
   } = useForm();
 
   const id = uuidv4().split('-')[0]
-  console.log(id);
+
   const onSubmit = (data) => {
     setProductLoading(true);
     const productData = {

@@ -16,7 +16,7 @@ const SendMoney = () => {
 
 
   const [sendMoney, setSendMoney] = useState(0);
-  console.log(sendMoney);
+
   const balance = parseFloat(dbUser.balance);
 
   // get phone
@@ -111,7 +111,7 @@ const SendMoney = () => {
                 ) : (
                   <div class="flex items-center gap-x-2">
                     <BiCheckCircle className="h-8 w-8 text-[#299D37]" />
-                    <span class="font-semibold">{dbUser.balance} - {sendMoney} = {(dbUser.balance-sendMoney).toFixed(2)}</span>
+                    <span class="font-semibold">{(dbUser.balance).toFixed(2)} - {sendMoney} = {(dbUser.balance-sendMoney).toFixed(2)}</span>
                   </div>
                 )}
               </div>

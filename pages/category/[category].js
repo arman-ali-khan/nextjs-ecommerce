@@ -13,7 +13,7 @@ const category = ({ data: category, category: title }) => {
   const pages = Math.ceil(count / size);
   // title
   const categoryTitle = title.split("-").join(" ").toUpperCase();
-  console.log(categoryTitle);
+
   return (
     <Layout title={`All products archived ${categoryTitle}`}>
       <div className="w-full md:flex flex-col container mx-auto gap-2 my-12 overflow-hidden">
@@ -78,7 +78,7 @@ export default category;
 
 export async function getServerSideProps(context) {
   const { category } = context.query;
-  console.log(category);
+
   // Fetch data for the given id
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_PRO}/api/category/${category}`

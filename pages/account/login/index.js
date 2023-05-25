@@ -26,7 +26,6 @@ const index = () => {
 
   const [token]  = useToken(loginEmail)
 
-      console.log(token)
   const handleLoginUser = (data) =>{
     
 
@@ -49,7 +48,6 @@ const index = () => {
     })
     .catch((error) => {
       const errorMessage = error.message;
-      console.log(errorMessage)
       userDispatch({type:actionTypes.GETTING_USER_ERROR,payload:{errorMessage}})
     });
   }

@@ -14,7 +14,6 @@ const GetMyClients = () => {
     useEffect(()=>{
         axios.get(`/api/getMyClient?email=${user.email}`)
         .then(res=>{
-            console.log(res.data)
             setClients(res.data)
             setLoading(false)
           })

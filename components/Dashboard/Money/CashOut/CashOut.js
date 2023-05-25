@@ -17,7 +17,7 @@ const CashOut = () => {
 
 
   const [cashOut, setCashOut] = useState(0);
-  console.log(cashOut);
+
   const balance = parseFloat(dbUser.balance);
 
   // get phone

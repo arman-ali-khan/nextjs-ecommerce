@@ -10,7 +10,7 @@ export default async function handler(req, res) {
 //   verifyJWT(req, res)
 
   const {email,client}  = req.query;
-  console.log(email,client)
+
   
   if (req.method === "GET") {
 

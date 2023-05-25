@@ -17,7 +17,6 @@ const CashIn = () => {
 
   const [cashIn, setCashIn] = useState(0);
   const [txId, setTxId] = useState("");
-  console.log(cashIn);
   const balance = parseFloat(dbUser.balance);
 
   // get agent

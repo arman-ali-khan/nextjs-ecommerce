@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   verifyJWT(req, res)
 
   const {email}  = req.query;
-  console.log(email)
+
   
   if (req.method === "POST") {
 
@@ -26,7 +26,7 @@ export default async function handler(req, res) {
     const user = await db.collection('users').findOne({email:email})
     // get exept balance
     const exeptBalance = parseFloat(user.balance) - parseFloat(total)
-    console.log(exeptBalance.toFixed(2))
+
     const result = await db.collection("orders").insertOne(order);
     // update balance
     await db.collection('users').updateOne(

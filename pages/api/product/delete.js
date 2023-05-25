@@ -15,7 +15,6 @@ export default async function handler(req, res) {
     });
   }
 
-  console.log(user,email)
 
   if (req.method === "DELETE") {
     const result = await db.collection("products").deleteOne({ id: id });

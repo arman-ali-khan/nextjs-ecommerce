@@ -9,7 +9,7 @@ export default async function handler(req, res) {
 //   verifyJWT(req, res)
 
   const {email}  = req.query;
-  console.log(email)
+
   
   if (req.method === "GET") {
 
@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     //   return res.status(401).send({message: 'Unauthenticated'});
     // }
     const query = {senderEmail: email}
-    const result = await db.collection("sendMoney").find(query).toArray();
+    const result = await db.collection("sendMoney").find(query).sort({_id:-1}).toArray();
     res.status(200).json(result);
   } else {
     res.setHeader("Allow", ["GET"]);

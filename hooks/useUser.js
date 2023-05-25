@@ -11,7 +11,7 @@ const useUser = (user) => {
 
 
 
-  console.log(dUser);
+
 
   useEffect(() => {
     if (email) {
