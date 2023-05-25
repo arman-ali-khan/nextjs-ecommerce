@@ -74,7 +74,7 @@ const router = useRouter();
   };
 
   // access token
-  const token = localStorage.getItem('accessToken')
+  const token = typeof window !== 'undefined' && localStorage.getItem('accessToken')
   // react hoot form
 
   const {

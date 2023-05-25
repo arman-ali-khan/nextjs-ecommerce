@@ -21,7 +21,7 @@ const AllProducts = () => {
   const router = useRouter()
 
   // get token from cookie
-const token = localStorage.getItem('accessToken')
+const token = typeof window !== 'undefined' && localStorage.getItem('accessToken')
 
   const [products,setProducts] = useState([])
 

@@ -9,7 +9,7 @@ const useToken = email =>{
        axios.get(`${process.env.NEXT_PUBLIC_API_PRO}/api/jwt?email=${email}`)
         .then(res=>{
             if(res.data.accessToken){
-                localStorage.setItem('accessToken',res.data.accessToken);
+                typeof window !== 'undefined' && localStorage.setItem('accessToken',res.data.accessToken);
                 setToken(res.data.accessToken)
             }
         })

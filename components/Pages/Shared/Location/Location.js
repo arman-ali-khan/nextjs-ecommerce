@@ -34,7 +34,7 @@ const Location = () => {
   ];
 
   const handleLocation = (data)=>{
-    localStorage.setItem("location",JSON.stringify(data));
+    typeof window !== 'undefined' && localStorage.setItem("location",JSON.stringify(data));
   }
 
 

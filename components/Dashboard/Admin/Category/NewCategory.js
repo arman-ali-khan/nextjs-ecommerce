@@ -50,7 +50,7 @@ const NewCategory = () => {
       });
     }
 
-    const token = localStorage.getItem('accessToken')
+    const token = typeof window !== 'undefined' && localStorage.getItem('accessToken')
 
     const handleCreateCategory = (data) => {
         setCatLoading(true)

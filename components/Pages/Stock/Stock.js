@@ -45,7 +45,7 @@ const Stock = () => {
 const [location,setLocation] = useState([])
 
 // get token from cookie
-const token = localStorage.getItem('accessToken')
+const token = typeof window !== 'undefined' && localStorage.getItem('accessToken')
 
 // phone number
 const number = dbUser?.data?.phone
