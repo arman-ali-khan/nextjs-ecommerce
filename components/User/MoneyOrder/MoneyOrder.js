@@ -56,8 +56,8 @@ const MoneyOrder = () => {
               <th>{send?.transaction}</th>
               <td>{moment(send.date).add( 'days').calendar() || 'A day ago'}</td>
               <td>
-                <span className={`${send.type==='send' && 'bg-blue-500 text-white px-4 py-2 rounded-full' || send.type==='out' && 'bg-orange-500 text-white px-4 py-2 rounded-full' || 'bg-blue-100 px-4 py-2 rounded-full'}`}>
-                {send.type==='send' && 'Send Money' || send.type==='out' && 'Cashout' || 'Send'}
+                <span className={`${send.type==='send' && 'bg-blue-500 text-white px-4 py-2 rounded-full' || send.type==='out' && 'bg-orange-500 text-white px-4 py-2 rounded-full'|| send.type==='in' && 'bg-teal-500 text-white px-4 py-2 rounded-full' || 'bg-blue-100 px-4 py-2 rounded-full' }`}>
+                {send.type==='send' && 'Send Money' || send.type==='out' && 'Cashout' || send.type==='in' && 'Cash In' || 'Send'}
                 </span>
               </td>
               <td>{send.recipient.phone}</td>

@@ -71,12 +71,15 @@ const SendMoney = () => {
     .then(response =>{
       toast.success('Send success')
       setUpdateMoney(!updateMoney)
+      if(response.data){
+        router.push('/user/moneyorder')
+      }
      
     })
        .catch(err =>{
       console.log(err);
     })
-      router.push('/user/moneyorder')
+     
     }
     
   }

@@ -34,13 +34,14 @@ export default async function handler(req, res) {
     // sender email
     const senderEmail = sendData.senderEmail;
 
-console.log(recipientOldBalance,recipientNewBalance,email)
+
+
     // // get user
     const user = await db.collection('users').findOne({email:email})
     
-    const result = await db.collection("sendMoney").insertOne(sendData);
 
-    if(senderEmail){
+    if(sendData.type !== 'in'){
+      if(senderEmail){
 
     // update balance
     await db.collection('users').updateOne(
@@ -70,8 +71,12 @@ console.log(recipientOldBalance,recipientNewBalance,email)
       },
       {upsert: true}
     )
-    res.status(200).json(result);
-    }
+    
+  }
+}
+const result = await db.collection("sendMoney").insertOne(sendData);
+res.status(200).json(result);
+    
   } else {
     res.setHeader("Allow", ["POST"]);
     res.status(405).end(`Method ${req.method} Not Allowed`);

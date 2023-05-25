@@ -4,7 +4,7 @@ import React from 'react';
 
 const index = () => {
     return (
-        <UserLayout title={'Cashout'}>
+        <UserLayout title={'Cashin'}>
             <CashIn />
         </UserLayout>
     );
