@@ -34,6 +34,8 @@ const MoneyOrder = () => {
           <Link className="bg-teal-600 text-white px-4 py-2 rounded mr-2 hover:bg-teal-700 duration-300 flex items-center gap-2" href={"/@money/send"}> <RiSendPlaneLine size={20} /> Send Money</Link>
           {/* Cashout */}
           <Link className="bg-teal-600 text-white px-4 py-2 rounded mr-2 hover:bg-teal-700 duration-300 flex items-center gap-2" href={"/@money/cashout"}> <GiTakeMyMoney size={20} /> Cash Out</Link>
+          {/* Cashoin */}
+          <Link className="bg-teal-600 text-white px-4 py-2 rounded mr-2 hover:bg-teal-700 duration-300 flex items-center gap-2" href={"/@money/cashin"}> <GiTakeMyMoney size={20} /> Cash In</Link>
         </div>
         <table className="table w-full">
           {/* head */}
