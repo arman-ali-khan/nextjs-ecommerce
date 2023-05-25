@@ -6,6 +6,7 @@ import { toast } from "react-hot-toast";
 import { BiCheckCircle, BiSelection } from "react-icons/bi";
 import { GiCancel } from "react-icons/gi";
 import { ImCheckboxChecked, ImCheckboxUnchecked } from "react-icons/im";
+import { v4 as uuidv4 } from 'uuid';
 
 const SendMoney = () => {
   const { dbUser,setUpdateMoney,updateMoney, } = useAllContext();
@@ -50,13 +51,20 @@ const SendMoney = () => {
 
   // handle send money
 
+  // transaction id
+  const transaction = uuidv4().split('-')[0]
+
   const handleSendMoney = () =>{
     
     const sendMoneyData = {
       amount: sendMoney,
       sender: dbUser.name,
       senderEmail: dbUser.email,
-      recipient: selectedUser
+      recipient: selectedUser,
+      transaction,
+      recipientEmail: selectedUser.email,
+      date: Date.now(),
+      type:'send'
     }
     if(dbUser.email){
       axios.post(`/api/money/send/create`,sendMoneyData)

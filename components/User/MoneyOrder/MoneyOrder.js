@@ -1,12 +1,31 @@
+import { useAllContext } from "@/context/ContextProvider";
+import axios from "axios";
 import moment from "moment";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BiTrash } from "react-icons/bi";
 import { GiTakeMyMoney } from "react-icons/gi";
 import { RiSendPlaneLine } from "react-icons/ri";
 import { TbCurrencyTaka } from "react-icons/tb";
 
 const MoneyOrder = () => {
+
+  const {user} = useAllContext()
+  const [loading,setLoading] = useState(true);
+
+  const [sendMoney,setSendMoney] = useState([])
+  
+  useEffect(() => {
+    axios.get(`/api/money/getsendmoney?email=${user.email}`)
+    .then(res=>{
+      setSendMoney(res.data)
+      setLoading(false)
+    })
+    .catch(err=>{
+      console.log(err)
+      setLoading(false)
+    })
+  },[])
   return (
     <div>
       <div className="overflow-x-auto w-full my-4 mb-12">
@@ -21,36 +40,37 @@ const MoneyOrder = () => {
           <thead>
             <tr>
               <th>Id</th>
-              <th>Order Time</th>
-              <th>Status</th>
-              <th>Total</th>
-              <th>Action</th>
+              <th>Date</th>
+              <th>status</th>
+              <th>Number</th>
+              <th>Amount</th>
+              <th>recipient</th>
             </tr>
           </thead>
           <tbody>
             {/* row 1 */}
-            <tr>
-              <th>2</th>
-              <td>a day ago</td>
-              <td>status</td>
+            {
+              sendMoney.map((send,i)=><tr key={i}>
+              <th>{send?.transaction}</th>
+              <td>{moment(send.date).add( 'days').calendar() || 'A day ago'}</td>
+              <td>
+                <span className={`${send.type==='send' && 'bg-blue-500 text-white px-4 py-2 rounded-full' || send.type==='out' && 'bg-orange-500 text-white px-4 py-2 rounded-full' || 'bg-blue-100 px-4 py-2 rounded-full'}`}>
+                {send.type==='send' && 'Send Money' || send.type==='out' && 'Cashout' || 'Send'}
+                </span>
+              </td>
+              <td>{send.recipient.phone}</td>
               <td className="flex items-center font-bold">
-                {" "}
-                <TbCurrencyTaka className="font-bold" size={20} /> Order
+                
+                <TbCurrencyTaka className="font-bold" size={20} /> {send.amount}
               </td>
               <td>
                 <span className="flex items-center">
-                  <Link href={`/order`}>
-                    <button className="bg-blue-100 text-blue-600 rounded-full px-2 py-0.5">
-                      Details
-                    </button>
-                  </Link>
-                  {/* delete btn */}
-                  <label className="bg-rose-100 inline-block text-rose-600 px-2 py-1 rounded-full hover:bg-rose-200">
-                    <BiTrash />
-                  </label>
+                {send.recipient.name}
                 </span>
               </td>
-            </tr>
+            </tr>)
+            }
+            
           </tbody>
         </table>
       </div>
