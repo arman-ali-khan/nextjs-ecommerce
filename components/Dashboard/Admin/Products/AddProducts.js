@@ -99,6 +99,7 @@ const AddProducts = () => {
       rating: 0,
       stock: data.stock,
       SKU: data.sku,
+      type:data.type,
       size:[],
       color:[],
       weight:[],
@@ -162,7 +163,7 @@ const AddProducts = () => {
             </span>
           </label>
         </div>
-        <div className="flex w-full">
+        <div className="flex w-full justify-center my-3">
          
          
           <label className="w-full flex flex-col">
@@ -175,8 +176,16 @@ const AddProducts = () => {
               <option onClick={()=>setUnit('Gram')}>Gram</option>
             </select>
           </label>
+          <label className="w-full flex flex-col">
+            Type:
+            <select
+             {...register("type", { required: true })}
+              className="select w-full select-bordered">
+              <option value={'product'}>Product</option>
+              <option value={'stock'}>Stock</option>
+            </select>
+          </label>
         </div>
-       
         </div>
         <div className="md:flex w-full">
           <label className="w-full">

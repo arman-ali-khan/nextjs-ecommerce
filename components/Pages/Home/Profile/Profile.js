@@ -1,4 +1,5 @@
 import UserLayout from '@/Layout/UserLayout';
+import MoneyOrder from '@/components/User/MoneyOrder/MoneyOrder';
 import { useAllContext } from '@/context/ContextProvider';
 import { accessToken } from '@/hooks/setToken';
 import axios from 'axios';
@@ -155,6 +156,9 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
               </div>
             </div>
           </div>
+        </div>
+        <div>
+          <MoneyOrder />
         </div>
             </UserLayout>
         </div>
