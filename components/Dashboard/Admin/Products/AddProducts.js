@@ -169,11 +169,11 @@ const AddProducts = () => {
           <label className="w-full flex flex-col">
             Unit:
             <select className="select w-full select-bordered">
-              <option onClick={()=>setUnit('')}>Select Category</option>
-              <option onClick={()=>setUnit('Liter')}>Liter</option>
-              <option onClick={()=>setUnit('Piece')}>Piece</option>
-              <option onClick={()=>setUnit('KG')}>KG</option>
-              <option onClick={()=>setUnit('Gram')}>Gram</option>
+              <option key={''} onClick={()=>setUnit('')}>Select Category</option>
+              <option key={'Liter'} onClick={()=>setUnit('Liter')}>Liter</option>
+              <option key={'Piece'} onClick={()=>setUnit('Piece')}>Piece</option>
+              <option key={'KG'} onClick={()=>setUnit('KG')}>KG</option>
+              <option key={'Gram'} onClick={()=>setUnit('Gram')}>Gram</option>
             </select>
           </label>
           <label className="w-full flex flex-col">

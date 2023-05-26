@@ -23,13 +23,13 @@ const category = ({ data: category, category: title }) => {
           </h6>
           <span className="text-sm ">
             <select className="py-0 text-sm select select-sm font-medium block w-full rounded border-0 bg-white pr-10 cursor-pointer focus:ring-0">
-              <option className="px-3" value="All" hidden="">
+              <option key={'All'} className="px-3" value="All" hidden="">
                 Sort By Price
               </option>
-              <option className="px-3" value="Low">
+              <option key={'Low'} className="px-3" value="Low">
                 Low to High
               </option>
-              <option className="px-3" value="High">
+              <option key={'High'} className="px-3" value="High">
                 High to Low
               </option>
             </select>

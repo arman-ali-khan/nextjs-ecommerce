@@ -23,6 +23,11 @@ const CashIn = () => {
   // if conpied
   const [copied, setCopied] = useState(false);
 
+  // cashin loading
+  const [loading,setLoading] = useState(false);
+  
+  // token
+  const token = typeof window !== 'undefined' && localStorage.getItem('accessToken')
 
   // get agent
   const [agent, setAgent] = useState({});
@@ -41,6 +46,7 @@ const CashIn = () => {
   // handle cashin money
 
   const handleCashIn = () => {
+    setLoading(true)
     const cashInData = {
       amount: cashIn,
       sender: dbUser.name,
@@ -50,19 +56,27 @@ const CashIn = () => {
       recipientEmail: agent.email,
       date: Date.now(),
       type: "in",
+      status: "pending",
     };
     if (dbUser.email) {
       axios
-        .post(`/api/money/send/create`, cashInData)
+        .post(`/api/money/send/create?email=${dbUser.email}`, cashInData,{
+          headers:{
+            authorization: `Bearer ${token}`
+          }
+        })
         .then((response) => {
           toast.success("cashIn success");
           setUpdateMoney(!updateMoney);
           if (response.data) {
             router.push("/user/moneyorder");
+            setLoading(false)
           }
         })
         .catch((err) => {
           console.log(err);
+          toast.error(err.message)
+          setLoading(false)
         });
     }
   };
@@ -160,11 +174,13 @@ const CashIn = () => {
             <button
               onClick={() => handleCashIn()}
               disabled={
-                balance < cashIn || cashIn < 50 || !txId || !agent.email
+                 cashIn < 50 || !txId || !agent.email
               }
               class="w-full cursor-pointer rounded-[4px] bg-teal-600 hover:bg-teal-700 px-3 py-[6px] text-center font-semibold text-white disabled:bg-gray-200 disabled:text-gray-600"
             >
-              Send Request ${cashIn}
+              {
+                loading ? 'Sending...':`Send Request ${cashIn}`
+              }
             </button>
             {cashIn < 50 && <p className="text-error">Send minimum 50 Taka</p>}
           </div>

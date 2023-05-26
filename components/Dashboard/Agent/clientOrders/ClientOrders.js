@@ -57,22 +57,21 @@ const ClientOrders = () => {
   // update order status
 
   // update loading
-  const [updateLoading,setUpdateLoading] = useState(false);
-
+  const [updateLoading, setUpdateLoading] = useState(false);
 
   const handleUpdateOrderStatus = (id) => {
-    setUpdateLoading(true)
+    setUpdateLoading(true);
     axios
       .patch(`/api/order/update?id=${id}`, { status })
       .then((response) => {
         toast.success("Order status updated successfully");
         setUpdateOrders(!updateOrders);
-        setUpdateLoading(false)
+        setUpdateLoading(false);
       })
       .catch((err) => {
         console.log(err);
         toast.error(err.message);
-        setUpdateLoading(false)
+        setUpdateLoading(false);
       });
   };
 
@@ -105,7 +104,14 @@ const ClientOrders = () => {
                       <td>{moment(order.date).fromNow()}</td>
                       <td
                         className={`${
-                          order.status === "Packaging" && "bg-yellow-400 rounded-full" || order.status === "Out for delivery" && "bg-blue-400 rounded-full" || order.status === "Processing" && "bg-teal-100 rounded-full" || order.status === "Delivered" && "bg-teal-600 rounded-full"
+                          (order.status === "Packaging" &&
+                            "bg-yellow-400 rounded-full") ||
+                          (order.status === "Out for delivery" &&
+                            "bg-blue-400 rounded-full") ||
+                          (order.status === "Processing" &&
+                            "bg-teal-100 rounded-full") ||
+                          (order.status === "Delivered" &&
+                            "bg-teal-600 rounded-full")
                         }`}
                       >
                         {/* Update order status */}
@@ -118,27 +124,26 @@ const ClientOrders = () => {
                             <option value="Processing" key="1">
                               Processing
                             </option>
-                            <option value="Packaging" key="1">
+                            <option value="Packaging" key="2">
                               Packaging
                             </option>
-                            <option value="Out for delivery" key="1">
+                            <option value="Out for delivery" key="3">
                               Out for delivery
                             </option>
-                            <option value="Delivered" key="1">
+                            <option value="Delivered" key="4">
                               Delivered
                             </option>
-                          </select>{
-                            updateLoading ?
+                          </select>
+                          {updateLoading ? (
                             <div className="border-2 h-9 w-9 rounded-full border-teal-800 border-dashed animate-spin"></div>
-                            :
-                              <button
-                            className="text-success text-4xl hover:bg-black rounded-full p-0 m-0"
-                            onClick={() => handleUpdateOrderStatus(order.id)}
-                          >
-                            <BiCheckCircle />
-                          </button>
-                          }
-                        
+                          ) : (
+                            <button
+                              className="text-success text-4xl hover:bg-black rounded-full p-0 m-0"
+                              onClick={() => handleUpdateOrderStatus(order.id)}
+                            >
+                              <BiCheckCircle />
+                            </button>
+                          )}
                         </span>
                       </td>
                       <td className=" items-center font-bold">

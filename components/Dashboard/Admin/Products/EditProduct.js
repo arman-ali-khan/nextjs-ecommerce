@@ -177,28 +177,28 @@ const router = useRouter();
           <label className="w-full flex flex-col">
             Per:
             <select defaultValue={product.qunatityPrice} onChange={(e)=>setQunatity(e.target.value)} className="select w-full select-bordered">
-              <option value={''} >Select setQunatity</option>
-              <option value={'1/2'}>1/2</option>
-              <option value={'1'}>1</option>
-              <option value={'1.5'}>1.5</option>
-              <option value={'2'}>2</option>
-              <option value={'2.5'}>2.5</option>
-              <option value={'3'}>3</option>
-              <option value={'3.5'}>3.5</option>
-              <option value={'4'}>4</option>
-              <option value={'4.5'}>4.5</option>
-              <option value={'5'}>5</option>
+              <option key={''} value={''} >Select setQunatity</option>
+              <option key={'1/2'} value={'1/2'}>1/2</option>
+              <option key={'1'} value={'1'}>1</option>
+              <option key={'1.5'} value={'1.5'}>1.5</option>
+              <option key={'2'} value={'2'}>2</option>
+              <option key={'2.5'} value={'2.5'}>2.5</option>
+              <option key={'3'} value={'3'}>3</option>
+              <option key={'3.5'} value={'3.5'}>3.5</option>
+              <option key={'4'} value={'4'}>4</option>
+              <option key={'4.5'} value={'4.5'}>4.5</option>
+              <option key={'5'} value={'5'}>5</option>
             </select>
           </label>
          
           <label className="w-full flex flex-col">
             Unit:
             <select defaultValue={product.unit} onChange={(e)=>setUnit(e.target.value)} className="select w-full select-bordered">
-              <option value={''}>Select Category</option>
-              <option value={'Liter'}>Liter</option>
-              <option value={'Piece'}>Piece</option>
-              <option value={'KG'}>KG</option>
-              <option value={'Gram'}>Gram</option>
+              <option key={''} value={''}>Select Category</option>
+              <option key={'Liter'} value={'Liter'}>Liter</option>
+              <option key={'Piece'} value={'Piece'}>Piece</option>
+              <option key={'KG'} value={'KG'}>KG</option>
+              <option key={'Gram'} value={'Gram'}>Gram</option>
             </select>
           </label>
         </div>

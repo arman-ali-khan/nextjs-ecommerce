@@ -89,6 +89,9 @@ const MoneyOrder = () => {
                         (send.type === "in" && "Cash In") ||
                         "Send"}
                     </span>
+                    <span  className={`font-thin px-2 rounded-full ${send.status ==='accept' && 'bg-green-400' || send.status ==='pending' && 'bg-orange-400' || send.status ==='cancel' && 'bg-rose-400'  || 'bg-none' } text-white`}>
+                    {send.status ==='accept' && 'Accepted' || send.status ==='pending' && 'Pending' || send.status ==='cancel' && 'Cancelled' }
+                     </span>
                   </div>
                 
                   <div>

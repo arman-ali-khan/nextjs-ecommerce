@@ -5,6 +5,7 @@ import {TbBread, TbReportMoney, TbUsers} from 'react-icons/tb'
 import {GiFruitBowl, GiMedicines} from 'react-icons/gi'
 import { BsCartCheck } from 'react-icons/bs';
 import { CiPercent } from 'react-icons/ci';
+import { MdOutlineRequestPage } from 'react-icons/md';
 
 const AdminSideNav = () => {
     const [showMenu,setShowMenu] = useState(false)
@@ -53,6 +54,9 @@ const AdminSideNav = () => {
             </li>
             <li>
             <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/user/moneyorder'}> <TbReportMoney size={25} />Money Orders</Link>
+            </li>
+            <li>
+            <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/agent/moneyrequest'}> <MdOutlineRequestPage size={25} />Money Request</Link>
             </li>
            </ul>
            </>
