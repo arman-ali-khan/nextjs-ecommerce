@@ -9,6 +9,7 @@ import { ImCheckboxChecked, ImCheckboxUnchecked } from "react-icons/im";
 import { MdCall } from "react-icons/md";
 import { v4 as uuidv4 } from 'uuid';
 
+
 const CashOut = () => {
   const { dbUser,setUpdateMoney,updateMoney, } = useAllContext();
 
@@ -40,6 +41,8 @@ const CashOut = () => {
 
 
 
+  // token
+  const token = typeof window !== 'undefined' && localStorage.getItem('accessToken')
 
   // handle send money
 
@@ -59,16 +62,24 @@ const CashOut = () => {
       type:'out'
     }
     if(dbUser.email){
-      axios.post(`/api/money/send/create`,cashOutData)
+      axios.post(`/api/money/send/create?email=${dbUser.email}`,cashOutData,{
+        headers:{
+          authorization: `Bearer ${token}`
+        }
+      })
     .then(response =>{
       toast.success('Cashout success')
       setUpdateMoney(!updateMoney)
+      if(response.data){
+        router.push('/user/moneyorder')
+      }
      
     })
        .catch(err =>{
       console.log(err);
+      toast.error(err.message)
     })
-      router.push('/user/moneyorder')
+     
     }
     
   }
@@ -88,25 +99,7 @@ const CashOut = () => {
             </div>
           </div>
 
-          <div class="mt-6">
-            <div class="font-semibold">Balance</div>
-            <div class="mt-2">
-              <div class="flex w-full items-center justify-between bg-neutral-100 p-3 rounded-[4px]">
-                {balance < cashOut  ? (
-                  <div class="flex items-center gap-x-2">
-                    <GiCancel className="h-8 w-8  text-error" />
-                    <span class="font-semibold">{dbUser.balance}</span>
-                  </div>
-                ) : (
-                  <div class="flex items-center gap-x-2">
-                    <BiCheckCircle className="h-8 w-8 text-[#299D37]" />
-                    <span class="font-semibold">{dbUser.balance} - {cashOut} = {(dbUser.balance-cashOut).toFixed(2)}</span>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-
+       
           <div class="mt-6">
             <div class="flex justify-between">
               <span class="font-semibold text-[#191D23]">Your agent</span>

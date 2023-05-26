@@ -38,6 +38,9 @@ const SendMoney = () => {
   }, [phone]);
 
 
+  // token
+  const token = typeof window !== 'undefined' && localStorage.getItem('accessToken')
+
   // handle send money
 
   // transaction id
@@ -56,7 +59,11 @@ const SendMoney = () => {
       type:'send'
     }
     if(dbUser.email){
-      axios.post(`/api/money/send/create`,sendMoneyData)
+      axios.post(`/api/money/send/create?email=${dbUser.email}`,sendMoneyData,{
+        headers:{
+          authorization: `Bearer ${token}`
+        }
+      })
     .then(response =>{
       toast.success('Send success')
       setUpdateMoney(!updateMoney)

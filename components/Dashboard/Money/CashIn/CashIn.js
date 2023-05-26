@@ -8,6 +8,7 @@ import { GiCancel } from "react-icons/gi";
 import { ImCheckboxChecked, ImCheckboxUnchecked } from "react-icons/im";
 import { MdCall } from "react-icons/md";
 import { v4 as uuidv4 } from "uuid";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const CashIn = () => {
   const { dbUser, setUpdateMoney, updateMoney } = useAllContext();
@@ -18,6 +19,10 @@ const CashIn = () => {
   const [cashIn, setCashIn] = useState(0);
   const [txId, setTxId] = useState("");
   const balance = parseFloat(dbUser.balance);
+
+  // if conpied
+  const [copied, setCopied] = useState(false);
+
 
   // get agent
   const [agent, setAgent] = useState({});
@@ -52,14 +57,13 @@ const CashIn = () => {
         .then((response) => {
           toast.success("cashIn success");
           setUpdateMoney(!updateMoney);
-          if(response.data) {
+          if (response.data) {
             router.push("/user/moneyorder");
           }
         })
         .catch((err) => {
           console.log(err);
         });
-      
     }
   };
   return (
@@ -90,9 +94,13 @@ const CashIn = () => {
               />
             </div>
             <p className="my-4">Personal Number</p>
-            <h3 className="text-3xl bg-teal-100 text-teal-600 flex justify-center py-3 rounded my-4">
-              01701034883
+            <CopyToClipboard text={'01701034883'}>
+            <h3 className="text-3xl bg-teal-100 text-teal-600 items-center py-3 rounded my-4 flex justify-between px-4">
+              01701034883 <button onClick={()=>setCopied(!copied)} className="text-base bg-emerald-600 text-emerald-100 px-4 py-2 rounded-md">{copied?'Copied':'Copy'}</button>
             </h3>
+           
+              
+            </CopyToClipboard>
           </div>
           <div>
             <div class="font-semibold">How much would you like to Cashin?</div>
