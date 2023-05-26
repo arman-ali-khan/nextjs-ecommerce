@@ -40,6 +40,24 @@ export default async function handler(req, res) {
         }
         
     }
+
+    if(action.status==='cancel'){
+        const user = await db.collection('users').findOne({email:sender})
+        const updateBalance = parseFloat(user.balance) -  parseFloat(amount) 
+
+       
+        if(user.email){
+           await db.collection('users').updateOne(
+            {email:user.email},
+            {
+                $set: {balance: updateBalance}
+              }
+            ,
+            {upsert: true}
+        ) 
+        }
+        
+    }
    
     const result = await db
       .collection("sendMoney")

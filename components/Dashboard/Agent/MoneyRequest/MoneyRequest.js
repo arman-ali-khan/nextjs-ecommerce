@@ -37,7 +37,7 @@ const MoneyRequest = () => {
 
   const id = sender.transaction
 
-  console.log(sender)
+
 
   // request action
   const [action,setAction] = useState('')
@@ -54,7 +54,6 @@ const MoneyRequest = () => {
     })
  },[action,id])
 
- console.log(sendMoney)
   return (
     <div>
       <div className="grid grid-cols-3 justify-center text-center">
