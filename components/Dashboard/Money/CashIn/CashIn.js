@@ -25,7 +25,7 @@ const CashIn = () => {
 
   // cashin loading
   const [loading,setLoading] = useState(false);
-  
+
   // token
   const token = typeof window !== 'undefined' && localStorage.getItem('accessToken')
 
@@ -48,6 +48,7 @@ const CashIn = () => {
   const handleCashIn = () => {
     setLoading(true)
     const cashInData = {
+      image:dbUser.photo,
       amount: cashIn,
       sender: dbUser.name,
       senderEmail: dbUser.email,

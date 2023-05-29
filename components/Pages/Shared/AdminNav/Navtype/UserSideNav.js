@@ -5,6 +5,7 @@ import {TbBread, TbReportMoney} from 'react-icons/tb'
 import {GiFruitBowl, GiMedicines} from 'react-icons/gi'
 import { BsCartCheck } from 'react-icons/bs';
 import { CiPercent } from 'react-icons/ci';
+import { AiOutlineStock } from 'react-icons/ai';
 
 const AdminSideNav = () => {
     const [showMenu,setShowMenu] = useState(false)
@@ -46,7 +47,7 @@ const AdminSideNav = () => {
                 <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'#'}><TbBread size={25} />Message</Link>
             </li>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'#'}><GiFruitBowl size={25} />My Stocks</Link>
+                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'#'}><AiOutlineStock size={25} />My Stocks</Link>
             </li>
             <li>
                 <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/user/orders'}> <BsCartCheck size={25} />My Orders</Link>

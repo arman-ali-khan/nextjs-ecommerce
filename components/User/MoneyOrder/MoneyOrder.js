@@ -110,7 +110,7 @@ const MoneyOrder = () => {
                   </div>
                   <div className="flex items-center font-bold">
                    
-                    {send.transaction}
+                  ID:  {send.transaction}
                   </div>
                 </div>
                   <div className="flex justify-between items-center">

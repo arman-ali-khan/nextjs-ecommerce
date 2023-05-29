@@ -24,7 +24,10 @@ const index = () => {
 
   const [loginEmail,setLoginEmail] = useState('')
 
-  const [token]  = useToken(loginEmail)
+  useToken(loginEmail)
+
+  // get token from cookie
+  const token = typeof window !== 'undefined' && localStorage.getItem('accessToken')
 
   const handleLoginUser = (data) =>{
     
@@ -42,7 +45,7 @@ const index = () => {
       toast.success('Login success')
       setLoginEmail(email)
       if(token){
-        router.push('/')
+        router.push('/user')
       }
 
     })

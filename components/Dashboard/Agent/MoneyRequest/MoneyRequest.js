@@ -98,9 +98,12 @@ const MoneyRequest = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
               {/* row 1 */}
               {sendMoney.map((send, i) => (
-                send.type==='in' && <div className="px-2 border py-3 rounded-md" key={i}>
+                send.type==='in' && <div className="px-2 mt-12 relative border py-3 rounded-md" key={i}>
+                    <div className="flex w-full relative -top-12 h-24 items-center justify-center">
+                        <img className="w-24  h-24 " src={send.image || 'https://nobin.vercel.app/logo.svg'} alt="" />
+                        </div>
                 <div className="flex justify-between ">
-                <div className="flex items-center gap-1">
+                <div className="flex items-center  gap-1">
                  <span
                      className={`${
                        (send.type === "send" &&
@@ -142,7 +145,7 @@ const MoneyRequest = () => {
                  </div>
                  <div className="flex items-center font-bold">
                   
-                   {send.transaction}
+                 ID:  {send.transaction}
                  </div>
                </div>
                  <div className="flex justify-between items-center">

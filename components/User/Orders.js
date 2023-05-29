@@ -17,7 +17,7 @@ const UserOrders = () => {
   const { user, dbUser } = useAllContext();
 
   // get token from cookie
-  const [token] = useToken(user.email);
+  const [token] = useToken(user?.email);
 
   const [orders, setOrders] = useState([]);
 
