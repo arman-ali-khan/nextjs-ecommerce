@@ -15,7 +15,7 @@ const Products = () => {
 
 
     const productCount = product
-const count = Math.ceil((productCount?.count || 10 )/ 5)
+const count = Math.ceil((productCount?.count || 10 )/ 10)
 
 
     let content ;

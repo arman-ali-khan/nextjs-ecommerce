@@ -9,6 +9,7 @@ import { BiHeart } from "react-icons/bi";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import axios from "axios";
 import { Modal } from "rsuite";
+import { FiArrowRight } from "react-icons/fi";
 
 const StockCard = ({ product }) => {
   
@@ -16,7 +17,7 @@ const StockCard = ({ product }) => {
   const {dispatch,state,dbUser,user,setLoading,loading} = useAllContext()
   
 
- const selected = state.cart.find(cart => cart._id === product._id);
+ const selected = state.stocks.find(cart => cart._id === product._id);
 
 
  const  added = selected?.quantity>0
@@ -66,21 +67,23 @@ const handleAddToCart = () => {
         </div>
       <div >
         <label onClick={()=>setId(product.id)} className={`h-60 bg-base-100 cursor-pointer`}>
-         { product?.images && <img src={product?.images[0].original} alt="" />}
+         { product?.images && <img className="h-60 w-full object-cover" src={product?.images[0].original} alt="" />}
         </label>
 
         <div className={`flex items-center justify-between px-3`}>
           <div>
             <div className="sm:flex flex-col sm:flex-row gap-0 md:!justify-between justify-start sm:gap-3 tooltip items-center ">
               <h4
-                className="text-teal-600 flex gap-1 text-sm font-bold tooltip"
-                data-tip={`Original Price ${ product.oldPrice}৳ Discount Price ${
+                className="text-orange-600 items-center flex gap-1 text-sm font-bold tooltip"
+                data-tip={`Buy Price ${ product.oldPrice}৳ Sell Price ${
                   product.price
                 }৳`}
               >
-                ৳{product.price}
-                <span className="text-gray-500 text-sm font-thin line-through">
-                  ৳{product.oldPrice}
+               
+                ৳{product.oldPrice}
+                <FiArrowRight />
+                <span className="text-teal-500 ">
+                  ৳{product.price}
                 </span>
               </h4>
               <div>

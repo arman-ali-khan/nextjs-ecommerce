@@ -66,7 +66,7 @@ const handleAddToCart = () => {
         </div>
       <div >
         <label onClick={()=>setId(product.id)} className={`h-60 bg-base-100 cursor-pointer`}>
-          <img src={product.images[0].original} alt="" />
+          <img  className="h-60 w-full object-cover" src={product.images[0].original} alt="" />
         </label>
 
         <div className={`flex items-center justify-between px-3`}>
