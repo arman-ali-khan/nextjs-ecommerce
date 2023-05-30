@@ -63,6 +63,10 @@ const orderPath = router.pathname
   let price = state.cart.reduce(function (prev, current) {
     return prev + +current.price * current.quantity;
   }, 0);
+  // all stocks price
+  let stockPrice = state.stocks.reduce(function (prev, current) {
+    return prev + +current.price * current.quantity;
+  }, 0);
 
 
     // search 
@@ -88,10 +92,10 @@ const orderPath = router.pathname
           <span>
             <BsCartCheckFill />
           </span>{" "}
-          {state.cart.length} Items
+          { router.asPath === '/@stock' || router.asPath === '/stock' ? state.stocks.length :  state.cart.length } Items
         </p>
         <p className="bg-white px-3 py-1 rounded-md font-bold text-teal-600">
-          ${price.toFixed(2)}
+          $ { router.asPath === '/@stock' || router.asPath === '/stock' ? stockPrice.toFixed(2):price.toFixed(2)}
         </p>
       </div>
 
@@ -143,9 +147,9 @@ const orderPath = router.pathname
               <li>
                 <Link
                   className={`px-3 py-2 md:px-2 lg:px-3 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
-                  href={"#"}
+                  href={"/@stock"}
                 >
-                  Shop
+                  Stock
                 </Link>
               </li>
               <li>
@@ -200,8 +204,8 @@ const orderPath = router.pathname
               className={`absolute top-0 right-0 px-2 py-1 flex justify-center text-sm rounded-full ${
                 state.cart.length === 0 ? "" : " bg-rose-100"
               } text-rose-600`}
-            >
-              {state.cart.length === 0 ? "" : state.cart.length}
+            > { router.asPath === '/@stock' || router.asPath === '/stock' ? state.stocks.length === 0 ? "" : state.stocks.length:  state.cart.length === 0 ? "" : state.cart.length } 
+              
             </span>
           </span>
           {user?.uid ? (

@@ -119,9 +119,9 @@ const orderPath = router.pathname
               <li>
                 <Link
                   className={`px-3 py-2 md:px-2 lg:px-3 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
-                  href={"#"}
+                  href={"/@stock"}
                 >
-                  Shop
+                  Stock
                 </Link>
               </li>
               <li>

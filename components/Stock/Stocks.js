@@ -1,20 +1,43 @@
 
-import ProductCard from './ProductCard';
 import { BiTrendingUp } from 'react-icons/bi';
 import { BsArrowRight } from 'react-icons/bs';
 import Link from 'next/link';
 import {  useAllContext, } from '@/context/ContextProvider';
+import StockCard from './StockCard';
+import { useEffect, useState } from 'react';
 
-const Products = () => {
-   const {state,currentPage, setCurrentPage} = useAllContext()
-   const {products:product,loading,error} = state;
-    const products  = product.allFiles;
+const Stocks = () => {
+   const [currentPage,setCurrentPage] = useState('')
+
+    const [loading,setLoading] = useState(true)
     
 
+    const [allProducts,setProducts] = useState({})
+
+    const products = allProducts.stocks;
+
+    console.log(allProducts);
+
+    useEffect(() => {
+     
+      const fetchData = async () => {
+        try {
+          const response = await fetch(`/api/stocks?page=${currentPage}`);
+          const jsonData = await response.json();
+          setProducts(jsonData)
+          setLoading(false)
+        } 
+        catch (error) {
+          setLoading(false)
+        }
+      };
+  
+      fetchData();
+    }, [loading,currentPage]);
 
 
 
-    const productCount = product
+    const productCount = products
 const count = Math.ceil((productCount?.count || 10 )/ 5)
 
 
@@ -56,16 +79,16 @@ const count = Math.ceil((productCount?.count || 10 )/ 5)
         </div>
     </div>)
     }
-    if(error){
-      content = <p className='text-red-600 text-center'>Error While Load Data</p>
-    }
+    // if(error){
+    //   content = <p className='text-red-600 text-center'>Error While Load Data</p>
+    // }
 
-    if(!loading && !error && products?.length===0){
+    if(!loading && products?.length===0){
       content = <p className='text-red-600 text-center'>No Data Found</p>
     }
 
-    if(!loading && !error && products?.length){
-      content =   products?.map((product,i)=>  <ProductCard key={i} product={product} />)
+    if(!loading  && products?.length){
+      content =   products?.map((product,i)=>  <StockCard key={i} product={product} />)
     }
     return (
         <section className='container mx-auto md:my-12 my-3 overflow-hidden'>
@@ -91,4 +114,4 @@ const count = Math.ceil((productCount?.count || 10 )/ 5)
     );
 };
 
-export default Products;
+export default Stocks;

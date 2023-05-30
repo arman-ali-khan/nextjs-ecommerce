@@ -106,8 +106,11 @@ const AddProducts = () => {
       unit: data.unit,
       qunatityPrice: qunatity,
     };
-    axios
-      .post(`/api/products/create`, productData)
+   data.type==='product' ?  axios
+   .post(`/api/products/create`, productData)
+   :
+   axios
+   .post(`/api/stocks/create`, productData)
       .then((response) => {
         toast.success("Product created successfully");
         setProductLoading(false);
@@ -274,7 +277,7 @@ const AddProducts = () => {
         </div>
         <div className="my-6 mb-16 w-full flex justify-center">
           <input
-            disabled={!categories.length || !tags.length || !imageUrl.length}
+            disabled={!categories.length || productLoading || !tags.length || !imageUrl.length}
             className="px-5 py-3 disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed rounded text-teal-600 hover:bg-teal-200 bg-teal-100"
             type="submit"
             value={`${productLoading ? "Adding..." : "Add New Product"}`}
