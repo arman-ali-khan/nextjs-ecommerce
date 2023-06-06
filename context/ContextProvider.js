@@ -1,14 +1,12 @@
 import { authentication } from "@/firebase/firebase.config";
-import { accessToken } from "@/hooks/setToken";
-import useToken from "@/hooks/useToken";
 import actionTypes from "@/state/ProductState/actionTypes";
 import {
   initialState,
   productsReducer,
 } from "@/state/ProductState/productsReducer";
 import {
-  userReducer,
   userInitialState,
+  userReducer,
 } from "@/state/ProductState/userReducer";
 import axios from "axios";
 import {
@@ -25,7 +23,6 @@ import {
   useState,
 } from "react";
 import { toast } from "react-hot-toast";
-import useUser from "@/hooks/useUser";
 
 export const ALL_CONTEXT = createContext();
 
@@ -129,14 +126,18 @@ const[updateMoney,setUpdateMoney] = useState(false);
           },
         })
         .then((res) => {
+          if(res.response?.status===401){
+            logOut()
+          }
           setDbUser(res.data);
           setUserLoading(false)
         })
         .catch((err) => {
           console.log(err);
-          if (err.response.status === 401) {
+          if (err.response?.status === 401) {
             toast.error("Access Token is invalid");
             setUserLoading(false)
+            logOut()
           }
         });
     }

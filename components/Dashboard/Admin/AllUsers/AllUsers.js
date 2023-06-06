@@ -1,16 +1,12 @@
 import { useAllContext } from "@/context/ContextProvider";
 import axios from "axios";
-import moment from "moment";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { CheckmarkIcon, toast } from "react-hot-toast";
-import { BiTrash } from "react-icons/bi";
+import { useEffect, useState } from "react";
 import { GiTakeMyMoney } from "react-icons/gi";
 import { RiSendPlaneLine } from "react-icons/ri";
-import { TbCurrencyTaka } from "react-icons/tb";
 
 const AllUsers = () => {
-  const { user } = useAllContext();
+  const { user, logOut } = useAllContext();
   const [loading, setLoading] = useState(true);
 
   const [allUsers, setAllUsers] = useState([]);
@@ -26,12 +22,16 @@ const AllUsers = () => {
         }
       })
       .then((res) => {
+      
         setAllUsers(res.data);
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
-        setLoading(false);
+        if(err.response?.status===401){
+          setLoading(false);
+          return logOut()
+         }
+       
       });
   }, [user]);
 
