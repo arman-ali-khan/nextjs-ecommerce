@@ -1,12 +1,11 @@
 import Link from 'next/link';
-import React, { useState } from 'react';
-import {BiCategory, BiHomeAlt2, BiMenuAltRight} from 'react-icons/bi'
-import {TbBread, TbReportMoney, TbUsers} from 'react-icons/tb'
-import {GiFruitBowl, GiMedicines} from 'react-icons/gi'
+import { useState } from 'react';
+import { AiOutlineStock } from 'react-icons/ai';
+import { BiCategory, BiHomeAlt2, BiMenuAltRight } from 'react-icons/bi';
 import { BsCartCheck } from 'react-icons/bs';
 import { CiPercent } from 'react-icons/ci';
 import { MdOutlineRequestPage } from 'react-icons/md';
-import { AiOutlineStock } from 'react-icons/ai';
+import { TbReportMoney, TbUsers } from 'react-icons/tb';
 
 const AdminSideNav = () => {
     const [showMenu,setShowMenu] = useState(false)
@@ -51,7 +50,7 @@ const AdminSideNav = () => {
                 <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/user/orders'}><BsCartCheck size={25} />My Orders</Link>
             </li>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'#'}> <AiOutlineStock size={25} />My Stock</Link>
+            <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/user/stocks'}><AiOutlineStock size={25} />Stocks</Link>
             </li>
             <li>
                 <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'#'}> <CiPercent size={25} />My Revenue</Link>

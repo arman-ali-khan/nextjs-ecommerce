@@ -1,15 +1,13 @@
+import StockCard from "@/components/Pages/Stock/StockCard";
 import PrivateRoutes from "@/components/PrivateRoutes/PrivateRoutes";
 import { useAllContext } from "@/context/ContextProvider";
 import axios from "axios";
 
-import StocksCard from "@/components/Stock/StocksCard";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { v4 as uuidv4 } from "uuid";
-import StockCard from "./StockCard";
-
-const Stock = () => {
+const MyStocks = () => {
   const { state, dbUser, user, setUpdateMoney, updateMoney } = useAllContext();
 
   // // next router
@@ -69,7 +67,7 @@ const Stock = () => {
         console.log(err);
         setOldStockLoad(false);
       });
-  }, [update, total]);
+  }, [update,total]);
 
   console.log(oldStocks);
 
@@ -88,7 +86,7 @@ const Stock = () => {
       .then((res) => {
         toast.success("Stock created successfully");
         setLoading(false);
-        setUpdate(!update);
+        setUpdate(!update)
       })
       .catch((err) => {
         console.log(err);
@@ -110,39 +108,9 @@ const Stock = () => {
             ))}
           </div>
         </div>
-        {/* Cart */}
-        <div className="flex px-1 w-full md:my-12 flex-col mx-auto md:p-6  space-y-6 divide-y sm:p-10 divide-gray-300 bg-gray-50 text-gray-800">
-          <h2 className="md:text-2xl text-xl font-bold">Stock items</h2>
-          <ul className="grid md:grid-cols-3 grid-cols-2 gap-1 pt-4 space-y-2">
-            {products?.map((product, i) => (
-              <StocksCard key={i} product={product} />
-            ))}
-          </ul>
-          <div className="pt-4 space-y-2">
-            <div></div>
-          </div>
-          <div className="pt-4 space-y-2">
-            <div className="space-y-6 my-2">
-              <div className="flex justify-between">
-                <span>Total</span>
-                <span className="font-semibold">৳{total.toFixed(2)}</span>
-              </div>
-              <button
-                onClick={() => handleSubmit()}
-                disabled={
-                  state.stocks.length < 1 || dbUser.balance < totalPrice
-                }
-                type="submit"
-                className="w-full py-2 font-semibold border rounded bg-teal-600 text-gray-50 disabled:bg-slate-400 border-teal-600"
-              >
-                {loading ? "Sending to stock..." : "Buy Now"}
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </PrivateRoutes>
   );
 };
 
-export default Stock;
+export default MyStocks;

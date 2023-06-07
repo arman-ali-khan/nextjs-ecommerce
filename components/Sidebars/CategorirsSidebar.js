@@ -1,11 +1,8 @@
-import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
-import {BiCategory, BiHomeAlt2, BiMenuAltRight} from 'react-icons/bi'
-import {TbBread} from 'react-icons/tb'
-import {GiFruitBowl, GiMedicines} from 'react-icons/gi'
-import CategoryList from '../Categories/CategoryList';
-import axios from 'axios';
 import { useAllContext } from '@/context/ContextProvider';
+import axios from 'axios';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { BiCategory, BiMenuAltRight } from 'react-icons/bi';
 import CategoryListMobile from '../Categories/CategoryListMobile';
 
 const CategorirsSidebar = () => {
@@ -41,7 +38,7 @@ const CategorirsSidebar = () => {
              {/* Menu */}
            <ul>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-1 border-b flex items-center gap-2' href={'#'}>Menu</Link>
+                <Link className='border-teal-600 w-full px-2 py-1 border-b flex items-center gap-2' href={'/@stock'}>Stocks</Link>
             </li>
             <li>
                 <Link className='border-teal-600 w-full px-2 py-1 border-b flex items-center gap-2' href={'#'}>Menu</Link>

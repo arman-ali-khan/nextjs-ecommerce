@@ -1,10 +1,7 @@
 
-import { BiTrendingUp } from 'react-icons/bi';
-import { BsArrowRight } from 'react-icons/bs';
-import Link from 'next/link';
-import {  useAllContext, } from '@/context/ContextProvider';
-import StockCard from './StockCard';
 import { useEffect, useState } from 'react';
+import { BiTrendingUp } from 'react-icons/bi';
+import StockCard from './StocksCard';
 
 const Stocks = () => {
    const [currentPage,setCurrentPage] = useState('')
@@ -15,8 +12,8 @@ const Stocks = () => {
     const [allProducts,setProducts] = useState({})
 
     const products = allProducts.stocks;
-
-    console.log(allProducts);
+console.log(products);
+    
 
     useEffect(() => {
      
@@ -33,7 +30,7 @@ const Stocks = () => {
       };
   
       fetchData();
-    }, [loading,currentPage]);
+    }, []);
 
 
 
@@ -88,7 +85,7 @@ const count = Math.ceil((productCount?.count || 10 )/ 10)
     }
 
     if(!loading  && products?.length){
-      content =   products?.map((product,i)=>  <StockCard key={i} product={product} />)
+      content =   allProducts.stocks?.map((product,i)=>  <StockCard key={i} product={product} />)
     }
     return (
         <section className='container mx-auto md:my-12 my-3 overflow-hidden'>

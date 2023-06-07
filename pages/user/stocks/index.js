@@ -1,11 +1,11 @@
 import UserLayout from '@/Layout/UserLayout';
-import React from 'react';
+import MyStocks from '@/components/User/MyStocks/MyStocks';
 
 const index = () => {
     return (
         <div>
            <UserLayout>
-           My Stocks
+          <MyStocks />
            </UserLayout>
         </div>
     );

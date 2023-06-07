@@ -1,13 +1,12 @@
 import Link from 'next/link';
-import React, { useState } from 'react';
-import { BiCategory, BiHomeAlt2, BiMenuAltRight } from 'react-icons/bi'
-import { TbBread, TbCurrencyTaka, TbMessageDots, TbReportMoney, TbShoppingCartPlus, TbUsers } from 'react-icons/tb'
-import { GiFruitBowl, GiMedicines } from 'react-icons/gi'
-import { FiShoppingCart, FiUsers } from 'react-icons/fi'
-import { MdOutlineDashboard, MdSupportAgent } from 'react-icons/md';
+import { useState } from 'react';
+import { AiOutlineStock } from 'react-icons/ai';
+import { BiCategory, BiMenuAltRight } from 'react-icons/bi';
 import { BsCartCheck } from 'react-icons/bs';
 import { CiPercent } from 'react-icons/ci';
-import { AiOutlineStock } from 'react-icons/ai';
+import { FiShoppingCart, FiUsers } from 'react-icons/fi';
+import { MdOutlineDashboard, MdSupportAgent } from 'react-icons/md';
+import { TbReportMoney, TbUsers } from 'react-icons/tb';
 
 const AdminSideNav = () => {
     const [showMenu, setShowMenu] = useState(false)
@@ -58,7 +57,7 @@ const AdminSideNav = () => {
                                 <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/agent/getmyclient'}><TbUsers size={25} />Clients</Link>
                             </li>
                             <li>
-                                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'#'}><AiOutlineStock size={25} />Stocks</Link>
+                                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/user/stocks'}><AiOutlineStock size={25} />Stocks</Link>
                             </li>
                             <li>
                                 <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/admin/all-users'}><FiUsers size={25} />Users</Link>

@@ -1,7 +1,6 @@
 import { useAllContext } from '@/context/ContextProvider';
 import actionTypes from '@/state/ProductState/actionTypes';
 import { useRouter } from 'next/router';
-import React from 'react';
 import { AiOutlineDelete } from 'react-icons/ai';
 
 const SingleCart = ({product}) => {
@@ -67,7 +66,7 @@ const SingleCart = ({product}) => {
           <button
             onClick={() =>
               dispatch({
-                type: actionTypes.REMOVE_FROM_CART,
+                type: actionTypes.REMOVE_FROM_STOCK,
                 payload: product,
               })
             }
