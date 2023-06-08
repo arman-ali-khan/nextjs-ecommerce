@@ -1,9 +1,8 @@
 import { connectToDatabase } from "../../../utils/db";
 
-
 export default async function handler(req, res) {
   const { db } = await connectToDatabase();
-  
+
   if (req.method === "POST") {
     const stock = req.body;
     const result = await db.collection("stocks").insertOne(stock);

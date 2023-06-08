@@ -1,3 +1,4 @@
+import axios from "axios";
 import actionTypes from "./actionTypes";
 
 export const initialState = {
@@ -5,10 +6,10 @@ export const initialState = {
   products: {},
   error: false,
   cart: [],
-  stocks: []
+  stocks: [],
 };
 export const productsReducer = (state, action) => {
-
+  let id = action.payload?.id;
   // find selected products
   const selectedProduct = state.cart.find(
     (product) => product._id === action.payload?._id
@@ -38,9 +39,7 @@ export const productsReducer = (state, action) => {
         error: true,
       };
     case actionTypes.ADD_TO_CART:
-
       if (selectedProduct) {
-
         const newCart = state.cart.filter(
           (product) => product._id !== selectedProduct._id
         );
@@ -84,18 +83,27 @@ export const productsReducer = (state, action) => {
     // stock
     case actionTypes.ADD_TO_STOCK:
       if (selectedStocks) {
-
         const newStock = state.stocks.filter(
           (product) => product._id !== selectedStocks._id
         );
 
         selectedStocks.quantity += 1;
-
         return {
           ...state,
           stocks: [...newStock, selectedStocks],
         };
       }
+
+      const stockDown = parseInt(action.payload.stock);
+
+      axios
+        .patch(`/api/updateStock/update?id=${id}`, {
+          stock: (stockDown - 1).toString(),
+        })
+        .then((res) => {
+          console.log(res.data);
+        });
+
       return {
         ...state,
         stocks: [...state.stocks, { ...action.payload, quantity: 1 }],
@@ -119,6 +127,16 @@ export const productsReducer = (state, action) => {
           stocks: [...newStock, selectedStocks],
         };
       }
+
+      const stockUP = parseInt(action.payload.stock);
+      axios
+        .patch(`/api/updateStock/update?id=${id}`, {
+          stock: (stockUP + 1).toString(),
+        })
+        .then((res) => {
+          console.log(res.data);
+        });
+      console.log(id);
       return {
         ...state,
         stocks: state.stocks.filter(

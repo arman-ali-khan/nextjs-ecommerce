@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { v4 as uuidv4 } from "uuid";
-import StockCard from "./StockCard";
 
 const Stock = () => {
   const { state, dbUser, user, setUpdateMoney, updateMoney } = useAllContext();
@@ -100,7 +99,7 @@ const Stock = () => {
   return (
     <PrivateRoutes>
       <div className="flex flex-col-reverse md:flex-row overflow-hidden">
-        <div className="mt-16 flex-col w-full md:p-6 px-1  divide-y sm:p-10 divide-gray-300 bg-gray-50 text-gray-800">
+        {/* <div className="mt-16 flex-col w-full md:p-6 px-1  divide-y sm:p-10 divide-gray-300 bg-gray-50 text-gray-800">
           <div>
             <h2 className="md:text-2xl text-xl font-bold">Your old stocks</h2>
           </div>
@@ -109,11 +108,11 @@ const Stock = () => {
               <StockCard stock={stock} key={stock._id} />
             ))}
           </div>
-        </div>
+        </div> */}
         {/* Cart */}
-        <div className="flex px-1 w-full md:my-12 flex-col mx-auto md:p-6  space-y-6 divide-y sm:p-10 divide-gray-300 bg-gray-50 text-gray-800">
+        <div className="flex px-1 w-full md:w-2/3 md:my-12 flex-col mx-auto md:p-6  space-y-6 divide-y sm:p-10 divide-gray-300 bg-gray-50 text-gray-800">
           <h2 className="md:text-2xl text-xl font-bold">Stock items</h2>
-          <ul className="grid md:grid-cols-3 grid-cols-2 gap-1 pt-4 space-y-2">
+          <ul className="grid md:grid-cols-4 grid-cols-2 gap-1 pt-4 space-y-2">
             {products?.map((product, i) => (
               <StocksCard key={i} product={product} />
             ))}

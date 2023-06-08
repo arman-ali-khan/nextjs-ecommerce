@@ -1,14 +1,14 @@
 import { useAllContext } from "@/context/ContextProvider";
 import actionTypes from "@/state/ProductState/actionTypes";
 import { useState } from "react";
-import { toast } from "react-hot-toast";
+import { CheckmarkIcon, toast } from "react-hot-toast";
 import { BsStarFill } from "react-icons/bs";
 import { FiArrowRight } from "react-icons/fi";
-import { MdOutlineAdd, MdOutlineRemove } from "react-icons/md";
+import { MdOutlineAdd } from "react-icons/md";
 import { Modal } from "rsuite";
 
 const StocksCard = ({ product }) => {
-  console.log(product);
+ 
   const { dispatch, state, dbUser, user, setLoading, loading } =
     useAllContext();
 
@@ -105,26 +105,17 @@ const StocksCard = ({ product }) => {
         {/* Add to cart */}
         {added ? (
           <div
-            className={`flex cursor-pointer select-none justify-between items-center bg-gray-100 duration-300 border border-teal-600  rounded text-white `}
+            className={`flex cursor-pointer select-none  items-center bg-gray-100 duration-300 border border-teal-600  rounded text-white `}
           >
             {/* Derement btn */}
             <button
               onClick={() => handleRemoveFromCart()}
-              className="px-3 py-2 bg-teal-600"
+              className="px-3 w-full flex items-center justify-between py-2 bg-teal-100 text-teal-600"
             >
-              <MdOutlineRemove size={20} />
+             Remove <CheckmarkIcon />
             </button>
-            {/* Count */}
-            <span className="text-teal-600 font-bold">
-              {selected?.quantity}
-            </span>
-            {/* increment btn */}
-            <button
-              onClick={() => handleAddToCart()}
-              className="px-3 py-2 bg-teal-600"
-            >
-              <MdOutlineAdd size={20} />
-            </button>
+           
+           
           </div>
         ) : (
           product?.stock > 0 && (
