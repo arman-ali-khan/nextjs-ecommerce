@@ -1,14 +1,14 @@
 import { useAllContext } from "@/context/ContextProvider";
+import axios from "axios";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BsStarFill } from "react-icons/bs";
-import { MdOutlineAdd, MdOutlineRemove } from "react-icons/md";
 import { RiSendPlaneLine } from "react-icons/ri";
 
-const StockProduct = ({ product }) => {
+const SellStockCard = ({ product }) => {
   const { dispatch, state, dbUser, user, setLoading, loading } =
     useAllContext();
-console.log(product);
+ 
   // router
   const router = useRouter();
 
@@ -22,18 +22,29 @@ console.log(product);
     return prev + +current.price * current.quantity;
   }, 0);
 
+   // stock current price 
+   const [currentProduct,setCurrentProduct] = useState({})
+const currentPrice = parseFloat(currentProduct.price) - 1
+   useEffect(()=>{
+    axios.get(`/api/stock/${product.id}`)
+    .then(res=>{
+      setCurrentProduct(res.data)
+    })
+   },[])
+
   // add product to cart with enough money
   const handleAddToCart = () => {
     dispatch({ type: actionTypes.ADD_TO_CART, payload: product });
     toast.success("Added to Cart");
   };
 
-  const handleRemoveFromCart = () => {
+  const handleSellStock = () => {
     dispatch({ type: actionTypes.DECREMENT_CART, payload: product });
-    toast.success("Remove from cart");
+    toast.success("Stock Sell Successfull");
   };
 
   const [id, setId] = useState("");
+ 
   return (
     <div className={`shadow-xl rounded-md relative`}>
       {/* stock */}
@@ -66,9 +77,14 @@ console.log(product);
                 data-tip={`Original Price ${product.oldPrice}৳ Discount Price ${product.price}৳`}
               >
                 ৳{product.price}
-                <span className="text-gray-500 text-sm font-thin line-through">
-                  ৳{product.oldPrice}
+                
+                <span className="text-teal-600 flex gap-1 text-sm font-bold tooltip">
+                {product.price > currentPrice ? '-':'+'}   ৳{currentPrice}
                 </span>
+                 = 
+                 <span className={`${ product.price > currentPrice ? 'text-rose-600':'text-teal-600'} flex gap-1 text-sm font-bold tooltip`}>
+                   ৳{currentPrice -  product.price}
+                  </span>
               </h4>
               <div>
                 <span className="flex items-center">
@@ -95,43 +111,20 @@ console.log(product);
           </div>
         </div>
       </div>
-      {added ? (
-        <div
-          className={`flex cursor-pointer select-none justify-between items-center bg-gray-100 duration-300 border border-teal-600  rounded text-white `}
-        >
-          {/* Derement btn */}
-          <button
-            onClick={() => handleRemoveFromCart()}
-            className="px-3 py-2 bg-teal-600"
-          >
-            <MdOutlineRemove size={20} />
-          </button>
-          {/* Count */}
-          <span className="text-teal-600 font-bold">{selected?.quantity}</span>
-          {/* increment btn */}
-          <button
-            onClick={() => handleAddToCart()}
-            className="px-3 py-2 bg-teal-600"
-          >
-            <MdOutlineAdd size={20} />
-          </button>
-        </div>
-      ) : (
-        product.stock > 0 && (
+      {  product.stock > 0 && (
           <div
-            onClick={handleAddToCart}
+            onClick={handleSellStock}
             className={`flex cursor-pointer select-none justify-between items-center bg-gray-100 duration-300 border border-teal-600  pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600`}
           >
-            <button>Sell Stock</button>
+            <button> Sell Stock</button>
             <span className=" px-4 py-2">
               <RiSendPlaneLine size={20} />
             </span>
           </div>
-        )
-      )}
+        )}
       <div></div>
     </div>
   );
 };
 
-export default StockProduct;
+export default SellStockCard;

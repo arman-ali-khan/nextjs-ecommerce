@@ -131,7 +131,7 @@ export const productsReducer = (state, action) => {
       const stockUP = parseInt(action.payload.stock);
       axios
         .patch(`/api/updateStock/update?id=${id}`, {
-          stock: (stockUP + 1).toString(),
+          stock: (stockUP).toString(),
         })
         .then((res) => {
           console.log(res.data);

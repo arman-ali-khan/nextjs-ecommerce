@@ -2,7 +2,6 @@ import Layout from "@/Layout/Layout";
 import { useAllContext } from "@/context/ContextProvider";
 import actionTypes from "@/state/ProductState/actionTypes";
 import Link from "next/link";
-import React from "react";
 import { toast } from "react-hot-toast";
 import { MdOutlineAdd, MdOutlineRemove } from "react-icons/md";
 import ImageGallery from "react-image-gallery";
@@ -33,7 +32,7 @@ const handleAddToCart = () => {
 
   const handleRemoveFromCart = () => {
     dispatch({ type: actionTypes.DECREMENT_CART, payload: product });
-    toast.success("Remove one product");
+    toast.success("Remove from cart");
   };
 
   return (

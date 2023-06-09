@@ -2,7 +2,7 @@ import { useAllContext } from "@/context/ContextProvider";
 import actionTypes from "@/state/ProductState/actionTypes";
 import axios from "axios";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { MdOutlineAdd, MdOutlineRemove } from "react-icons/md";
 import ImageGallery from "react-image-gallery";
@@ -42,7 +42,7 @@ const Modal = ({ id, setId }) => {
   // remove product from cart
   const handleRemoveFromCart = () => {
     dispatch({ type: actionTypes.DECREMENT_CART, payload: modalData });
-    toast.success("Remove one product");
+    toast.success("Remove from cart");
   };
   return (
     <div

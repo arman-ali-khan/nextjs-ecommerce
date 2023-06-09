@@ -63,6 +63,7 @@ const Stock = () => {
       .then((res) => {
         setOldStocks(res.data);
         setOldStockLoad(false);
+        // router.push('/user/stocks')
       })
       .catch((err) => {
         console.log(err);
@@ -88,6 +89,7 @@ const Stock = () => {
         toast.success("Stock created successfully");
         setLoading(false);
         setUpdate(!update);
+        setUpdateMoney(!updateMoney)
       })
       .catch((err) => {
         console.log(err);

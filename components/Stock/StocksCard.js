@@ -31,7 +31,7 @@ const StocksCard = ({ product }) => {
 
   const handleRemoveFromCart = () => {
     dispatch({ type: actionTypes.DECREMENT_STOCK, payload: product });
-    toast.success("Remove one product");
+    toast.success("Remove from cart");
   };
 
   const [id, setId] = useState("");

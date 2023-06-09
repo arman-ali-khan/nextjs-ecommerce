@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { BsStar, BsStarFill } from "react-icons/bs";
-import { MdOutlineAdd, MdOutlineRemove } from "react-icons/md";
-import Link from "next/link";
-import Modal from "./SingleProduct/Modal";
 import { useAllContext } from "@/context/ContextProvider";
 import actionTypes from "@/state/ProductState/actionTypes";
+import Link from "next/link";
+import { useState } from "react";
 import { toast } from "react-hot-toast";
-import { BiHeart } from "react-icons/bi";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import axios from "axios";
+import { BsStarFill } from "react-icons/bs";
+import { MdOutlineAdd, MdOutlineRemove } from "react-icons/md";
+import Modal from "./SingleProduct/Modal";
 
 const ProductCard = ({ product }) => {
   
@@ -38,7 +35,7 @@ const handleAddToCart = () => {
 
   const handleRemoveFromCart = () => {
     dispatch({type:actionTypes.DECREMENT_CART,payload:product})
-    toast.success("Remove one product")
+    toast.success("Remove from cart")
   }
 
 
@@ -66,7 +63,7 @@ const handleAddToCart = () => {
         </div>
       <div >
         <label onClick={()=>setId(product.id)} className={`h-60 bg-base-100 cursor-pointer`}>
-          <img  className="h-60 w-full object-cover" src={product.images[0].original} alt="" />
+          <img  className="h-60 w-full object-cover" src={product&& product?.images[0]?.original} alt="" />
         </label>
 
         <div className={`flex items-center justify-between px-3`}>

@@ -1,4 +1,3 @@
-import StockCard from "@/components/Pages/Stock/StockCard";
 import PrivateRoutes from "@/components/PrivateRoutes/PrivateRoutes";
 import { useAllContext } from "@/context/ContextProvider";
 import axios from "axios";
@@ -7,6 +6,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { v4 as uuidv4 } from "uuid";
+import SellStock from "./SellStock";
 const MyStocks = () => {
   const { state, dbUser, user, setUpdateMoney, updateMoney } = useAllContext();
 
@@ -98,13 +98,11 @@ const MyStocks = () => {
   return (
     <PrivateRoutes>
       <div className="flex flex-col-reverse md:flex-row overflow-hidden">
-        <div className="mt-16 flex-col w-full md:p-6 px-1  divide-y sm:p-10 divide-gray-300 bg-gray-50 text-gray-800">
-          <div>
-            <h2 className="md:text-2xl text-xl font-bold">Your old stocks</h2>
-          </div>
+        <div className="flex-col w-full md:p-6 px-1  divide-y sm:p-10 divide-gray-300 bg-gray-50 text-gray-800">
+         
           <div>
             {oldStocks?.map((stock) => (
-              <StockCard stock={stock} key={stock._id} />
+              <SellStock stock={stock} key={stock._id} />
             ))}
           </div>
         </div>
