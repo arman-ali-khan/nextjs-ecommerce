@@ -11,7 +11,7 @@ const SellStock = ({stock}) => {
         </div>
         <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1'>
             {
-                products.map(product=> <SellStockCard product={product} key={product._id}/>)
+                products.map(product=> <SellStockCard stockId={stock.id} product={product} key={product._id}/>)
             }
         </div>
         </>
