@@ -7,9 +7,17 @@ import { toast } from "react-hot-toast";
 import { BsStarFill } from "react-icons/bs";
 import { RiSendPlaneLine } from "react-icons/ri";
 
-const SellStockCard = ({ product,stockId }) => {
-  const { dispatch, state, dbUser, user, setLoading, loading } =
-    useAllContext();
+const SellStockCard = ({ product, stockId, update, setUpdate }) => {
+  const {
+    dispatch,
+    state,
+    dbUser,
+    user,
+    setLoading,
+    loading,
+    setUpdateMoney,
+    updateMoney,
+  } = useAllContext();
 
   // router
   const router = useRouter();
@@ -20,9 +28,9 @@ const SellStockCard = ({ product,stockId }) => {
   const products = state.stocks;
 
   // update stocks
-  const [stockUpdate,setStockUpdate] = useState(false)
+  const [stockUpdate, setStockUpdate] = useState(false);
   // loading when sell stock
-  const [loadingStock,setLoadingStock] = useState(false)
+  const [loadingStock, setLoadingStock] = useState(false);
 
   // all product price
   let totalPrice = products.reduce(function (prev, current) {
@@ -36,7 +44,7 @@ const SellStockCard = ({ product,stockId }) => {
     axios.get(`/api/stock/${product.id}`).then((res) => {
       setCurrentProduct(res.data);
     });
-  }, [stockUpdate,loadingStock]);
+  }, [stockUpdate, loadingStock]);
 
   // add product to cart with enough money
   const handleAddToCart = () => {
@@ -45,17 +53,19 @@ const SellStockCard = ({ product,stockId }) => {
   };
 
   const handleSellStock = (product) => {
-    setLoadingStock(true)
-    axios.delete(`/api/stock/sellStock?id=${product.id}&email=${user.email}&stockId=${stockId}`)
-    .then(res=>{
-      console.log(res.data);
-      toast.success("Stock Sell Successfull");
-      setStockUpdate(!stockUpdate)
-      setLoadingStock(false)
-    })
+    setLoadingStock(true);
+    axios
+      .delete(
+        `/api/stock/sellStock?id=${product.id}&email=${user.email}&stockId=${stockId}`
+      )
+      .then((res) => {
+        console.log(res.data);
+        toast.success("Stock Sell Successfull");
+        setUpdate(!update);
+        setLoadingStock(false);
+        setUpdateMoney(!updateMoney)
+      });
   };
-
-
 
   return (
     <div className={`shadow-xl rounded-md relative`}>
@@ -132,10 +142,10 @@ const SellStockCard = ({ product,stockId }) => {
       </div>
       {product.stock > 0 && (
         <div
-          onClick={()=>handleSellStock(product)}
+          onClick={() => handleSellStock(product)}
           className={`flex cursor-pointer select-none justify-between items-center bg-gray-100 duration-300 border border-teal-600  pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600`}
         >
-          <button>{loadingStock ? 'Selling...':'Sell Stock'}</button>
+          <button>{loadingStock ? "Selling..." : "Sell Stock"}</button>
           <span className=" px-4 py-2">
             <RiSendPlaneLine size={20} />
           </span>

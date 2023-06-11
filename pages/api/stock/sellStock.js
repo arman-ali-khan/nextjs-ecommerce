@@ -46,15 +46,23 @@ export default async function handler(req, res) {
               id: stockId,
               products: { $elemMatch: { id: id } },
             };
+
+            const filterOldStock = stock.products.filter(stockItem=>stockItem.id !== id)
+            console.log(filterOldStock);
+            
             const updateProduct = {
-              $set: {status:false},
+              $set: {products:filterOldStock},
             };
 
             const result = await db
-              .collection("stockProduct")
+              .collection("stocks")
               .updateOne(stockFilter, updateProduct, option);
             res.status(200).json({ success: result  });
           } else {
+            const stockFilter = {
+              id: stockId,
+              products: { $elemMatch: { id: id } },
+            };
             // update stock
             const result = await db.collection("stocks").deleteOne(stockFilter);
             res.status(200).json({ success: result.deletedCount > 0 });

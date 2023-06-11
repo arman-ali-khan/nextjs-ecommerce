@@ -102,7 +102,7 @@ const MyStocks = () => {
          
           <div>
             {oldStocks?.map((stock) => (
-              <SellStock stock={stock} key={stock._id} />
+              <SellStock update={update} setUpdate={setUpdate} stock={stock} key={stock._id} />
             ))}
           </div>
         </div>

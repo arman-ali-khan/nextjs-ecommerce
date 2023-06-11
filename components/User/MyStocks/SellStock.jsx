@@ -1,8 +1,8 @@
 import moment from 'moment';
 import SellStockCard from './SellStockCard';
 
-const SellStock = ({stock}) => {
-    const products = stock.products;
+const SellStock = ({stock,update, setUpdate}) => {
+    const products = stock?.products;
 
     return (
         <>
@@ -11,7 +11,7 @@ const SellStock = ({stock}) => {
         </div>
         <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1'>
             {
-                products.map(product=> <SellStockCard stockId={stock.id} product={product} key={product._id}/>)
+                products?.map(product=> <SellStockCard update={update} setUpdate={setUpdate} stockId={stock.id} product={product} key={product._id}/>)
             }
         </div>
         </>

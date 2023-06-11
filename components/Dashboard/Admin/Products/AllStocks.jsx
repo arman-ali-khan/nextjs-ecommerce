@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { BiPencil, BiTrash } from 'react-icons/bi';
 
-const AllProducts = () => {
+const AllStocks = () => {
           // get context
   const { user } = useAllContext()
 
@@ -28,9 +28,9 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
   // get orders from mongodb
   useEffect(()=>{
     
-    axios.get(`/api/products?page=${currentPage}`)
+    axios.get(`/api/stocks?page=${currentPage}`)
     .then(res=>{
-        setProducts(res.data.allFiles)
+        setProducts(res.data.stocks)
         setProductCount(res.data)
         setLoading(false)
           })
@@ -40,7 +40,7 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
 
   const handleDeleteProduct = (id)=>{
     axios
-      .delete(`/api/product/delete?id=${id}&email=${user.email}`,{
+      .delete(`/api/stocks/delete?id=${id}&email=${user.email}`,{
         headers: {
                   authorization: `Bearer ${token}`,
                 },
@@ -48,7 +48,7 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
       .then((response) => {
         toast.success("Product Deleted successfully");
         setProductLoading(false);
-        router.push('/admin/products')
+        router.push('/admin/stocks')
         setLoading(true)
       })
       .catch((err) => {
@@ -61,7 +61,6 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
     return (
              <div className="overflow-x-auto text-sm md:text-base w-full md:my-4 mb-12">
                 <Link className='px-4 py-2 inline-block bg-teal-100 text-teal-600 rounded hover:bg-teal-200 hover:underline' href={'/admin/@add/new-product'}>Add New Product</Link>
-                <Link className='px-4 py-2 inline-block bg-teal-100 text-teal-600 rounded hover:bg-teal-200 hover:underline' href={'/admin/stocks'}>Stocks Product</Link>
 <table className="table w-full">
  {/* head */}
  <thead>
@@ -102,4 +101,4 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
     );
 };
 
-export default AllProducts;
+export default AllStocks;
