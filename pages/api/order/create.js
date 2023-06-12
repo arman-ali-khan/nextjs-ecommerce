@@ -10,11 +10,11 @@ export default async function handler(req, res) {
   verifyJWT(req, res)
 
   const {email}  = req.query;
-
+console.log(email,req.decoded);
   
   if (req.method === "POST") {
 
-    if(req.decoded?.user !== email){
+    if(req.decoded?.email !== email){
       return res.status(200).send({message: 'Unauthenticated'});
     }
     

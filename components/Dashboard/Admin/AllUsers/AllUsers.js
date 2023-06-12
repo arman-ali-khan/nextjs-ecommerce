@@ -130,7 +130,7 @@ const AllUsers = () => {
                  <div className=" text-sm"> balance: </div>
                  <div>   
                  <div className="font-bold  text-sm" >
-                 {user.balance.toFixed(2)}
+                 {(user.balance)}
                
                    </div>
                  </div>

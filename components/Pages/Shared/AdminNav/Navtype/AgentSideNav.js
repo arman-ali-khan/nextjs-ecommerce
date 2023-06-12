@@ -44,22 +44,22 @@ const AdminSideNav = () => {
                 <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex  items-center gap-2' href={'/user'}> <BiHomeAlt2 size={25} /> Dashboard</Link>
             </li>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/agent/getmyclient'}><TbUsers size={25} />My Clients</Link>
+                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2 inline-block' href={'/agent/getmyclient'}><TbUsers size={25} />My Clients</Link>
             </li>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/user/orders'}><BsCartCheck size={25} />My Orders</Link>
+                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2 inline-block' href={'/user/orders'}><BsCartCheck size={25} />My Orders</Link>
             </li>
             <li>
-            <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/user/stocks'}><AiOutlineStock size={25} />Stocks</Link>
+            <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2 inline-block' href={'/user/stocks'}><AiOutlineStock size={25} />Stocks</Link>
             </li>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'#'}> <CiPercent size={25} />My Revenue</Link>
+                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2 inline-block' href={'#'}> <CiPercent size={25} />My Revenue</Link>
             </li>
             <li>
-            <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/user/moneyorder'}> <TbReportMoney size={25} />Money Orders</Link>
+            <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2 inline-block' href={'/user/moneyorder'}> <TbReportMoney size={25} />Money Orders</Link>
             </li>
             <li>
-            <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/agent/moneyrequest'}> <MdOutlineRequestPage size={25} />Money Request</Link>
+            <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2 inline-block' href={'/agent/moneyrequest'}> <MdOutlineRequestPage size={25} />Money Request</Link>
             </li>
            </ul>
            </>

@@ -1,16 +1,15 @@
 import UserLayout from "@/Layout/UserLayout";
 import { useAllContext } from "@/context/ContextProvider";
-import { accessToken } from "@/hooks/setToken";
+import useToken from "@/hooks/useToken";
 import axios from "axios";
 import moment from "moment";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { TbCurrencyTaka, TbTruckDelivery } from "react-icons/tb";
-import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
+import { useEffect, useState } from "react";
 import { BiTrash } from "react-icons/bi";
-import useToken from "@/hooks/useToken";
-import { GrDeliver } from "react-icons/gr";
 import { BsCartCheck } from "react-icons/bs";
+import { HiArrowPath } from "react-icons/hi2";
+import { TbCurrencyTaka, TbMoneybag, TbTruckDelivery } from "react-icons/tb";
+import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 
 const UserOrders = () => {
   // get context
@@ -81,7 +80,11 @@ const UserOrders = () => {
                             (order?.status === "Out for delivery" &&
                               "text-blue-600 bg-blue-100") ||
                             (order?.status === "Delivered" &&
-                              "text-success bg-success")
+                              "text-success bg-success bg-opacity-20")||
+                            (order?.status === "Processing" &&
+                              "text-error bg-error bg-opacity-20 ")||
+                            (order?.status === "Packaging" &&
+                              "text-info bg-info bg-opacity-20 ")
                           } p-2 rounded-full`}
                         >
                           {(order?.status === "Out for delivery" && (
@@ -89,7 +92,15 @@ const UserOrders = () => {
                           )) ||
                             (order?.status === "Delivered" && (
                               <BsCartCheck size={20} />
-                            ))}
+                            ))||
+                            (order?.status === "Processing" && (
+                              <HiArrowPath size={20} />
+                            ))||
+                            (order?.status === "Packaging" && (
+                              <TbMoneybag size={20} />
+                            ))
+                            
+                            }
                         </span>
                         {order?.status}
                       </span>
@@ -97,7 +108,7 @@ const UserOrders = () => {
                     <td className="flex items-center font-bold">
                       {" "}
                       <TbCurrencyTaka className="font-bold" size={20} />{" "}
-                      {order?.total}
+                      {(order?.total).toFixed(2)}
                     </td>
                     <td>
                       <span className="flex items-center">

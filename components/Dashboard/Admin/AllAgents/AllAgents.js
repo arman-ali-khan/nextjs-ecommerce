@@ -1,9 +1,6 @@
 import { useAllContext } from '@/context/ContextProvider';
 import axios from 'axios';
-import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
-import { GiTakeMyMoney } from 'react-icons/gi';
-import { RiSendPlaneLine } from 'react-icons/ri';
+import { useEffect, useState } from 'react';
 
 const AllAgents = () => {
 
@@ -101,7 +98,7 @@ const AllAgents = () => {
                    <div className=" text-sm"> balance: </div>
                    <div>   
                    <div className="font-bold  text-sm" >
-                   {user.balance.toFixed(2)}
+                   {(user.balance)}
                  
                      </div>
                    </div>

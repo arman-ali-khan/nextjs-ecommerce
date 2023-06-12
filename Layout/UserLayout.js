@@ -1,4 +1,3 @@
-import Layout from "@/Layout/Layout";
 import AdminNavbar from "@/components/Pages/Shared/AdminNav/AdminNavbar";
 import AdminSideNav from "@/components/Pages/Shared/AdminNav/Navtype/AdminSideNav";
 import AgentSideNav from "@/components/Pages/Shared/AdminNav/Navtype/AgentSideNav";
@@ -6,13 +5,7 @@ import UserSideNav from "@/components/Pages/Shared/AdminNav/Navtype/UserSideNav"
 import PrivateRoutes from "@/components/PrivateRoutes/PrivateRoutes";
 import { useAllContext } from "@/context/ContextProvider";
 import Head from "next/head";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { AiOutlineStock } from "react-icons/ai";
-import { BsPercent } from "react-icons/bs";
-import { MdCoPresent, MdOutlineSpaceDashboard } from "react-icons/md";
-import { RiParenthesesLine } from "react-icons/ri";
-import { TbCurrencyTaka, TbGardenCart } from "react-icons/tb";
+import { useState } from "react";
 function UserLayout({ children, title, description, thumb }) {
   const { user, dbUser, loading } = useAllContext();
 
@@ -71,7 +64,7 @@ function UserLayout({ children, title, description, thumb }) {
                 onClickCapture={() => setMoneyLoading(false)}
                 onClick={() => setMoneyClass("")}
               >
-                Your balance is <span className="font-bold">${(dbUser?.balance)?.toFixed(2)}</span>
+                Your balance is <span className="font-bold">${(dbUser?.balance)}</span>
               </p>
              
               <button
@@ -99,7 +92,7 @@ function UserLayout({ children, title, description, thumb }) {
           <h2 className="text-2xl my-3 md:my-6"> User Dashboard</h2>
         </div>
         <div className="md:flex gap-3 ">
-          <div className="md:w-44 w-full hidden md:block ">
+          <div className="md:w-64 w-full hidden md:block ">
           {
             dbUser.type === 'admin' && <AdminSideNav />
           }
