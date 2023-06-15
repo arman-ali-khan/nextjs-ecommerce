@@ -69,7 +69,7 @@ const MyStocks = () => {
       });
   }, [update,total]);
 
-  console.log(oldStocks);
+
 
   const handleSubmit = (data) => {
     setLoading(true);
@@ -98,9 +98,9 @@ const MyStocks = () => {
   return (
     <PrivateRoutes>
       <div className="flex flex-col-reverse md:flex-row overflow-hidden">
-        <div className="flex-col w-full md:p-6 px-1  divide-y sm:p-10 divide-gray-300 bg-gray-50 text-gray-800">
+        <div className="flex-col w-full md:p-6 px-1 divide-y sm:p-10 divide-gray-300 bg-gray-50 text-gray-800">
          
-          <div>
+          <div className="mb-12">
             {oldStocks?.map((stock) => (
               <SellStock update={update} setUpdate={setUpdate} stock={stock} key={stock._id} />
             ))}

@@ -35,10 +35,10 @@ function UserLayout({ children, title, description, thumb }) {
         <meta property="og:description" content={description} />
         <meta property="og:image" content={thumb} />
       </Head>
-      <div className="container mx-auto mt-12 py-3 relative overflow-hidden">
+      <div className="container mx-auto  py-3 relative overflow-hidden">
         <div className=" md:-bottom-20  -bottom-8 relative">
           <div className="w-full mb-20  absolute -z-10  md:h-44 h-image flex-shrink-0 my-5  bg-teal-500 rounded-lg  shadow-lg flex justify-center"></div>
-          <div className="md:h-24 h-image bg-teal-600 rounded-md flex justify-center w-full">
+          <div className="md:h-52 my-6 h-image bg-teal-600 rounded-md flex justify-center w-full">
           {user?.photo ? (
              <img
               className="md:w-44 md:h-44 h-20 flex justify-center mx-auto w-20  object-cover  rounded-full overflow-hidden bg-teal-100 border-2 border-teal-600"

@@ -1,11 +1,8 @@
-import React from 'react';
-import { CiDiscount1 } from 'react-icons/ci';
-import { GiPriceTag } from 'react-icons/gi';
 
 const OfferUderPopular = () => {
     return (
         <div className='container mx-auto '>
-           <div className='px-3 flex justify-between md:px-0'>
+           {/* <div className='px-3 flex justify-between md:px-0'>
                 <h2 className='md:text-2xl px-4 py-2 md:uppercase text-teal-600 flex items-center gap-2 border-b border-teal-600'> <span><GiPriceTag /></span> Offers</h2>
                 <div></div>
             </div>
@@ -96,7 +93,7 @@ const OfferUderPopular = () => {
       </div>
     </div>
     
-  </div>
+  </div> */}
         </div>
     );
 };

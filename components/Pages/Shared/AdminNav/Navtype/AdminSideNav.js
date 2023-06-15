@@ -51,6 +51,9 @@ const AdminSideNav = () => {
                                 <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/admin/categories'}><BiCategory size={25} />Categories</Link>
                             </li>
                             <li>
+                                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/admin/slider'}><BiCategory size={25} />Slider</Link>
+                            </li>
+                            <li>
                                 <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/admin/all-agents'}><MdSupportAgent size={25} />Agents</Link>
                             </li>
                             <li>
