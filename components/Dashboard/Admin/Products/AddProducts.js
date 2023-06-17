@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import makeAnimated from "react-select/animated";
-import Creatable from 'react-select/creatable';
-import Select from "react-select";
 import { useAllContext } from "@/context/ContextProvider";
 import axios from "axios";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
-import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import { AiOutlineRight } from "react-icons/ai";
 import { MdCancel } from "react-icons/md";
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
 import CreatableSelect from 'react-select/creatable';
-import { Router, useRouter } from "next/router";
 import { v4 as uuidv4 } from 'uuid';
 
 const AddProducts = () => {
@@ -92,6 +91,7 @@ const AddProducts = () => {
       id: id,
       images: imageUrl,
       price: data.price,
+      originalPrice:data.originalPrice,
       oldPrice: data.oldPrice,
       description: data.description,
       categories: categories,
@@ -160,6 +160,17 @@ const AddProducts = () => {
               <AiOutlineRight />
               <input
                {...register("price", { required: true })}
+                className="input w-full rounded input-bordered border-teal-600 form-control"
+                type="text"
+              />
+            </span>
+          </label>
+          <label className="w-full">
+          Original* :
+            <span className="flex items-center">
+              
+              <input
+               {...register("originalPrice", { required: true })}
                 className="input w-full rounded input-bordered border-teal-600 form-control"
                 type="text"
               />

@@ -1,13 +1,12 @@
 import UserLayout from '@/Layout/UserLayout';
 import MoneyOrder from '@/components/User/MoneyOrder/MoneyOrder';
 import { useAllContext } from '@/context/ContextProvider';
-import { accessToken } from '@/hooks/setToken';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Profile = () => {
         // get context
-  const { user,dUser } = useAllContext()
+  const { user,dUser , logOut} = useAllContext()
 
 
   // get token from cookie
@@ -19,13 +18,18 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
 
   // get orders from mongodb
   useEffect(()=>{
-    axios.get(`/api/order?email=${user.email}`,{
+    axios.get(`/api/order?email=${user?.email}`,{
       headers: {
         'authorization': `Bearer ${token}`
       }
     })
     .then(res=>{
       setOrders(res.data)
+          })
+          .catch(err=>{
+            if(err.response.status===401){
+              return logOut() 
+            }
           })
   },[])
 
@@ -38,7 +42,6 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
   const delivered = orders.filter(order => order.status === 'Delivered').length 
 
     return (
-        <div>
             <UserLayout>
             <div className="grid md:gap-4 mb-16 grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
           <div className="flex h-full">
@@ -161,7 +164,6 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
           <MoneyOrder />
         </div>
             </UserLayout>
-        </div>
     );
 };
 

@@ -113,36 +113,27 @@ const[updateMoney,setUpdateMoney] = useState(false);
   const [dbUser, setDbUser] = useState({});
 
   // call data from local storage in nextjs
-  
+  const token =  typeof window !== "undefined" &&
+  localStorage.getItem("accessToken")
   useEffect(() => {
-    if (user?.email) {
-      axios
-        .get(`${process.env.NEXT_PUBLIC_API_PRO}/api/getUser/${user?.email}`, {
-          headers: {
-            authorization: `Bearer ${
-              typeof window !== "undefined" &&
-              localStorage.getItem("accessToken")
-            }`,
-          },
-        })
-        .then((res) => {
-          if(res.response?.status===401){
-            logOut()
-          }
-          setDbUser(res.data);
-          setUserLoading(false)
-        })
-        .catch((err) => {
-          console.log(err);
-          if (err.response?.status === 401) {
-            toast.error("Access Token is invalid");
-            setUserLoading(false)
-            logOut()
-          }
-        });
-    }
+    axios
+    .get(`/api/getUser/${user?.email}`, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    })
+    .then((res) => {
+      setDbUser(res.data);
+      setUserLoading(false)
+    })
+    .catch((err) => {
+      console.log(err);
+      if (err.response.status === 401) {
+        toast.error("Access Token is invalid");
+        setUserLoading(false)
+      }
+    });
   }, [user?.email,updateMoney]);
-// get token from cookie
 
 
 

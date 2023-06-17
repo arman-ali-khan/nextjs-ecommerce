@@ -24,7 +24,7 @@ const HeroSlider = () => {
   };
   // get all slider images
   const [sliderImages, setSliderImatges] = useState([]);
-console.log(sliderImages);
+
   // loading
   const [loading, setLoading] = useState(true);
   // get images

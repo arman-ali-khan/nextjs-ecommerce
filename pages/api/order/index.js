@@ -7,15 +7,15 @@ export default async function handler(req, res) {
   
   const { db } = await connectToDatabase();
   
-  // verifyJWT(req, res)
+  verifyJWT(req, res)
 
   const {email}  = req.query;
 
   if (req.method === "GET") {
 
-    // if(req.decoded?.user !== email){
-    //   return res.status(401).send({message: 'Unauthenticated'});
-    // }
+    if(req.decoded?.email !== email){
+      return res.status(401).send({message: 'Unauthenticated'});
+    }
     const filter = {email: email}
     const result = await db.collection("orders").find(filter).sort({_id:-1}).toArray();
     res.status(200).json(result);

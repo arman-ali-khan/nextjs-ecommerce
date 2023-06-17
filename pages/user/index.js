@@ -1,12 +1,11 @@
-import Layout from '@/Layout/Layout';
 import Profile from '@/components/Pages/Home/Profile/Profile';
-import React from 'react';
+import PrivateRoutes from '@/components/PrivateRoutes/PrivateRoutes';
 
 const user = () => {
     return (
-        <div>
+        <PrivateRoutes>
             <Profile />
-        </div>
+        </PrivateRoutes>
     );
 };
 

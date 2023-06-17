@@ -24,7 +24,6 @@ function UserLayout({ children, title, description, thumb }) {
       setMoneyLoading(false);
     };
   };
-
   return (
     <PrivateRoutes>
       <AdminNavbar />
@@ -36,19 +35,19 @@ function UserLayout({ children, title, description, thumb }) {
         <meta property="og:image" content={thumb} />
       </Head>
       <div className="container mx-auto  py-3 relative overflow-hidden">
-        <div className=" md:-bottom-20  -bottom-8 relative">
-          <div className="w-full mb-20  absolute -z-10  md:h-44 h-image flex-shrink-0 my-5  bg-teal-500 rounded-lg  shadow-lg flex justify-center"></div>
-          <div className="md:h-52 my-6 h-image bg-teal-600 rounded-md flex justify-center w-full">
+        <div className="top-6 relative">
+          <div className="w-full mb-20 absolute -z-10  md:h-44 h-image flex-shrink-0 my-5  bg-teal-500 rounded-lg  shadow-lg flex justify-center"></div>
+          <div className="md:h-44 my-6 h-image bg-teal-600 rounded-md flex justify-center w-full">
           {user?.photo ? (
              <img
-              className="md:w-44 md:h-44 h-20 flex justify-center mx-auto w-20  object-cover  rounded-full overflow-hidden bg-teal-100 border-2 border-teal-600"
+              className="md:w-52 md:h-44 h-20 flex justify-center mx-auto w-20  object-cover  rounded-full overflow-hidden bg-teal-100 border-2 border-teal-600"
               src={dbUser?.photo}
               alt=""
             />
           
           ) : (
              <img
-              className="md:w-44  flex justify-center mx-auto w-20  object-cover  rounded-full overflow-hidden bg-teal-100 border-2 border-teal-600"
+              className="md:w-44 flex justify-center mx-auto w-20  object-cover  rounded-full overflow-hidden bg-teal-100 border-2 border-teal-600"
               src="http://static.everypixel.com/ep-pixabay/0329/8099/0858/84037/3298099085884037069-head.png"
               alt=""
             />
@@ -89,7 +88,7 @@ function UserLayout({ children, title, description, thumb }) {
         </div>
       
         <div>
-          <h2 className="text-2xl my-3 md:my-6"> User Dashboard</h2>
+          <h2 className="text-2xl my-3 md:my-14 mt-12">{title}</h2>
         </div>
         <div className="md:flex gap-3 ">
           <div className="md:w-64 w-full hidden md:block ">

@@ -1,9 +1,6 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { accessToken } from "./setToken";
-import { useAllContext } from "@/context/ContextProvider";
+import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
-import useToken from "./useToken";
 
 const useUser = (user) => {
   const [dUser, setDbUser] = useState({});

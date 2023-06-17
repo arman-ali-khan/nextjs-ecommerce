@@ -1,8 +1,5 @@
 import { useAllContext } from "@/context/ContextProvider";
-import useUser from "@/hooks/useUser";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
 
 const PrivateRoutes = ({ children }) => {
   const router = useRouter();
@@ -21,7 +18,7 @@ const PrivateRoutes = ({ children }) => {
      </div>
     
   }else if(!user?.email){
-    router.push('/account/login')
+    return router.push('/account/login')
   }
   return children;
 };

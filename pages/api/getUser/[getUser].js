@@ -1,5 +1,4 @@
 import { connectToDatabase } from "@/utils/db";
-import { verifyJWT } from "../jwt/verifyJWT";
 
 export default async function handler(req, res) {
   const { db } = await connectToDatabase();
@@ -8,8 +7,10 @@ export default async function handler(req, res) {
   const { getUser } = req.query;
 
   // console.log(req.decoded)
+  console.log(getUser);
 
   if (req.method === "GET") {
+    console.log('email',getUser);
     // if (req.decoded.email === getUser) {
     //   return res.status(401).send({ message: "Unauthenticated" });
     // }  
