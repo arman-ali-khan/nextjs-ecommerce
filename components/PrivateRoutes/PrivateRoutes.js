@@ -17,7 +17,8 @@ const PrivateRoutes = ({ children }) => {
       </div>
      </div>
     
-  }else if(!user?.email){
+  }
+   if(!user){
     return router.push('/account/login')
   }
   return children;

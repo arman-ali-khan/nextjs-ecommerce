@@ -42,6 +42,7 @@ const[updateMoney,setUpdateMoney] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const [user, setUser] = useState({});
+  console.log(user);
   // products
   const [state, dispatch] = useReducer(productsReducer, initialState);
   // User
@@ -117,7 +118,7 @@ const[updateMoney,setUpdateMoney] = useState(false);
   localStorage.getItem("accessToken")
   useEffect(() => {
     axios
-    .get(`/api/getUser/${user?.email}`, {
+    .get(`/api/getUser?email=${user?.email}`, {
       headers: {
         authorization: `Bearer ${token}`,
       },
@@ -136,7 +137,7 @@ const[updateMoney,setUpdateMoney] = useState(false);
   }, [user?.email,updateMoney]);
 
 
-
+console.log(dbUser);
  
 
   const value = {
