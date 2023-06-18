@@ -1,10 +1,10 @@
 import { useAllContext } from "@/context/ContextProvider";
 import actionTypes from "@/state/ProductState/actionTypes";
 import { useState } from "react";
-import { CheckmarkIcon, toast } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { BsStarFill } from "react-icons/bs";
 import { FiArrowRight } from "react-icons/fi";
-import { MdOutlineAdd } from "react-icons/md";
+import { MdOutlineAdd, MdOutlineRemove } from "react-icons/md";
 import { Modal } from "rsuite";
 
 const StocksCard = ({ product }) => {
@@ -90,7 +90,6 @@ const StocksCard = ({ product }) => {
                   </span>
                 </div>
               </div>
-              <br />
               {/* product title */}
               <p
                 href={`/product/${product?.id}`}
@@ -103,33 +102,40 @@ const StocksCard = ({ product }) => {
           </div>
         </div>
         {/* Add to cart */}
-        {added ? (
-          <div
-            className={`flex cursor-pointer select-none  items-center bg-gray-100 duration-300 border border-teal-600  rounded text-white `}
-          >
-            {/* Derement btn */}
-            <button
-              onClick={() => handleRemoveFromCart()}
-              className="px-3 w-full flex items-center justify-between py-2 bg-teal-100 text-teal-600"
-            >
-             Remove <CheckmarkIcon />
-            </button>
-           
-           
-          </div>
-        ) : (
-          product?.stock > 0 && (
-            <div
-              onClick={handleAddToCart}
-              className={`flex cursor-pointer select-none justify-between items-center bg-gray-100 duration-300 border border-teal-600  pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600`}
-            >
-              <button>Buy Stock</button>
-              <span className=" px-4 py-2">
-                <MdOutlineAdd size={20} />
-              </span>
-            </div>
-          )
-        )}
+        {
+        added ? 
+        <div
+     
+      
+        className={`flex cursor-pointer select-none justify-between items-center bg-gray-100 duration-300 border border-teal-600  rounded text-white `}
+      >
+        {/* Derement btn */}
+        <button   onClick={()=>handleRemoveFromCart()} className="px-3 py-2 bg-teal-600">
+          <MdOutlineRemove size={20} />
+        </button>
+        {/* Count */}
+        <span className="text-teal-600 font-bold">{selected?.quantity}</span>
+        {/* increment btn */}
+        <button  onClick={()=>handleAddToCart()} className="px-3 py-2 bg-teal-600"> 
+          <MdOutlineAdd size={20} />
+        </button>
+       
+      </div>
+      :
+      
+        product.stock > 0 && 
+      
+    <div
+    onClick={handleAddToCart}
+    
+      className={`flex cursor-pointer select-none justify-between items-center bg-gray-100 duration-300 border border-teal-600  pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600`}
+    >
+      <button>Add To Cart</button>
+      <span className=" px-4 py-2">
+        <MdOutlineAdd size={20} />
+      </span>
+    </div>
+  }
 
         <div></div>
       </div>

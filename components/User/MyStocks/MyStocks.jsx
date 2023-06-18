@@ -99,12 +99,18 @@ const MyStocks = () => {
     <PrivateRoutes>
       <div className="flex flex-col-reverse md:flex-row overflow-hidden">
         <div className="flex-col w-full md:p-6 px-1 divide-y sm:p-10 divide-gray-300 bg-gray-50 text-gray-800">
-         
-          <div className="mb-12">
+         {
+          oldStockLoad ? <div>
+            Loading...
+          </div>
+          :
+             <div className="mb-12">
             {oldStocks?.map((stock) => (
               <SellStock update={update} setUpdate={setUpdate} stock={stock} key={stock._id} />
             ))}
           </div>
+         }
+       
         </div>
       </div>
     </PrivateRoutes>

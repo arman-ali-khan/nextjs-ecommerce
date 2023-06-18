@@ -86,7 +86,7 @@ const CartSidebar = ({ showCart, setShowCart }) => {
           ) : (
             <div className="overflow-auto h-full">
               {stocks
-                .sort((a, b) => a.id - b.id)
+                .sort((a, b) => (a._id < b._id ? -1 : 1))
                 .map((product, i) => (
                   <SingleCart product={product} key={i} />
                 ))}
@@ -126,7 +126,7 @@ const CartSidebar = ({ showCart, setShowCart }) => {
           ) : (
             <div className="overflow-auto h-full">
               {products
-                .sort((a, b) => a.id - b.id)
+                .sort((a, b) => (a._id < b._id ? -1 : 1))
                 .map((product, i) => (
                   <SingleCart product={product} key={i} />
                 ))}

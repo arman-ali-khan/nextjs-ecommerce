@@ -1,21 +1,17 @@
-import Link from "next/link";
-import React, { useState } from "react";
-import { BsBell, BsCart, BsCartCheck, BsCartCheckFill, BsFillSearchHeartFill, BsMenuApp } from "react-icons/bs";
-import { CiShoppingTag } from "react-icons/ci";
-import { BsSearch } from "react-icons/bs";
-import { RiMenu4Line } from "react-icons/ri";
-import { AiOutlineHome, AiOutlineUser, AiOutlineUserAdd } from "react-icons/ai";
-import CategorirsSidebar from "@/components/Sidebars/CategorirsSidebar";
-import UserSidebar from "@/components/Sidebars/UserSidebar";
-import CartSidebar from "@/components/Sidebars/CartSidebar";
 import NavCategories from "@/components/Categories/NavCategories";
-import Image from "next/image";
+import CartSidebar from "@/components/Sidebars/CartSidebar";
+import UserSidebar from "@/components/Sidebars/UserSidebar";
 import { useAllContext } from "@/context/ContextProvider";
-import { useForm } from "react-hook-form";
+import Link from "next/link";
 import { useRouter } from "next/router";
-import UserSideNav from "./Navtype/UserSideNav";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { AiOutlineHome, AiOutlineUser, AiOutlineUserAdd } from "react-icons/ai";
+import { BsBell, BsCart, BsSearch } from "react-icons/bs";
+import { RiMenu4Line } from "react-icons/ri";
 import AdminSideNav from "./Navtype/AdminSideNav";
 import AgentSideNav from "./Navtype/AgentSideNav";
+import UserSideNav from "./Navtype/UserSideNav";
 
 const AdminNavbar = () => {
   const router = useRouter()
@@ -127,9 +123,9 @@ const orderPath = router.pathname
               <li>
                 <Link
                   className={`px-3 py-2 md:px-2 lg:px-3 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
-                  href={"/offers"}
+                  href={"/draw"}
                 >
-                  Offers
+                  Draw
                 </Link>
               </li>
               <li>

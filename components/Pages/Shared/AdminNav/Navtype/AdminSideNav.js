@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { AiOutlineStock } from 'react-icons/ai';
-import { BiCategory, BiMenuAltRight } from 'react-icons/bi';
+import { BiCategory, BiMenuAltRight, BiMoneyWithdraw } from 'react-icons/bi';
 import { BsCartCheck } from 'react-icons/bs';
 import { CiPercent } from 'react-icons/ci';
 import { FiShoppingCart, FiUsers } from 'react-icons/fi';
 import { MdOutlineDashboard, MdSupportAgent } from 'react-icons/md';
-import { TbReportMoney, TbUsers } from 'react-icons/tb';
+import { TbCarouselHorizontal, TbReportMoney, TbUsers } from 'react-icons/tb';
 
 const AdminSideNav = () => {
     const [showMenu, setShowMenu] = useState(false)
@@ -51,7 +51,10 @@ const AdminSideNav = () => {
                                 <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/admin/categories'}><BiCategory size={25} />Categories</Link>
                             </li>
                             <li>
-                                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/admin/slider'}><BiCategory size={25} />Slider</Link>
+                                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/admin/slider'}><TbCarouselHorizontal size={25} />Slider</Link>
+                            </li>
+                            <li>
+                                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/admin/@add-draw'}><BiMoneyWithdraw size={25} />Raffle Draw</Link>
                             </li>
                             <li>
                                 <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/admin/all-agents'}><MdSupportAgent size={25} />Agents</Link>

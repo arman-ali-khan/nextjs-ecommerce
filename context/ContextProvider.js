@@ -132,9 +132,10 @@ const[updateMoney,setUpdateMoney] = useState(false);
       if (err.response.status === 401) {
         toast.error("Access Token is invalid");
         setUserLoading(false)
+        return logOut()
       }
     });
-  }, [user?.email,updateMoney]);
+  }, [dbUser,loading,user,updateMoney]);
 
 
 console.log(dbUser);

@@ -93,7 +93,7 @@ const handleAddToCart = () => {
                   ))}
                 </span>
               </div>
-            </div><br/>
+            </div>
             {/* product title */}
             <Link
               href={`/product/${product.id}`}

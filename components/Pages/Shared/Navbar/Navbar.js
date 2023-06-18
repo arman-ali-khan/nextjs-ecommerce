@@ -1,28 +1,20 @@
+import NavCategories from "@/components/Categories/NavCategories";
+import CartSidebar from "@/components/Sidebars/CartSidebar";
+import CategorirsSidebar from "@/components/Sidebars/CategorirsSidebar";
+import UserSidebar from "@/components/Sidebars/UserSidebar";
+import { useAllContext } from "@/context/ContextProvider";
 import Link from "next/link";
-import React, { useState } from "react";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { AiOutlineHome, AiOutlineUser, AiOutlineUserAdd } from "react-icons/ai";
 import {
   BsBell,
   BsCart,
-  BsCartCheck,
   BsCartCheckFill,
-  BsFillSearchHeartFill,
-  BsMenuApp,
+  BsSearch
 } from "react-icons/bs";
-import { CiShoppingTag } from "react-icons/ci";
-import { BsSearch } from "react-icons/bs";
 import { RiMenu4Line } from "react-icons/ri";
-import { AiOutlineHome, AiOutlineUser, AiOutlineUserAdd } from "react-icons/ai";
-import CategorirsSidebar from "@/components/Sidebars/CategorirsSidebar";
-import UserSidebar from "@/components/Sidebars/UserSidebar";
-import CartSidebar from "@/components/Sidebars/CartSidebar";
-import NavCategories from "@/components/Categories/NavCategories";
-import Image from "next/image";
-import { MdOutlineLocationOn } from "react-icons/md";
-import Location from "../Location/Location";
-import { useAllContext } from "@/context/ContextProvider";
-import { toast } from "react-hot-toast";
-import { useForm } from "react-hook-form";
-import { useRouter } from "next/router";
 
 const Navbar = () => {
   // router 
@@ -155,9 +147,9 @@ const orderPath = router.pathname
               <li>
                 <Link
                   className={`px-3 py-2 md:px-2 lg:px-3 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
-                  href={"/offers"}
+                  href={"/draw"}
                 >
-                  Offers
+                  Draw
                 </Link>
               </li>
               <li>

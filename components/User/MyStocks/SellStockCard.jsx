@@ -131,7 +131,6 @@ const SellStockCard = ({ product, stockId, update, setUpdate }) => {
                 </span>
               </div>
             </div>
-            <br />
             {/* product title */}
             <p className="md:text-base inline-block leading-4 text-teal-600 text-sm font-bold">
               {product.title.slice(0, 20)}

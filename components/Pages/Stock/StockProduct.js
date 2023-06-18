@@ -84,7 +84,7 @@ console.log(product);
                 </span>
               </div>
             </div>
-            <br />
+          
             {/* product title */}
             <p
               className="md:text-base inline-block leading-4 text-teal-600 text-sm font-bold"

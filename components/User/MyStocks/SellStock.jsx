@@ -3,7 +3,7 @@ import SellStockCard from './SellStockCard';
 
 const SellStock = ({stock,update, setUpdate}) => {
     const products = stock?.products;
-
+console.log(stock.products)
     return (
         <>
         <div className='bg-teal-100 text-teal-600 px-4 py-1 my-4'>

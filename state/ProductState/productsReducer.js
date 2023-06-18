@@ -7,6 +7,7 @@ export const initialState = {
   error: false,
   cart: [],
   stocks: [],
+  draws: []
 };
 export const productsReducer = (state, action) => {
   let id = action.payload?.id;
@@ -16,6 +17,10 @@ export const productsReducer = (state, action) => {
   );
   // find selected stock
   const selectedStocks = state.stocks.find(
+    (product) => product._id === action.payload?._id
+  );
+  // find selected stock
+  const selectedDraw = state.draws.find(
     (product) => product._id === action.payload?._id
   );
   switch (action.type) {
@@ -86,14 +91,16 @@ export const productsReducer = (state, action) => {
         const newStock = state.stocks.filter(
           (product) => product._id !== selectedStocks._id
         );
-
+      
         selectedStocks.quantity += 1;
+
+       
         return {
           ...state,
           stocks: [...newStock, selectedStocks],
         };
       }
-
+      // stock count down per click
       const stockDown = parseInt(action.payload.stock);
 
       axios
@@ -109,6 +116,14 @@ export const productsReducer = (state, action) => {
         stocks: [...state.stocks, { ...action.payload, quantity: 1 }],
       };
     case actionTypes.REMOVE_FROM_STOCK:
+      const removeStock = parseInt(action.payload.stock);
+      axios
+            .patch(`/api/updateStock/update?id=${id}`, {
+              stock: (removeStock + 1).toString(),
+            })
+            .then((res) => {
+              console.log(res.data);
+            });
       return {
         ...state,
         stocks: state.stocks.filter(
@@ -127,7 +142,7 @@ export const productsReducer = (state, action) => {
           stocks: [...newStock, selectedStocks],
         };
       }
-
+ // stock count up per click
       const stockUP = parseInt(action.payload.stock);
       axios
         .patch(`/api/updateStock/update?id=${id}`, {
@@ -140,6 +155,68 @@ export const productsReducer = (state, action) => {
       return {
         ...state,
         stocks: state.stocks.filter(
+          (product) => product._id !== action.payload._id
+        ),
+      };
+ // Draw
+    case actionTypes.ADD_TO_DRAW:
+      if (selectedStocks) {
+        const newDraw = state.draws.filter(
+          (product) => product._id !== selectedStocks._id
+        );
+
+        selectedStocks.quantity += 1;
+        return {
+          ...state,
+          stocks: [...newDraw, selectedStocks],
+        };
+      }
+      // draw count down per click
+      const drawDown = parseInt(action.payload.draw);
+
+      axios
+        .patch(`/api/updateDraw/update?id=${id}`, {
+          stock: (drawDown - 1).toString(),
+        })
+        .then((res) => {
+          console.log(res.data);
+        });
+
+      return {
+        ...state,
+        draws: [...state.draws, { ...action.payload, quantity: 1 }],
+      };
+    case actionTypes.REMOVE_FROM_STOCK:
+      return {
+        ...state,
+        draws: state.draws.filter(
+          (product) => product._id !== action.payload?._id
+        ),
+      };
+    case actionTypes.DECREMENT_STOCK:
+      if (selectedStocks.quantity > 1) {
+        const newDraw = state.draws.filter(
+          (product) => product._id !== selectedStocks._id
+        );
+        selectedStocks.quantity = selectedStocks.quantity - 1;
+
+        return {
+          ...state,
+          stocks: [...newDraw, selectedStocks],
+        };
+      }
+ // draw count up per click
+      const drawUp = parseInt(action.payload.stock);
+      axios
+        .patch(`/api/updateStock/update?id=${id}`, {
+          draw: (drawUp).toString(),
+        })
+        .then((res) => {
+          console.log(res.data);
+        });
+      return {
+        ...state,
+        draws: state.draws.filter(
           (product) => product._id !== action.payload._id
         ),
       };
