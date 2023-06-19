@@ -7,7 +7,7 @@ import { toast } from "react-hot-toast";
 import { BsStarFill } from "react-icons/bs";
 import { RiSendPlaneLine } from "react-icons/ri";
 
-const SellStockCard = ({ product, stockId, update, setUpdate }) => {
+const SellStockCard = ({ product, stockId, update, setUpdate,quantity }) => {
   const {
     dispatch,
     state,
@@ -56,7 +56,7 @@ const SellStockCard = ({ product, stockId, update, setUpdate }) => {
     setLoadingStock(true);
     axios
       .delete(
-        `/api/stock/sellStock?id=${product.id}&email=${user.email}&stockId=${stockId}`
+        `/api/stock/sellStock?id=${product.id}&email=${user.email}&stockId=${stockId}&quantity=${quantity}`
       )
       .then((res) => {
         console.log(res.data);
