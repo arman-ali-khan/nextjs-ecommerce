@@ -4,7 +4,7 @@ import axios from "axios";
 import moment from "moment";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { BiCheckCircle, BiTrash } from "react-icons/bi";
 import { TbCurrencyTaka } from "react-icons/tb";
@@ -35,7 +35,7 @@ const ClientOrders = () => {
         console.log(err);
         setLoading(false);
       });
-  }, [email, updateOrders]);
+  }, [user, updateOrders,!clientsOrders]);
 
   // delete order
   const handleDeleteOrder = (id) => {
@@ -62,7 +62,7 @@ const ClientOrders = () => {
   const handleUpdateOrderStatus = (id) => {
     setUpdateLoading(true);
     axios
-      .patch(`/api/order/update?id=${id}`, { status })
+      .patch(`/api/order/update?id=${id}&email=${user.email}`, { status })
       .then((response) => {
         toast.success("Order status updated successfully");
         setUpdateOrders(!updateOrders);
@@ -80,7 +80,9 @@ const ClientOrders = () => {
       <div>
         <UserLayout title={"Clients"}>
           <div className="overflow-x-auto w-full my-4 mb-12">
-            <table className="table w-full">
+            {
+              loading ? <div>Loading...</div>:
+               <table className="table w-full">
               {/* head */}
               <thead>
                 <tr>
@@ -158,18 +160,22 @@ const ClientOrders = () => {
                             Details
                           </button>
                         </Link>
-                        <button
-                          onClick={() => handleDeleteOrder(order.id)}
-                          className="bg-rose-100 text-rose-600 px-2 py-1 rounded-full hover:bg-rose-200"
-                        >
-                          <BiTrash />
-                        </button>
+                       {
+                        order.status === 'Processing' &&  <button
+                        onClick={() => handleDeleteOrder(order.id)}
+                        className="bg-rose-100 text-rose-600 px-2 py-1 rounded-full hover:bg-rose-200"
+                      >
+                        <BiTrash />
+                      </button>
+                       }
                       </td>
                     </tr>
                   ))
                 )}
               </tbody>
             </table>
+            }
+           
           </div>
         </UserLayout>
       </div>

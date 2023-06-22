@@ -1,18 +1,17 @@
 import { useAllContext } from "@/context/ContextProvider";
 import axios from "axios";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import { toast } from "react-hot-toast";
-import { BiCheckCircle, BiSelection } from "react-icons/bi";
-import { GiCancel } from "react-icons/gi";
-import { ImCheckboxChecked, ImCheckboxUnchecked } from "react-icons/im";
-import { MdCall } from "react-icons/md";
-import { v4 as uuidv4 } from "uuid";
+import { useEffect, useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { toast } from "react-hot-toast";
+import { MdCall } from "react-icons/md";
+import useSound from 'use-sound';
+
 
 const CashIn = () => {
   const { dbUser, setUpdateMoney, updateMoney } = useAllContext();
-
+  // play sound
+  const [playSound] = useSound('https://assets.mixkit.co/active_storage/sfx/2867/2867.wav', { volume: 0.7 })
   // router
   const router = useRouter();
 
@@ -68,6 +67,7 @@ const CashIn = () => {
         })
         .then((response) => {
           toast.success("cashIn success");
+          playSound()
           setUpdateMoney(!updateMoney);
           if (response.data) {
             router.push("/user/moneyorder");

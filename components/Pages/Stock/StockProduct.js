@@ -1,4 +1,5 @@
 import { useAllContext } from "@/context/ContextProvider";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { BsStarFill } from "react-icons/bs";
@@ -41,7 +42,7 @@ console.log(product);
         {product.stock > 0 ? (
           <div>
             <div className="absolute top-1 px-2 right-1 bg-green-500 rounded-full p-1 text-white text-xs">
-              Stock {product.stock}
+              In Stock 
             </div>
             <div className="absolute top-1 px-2 left-1 bg-teal-500 font-bold rounded-full p-1 text-white text-xs">
               My Stock {product.quantity}
@@ -55,7 +56,7 @@ console.log(product);
       </div>
       <div>
         <label className={`h-60 bg-base-100 cursor-pointer`}>
-          <img className="h-60 w-full object-cover" src={product?.images[0].original} alt="" />
+          <Image  className="h-60 w-full object-cover" src={product?.images[0].original} width={200} height={240} alt=""/>
         </label>
 
         <div className={`flex items-center justify-between px-3`}>
@@ -63,7 +64,7 @@ console.log(product);
             <div className="sm:flex flex-col sm:flex-row gap-0 md:!justify-between justify-start sm:gap-3 tooltip items-center ">
               <h4
                 className="text-teal-600 flex gap-1 text-sm font-bold tooltip"
-                data-tip={`Original Price ${product.oldPrice}৳ Discount Price ${product.price}৳`}
+               
               >
                 ৳{product.price}
                 <span className="text-gray-500 text-sm font-thin line-through">

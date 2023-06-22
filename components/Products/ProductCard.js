@@ -6,6 +6,7 @@ import { toast } from "react-hot-toast";
 import { BsStarFill } from "react-icons/bs";
 import { MdOutlineAdd, MdOutlineRemove } from "react-icons/md";
 import Modal from "./SingleProduct/Modal";
+import Image from "next/image";
 
 const ProductCard = ({ product }) => {
   
@@ -63,7 +64,7 @@ const handleAddToCart = () => {
         </div>
       <div >
         <label onClick={()=>setId(product.id)} className={`h-60 bg-base-100 cursor-pointer`}>
-          <img  className="h-60 w-full object-cover" src={product&& product?.images[0]?.original} alt="" />
+        <Image  className="h-60 w-full object-cover" src={product?.images[0].original} width={200} height={240} alt=""/>
         </label>
 
         <div className={`flex items-center justify-between px-3`}>

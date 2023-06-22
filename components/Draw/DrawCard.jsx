@@ -3,7 +3,7 @@ import actionTypes from "@/state/ProductState/actionTypes";
 import { useState } from "react";
 import { CheckmarkIcon, toast } from "react-hot-toast";
 import { MdOutlineAdd } from "react-icons/md";
-import { Modal } from "rsuite";
+import DrawModal from "./DrawModal";
 
 const DrawCard = ({ product }) => {
  console.log(product);
@@ -22,9 +22,10 @@ const DrawCard = ({ product }) => {
   }, 0);
 
   // add product to cart with enough money
-  const handleAddToCart = () => {
-    dispatch({ type: actionTypes.ADD_TO_STOCK, payload: product });
-    toast.success("Added to Cart");
+  const handleAddToCart = (id) => {
+    setId(id);
+    // dispatch({ type: actionTypes.ADD_TO_STOCK, payload: product });
+    // toast.success("Added to Cart");
   };
 
   const handleRemoveFromCart = () => {
@@ -106,10 +107,10 @@ const DrawCard = ({ product }) => {
         ) : (
           product?.stock > 0 && (
             <div
-              onClick={handleAddToCart}
+              onClick={()=>handleAddToCart(product.id)}
               className={`flex cursor-pointer select-none justify-between items-center bg-gray-100 duration-300 border border-teal-600  pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600`}
             >
-              <button>Buy Stock</button>
+              <button>Buy Ticket</button>
               <span className=" px-4 py-2">
                 <MdOutlineAdd size={20} />
               </span>
@@ -119,7 +120,7 @@ const DrawCard = ({ product }) => {
 
         <div></div>
       </div>
-      {id && <Modal id={id} setId={setId} />}
+      {id && <DrawModal id={id} setId={setId} />}
     </>
   );
 };

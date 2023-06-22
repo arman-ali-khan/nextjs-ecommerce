@@ -11,7 +11,7 @@ console.log(stock.products)
         </div>
         <div className='grid grid-cols-2 my-12 md:grid-cols-3 lg:grid-cols-4 gap-1'>
             {
-                products?.map(product=> <SellStockCard update={update} setUpdate={setUpdate} stockId={stock.id} product={product} key={product._id}/>)
+                products?.map(product=> <SellStockCard update={update} setUpdate={setUpdate} stockId={stock.id} product={product} quantity={product.quantity} key={product._id}/>)
             }
         </div>
         </>

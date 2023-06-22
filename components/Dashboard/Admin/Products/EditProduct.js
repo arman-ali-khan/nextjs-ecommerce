@@ -1,17 +1,15 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import makeAnimated from "react-select/animated";
-import Creatable from 'react-select/creatable';
-import Select from "react-select";
+import UserLayout from "@/Layout/UserLayout";
 import { useAllContext } from "@/context/ContextProvider";
 import axios from "axios";
-import { toast } from "react-hot-toast";
-import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
-import { MdCancel } from "react-icons/md";
-import CreatableSelect from 'react-select/creatable';
-import UserLayout from "@/Layout/UserLayout";
 import { useRouter } from "next/router";
-import { accessToken } from "@/hooks/setToken";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
+import { AiOutlineRight } from "react-icons/ai";
+import { MdCancel } from "react-icons/md";
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
+import CreatableSelect from 'react-select/creatable';
 
 const EditProduct = ({product}) => {
   const { state,user } = useAllContext();
@@ -37,7 +35,6 @@ const router = useRouter();
   const [tags, setTags] = useState(product.tags);
   // get unit
   const [unit,setUnit] = useState(product.unit);
-  const [qunatity,setQunatity] = useState(product.qunatity);
 
   /// image upload to cloudinary
   const [loading, setLoading] = useState(false);
@@ -91,6 +88,7 @@ const router = useRouter();
       status: true,
       images: imageUrl,
       price: data.price,
+      originalPrice:data.originalPrice,
       oldPrice: data.oldPrice,
       description: data.description,
       categories: categories,
@@ -102,7 +100,6 @@ const router = useRouter();
       color:[],
       weight:[],
       unit: unit,
-      qunatityPrice: qunatity,
     };
 
     axios
@@ -171,25 +168,21 @@ const router = useRouter();
               />
             </span>
           </label>
+          <label className="w-full">
+          Original Price* :
+            <span className="flex items-center">
+             
+              <input
+              defaultValue={product.originalPrice}
+               {...register("originalPrice", { required: true })}
+                className="input w-full rounded input-bordered border-teal-600 form-control"
+                type="text"
+              />
+            </span>
+          </label>
         </div>
         <div className="flex w-full">
          
-          <label className="w-full flex flex-col">
-            Per:
-            <select defaultValue={product.qunatityPrice} onChange={(e)=>setQunatity(e.target.value)} className="select w-full select-bordered">
-              <option key={''} value={''} >Select setQunatity</option>
-              <option key={'1/2'} value={'1/2'}>1/2</option>
-              <option key={'1'} value={'1'}>1</option>
-              <option key={'1.5'} value={'1.5'}>1.5</option>
-              <option key={'2'} value={'2'}>2</option>
-              <option key={'2.5'} value={'2.5'}>2.5</option>
-              <option key={'3'} value={'3'}>3</option>
-              <option key={'3.5'} value={'3.5'}>3.5</option>
-              <option key={'4'} value={'4'}>4</option>
-              <option key={'4.5'} value={'4.5'}>4.5</option>
-              <option key={'5'} value={'5'}>5</option>
-            </select>
-          </label>
          
           <label className="w-full flex flex-col">
             Unit:

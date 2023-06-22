@@ -10,7 +10,6 @@ export default async function handler(req, res) {
   console.log(getUser);
 
   if (req.method === "GET") {
-    console.log('email',getUser);
     // if (req.decoded.email === getUser) {
     //   return res.status(401).send({ message: "Unauthenticated" });
     // }  

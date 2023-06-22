@@ -1,6 +1,7 @@
 import { useAllContext } from "@/context/ContextProvider";
 import actionTypes from "@/state/ProductState/actionTypes";
 import axios from "axios";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
@@ -44,7 +45,7 @@ const SellStockCard = ({ product, stockId, update, setUpdate,quantity }) => {
     axios.get(`/api/stock/${product.id}`).then((res) => {
       setCurrentProduct(res.data);
     });
-  }, [stockUpdate, loadingStock]);
+  }, [stockUpdate,currentPrice, loadingStock]);
 
   // add product to cart with enough money
   const handleAddToCart = () => {
@@ -74,7 +75,7 @@ const SellStockCard = ({ product, stockId, update, setUpdate,quantity }) => {
         {product.stock > 0 ? (
           <div>
             <div className="absolute top-1 px-2 right-1 bg-green-500 rounded-full p-1 text-white text-xs">
-              Stock {product.stock}
+             In Stock 
             </div>
             <div className="absolute top-1 px-2 left-1 bg-teal-500 font-bold rounded-full p-1 text-white text-xs">
               My Stock {product.quantity}
@@ -88,11 +89,8 @@ const SellStockCard = ({ product, stockId, update, setUpdate,quantity }) => {
       </div>
       <div>
         <label className={`h-60 bg-base-100 cursor-pointer`}>
-          <img
-            className="h-60 w-full object-cover"
-            src={product?.images[0].original}
-            alt=""
-          />
+          <Image  className="h-60 w-full object-cover" src={product?.images[0].original} width={200} height={240} alt=""/>
+        
         </label>
 
         <div className={`flex items-center justify-between px-3`}>
@@ -142,9 +140,9 @@ const SellStockCard = ({ product, stockId, update, setUpdate,quantity }) => {
       {product.stock > 0 && (
         <div
           onClick={() => handleSellStock(product)}
-          className={`flex cursor-pointer select-none justify-between items-center bg-gray-100 duration-300 border border-teal-600  pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600`}
+          className={`${currentPrice || 'hidden'} flex cursor-pointer select-none justify-between items-center bg-gray-100 duration-300 border border-teal-600  pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600`}
         >
-          <button>{loadingStock ? "Selling..." : "Sell Stock"}</button>
+          <button >{loadingStock ? "Selling..." : "Sell Stock"}</button>
           <span className=" px-4 py-2">
             <RiSendPlaneLine size={20} />
           </span>

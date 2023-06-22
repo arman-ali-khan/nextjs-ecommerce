@@ -20,6 +20,8 @@ const UserOrders = () => {
 
   const [orders, setOrders] = useState([]);
 
+
+
   // loading
   const [loading, setLoading] = useState(true);
 
@@ -141,15 +143,29 @@ const UserOrders = () => {
 export default UserOrders;
 
 const Modal = ({ dbUser }) => {
+    // get agent 
+    // get agent
+    const [agent, setAgent] = useState({});
+
+    useEffect(() => {
+      axios
+        .get(`/api/money/getagent?email=${dbUser.agent}`)
+        .then((res) => {
+          setAgent(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }, [dbUser]);
   return (
     <>
       <input type="checkbox" id="my-modal-4" className="modal-toggle" />
       <label htmlFor="my-modal-4" className="modal cursor-pointer">
         <label className="modal-box relative" htmlFor="">
-          <h3 className="text-lg font-bold">You want to cancel your order</h3>
+          <h3 className="text-lg font-bold">Do you want to cancel your order?</h3>
           <p className="py-4">
-            If you realy want to cancel your order please connect your agent{" "}
-            {dbUser.agent}
+            If you really want to cancel your order please connect your agent,{" "}
+            <span className="text-teal-600">{agent?.name}</span>, by Phone <span className="text-teal-600"><a href={`call:${agent?.phone}`}>{agent?.phone}</a></span>, Email <span className="text-teal-600"><a href={`mailto:${agent?.email}`}>{agent?.email}</a></span> 
           </p>
         </label>
       </label>

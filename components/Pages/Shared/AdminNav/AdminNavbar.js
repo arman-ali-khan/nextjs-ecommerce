@@ -7,8 +7,9 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiOutlineHome, AiOutlineUser, AiOutlineUserAdd } from "react-icons/ai";
-import { BsBell, BsCart, BsSearch } from "react-icons/bs";
+import { BsCart, BsSearch } from "react-icons/bs";
 import { RiMenu4Line } from "react-icons/ri";
+import Notifications from "../Notifications/Notifications";
 import AdminSideNav from "./Navtype/AdminSideNav";
 import AgentSideNav from "./Navtype/AgentSideNav";
 import UserSideNav from "./Navtype/UserSideNav";
@@ -76,7 +77,7 @@ const orderPath = router.pathname
           </Link>
           {/*Notification mobile  */}
           <div className="md:hidden">
-            <BsBell className="text-2xl text-white" />
+          <Notifications />
           </div>
         </div>
         {/* Desktop fixed categories */}
@@ -84,8 +85,9 @@ const orderPath = router.pathname
           <NavCategories />
           {/*Notification desktop  */}
           <div className="hidden md:block">
-          <BsBell className="text-2xl" />
-          </div>
+            
+            <Notifications />
+             </div>
         </div>
         {/* Search box */}
         <div className=" w-full flex justify-center">
@@ -196,7 +198,7 @@ const orderPath = router.pathname
                     showUser && "text-teal-600"
                   } px-4 py-2`}
                 >
-                  {user.displayName} 
+                  {user.displayName} ( {dbUser.balance})
                 </Link>
                 <li>
                   <button onClick={handleLogout}>Logout</button>

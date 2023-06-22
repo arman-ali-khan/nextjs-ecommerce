@@ -42,7 +42,7 @@ const[updateMoney,setUpdateMoney] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const [user, setUser] = useState({});
-  console.log(user);
+
   // products
   const [state, dispatch] = useReducer(productsReducer, initialState);
   // User
@@ -135,10 +135,10 @@ const[updateMoney,setUpdateMoney] = useState(false);
         return logOut()
       }
     });
-  }, [dbUser,loading,user,updateMoney]);
+  }, [user?.email,!dbUser]);
 
 
-console.log(dbUser);
+
  
 
   const value = {

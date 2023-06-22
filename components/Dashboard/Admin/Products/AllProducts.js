@@ -68,6 +68,7 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
    <tr>
      <th>Id</th>
      <th>Title</th>
+     <th>Original Price</th>
      <th>Price</th>
      <th>Stock</th>
      <th>Action</th>
@@ -79,6 +80,7 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
      products?.map((product,i)=><tr key={product._id}>
        <th>{product.id}</th>
        <td className={`${product.stock < 5 && '!bg-rose-100 text-rose-600'}`}>{product.title}</td>
+       <td>{product.originalPrice} </td>
        <td>{product.price} <span className='line-through text-xs'>{product.oldPrice}</span> </td>
        <td className='flex items-center font-bold'>  {product?.stock}</td>
        <td className='!py-0'>

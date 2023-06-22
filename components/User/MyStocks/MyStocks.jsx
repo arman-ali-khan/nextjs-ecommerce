@@ -100,12 +100,19 @@ const MyStocks = () => {
       <div className="flex flex-col-reverse md:flex-row overflow-hidden">
         <div className="flex-col w-full md:p-6 px-1 divide-y sm:p-10 divide-gray-300 bg-gray-50 text-gray-800">
          {
-          oldStockLoad ? <div>
-            Loading...
+          oldStockLoad ? <div className="w-full h-full flex items-center justify-center">
+          <div className="flex justify-center flex-col items-center">
+            <div
+              className="spinner-border border-dashed border-teal-600 animate-spin inline-block w-8 h-8 border-4 rounded-full"
+              role="status"
+            ></div>
+            <span className="visually-hidden">Loading...</span>
           </div>
+        </div>
           :
              <div className="mb-12">
-            {oldStocks?.map((stock) => (
+            { oldStocks.length ===0 ? 'No Stocks':
+            oldStocks?.map((stock) => (
               <SellStock update={update} setUpdate={setUpdate} stock={stock} key={stock._id} />
             ))}
           </div>

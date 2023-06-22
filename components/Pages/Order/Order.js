@@ -23,7 +23,10 @@ const Order = () => {
   let subTotal = products.reduce(function (prev, current) {
     return prev + +current.price * current.quantity;
   }, 0);
-
+  // all product price
+  let originalTotal = products.reduce(function (prev, current) {
+    return prev + +current.originalPrice * current.quantity;
+  }, 0);
   const discount = 0;
   const delivery = 0;
   const service = 0;
@@ -76,6 +79,7 @@ const Order = () => {
       discount: discount,
       service: service,
       payment: "Cash",
+      originalTotal: originalTotal,
     };
     axios
       .post(`/api/order/create?email=${user.email}`, orderData, {

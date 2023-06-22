@@ -1,4 +1,5 @@
 import NavCategories from "@/components/Categories/NavCategories";
+import Notifications from "@/components/Pages/Shared/Notifications/Notifications";
 import CartSidebar from "@/components/Sidebars/CartSidebar";
 import CategorirsSidebar from "@/components/Sidebars/CategorirsSidebar";
 import UserSidebar from "@/components/Sidebars/UserSidebar";
@@ -8,27 +9,21 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiOutlineHome, AiOutlineUser, AiOutlineUserAdd } from "react-icons/ai";
-import {
-  BsBell,
-  BsCart,
-  BsCartCheckFill,
-  BsSearch
-} from "react-icons/bs";
+import { BsCart, BsCartCheckFill, BsSearch } from "react-icons/bs";
 import { RiMenu4Line } from "react-icons/ri";
 
 const Navbar = () => {
-  // router 
-  const router = useRouter()
+  // router
+  const router = useRouter();
   const [showSearch, setShowSearch] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const [showUser, setShowUser] = useState(false);
   const [showCart, setShowCart] = useState(false);
 
   // context
-  const { user, logOut, state ,setSearch, dbUser} = useAllContext();
+  const { user, logOut, state, setSearch, dbUser } = useAllContext();
 
-const orderPath = router.pathname
-
+  const orderPath = router.pathname;
 
   //  hide sidebars
   const handleCategoriesSidebar = () => {
@@ -60,34 +55,43 @@ const orderPath = router.pathname
     return prev + +current.price * current.quantity;
   }, 0);
 
+  // search
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
 
-    // search 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-
- 
-
- const handleSearch  = (data) =>{
-   setSearch(data?.search)
-   router.push('/search')
-
- }
+  const handleSearch = (data) => {
+    setSearch(data?.search);
+    router.push("/search");
+  };
 
   return (
     <div className="md:fixed z-50 w-full flex justify-center md:top-0 md:bottom-auto">
       {/* Right side cart button */}
       <div
         onClick={() => setShowCart(true)}
-        className={`fixed cursor-pointer select-none right-0 top-1/2 md:block hidden  bg-teal-500 px-4 z-10 py-2 rounded-l-md ${orderPath==='/order' && 'md:hidden'} `}
+        className={`fixed cursor-pointer select-none right-0 top-1/2 md:block hidden  bg-teal-500 px-4 z-10 py-2 rounded-l-md ${
+          orderPath === "/order" && "md:hidden"
+        } `}
       >
         <p className="text-white font-bold flex items-center gap-2 py-2">
           {" "}
           <span>
             <BsCartCheckFill />
           </span>{" "}
-          { router.asPath === '/@stock' || router.asPath === '/stock' ? state.stocks.length :  state.cart.length } Items
+          {router.asPath === "/@stock" || router.asPath === "/stock"
+            ? state.stocks.length
+            : state.cart.length}{" "}
+          Items
         </p>
         <p className="bg-white px-3 py-1 rounded-md font-bold text-teal-600">
-          $ { router.asPath === '/@stock' || router.asPath === '/stock' ? stockPrice.toFixed(2):price.toFixed(2)}
+          ${" "}
+          {router.asPath === "/@stock" || router.asPath === "/stock"
+            ? stockPrice.toFixed(2)
+            : price.toFixed(2)}
         </p>
       </div>
 
@@ -100,7 +104,7 @@ const orderPath = router.pathname
           </Link>
           {/*Notification mobile  */}
           <div className="md:hidden">
-            <BsBell className="text-2xl text-white" />
+            <Notifications />
           </div>
         </div>
         {/* Desktop fixed categories */}
@@ -108,20 +112,26 @@ const orderPath = router.pathname
           <NavCategories />
           {/*Notification desktop  */}
           <div className="hidden md:block">
-            <BsBell className="text-2xl" />
+            <Notifications />
           </div>
         </div>
         {/* Search box */}
         <div className=" w-full flex justify-center">
           {showSearch ? (
-            <form onSubmit={handleSubmit(handleSearch)} className="flex !z-[999999999] fixed md:static top-0 left-0 w-full items-center md:w-64 lg:w-72 xl:w-96">
+            <form
+              onSubmit={handleSubmit(handleSearch)}
+              className="flex !z-[999999999] fixed md:static top-0 left-0 w-full items-center md:w-64 lg:w-72 xl:w-96"
+            >
               <input
                 {...register("search", { required: true })}
                 placeholder="Search for products (e.g. fish, apple, oil)"
                 className="px-6 w-full py-2 border border-teal-600 rounded-l-full text-teal-700 focus-within:outline-none focus-within:border-teal-700 focus-within:bg-teal-50 "
                 type="search"
               />
-              <button  onClick={()=>handleSearch()} className="border-4 text-white disabled:bg-gray-300 disabled:border-gray-300 disabled:cursor-not-allowed border-teal-600 md:px-3 px-5 bg-teal-600 py-2 rounded-r-full cursor-pointer hover:bg-teal-700">
+              <button
+                onClick={() => handleSearch()}
+                className="border-4 text-white disabled:bg-gray-300 disabled:border-gray-300 disabled:cursor-not-allowed border-teal-600 md:px-3 px-5 bg-teal-600 py-2 rounded-r-full cursor-pointer hover:bg-teal-700"
+              >
                 <BsSearch size={20} />
               </button>
             </form>
@@ -180,11 +190,13 @@ const orderPath = router.pathname
             <BsSearch />
           </span>
           <Link
-            className={`md:hidden cursor-pointer flex  py-2 justify-center w-full text-2xl md hover:text-teal-600`} href={'/'}><span
-            text-2xl
+            className={`md:hidden cursor-pointer flex  py-2 justify-center w-full text-2xl md hover:text-teal-600`}
+            href={"/"}
           >
-            <AiOutlineHome />
-          </span></Link>
+            <span text-2xl>
+              <AiOutlineHome />
+            </span>
+          </Link>
           <span
             className={`text-2xl relative cursor-pointer h-full w-full hover:text-teal-600 md:px-4 ${
               showCart && "text-teal-600"
@@ -196,8 +208,15 @@ const orderPath = router.pathname
               className={`absolute top-0 right-0 px-2 py-1 flex justify-center text-sm rounded-full ${
                 state.cart.length === 0 ? "" : " bg-rose-100"
               } text-rose-600`}
-            > { router.asPath === '/@stock' || router.asPath === '/stock' ? state.stocks.length === 0 ? "" : state.stocks.length:  state.cart.length === 0 ? "" : state.cart.length } 
-              
+            >
+              {" "}
+              {router.asPath === "/@stock" || router.asPath === "/stock"
+                ? state.stocks.length === 0
+                  ? ""
+                  : state.stocks.length
+                : state.cart.length === 0
+                ? ""
+                : state.cart.length}
             </span>
           </span>
           {user?.uid ? (
@@ -220,7 +239,7 @@ const orderPath = router.pathname
                     showUser && "text-teal-600"
                   } px-4 py-2`}
                 >
-                  {user.displayName} 
+                  {user.displayName} {dbUser.balance}
                 </Link>
                 <li>
                   <button onClick={handleLogout}>Logout</button>

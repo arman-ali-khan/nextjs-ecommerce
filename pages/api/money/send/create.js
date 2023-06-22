@@ -65,6 +65,15 @@ export default async function handler(req, res) {
         }
       }
       const result = await db.collection("sendMoney").insertOne(sendData);
+
+      await db.collection("notifications").insertOne({
+        type: "send",
+        name: sendData.sender,
+        amount: sendData.amount,
+        email: sendData.senderEmail,
+        agent: sendData.recipient.email,
+        seen: false,
+      });
       res.status(200).json(result);
     } else {
       res.setHeader("Allow", ["POST"]);

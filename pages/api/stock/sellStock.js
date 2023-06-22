@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   const { db } = await connectToDatabase();
 
   if (req.method === "DELETE") {
-    const { id, email, stockId } = req.query;
+    const { id, email, stockId,quantity } = req.query;
     // update stock
     // get product
     if (id) {
@@ -32,7 +32,7 @@ export default async function handler(req, res) {
       // update user balance
       if (update.acknowledged) {
         const userBalance =
-          parseFloat(user.balance) + parseFloat(product.price);
+          parseFloat(user.balance) + parseFloat(product.price * quantity);
         const userFilter = { email: email };
         const updateUser = {
           $set: { balance: userBalance },

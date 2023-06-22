@@ -90,6 +90,7 @@ const Stock = () => {
         setLoading(false);
         setUpdate(!update);
         setUpdateMoney(!updateMoney)
+        router.push("/user/stocks");
       })
       .catch((err) => {
         console.log(err);

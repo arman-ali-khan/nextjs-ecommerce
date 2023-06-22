@@ -1,5 +1,6 @@
 import { useAllContext } from "@/context/ContextProvider";
 import actionTypes from "@/state/ProductState/actionTypes";
+import Image from "next/image";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { BsStarFill } from "react-icons/bs";
@@ -57,11 +58,7 @@ const StocksCard = ({ product }) => {
             className={`h-60 bg-base-100 cursor-pointer`}
           >
             {product?.images && (
-              <img
-                className="h-60 w-full object-cover"
-                src={product?.images[0].original}
-                alt=""
-              />
+              <Image  className="h-60 w-full object-cover" src={product?.images[0].original} width={200} height={240} alt=""/>
             )}
           </label>
 
