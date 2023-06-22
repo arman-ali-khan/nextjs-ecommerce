@@ -37,7 +37,7 @@ const Notifications = () => {
   console.log(notifications);
   return (
     <div
-      className={`dropdown dropdown-bottom relative ${
+      className={`dropdown dropdown-left md:dropdown-bottom relative ${
         dbUser.type === "admin" || dbUser.type === "agent" || "hidden"
       }`}
     >
