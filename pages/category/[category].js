@@ -1,6 +1,6 @@
 import Layout from "@/Layout/Layout";
 import ProductCard from "@/components/Products/ProductCard";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const category = ({ data: category, category: title }) => {
   const [loading, setLoading] = useState(false);
@@ -22,7 +22,7 @@ const category = ({ data: category, category: title }) => {
             Total <span className="font-bold">{category.length}</span> items Found
           </h6>
           <span className="text-sm ">
-            <select className="py-0 text-sm select select-sm font-medium block w-full rounded border-0 bg-white pr-10 cursor-pointer focus:ring-0">
+            <select className="py-0 text-sm select select-sm font-medium block w-full rounded border-0 bg-base-100 pr-10 cursor-pointer focus:ring-0">
               <option key={'All'} className="px-3" value="All" hidden="">
                 Sort By Price
               </option>

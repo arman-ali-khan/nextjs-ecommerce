@@ -1,8 +1,7 @@
-import React from 'react';
 
 const LoginModal = ({login,setLogin}) => {
     return (
-        <div className="h-full relative bg-white border-l md:rounded-md md:border-teal-400 md:hover:border-teal-600 duration-200 md:border-2 md:hover:border-4">
+        <div className="h-full relative bg-base-100 border-l md:rounded-md md:border-teal-400 md:hover:border-teal-600 duration-200 md:border-2 md:hover:border-4">
 		
       <div className="flex justify-center items-center h-full gap-2">
         

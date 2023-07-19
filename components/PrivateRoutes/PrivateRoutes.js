@@ -18,10 +18,11 @@ const PrivateRoutes = ({ children }) => {
      </div>
     
   }
-   if(!user){
-    return router.push('/account/login')
-  }
-  return children;
+  if(user?.email){
+    return <>{children}</>
+}else{
+  return  router.push('/account/login')
+}
 };
 
 export default PrivateRoutes;

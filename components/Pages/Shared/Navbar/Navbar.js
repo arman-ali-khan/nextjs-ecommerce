@@ -1,28 +1,20 @@
+import NavCategories from "@/components/Categories/NavCategories";
+import CartSidebar from "@/components/Sidebars/CartSidebar";
+import CategorirsSidebar from "@/components/Sidebars/CategorirsSidebar";
+import UserSidebar from "@/components/Sidebars/UserSidebar";
+import { useAllContext } from "@/context/ContextProvider";
 import Link from "next/link";
-import React, { useState } from "react";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { AiOutlineHome, AiOutlineUser, AiOutlineUserAdd } from "react-icons/ai";
 import {
   BsBell,
   BsCart,
-  BsCartCheck,
   BsCartCheckFill,
-  BsFillSearchHeartFill,
-  BsMenuApp,
+  BsSearch
 } from "react-icons/bs";
-import { CiShoppingTag } from "react-icons/ci";
-import { BsSearch } from "react-icons/bs";
 import { RiMenu4Line } from "react-icons/ri";
-import { AiOutlineHome, AiOutlineUser, AiOutlineUserAdd } from "react-icons/ai";
-import CategorirsSidebar from "@/components/Sidebars/CategorirsSidebar";
-import UserSidebar from "@/components/Sidebars/UserSidebar";
-import CartSidebar from "@/components/Sidebars/CartSidebar";
-import NavCategories from "@/components/Categories/NavCategories";
-import Image from "next/image";
-import { MdOutlineLocationOn } from "react-icons/md";
-import Location from "../Location/Location";
-import { useAllContext } from "@/context/ContextProvider";
-import { toast } from "react-hot-toast";
-import { useForm } from "react-hook-form";
-import { useRouter } from "next/router";
 
 const Navbar = () => {
   // router 
@@ -85,21 +77,21 @@ const orderPath = router.pathname
       {/* Right side cart button */}
       <div
         onClick={() => setShowCart(true)}
-        className={`fixed cursor-pointer select-none right-0 top-1/2 md:block hidden  bg-teal-500 px-4 z-10 py-2 rounded-l-md ${orderPath==='/order' && 'md:hidden'} `}
+        className={`fixed cursor-pointer select-none right-0 top-1/2 md:block hidden  bg-base-200 px-4 z-10 py-2 rounded-l-md ${orderPath==='/order' && 'md:hidden'} `}
       >
-        <p className="text-white font-bold flex items-center gap-2 py-2">
+        <p className="dark:text-white text-teal-600 font-bold flex items-center gap-2 py-2">
           {" "}
           <span>
             <BsCartCheckFill />
           </span>{" "}
           { router.asPath === '/@stock' || router.asPath === '/stock' ? state.stocks.length :  state.cart.length } Items
         </p>
-        <p className="bg-white px-3 py-1 rounded-md font-bold text-teal-600">
+        <p className="bg-base-100 px-3 py-1 rounded-md font-bold text-teal-600">
           $ { router.asPath === '/@stock' || router.asPath === '/stock' ? stockPrice.toFixed(2):price.toFixed(2)}
         </p>
       </div>
 
-      <div className="fixed md:sticky md:top-0 md:bottom-auto bottom-2 w-full md:flex items-center justify-between md:mx-auto z-50 md:container border-2 border-teal-600 bg-white md:px-6 py-1 rounded-full">
+      <div className="fixed md:sticky md:top-0 md:bottom-auto bottom-2 w-full md:flex items-center justify-between md:mx-auto z-50 md:container border-2 border-teal-600 bg-base-200 md:px-6 py-1 rounded-full">
         {/* Navbar start */}
         <div className="fixed md:hidden lg:flex md:static py-1 w-full bg-teal-600 md:bg-transparent md:w-auto left-0 flex !z-50 justify-between px-4 items-center md:justify-start top-0 rounded-full">
           {/* Logo */}
@@ -126,7 +118,7 @@ const orderPath = router.pathname
               <input
                 {...register("search", { required: true })}
                 placeholder="Search for products (e.g. fish, apple, oil)"
-                className="px-6 w-full py-2 border border-teal-600 rounded-l-full text-teal-700 focus-within:outline-none focus-within:border-teal-700 focus-within:bg-teal-50 "
+                className="px-6 w-full py-2 border border-teal-600 rounded-l-full text-teal-700 focus-within:outline-none focus-within:border-teal-700 focus-within:bg-base-200 "
                 type="search"
               />
               <button  onClick={()=>handleSearch()} className="border-4 text-white disabled:bg-gray-300 disabled:border-gray-300 disabled:cursor-not-allowed border-teal-600 md:px-3 px-5 bg-teal-600 py-2 rounded-r-full cursor-pointer hover:bg-teal-700">
@@ -155,9 +147,9 @@ const orderPath = router.pathname
               <li>
                 <Link
                   className={`px-3 py-2 md:px-2 lg:px-3 hover:text-teal-600 duration-300 rounded hover:bg-opacity-60`}
-                  href={"/offers"}
+                  href={"/draw"}
                 >
-                  Offers
+                  Draw
                 </Link>
               </li>
               <li>

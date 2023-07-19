@@ -9,7 +9,7 @@ const OfferUderPopular = () => {
             <div className="flex flex-wrap justify-center">
     
     <div className="flex-shrink-0 m-6 relative overflow-hidden bg-orange-500 rounded-lg max-w-md w-full sm:w-auto shadow-lg">
-      <span className='absolute flex items-center gap-1 top-1 left-1 bg-teal-50  border border-teal-600 rounded-full px-2 py-1'>
+      <span className='absolute flex items-center gap-1 top-1 left-1 bg-base-200  border border-teal-600 rounded-full px-2 py-1'>
         <span className='text-rose-600 '><CiDiscount1 size={30} /></span>
         5% Off
         </span>
@@ -25,12 +25,12 @@ const OfferUderPopular = () => {
         <span className="block opacity-75 -mb-1">Indoor</span>
         <div className="flex justify-between">
           <span className="block font-semibold text-xl">Peace Lily</span>
-          <span className=" bg-white rounded-full text-orange-500 text-xs font-bold px-3 py-2 leading-none flex items-center">$36.00</span>
+          <span className=" bg-base-100 rounded-full text-orange-500 text-xs font-bold px-3 py-2 leading-none flex items-center">$36.00</span>
         </div>
       </div>
     </div>
-    <div className="flex-shrink-0 m-6 relative overflow-hidden bg-teal-500 rounded-lg max-w-md w-full sm:w-auto shadow-lg">
-      <span className='absolute flex items-center gap-1 top-1 left-1 bg-teal-50  border border-teal-600 rounded-full px-2 py-1'>
+    <div className="flex-shrink-0 m-6 relative overflow-hidden bg-base-200 rounded-lg max-w-md w-full sm:w-auto shadow-lg">
+      <span className='absolute flex items-center gap-1 top-1 left-1 bg-base-200  border border-teal-600 rounded-full px-2 py-1'>
         <span className='text-rose-600 '><CiDiscount1 size={30} /></span>
         5% Off
         </span>
@@ -46,12 +46,12 @@ const OfferUderPopular = () => {
         <span className="block opacity-75 -mb-1">Outdoor</span>
         <div className="flex justify-between">
           <span className="block font-semibold text-xl">Monstera</span>
-          <span className=" bg-white rounded-full text-teal-500 text-xs font-bold px-3 py-2 leading-none flex items-center">$45.00</span>
+          <span className=" bg-base-100 rounded-full text-teal-500 text-xs font-bold px-3 py-2 leading-none flex items-center">$45.00</span>
         </div>
       </div>
     </div>
     <div className="flex-shrink-0 m-6 relative overflow-hidden bg-purple-500 rounded-lg max-w-md w-full sm:w-auto shadow-lg">
-      <span className='absolute flex items-center gap-1 top-1 left-1 bg-teal-50  border border-teal-600 rounded-full px-2 py-1'>
+      <span className='absolute flex items-center gap-1 top-1 left-1 bg-base-200  border border-teal-600 rounded-full px-2 py-1'>
         <span className='text-rose-600 '><CiDiscount1 size={30} /></span>
         5% Off
         </span>
@@ -67,12 +67,12 @@ const OfferUderPopular = () => {
         <span className="block opacity-75 -mb-1">Outdoor</span>
         <div className="flex justify-between">
           <span className="block font-semibold text-xl">Oak Tree</span>
-          <span className=" bg-white rounded-full text-purple-500 text-xs font-bold px-3 py-2 leading-none flex items-center">$68.50</span>
+          <span className=" bg-base-100 rounded-full text-purple-500 text-xs font-bold px-3 py-2 leading-none flex items-center">$68.50</span>
         </div>
       </div>
     </div>
     <div className="flex-shrink-0 m-6 relative overflow-hidden bg-blue-500 rounded-lg max-w-md w-full sm:w-auto shadow-lg">
-      <span className='absolute flex items-center gap-1 top-1 left-1 bg-teal-50  border border-teal-600 rounded-full px-2 py-1'>
+      <span className='absolute flex items-center gap-1 top-1 left-1 bg-base-200  border border-teal-600 rounded-full px-2 py-1'>
         <span className='text-rose-600 '><CiDiscount1 size={30} /></span>
         5% Off
         </span>
@@ -88,7 +88,7 @@ const OfferUderPopular = () => {
         <span className="block opacity-75 -mb-1">Outdoor</span>
         <div className="flex justify-between">
           <span className="block font-semibold text-xl">Oak Tree</span>
-          <span className=" bg-white rounded-full text-purple-500 text-xs font-bold px-3 py-2 leading-none flex items-center">$68.50</span>
+          <span className=" bg-base-100 rounded-full text-purple-500 text-xs font-bold px-3 py-2 leading-none flex items-center">$68.50</span>
         </div>
       </div>
     </div>

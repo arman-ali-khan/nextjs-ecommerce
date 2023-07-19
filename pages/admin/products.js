@@ -1,12 +1,14 @@
-import UserLayout from '@/Layout/UserLayout'; 
+import UserLayout from '@/Layout/UserLayout';
 import AllProducts from '@/components/Dashboard/Admin/Products/AllProducts';
-import React from 'react';
+import PrivateRoutes from '@/components/PrivateRoutes/PrivateRoutes';
 
 const products = () => {
     return (
-       <UserLayout title={'All Products'}>
+      <PrivateRoutes>
+         <UserLayout title={'All Products'}>
         <AllProducts />
        </UserLayout>
+      </PrivateRoutes>
     );
 };
 

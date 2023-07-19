@@ -93,7 +93,7 @@ const handleAddToCart = () => {
                   ))}
                 </span>
               </div>
-            </div><br/>
+            </div>
             {/* product title */}
             <Link
               href={`/product/${product.id}`}
@@ -131,7 +131,7 @@ const handleAddToCart = () => {
     <div
     onClick={handleAddToCart}
     
-      className={`flex cursor-pointer select-none justify-between items-center bg-gray-100 duration-300 border border-teal-600  pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600`}
+      className={`flex cursor-pointer select-none justify-between items-center bg-base-100 duration-300 border border-teal-600  pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600`}
     >
       <button>Add To Cart</button>
       <span className=" px-4 py-2">

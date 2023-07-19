@@ -76,7 +76,7 @@ const SellStockCard = ({ product, stockId, update, setUpdate }) => {
             <div className="absolute top-1 px-2 right-1 bg-green-500 rounded-full p-1 text-white text-xs">
               Stock {product.stock}
             </div>
-            <div className="absolute top-1 px-2 left-1 bg-teal-500 font-bold rounded-full p-1 text-white text-xs">
+            <div className="absolute top-1 px-2 left-1 bg-base-200 font-bold rounded-full p-1 text-white text-xs">
               My Stock {product.quantity}
             </div>
           </div>
@@ -131,7 +131,6 @@ const SellStockCard = ({ product, stockId, update, setUpdate }) => {
                 </span>
               </div>
             </div>
-            <br />
             {/* product title */}
             <p className="md:text-base inline-block leading-4 text-teal-600 text-sm font-bold">
               {product.title.slice(0, 20)}
@@ -143,7 +142,7 @@ const SellStockCard = ({ product, stockId, update, setUpdate }) => {
       {product.stock > 0 && (
         <div
           onClick={() => handleSellStock(product)}
-          className={`flex cursor-pointer select-none justify-between items-center bg-gray-100 duration-300 border border-teal-600  pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600`}
+          className={`flex cursor-pointer select-none justify-between items-center bg-base-100 duration-300 border border-teal-600  pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600`}
         >
           <button>{loadingStock ? "Selling..." : "Sell Stock"}</button>
           <span className=" px-4 py-2">

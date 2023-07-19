@@ -26,8 +26,8 @@ const CategorirsSidebar = () => {
     },[])
    
     return (
-        <div className='h-full bg-white border-r overflow-y-auto pt-12 pb-28'>
-            <div className='grid grid-cols-2 bg-white top-0 absolute w-full '>
+        <div className='h-full bg-base-100 border-r overflow-y-auto pt-12 pb-28'>
+            <div className='grid grid-cols-2 bg-base-100 top-0 absolute w-full '>
                 <button onClick={()=>setShowMenu(false)} className={`py-2  border-teal-600 border-b border-r ${showMenu || 'bg-teal-600 text-white'} flex items-center gap-2 px-2`}> <span><BiCategory size={20} /></span> Categories</button>
                 <button onClick={()=>setShowMenu(true)} className={`py-2 border-teal-600 border-b ${showMenu && 'bg-teal-600 text-white'} flex items-center gap-2 px-2`}><span><BiMenuAltRight size={20} /></span> Menu</button>
             </div>

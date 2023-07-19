@@ -42,7 +42,7 @@ const[updateMoney,setUpdateMoney] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const [user, setUser] = useState({});
-  console.log(user);
+
   // products
   const [state, dispatch] = useReducer(productsReducer, initialState);
   // User
@@ -132,9 +132,10 @@ const[updateMoney,setUpdateMoney] = useState(false);
       if (err.response.status === 401) {
         toast.error("Access Token is invalid");
         setUserLoading(false)
+        return logOut()
       }
     });
-  }, [user?.email,updateMoney]);
+  }, [user,updateMoney]);
 
 
 console.log(dbUser);

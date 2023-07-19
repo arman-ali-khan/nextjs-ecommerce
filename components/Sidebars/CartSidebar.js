@@ -1,10 +1,7 @@
 import { useAllContext } from "@/context/ContextProvider";
-import actionTypes from "@/state/ProductState/actionTypes";
-import React from "react";
-import { AiOutlineDelete } from "react-icons/ai";
-import SingleCart from "./SingleCart";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import SingleCart from "./SingleCart";
 
 const CartSidebar = ({ showCart, setShowCart }) => {
   const { state, dispatch, user, dbUser } = useAllContext();
@@ -44,7 +41,7 @@ const CartSidebar = ({ showCart, setShowCart }) => {
         <p className="text-white">Shopping Cart</p>
         <button
           onClick={() => setShowCart(false)}
-          className="px-4 py-2 rounded bg-teal-500 text-white"
+          className="px-4 py-2 rounded bg-base-200 text-white"
         >
           Close
         </button>
@@ -145,7 +142,7 @@ const CartSidebar = ({ showCart, setShowCart }) => {
             }`}
         >
           Not enough balance({dbUser.balance})
-          <span className="bg-white px-4 text-teal-600 font-bold rounded-full text-lg py-2">
+          <span className="bg-base-100 px-4 text-teal-600 font-bold rounded-full text-lg py-2">
             ${totalStockPrice.toFixed(2)}
           </span>
         </button>
@@ -161,7 +158,7 @@ const CartSidebar = ({ showCart, setShowCart }) => {
                 className={`sticky bottom-16 hover:bg-teal-700 md:bottom-12 w-full left-0 bg-teal-600 text-white rounded-full gap-1 px-4 py-1 mb-1 flex items-center justify-between `}
               >
                 Buy Stock
-                <span className="bg-white px-2 md:px-4 text-teal-600 font-bold rounded-full md:text-lg py-1 md:py-2">
+                <span className="bg-base-100 px-2 md:px-4 text-teal-600 font-bold rounded-full md:text-lg py-1 md:py-2">
                   ${totalStockPrice.toFixed(2)}
                 </span>
               </button>
@@ -181,7 +178,7 @@ const CartSidebar = ({ showCart, setShowCart }) => {
             }`}
         >
           Not enough balance({dbUser.balance})
-          <span className="bg-white px-4 text-teal-600 font-bold rounded-full text-lg py-2">
+          <span className="bg-base-100 px-4 text-teal-600 font-bold rounded-full text-lg py-2">
             ${totalPrice.toFixed(2)}
           </span>
         </button>
@@ -197,7 +194,7 @@ const CartSidebar = ({ showCart, setShowCart }) => {
                 className={`sticky bottom-16 hover:bg-teal-700 md:bottom-12 w-full left-0 bg-teal-600 text-white rounded-full gap-1 px-4 py-1 mb-1 flex items-center justify-between `}
               >
                 Checkout
-                <span className="bg-white px-2 md:px-4 text-teal-600 font-bold rounded-full md:text-lg py-1 md:py-2">
+                <span className="bg-base-100 px-2 md:px-4 text-teal-600 font-bold rounded-full md:text-lg py-1 md:py-2">
                   ${totalPrice.toFixed(2)}
                 </span>
               </button>
@@ -216,7 +213,7 @@ const CartSidebar = ({ showCart, setShowCart }) => {
                 }`}
             >
               Login before Checkout
-              <span className="bg-white px-4 text-teal-600 font-bold rounded-full text-lg py-2">
+              <span className="bg-base-100 px-4 text-teal-600 font-bold rounded-full text-lg py-2">
                 ${totalPrice.toFixed(2)}
               </span>
             </button>
@@ -227,7 +224,7 @@ const CartSidebar = ({ showCart, setShowCart }) => {
                 }`}
             >
               Login before Checkout
-              <span className="bg-white px-4 text-teal-600 font-bold rounded-full text-lg py-2">
+              <span className="bg-base-100 px-4 text-teal-600 font-bold rounded-full text-lg py-2">
                 ${totalPrice.toFixed(2)}
               </span>
             </button>

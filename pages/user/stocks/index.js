@@ -4,7 +4,7 @@ import MyStocks from '@/components/User/MyStocks/MyStocks';
 const index = () => {
     return (
         <div>
-           <UserLayout>
+           <UserLayout title={'My Stocks'}>
           <MyStocks />
            </UserLayout>
         </div>

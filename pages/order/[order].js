@@ -1,10 +1,8 @@
 import Layout from "@/Layout/Layout";
 import { useAllContext } from "@/context/ContextProvider";
-import axios from "axios";
 import moment from "moment";
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
-import { InvoiceNumber } from "invoice-number";
 import ReactToPrint from 'react-to-print';
 
 
@@ -61,7 +59,7 @@ const index = () => {
               Your order have been received !
             </label>
           </div>
-          <div className="bg-white rounded-lg shadow-sm">
+          <div className="bg-base-100 rounded-lg shadow-sm">
             <div ref={componentRef} >
               <div className="bg-indigo-50 p-8 rounded-t-xl">
                 <div className="flex lg:flex-row md:flex-row flex-col lg:items-center justify-between pb-4 border-b border-gray-50">
@@ -172,7 +170,7 @@ const index = () => {
                             </th>
                           </tr>
                         </thead>
-                        <tbody className="bg-white divide-y divide-gray-100 text-serif text-sm">
+                        <tbody className="bg-base-100 divide-y divide-gray-100 text-serif text-sm">
                           {orderData?.products?.map((product, i) => (
                             <tr key={i}>
                               <th className="px-6 py-1 whitespace-nowrap font-normal text-gray-500 text-left">
@@ -235,7 +233,7 @@ const index = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-white p-8 rounded-b-xl">
+            <div className="bg-base-100 p-8 rounded-b-xl">
               <div className="flex lg:flex-row md:flex-row sm:flex-row flex-col justify-between invoice-btn">
               <ReactToPrint
         trigger={() =>  <button className="mb-3 sm:mb-0 md:mb-0 lg:mb-0 flex items-center justify-center bg-emerald-500 text-white transition-all  text-sm font-semibold h-10 py-2 px-5 rounded-md">

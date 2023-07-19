@@ -1,14 +1,10 @@
 import { useAllContext } from "@/context/ContextProvider";
 import axios from "axios";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import { toast } from "react-hot-toast";
-import { BiCheckCircle, BiSelection } from "react-icons/bi";
-import { GiCancel } from "react-icons/gi";
-import { ImCheckboxChecked, ImCheckboxUnchecked } from "react-icons/im";
-import { MdCall } from "react-icons/md";
-import { v4 as uuidv4 } from "uuid";
+import { useEffect, useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { toast } from "react-hot-toast";
+import { MdCall } from "react-icons/md";
 
 const CashIn = () => {
   const { dbUser, setUpdateMoney, updateMoney } = useAllContext();
@@ -84,7 +80,7 @@ const CashIn = () => {
   return (
     <div>
       <div class="font-manrope justify-center flex w-full">
-        <div class=" bg-white max-w-xl w-96 md:px-4 p-1">
+        <div class=" bg-base-100 max-w-xl w-96 md:px-4 p-1">
           <div>
             <div className="flex items-center flex-wrap">
               <img

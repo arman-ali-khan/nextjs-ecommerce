@@ -1,10 +1,9 @@
+import { useAllContext } from "@/context/ContextProvider";
 import axios from "axios";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { BiDownArrow, BiUpArrow } from "react-icons/bi";
 import { TbCategory } from "react-icons/tb";
 import CategoryList from "./CategoryList";
-import { useAllContext } from "@/context/ContextProvider";
 
 const NavCategories = () => {
   const [loading,setLoading] = useState(false)
@@ -38,7 +37,7 @@ const NavCategories = () => {
         }`}
       ></button>
       <div
-        className={`absolute bg-teal-50 border border-teal-600 rounded-xl w-64 shadow-lg gap-1 ${
+        className={`absolute bg-base-200 border border-teal-600 rounded-xl w-64 shadow-lg gap-1 ${
             showCategory || "hidden"
         }`}
       >

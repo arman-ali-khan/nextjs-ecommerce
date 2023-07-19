@@ -41,7 +41,7 @@ const handleAddToCart = () => {
       description={product.description}
       thumb={product.images[0].original}
     >
-      <div className="w-full mt-12 rounded-lg p-3 lg:p-12 bg-white">
+      <div className="w-full mt-12 rounded-lg p-3 lg:p-12 bg-base-100">
         <div className="flex flex-col xl:flex-row">
           <div className="flex-shrink-0 xl:pr-10 lg:block w-full mx-auto md:w-6/12 lg:w-5/12 xl:w-4/12">
             <div className="span-order h-96">
@@ -134,7 +134,7 @@ const handleAddToCart = () => {
                         )}
                       </div>
                       <div>
-                        <button className="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-teal-500 hover:bg-teal-600 w-44 h-12">
+                        <button className="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-base-200 hover:bg-teal-600 w-44 h-12">
                           Add to Wishlist
                         </button>
                       </div>
@@ -172,7 +172,7 @@ const handleAddToCart = () => {
                         product
                       </p>
                       <ul className="flex mt-4">
-                        <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-teal-500 mr-2 transition ease-in-out duration-500">
+                        <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-base-200 mr-2 transition ease-in-out duration-500">
                           <button
                             aria-label="facebook"
                             className="react-share__ShareButton  bg-transparent border-none p-0 text-base cursor-pointer"
@@ -191,7 +191,7 @@ const handleAddToCart = () => {
                             </svg>
                           </button>
                         </li>
-                        <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-teal-500 mr-2 transition ease-in-out duration-500">
+                        <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-base-200 mr-2 transition ease-in-out duration-500">
                           <button
                             quote=""
                             aria-label="twitter"
@@ -211,7 +211,7 @@ const handleAddToCart = () => {
                             </svg>
                           </button>
                         </li>
-                        <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-teal-500 mr-2 transition ease-in-out duration-500">
+                        <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-base-200 mr-2 transition ease-in-out duration-500">
                           <button
                             quote=""
                             aria-label="reddit"
@@ -231,7 +231,7 @@ const handleAddToCart = () => {
                             </svg>
                           </button>
                         </li>
-                        <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-teal-500 mr-2 transition ease-in-out duration-500">
+                        <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-base-200 mr-2 transition ease-in-out duration-500">
                           <button
                             quote=""
                             aria-label="whatsapp"
@@ -251,7 +251,7 @@ const handleAddToCart = () => {
                             </svg>
                           </button>
                         </li>
-                        <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-teal-500 mr-2 transition ease-in-out duration-500">
+                        <li className="flex items-center text-center border border-gray-100 rounded-full hover:bg-base-200 mr-2 transition ease-in-out duration-500">
                           <button
                             quote=""
                             aria-label="linkedin"

@@ -14,7 +14,7 @@ const SingleCart = ({product}) => {
   
 
   const products = state.cart;
-  const stocks = state.cart;
+  const stocks = state.stocks;
 
 
  const router = useRouter()
@@ -44,14 +44,29 @@ const SingleCart = ({product}) => {
             <p className="md:text-md text-teal-600 font-bold">{(product.price * selectedStock.quantity).toFixed(2)}$</p>
           </div>
 
-    
+          <div className="text-lg w-9 flex flex-col justify-center text-center bg-base-200 text-white mt-2">
+            {/* Increment btn */}
+            <button onClick={()=>dispatch({type:actionTypes.ADD_TO_STOCK,payload:product})} className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-t-full">
+              +
+            </button>
+            {/* Count */}
+            <p className="text-teal-600">
+              {
+              selectedStock.quantity
+            }
+            </p>
+            {/* Decrement btn */}
+            <button onClick={()=>dispatch({type:actionTypes.DECREMENT_STOCK,payload:product})} className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-b-full">
+              -
+            </button>
+          </div>
         </div>
-        {/* Remove from cart */}
+        {/* Remove all from Stock */}
         <div className="flex justify-end w-12">
           <button
             onClick={() =>
               dispatch({
-                type: actionTypes.DECREMENT_STOCK,
+                type: actionTypes.REMOVE_FROM_STOCK,
                 payload: product,
               })
             }
@@ -83,7 +98,7 @@ const SingleCart = ({product}) => {
             <p className="md:text-md text-teal-600 font-bold">{(product.price * selected.quantity).toFixed(2)}$</p>
           </div>
 
-          <div className="text-lg w-9 flex flex-col justify-center text-center bg-teal-50 text-white mt-2">
+          <div className="text-lg w-9 flex flex-col justify-center text-center bg-base-200 text-white mt-2">
             {/* Increment btn */}
             <button onClick={()=>dispatch({type:actionTypes.ADD_TO_CART,payload:product})} className="px-3 py-1 md:py-0 md:px-2 text-2xl bg-teal-600 rounded-t-full">
               +

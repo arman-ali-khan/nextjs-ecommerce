@@ -36,7 +36,7 @@ function UserLayout({ children, title, description, thumb }) {
       </Head>
       <div className="container mx-auto  py-3 relative overflow-hidden">
         <div className="top-6 relative">
-          <div className="w-full mb-20 absolute -z-10  md:h-44 h-image flex-shrink-0 my-5  bg-teal-500 rounded-lg  shadow-lg flex justify-center"></div>
+          <div className="w-full mb-20 absolute -z-10  md:h-44 h-image flex-shrink-0 my-5  bg-base-200 rounded-lg  shadow-lg flex justify-center"></div>
           <div className="md:h-44 my-6 h-image bg-teal-600 rounded-md flex justify-center w-full">
           {user?.photo ? (
              <img

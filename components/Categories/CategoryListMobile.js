@@ -1,6 +1,4 @@
-import axios from 'axios';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
 
 const CategoryListMobile = ({categories}) => {
 
@@ -8,7 +6,7 @@ const CategoryListMobile = ({categories}) => {
         <ul className=" gap-0 md:grid-cols-none">
         {categories?.map((category,i) => (
            <Link className="border-b md:border-none flex items-center rounded" key={i} href={`/category/${category.value}`}>
-            <li className="md:px-4 w-full rounded-xl bg-white">
+            <li className="md:px-4 w-full rounded-xl bg-base-100">
               <span className="flex items-center hover:underline hover:text-teal-600 md:gap-3">
                 <img className="w-8 p-2 h-8" src={category.icon} alt="" />
 

@@ -1,8 +1,8 @@
+import { useAllContext } from "@/context/ContextProvider";
 import axios from "axios";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CategoryList from "./CategoryList";
-import { useAllContext } from "@/context/ContextProvider";
 
 const HeroCategories = () => {
   // context
@@ -29,10 +29,10 @@ const HeroCategories = () => {
   const seemore =  false
  
   return (
-    <div className="md:w-full lg:w-full md:ml-12 relative ">
+    <div className="md:w-full lg:w-full relative ">
      
       <div
-        className={` bg-teal-50 rounded my-3 md:my-0 w-full gap-1 `}
+        className={` bg-base-200 rounded my-3 md:my-0 w-full gap-1 `}
       >
         {
            loading ? <div className="h-96 w-full flex items-center justify-center">

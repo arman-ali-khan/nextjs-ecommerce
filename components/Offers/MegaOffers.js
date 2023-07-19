@@ -1,4 +1,3 @@
-import React from "react";
 
 const MegaOffers = () => {
   return (
@@ -14,7 +13,7 @@ const MegaOffers = () => {
       </div>
       <div className="mx-auto max-w-screen-2xl px-4 py-5 sm:px-10">
         <div className="grid gap-6 grid-cols-1 xl:grid-cols-2">
-          <div className="coupon block md:flex lg:flex md:justify-between lg:justify-between items-center bg-white rounded-md shadow-sm">
+          <div className="coupon block md:flex lg:flex md:justify-between lg:justify-between items-center bg-base-100 rounded-md shadow-sm">
             <div className="tengah p-6 flex items-center justify-items-start">
               <figure>
                 <span className="span-order">
@@ -84,7 +83,7 @@ const MegaOffers = () => {
               </div>
             </div>
           </div>
-          <div className="coupon block md:flex lg:flex md:justify-between lg:justify-between items-center bg-white rounded-md shadow-sm">
+          <div className="coupon block md:flex lg:flex md:justify-between lg:justify-between items-center bg-base-100 rounded-md shadow-sm">
             <div className="tengah p-6 flex items-center justify-items-start">
               <figure>
                 <span className="span-order">
@@ -158,7 +157,7 @@ const MegaOffers = () => {
               </div>
             </div>
           </div>
-          <div className="coupon block md:flex lg:flex md:justify-between lg:justify-between items-center bg-white rounded-md shadow-sm">
+          <div className="coupon block md:flex lg:flex md:justify-between lg:justify-between items-center bg-base-100 rounded-md shadow-sm">
             <div className="tengah p-6 flex items-center justify-items-start">
               <figure>
                 <span className="span-order">
@@ -231,7 +230,7 @@ const MegaOffers = () => {
               </div>
             </div>
           </div>
-          <div className="coupon block md:flex lg:flex md:justify-between lg:justify-between items-center bg-white rounded-md shadow-sm">
+          <div className="coupon block md:flex lg:flex md:justify-between lg:justify-between items-center bg-base-100 rounded-md shadow-sm">
             <div className="tengah p-6 flex items-center justify-items-start">
               <figure>
                 <span className="span-order">
@@ -304,7 +303,7 @@ const MegaOffers = () => {
               </div>
             </div>
           </div>
-          <div className="coupon block md:flex lg:flex md:justify-between lg:justify-between items-center bg-white rounded-md shadow-sm">
+          <div className="coupon block md:flex lg:flex md:justify-between lg:justify-between items-center bg-base-100 rounded-md shadow-sm">
             <div className="tengah p-6 flex items-center justify-items-start">
               <figure>
                 <span className="span-order">

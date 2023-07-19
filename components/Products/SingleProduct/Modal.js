@@ -52,7 +52,7 @@ const Modal = ({ id, setId }) => {
       aria-modal="true"
     >
       <div
-        className={` right-5 sticky z-[999999] md:hidden  top-0 flex justify-between items-center bg-white py-2 px-4 ${
+        className={` right-5 sticky z-[999999] md:hidden  top-0 flex justify-between items-center bg-base-100 py-2 px-4 ${
           loading && "hidden"
         }`}
       >
@@ -62,7 +62,7 @@ const Modal = ({ id, setId }) => {
         <button
           onClick={() => setId("")}
           type="button"
-          className="inline-flex  justify-center px-2 py-2 text-base font-medium text-red-500 bg-white border border-teal-600 rounded-full hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+          className="inline-flex  justify-center px-2 py-2 text-base font-medium text-red-500 bg-base-100 border border-teal-600 rounded-full hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
         >
           <svg
             stroke="currentColor"
@@ -89,15 +89,15 @@ const Modal = ({ id, setId }) => {
           aria-hidden="true"
         ></span>
         <div
-          className={`inline-block overflow-y-auto h-full md:rounded-2xl align-middle transition-all transform bg-white shadow-xl rounded-b-2xl opacity-100  scale-100 ${
+          className={`inline-block overflow-y-auto h-full md:rounded-2xl align-middle transition-all transform bg-base-100 shadow-xl rounded-b-2xl opacity-100  scale-100 ${
             loading && "rounded-2xl"
           }`}
         >
-          <div className=" right-5 absolute z-[999999] hidden md:flex top-0 justify-between items-center bg-white py-2 px-4">
+          <div className=" right-5 absolute z-[999999] hidden md:flex top-0 justify-between items-center bg-base-100 py-2 px-4">
             <button
               onClick={() => setId("")}
               type="button"
-              className="inline-flex  justify-center px-2 py-2 text-base font-medium text-red-500 bg-white border border-teal-600 rounded-full hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+              className="inline-flex  justify-center px-2 py-2 text-base font-medium text-red-500 bg-base-100 border border-teal-600 rounded-full hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
             >
               <svg
                 stroke="currentColor"
@@ -155,7 +155,7 @@ const Modal = ({ id, setId }) => {
                         <span className="text-dark text-base"></span>
                       </button>
                     </div>
-                    <button className="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-teal-500 hover:bg-teal-600 w-full h-12"></button>
+                    <button className="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-base-200 hover:bg-teal-600 w-full h-12"></button>
                   </div>
                 </div>
                 <div className="flex items-center mt-4">
@@ -249,7 +249,7 @@ const Modal = ({ id, setId }) => {
                       modalData.stock > 0 && 
                       <div
                         onClick={handleAddToCart}
-                        className={`text-sm leading-4 flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-teal-500 hover:bg-teal-600 w-56 h-12`}
+                        className={`text-sm leading-4 flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-base-200 hover:bg-teal-600 w-56 h-12`}
                       >
                         <button>Add To Cart</button>
                         <span className=" px-4 py-2">
@@ -258,7 +258,7 @@ const Modal = ({ id, setId }) => {
                       </div>
                     )}
 
-                    <button className="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-teal-500 hover:bg-teal-600 w-44 h-12">
+                    <button className="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold  text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-base-200 hover:bg-teal-600 w-44 h-12">
                       Add to Wishlist
                     </button>
                   </div>

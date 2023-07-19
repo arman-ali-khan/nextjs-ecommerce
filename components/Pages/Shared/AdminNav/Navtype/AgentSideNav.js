@@ -11,8 +11,8 @@ const AdminSideNav = () => {
     const [showMenu,setShowMenu] = useState(false)
    
     return (
-        <div className='h-full bg-white border-r'>
-            <div className='grid md:hidden grid-cols-2 bg-white'>
+        <div className='h-full bg-base-100 border-r'>
+            <div className='grid md:hidden grid-cols-2 bg-base-100'>
                 <button onClick={()=>setShowMenu(false)} className={`py-2  border-teal-600 w-full border-b border-r ${showMenu || 'bg-teal-600 text-white'} flex items-center gap-2 px-2`}> <span><BiCategory size={20} /></span> Agent</button>
                 <button onClick={()=>setShowMenu(true)} className={`py-2 border-teal-600 md:hidden border-b ${showMenu && 'bg-teal-600 text-white'} flex items-center gap-2 px-2`}><span><BiMenuAltRight size={20} /></span> Menu</button>
             </div>

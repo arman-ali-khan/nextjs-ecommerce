@@ -1,9 +1,7 @@
 
-import ProductCard from './ProductCard';
+import { useAllContext, } from '@/context/ContextProvider';
 import { BiTrendingUp } from 'react-icons/bi';
-import { BsArrowRight } from 'react-icons/bs';
-import Link from 'next/link';
-import {  useAllContext, } from '@/context/ContextProvider';
+import ProductCard from './ProductCard';
 
 const Products = () => {
    const {state,currentPage, setCurrentPage} = useAllContext()
@@ -49,7 +47,7 @@ const count = Math.ceil((productCount?.count || 10 )/ 10)
         </div>
       </label>
       <div
-        className={`flex cursor-pointer select-none justify-between items-center bg-gray-100 duration-300 border border-teal-600  pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600 `}
+        className={`flex cursor-pointer select-none justify-between items-center bg-base-100 duration-300 border border-teal-600  pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600 `}
       >
       </div>
       <div>

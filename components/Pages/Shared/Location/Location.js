@@ -1,7 +1,4 @@
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { BiDownArrow, BiLocationPlus, BiUpArrow } from "react-icons/bi";
-import { TbCategory } from "react-icons/tb";
+import { useState } from "react";
 
 const Location = () => {
   const [showCategory, setShowCategory] = useState(false);
@@ -55,14 +52,14 @@ const Location = () => {
         }`}
       ></button>
       <div
-        className={`absolute -left-20 bg-teal-50 border border-teal-600 rounded w-56 shadow-lg gap-1 ${
+        className={`absolute -left-20 bg-base-200 border border-teal-600 rounded w-56 shadow-lg gap-1 ${
             showCategory || "hidden"
         }`}
       >
         <ul>
           {categories.map((category,i) => (
             <button onClick={()=>handleLocation(category)} key={i} className="w-full" >
-              <li className="px-4 py-2 rounded border-b bg-white">
+              <li className="px-4 py-2 rounded border-b bg-base-100">
                 <span className="flex items-center hover:underline hover:text-teal-600 gap-3">
                   <p className="font-bold">{category.title}</p>
                 </span>

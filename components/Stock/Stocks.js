@@ -7,19 +7,23 @@ const Stocks = () => {
    const [currentPage,setCurrentPage] = useState('')
 
     const [loading,setLoading] = useState(true)
-    
 
+    // filter with category
+    const [filterCat,setFilterCat] = useState('')
+    console.log(filterCat)
+    
+// all stocks with count 
     const [allProducts,setProducts] = useState({})
 
     const products = allProducts.stocks;
 console.log(products);
     
-
+// get stocks 
     useEffect(() => {
-     
+      setLoading(true)
       const fetchData = async () => {
         try {
-          const response = await fetch(`/api/stocks?page=${currentPage}`);
+          const response = await fetch(`/api/stocks?page=${currentPage}&filter=${filterCat}`);
           const jsonData = await response.json();
           setProducts(jsonData)
           setLoading(false)
@@ -30,7 +34,7 @@ console.log(products);
       };
   
       fetchData();
-    }, []);
+    }, [filterCat]);
 
 
 
@@ -69,7 +73,7 @@ const count = Math.ceil((productCount?.count || 10 )/ 10)
         </div>
       </label>
       <div
-        className={`flex cursor-pointer select-none justify-between items-center bg-gray-100 duration-300 border border-teal-600  pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600 `}
+        className={`flex cursor-pointer select-none justify-between items-center bg-base-100 duration-300 border border-teal-600  pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600 `}
       >
       </div>
       <div>
@@ -89,9 +93,47 @@ const count = Math.ceil((productCount?.count || 10 )/ 10)
     }
     return (
         <section className='container mx-auto md:my-12 my-3 overflow-hidden'>
+          {/* Stocks category */}
+          <div className='my-6'>
+            <div>
+              <ul className='grid grid-cols-5'>
+                <li className='w-full flex justify-center '>
+                  <button className={`bg-base-200 ${filterCat==='' ?"bg-base-300":''} hover:bg-base-300 w-full rounded py-4 border border-teal-400  items-center gap-2`} onClick={()=>setFilterCat('')}  > <span className='w-full flex justify-center'><img src="https://res.cloudinary.com/dcckbmhft/image/upload/v1689330390/nobinImage/c0iq5awgopbluhxoe0lo.webp" className='w-14' alt="" /></span> All</button>
+                </li>
+                <li className='w-full flex justify-center '>
+                  <button className={`bg-base-200 ${filterCat==='neptunium' ?"bg-base-300":''} hover:bg-base-300 w-full rounded py-4 border border-teal-400  items-center gap-2`} onClick={(e)=>setFilterCat(e.target.value)} value={'neptunium'} > <span className='w-full flex justify-center'><img src="https://res.cloudinary.com/dcckbmhft/image/upload/v1689330390/nobinImage/c0iq5awgopbluhxoe0lo.webp" className='w-14' alt="" /></span> Neptunium</button>
+                </li>
+                <li className='w-full flex justify-center '>
+                  <button className={`bg-base-200 ${filterCat==='berkelium' ?"bg-base-300":''} hover:bg-base-300 w-full rounded py-4 border border-teal-400  items-center gap-2`} onClick={(e)=>setFilterCat(e.target.value)} value={'berkelium'} > <span className='w-full flex justify-center'><img src="https://res.cloudinary.com/dcckbmhft/image/upload/v1689330390/nobinImage/c0iq5awgopbluhxoe0lo.webp" className='w-14' alt="" /></span> Berkelium</button>
+                </li>
+                <li className='w-full flex justify-center '>
+                  <button className={`bg-base-200 ${filterCat==='nihonium' ?"bg-base-300":''} hover:bg-base-300 w-full rounded py-4 border border-teal-400  items-center gap-2`} onClick={(e)=>setFilterCat(e.target.value)} value={'nihonium'} > <span className='w-full flex justify-center'><img src="https://res.cloudinary.com/dcckbmhft/image/upload/v1689330390/nobinImage/c0iq5awgopbluhxoe0lo.webp" className='w-14' alt="" /></span> Nihonium</button>
+                </li>
+                <li className='w-full flex justify-center '>
+                  <button className={`bg-base-200 ${filterCat==='brorium' ?"bg-base-300":''} hover:bg-base-300 w-full rounded py-4 border border-teal-400  items-center gap-2`} onClick={(e)=>setFilterCat(e.target.value)} value={'brorium'} > <span className='w-full flex justify-center'><img src="https://res.cloudinary.com/dcckbmhft/image/upload/v1689330390/nobinImage/c0iq5awgopbluhxoe0lo.webp" className='w-14' alt="" /></span> Brorium</button>
+                </li>
+             
+                <li className='w-full flex justify-center '>
+                  <button className={`bg-base-200 ${filterCat==='erbium' ?"bg-base-300":''} hover:bg-base-300 w-full rounded py-4 border border-teal-400  items-center gap-2`} onClick={(e)=>setFilterCat(e.target.value)} value={'erbium'} > <span className='w-full flex justify-center'><img src="https://res.cloudinary.com/dcckbmhft/image/upload/v1689330390/nobinImage/c0iq5awgopbluhxoe0lo.webp" className='w-14' alt="" /></span> Erbium</button>
+                </li>
+                <li className='w-full flex justify-center '>
+                  <button className={`bg-base-200 ${filterCat==='tantalum' ?"bg-base-300":''} hover:bg-base-300 w-full rounded py-4 border border-teal-400  items-center gap-2`} onClick={(e)=>setFilterCat(e.target.value)} value={'tantalum'} > <span className='w-full flex justify-center'><img src="https://res.cloudinary.com/dcckbmhft/image/upload/v1689330390/nobinImage/c0iq5awgopbluhxoe0lo.webp" className='w-14' alt="" /></span> Tantalum</button>
+                </li>
+                <li className='w-full flex justify-center '>
+                  <button className={`bg-base-200 ${filterCat==='hafnium' ?"bg-base-300":''} hover:bg-base-300 w-full rounded py-4 border border-teal-400  items-center gap-2`} onClick={(e)=>setFilterCat(e.target.value)} value={'hafnium'} > <span className='w-full flex justify-center'><img src="https://res.cloudinary.com/dcckbmhft/image/upload/v1689330390/nobinImage/c0iq5awgopbluhxoe0lo.webp" className='w-14' alt="" /></span> Hafnium</button>
+                </li>
+                <li className='w-full flex justify-center '>
+                  <button className={`bg-base-200 ${filterCat==='roentgenium' ?"bg-base-300":''} hover:bg-base-300 w-full rounded py-4 border border-teal-400  items-center gap-2`} onClick={(e)=>setFilterCat(e.target.value)} value={'roentgenium'} > <span className='w-full flex justify-center'><img src="https://res.cloudinary.com/dcckbmhft/image/upload/v1689330390/nobinImage/c0iq5awgopbluhxoe0lo.webp" className='w-14' alt="" /></span> Roentgenium</button>
+                </li>
+                <li className='w-full flex justify-center '>
+                  <button className={`bg-base-200 ${filterCat==='amerium' ?"bg-base-300":''} hover:bg-base-300 w-full rounded py-4 border border-teal-400  items-center gap-2`} onClick={(e)=>setFilterCat(e.target.value)} value={'amerium'} > <span className='w-full flex justify-center'><img src="https://res.cloudinary.com/dcckbmhft/image/upload/v1689330390/nobinImage/c0iq5awgopbluhxoe0lo.webp" className='w-14' alt="" /></span> Amerium</button>
+                </li>
+              </ul>
+            </div>
+          </div>
             {/* Title */}
          <div className='flex items-center justify-between px-3 md:px-0'>
-                <h2 className='md:text-2xl px-4 py-2 md:uppercase text-teal-600 flex items-center gap-2 border-b border-teal-600'> <span><BiTrendingUp /></span> Popular Products</h2>
+                <h2 className='md:text-2xl w-full py-6 md:uppercase text-teal-600 flex items-center gap-2 border-b border-teal-600'> <span><BiTrendingUp /></span> Our Stocks</h2>
             </div>
             {/* Card */}
             <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 sm:gap-2'>
@@ -102,7 +144,7 @@ const count = Math.ceil((productCount?.count || 10 )/ 10)
           
         <div className="btn-group rounded-md">
   {
-    [...Array(count).keys()].map((product,i)=> <button onClick={()=>setCurrentPage(i)} key={i} className={`bg-teal-600 px-4 py-2 btn border-none text-white hover:bg-teal-700 duration-300 ${currentPage===i &&'bg-teal-700'}`}>{i+1}</button>)
+    [...Array(count).keys()].map((product,i)=> <button  onClick={()=>setCurrentPage(i)} key={i} className={`bg-teal-600 w-full py-6 btn border-none text-white hover:bg-teal-700 duration-300 ${currentPage===i &&'bg-teal-700'}`}>{i+1}</button>)
   }
 </div>
         </div>
