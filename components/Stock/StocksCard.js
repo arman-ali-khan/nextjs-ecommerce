@@ -107,7 +107,7 @@ const StocksCard = ({ product }) => {
         <div
      
       
-        className={`flex cursor-pointer select-none justify-between items-center bg-gray-100 duration-300 border border-teal-600  rounded text-white `}
+        className={`flex cursor-pointer select-none justify-between items-center bg-base-100 duration-300 border border-teal-600  rounded text-white `}
       >
         {/* Derement btn */}
         <button   onClick={()=>handleRemoveFromCart()} className="px-3 py-2 bg-teal-600">

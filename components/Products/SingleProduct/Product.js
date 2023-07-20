@@ -92,7 +92,7 @@ const handleAddToCart = () => {
                         {/* Add to cart */}
                         {added ? (
                           <div
-                            className={`flex cursor-pointer select-none justify-between items-center bg-gray-100 duration-300 border border-teal-600  rounded text-white `}
+                            className={`flex cursor-pointer select-none justify-between items-center bg-base-100 duration-300 border border-teal-600  rounded text-white `}
                           >
                             <div className="group flex w-44 items-center justify-between rounded-md overflow-hidden flex-shrink-0 border h-11 md:h-12 ">
                               {/* Derement btn */}

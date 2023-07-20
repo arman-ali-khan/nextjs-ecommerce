@@ -66,9 +66,9 @@ const handleAddToCart = () => {
           <img  className="h-60 w-full object-cover" src={product&& product?.images[0]?.original} alt="" />
         </label>
 
-        <div className={`flex items-center justify-between px-3`}>
+        <div className={`flex items-center justify-between `}>
           <div>
-            <div className="sm:flex flex-col sm:flex-row gap-0 md:!justify-between justify-start sm:gap-3 tooltip items-center ">
+            <div className="sm:flex px-1 flex-col sm:flex-row gap-0 md:!justify-between justify-start sm:gap-3 tooltip items-center ">
               <h4
                 className="text-teal-600 flex gap-1 text-sm font-bold tooltip"
                 data-tip={`Original Price ${ product.oldPrice}৳ Discount Price ${
@@ -94,10 +94,11 @@ const handleAddToCart = () => {
                 </span>
               </div>
             </div>
+            
             {/* product title */}
             <Link
               href={`/product/${product.id}`}
-              className="md:text-base inline-block leading-4 text-teal-600 text-sm font-bold"
+              className="md:text-base inline-block w-full leading-4 text-teal-600 text-sm font-bold"
             >
               {product.title.slice(0,20)}{parseInt(product.title.length)>=19 && '..'}
             </Link>
@@ -110,7 +111,7 @@ const handleAddToCart = () => {
         <div
      
       
-        className={`flex cursor-pointer select-none justify-between items-center bg-gray-100 duration-300 border border-teal-600  rounded text-white `}
+        className={`flex cursor-pointer select-none justify-between items-center bg-base-100 duration-300 border border-teal-600  rounded text-white `}
       >
         {/* Derement btn */}
         <button   onClick={()=>handleRemoveFromCart()} className="px-3 py-2 bg-teal-600">

@@ -104,7 +104,7 @@ const count = Math.ceil((productCount?.count || 10 )/ 10)
                 {
                   [...Array(12).keys()].slice(0,showCat?12:6).map((item,i)=>{
                   return  <li key={i} className='w-full flex justify-center '>
-                  <button className={`bg-base-200 ${filterCat==='' ?"bg-base-300":''} hover:bg-base-300 w-full rounded py-4 border border-teal-400  items-center gap-2`} onClick={()=>setFilterCat('')}  > <span className='w-full flex justify-center'><img src="https://res.cloudinary.com/dcckbmhft/image/upload/v1689330390/nobinImage/c0iq5awgopbluhxoe0lo.webp" className='w-14' alt="" /></span> All</button>
+                  <button className={`bg-base-200 ${filterCat==='' ?"bg-base-300":''} hover:bg-base-300 w-full rounded py-4 border border-teal-400  items-center gap-2`} onClick={()=>setFilterCat('')}  > <span className='w-full flex justify-center '><img className='rounded-full w-14' src="https://res.cloudinary.com/dcckbmhft/image/upload/v1689330390/nobinImage/c0iq5awgopbluhxoe0lo.webp" alt="" /></span> All</button>
                 </li>
                   })
                 }

@@ -87,6 +87,7 @@ export const productsReducer = (state, action) => {
       };
     // stock
     case actionTypes.ADD_TO_STOCK:
+      let stockDown = parseInt(action.payload.stock);
       if (selectedStocks) {
         const newStock = state.stocks.filter(
           (product) => product._id !== selectedStocks._id
@@ -94,14 +95,20 @@ export const productsReducer = (state, action) => {
       
         selectedStocks.quantity += 1;
 
-       
+        axios
+        .patch(`/api/updateStock/update?id=${id}`, {
+          stock: (stockDown -= selectedStocks.quantity += 1).toString(),
+        })
+        .then((res) => {
+          console.log(res.data);
+        });
         return {
           ...state,
           stocks: [...newStock, selectedStocks],
         };
       }
       // stock count down per click
-      const stockDown = parseInt(action.payload.stock);
+     
 
       axios
         .patch(`/api/updateStock/update?id=${id}`, {
