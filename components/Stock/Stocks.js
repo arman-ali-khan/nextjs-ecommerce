@@ -91,44 +91,27 @@ const count = Math.ceil((productCount?.count || 10 )/ 10)
     if(!loading  && products?.length){
       content =   allProducts.stocks?.map((product,i)=>  <StockCard key={i} product={product} />)
     }
+
+
+    // show All category
+    const [showCat,setShowCat] = useState(false)
     return (
         <section className='container mx-auto md:my-12 my-3 overflow-hidden'>
           {/* Stocks category */}
           <div className='my-6'>
             <div>
-              <ul className='grid grid-cols-5'>
-                <li className='w-full flex justify-center '>
+              <ul className='grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-6'>
+                {
+                  [...Array(12).keys()].slice(0,showCat?12:6).map((item,i)=>{
+                  return  <li key={i} className='w-full flex justify-center '>
                   <button className={`bg-base-200 ${filterCat==='' ?"bg-base-300":''} hover:bg-base-300 w-full rounded py-4 border border-teal-400  items-center gap-2`} onClick={()=>setFilterCat('')}  > <span className='w-full flex justify-center'><img src="https://res.cloudinary.com/dcckbmhft/image/upload/v1689330390/nobinImage/c0iq5awgopbluhxoe0lo.webp" className='w-14' alt="" /></span> All</button>
                 </li>
-                <li className='w-full flex justify-center '>
-                  <button className={`bg-base-200 ${filterCat==='neptunium' ?"bg-base-300":''} hover:bg-base-300 w-full rounded py-4 border border-teal-400  items-center gap-2`} onClick={(e)=>setFilterCat(e.target.value)} value={'neptunium'} > <span className='w-full flex justify-center'><img src="https://res.cloudinary.com/dcckbmhft/image/upload/v1689330390/nobinImage/c0iq5awgopbluhxoe0lo.webp" className='w-14' alt="" /></span> Neptunium</button>
-                </li>
-                <li className='w-full flex justify-center '>
-                  <button className={`bg-base-200 ${filterCat==='berkelium' ?"bg-base-300":''} hover:bg-base-300 w-full rounded py-4 border border-teal-400  items-center gap-2`} onClick={(e)=>setFilterCat(e.target.value)} value={'berkelium'} > <span className='w-full flex justify-center'><img src="https://res.cloudinary.com/dcckbmhft/image/upload/v1689330390/nobinImage/c0iq5awgopbluhxoe0lo.webp" className='w-14' alt="" /></span> Berkelium</button>
-                </li>
-                <li className='w-full flex justify-center '>
-                  <button className={`bg-base-200 ${filterCat==='nihonium' ?"bg-base-300":''} hover:bg-base-300 w-full rounded py-4 border border-teal-400  items-center gap-2`} onClick={(e)=>setFilterCat(e.target.value)} value={'nihonium'} > <span className='w-full flex justify-center'><img src="https://res.cloudinary.com/dcckbmhft/image/upload/v1689330390/nobinImage/c0iq5awgopbluhxoe0lo.webp" className='w-14' alt="" /></span> Nihonium</button>
-                </li>
-                <li className='w-full flex justify-center '>
-                  <button className={`bg-base-200 ${filterCat==='brorium' ?"bg-base-300":''} hover:bg-base-300 w-full rounded py-4 border border-teal-400  items-center gap-2`} onClick={(e)=>setFilterCat(e.target.value)} value={'brorium'} > <span className='w-full flex justify-center'><img src="https://res.cloudinary.com/dcckbmhft/image/upload/v1689330390/nobinImage/c0iq5awgopbluhxoe0lo.webp" className='w-14' alt="" /></span> Brorium</button>
-                </li>
-             
-                <li className='w-full flex justify-center '>
-                  <button className={`bg-base-200 ${filterCat==='erbium' ?"bg-base-300":''} hover:bg-base-300 w-full rounded py-4 border border-teal-400  items-center gap-2`} onClick={(e)=>setFilterCat(e.target.value)} value={'erbium'} > <span className='w-full flex justify-center'><img src="https://res.cloudinary.com/dcckbmhft/image/upload/v1689330390/nobinImage/c0iq5awgopbluhxoe0lo.webp" className='w-14' alt="" /></span> Erbium</button>
-                </li>
-                <li className='w-full flex justify-center '>
-                  <button className={`bg-base-200 ${filterCat==='tantalum' ?"bg-base-300":''} hover:bg-base-300 w-full rounded py-4 border border-teal-400  items-center gap-2`} onClick={(e)=>setFilterCat(e.target.value)} value={'tantalum'} > <span className='w-full flex justify-center'><img src="https://res.cloudinary.com/dcckbmhft/image/upload/v1689330390/nobinImage/c0iq5awgopbluhxoe0lo.webp" className='w-14' alt="" /></span> Tantalum</button>
-                </li>
-                <li className='w-full flex justify-center '>
-                  <button className={`bg-base-200 ${filterCat==='hafnium' ?"bg-base-300":''} hover:bg-base-300 w-full rounded py-4 border border-teal-400  items-center gap-2`} onClick={(e)=>setFilterCat(e.target.value)} value={'hafnium'} > <span className='w-full flex justify-center'><img src="https://res.cloudinary.com/dcckbmhft/image/upload/v1689330390/nobinImage/c0iq5awgopbluhxoe0lo.webp" className='w-14' alt="" /></span> Hafnium</button>
-                </li>
-                <li className='w-full flex justify-center '>
-                  <button className={`bg-base-200 ${filterCat==='roentgenium' ?"bg-base-300":''} hover:bg-base-300 w-full rounded py-4 border border-teal-400  items-center gap-2`} onClick={(e)=>setFilterCat(e.target.value)} value={'roentgenium'} > <span className='w-full flex justify-center'><img src="https://res.cloudinary.com/dcckbmhft/image/upload/v1689330390/nobinImage/c0iq5awgopbluhxoe0lo.webp" className='w-14' alt="" /></span> Roentgenium</button>
-                </li>
-                <li className='w-full flex justify-center '>
-                  <button className={`bg-base-200 ${filterCat==='amerium' ?"bg-base-300":''} hover:bg-base-300 w-full rounded py-4 border border-teal-400  items-center gap-2`} onClick={(e)=>setFilterCat(e.target.value)} value={'amerium'} > <span className='w-full flex justify-center'><img src="https://res.cloudinary.com/dcckbmhft/image/upload/v1689330390/nobinImage/c0iq5awgopbluhxoe0lo.webp" className='w-14' alt="" /></span> Amerium</button>
-                </li>
+                  })
+                }
               </ul>
+            <div className='flex justify-center w-full'>
+                <button className='w-44 py-2 border border-teal-400' onClick={()=>setShowCat(!showCat)}>{showCat?'Show Less':'See More'}</button>
+            </div>
             </div>
           </div>
             {/* Title */}
