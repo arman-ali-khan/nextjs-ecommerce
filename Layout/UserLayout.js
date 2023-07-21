@@ -53,7 +53,7 @@ function UserLayout({ children, title, description, thumb }) {
             />
           )}
           </div>
-          <div className="w-72 mx-auto text-center bg-teal-100   overflow-hidden relative  px-6 rounded-md my-3 py-4">
+          <div className="w-72 mx-auto text-center bg-base-100 border  overflow-hidden relative  px-6 rounded-md my-3 py-4">
             <h2 className="text-xl md:text-2xl font-bold">{dbUser?.name}({dbUser.type})</h2>
             <p>{dbUser?.phone}</p>
             <p>{dbUser?.email}</p>

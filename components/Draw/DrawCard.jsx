@@ -3,7 +3,7 @@ import actionTypes from "@/state/ProductState/actionTypes";
 import { useState } from "react";
 import { CheckmarkIcon, toast } from "react-hot-toast";
 import { MdOutlineAdd } from "react-icons/md";
-import { Modal } from "rsuite";
+import DrawModal from "./DrawModal";
 
 const DrawCard = ({ product }) => {
  console.log(product);
@@ -23,7 +23,7 @@ const DrawCard = ({ product }) => {
 
   // add product to cart with enough money
   const handleAddToCart = () => {
-    dispatch({ type: actionTypes.ADD_TO_STOCK, payload: product });
+   setId(product.id)
     toast.success("Added to Cart");
   };
 
@@ -50,8 +50,7 @@ const DrawCard = ({ product }) => {
           )}
         </div>
         <div>
-          <label
-            onClick={() => setId(product.id)}
+          <div
             className={`h-60 bg-base-100 cursor-pointer`}
           >
             {product?.images && (
@@ -61,7 +60,7 @@ const DrawCard = ({ product }) => {
                 alt=""
               />
             )}
-          </label>
+          </div>
 
           <div className={`flex items-center justify-between px-3`}>
             <div>
@@ -93,7 +92,7 @@ const DrawCard = ({ product }) => {
           <div
             className={`flex cursor-pointer select-none  items-center bg-gray-100 duration-300 border border-teal-600  rounded text-white `}
           >
-            {/* Derement btn */}
+            {/* Remove btn */}
             <button
               onClick={() => handleRemoveFromCart()}
               className="px-3 w-full flex items-center justify-between py-2 bg-teal-100 text-teal-600"
@@ -105,21 +104,20 @@ const DrawCard = ({ product }) => {
           </div>
         ) : (
           product?.stock > 0 && (
-            <div
-              onClick={handleAddToCart}
+            <label  onClick={()=>setId('2')} htmlFor="my_modal_7"
               className={`flex cursor-pointer select-none justify-between items-center bg-base-100 duration-300 border border-teal-600  pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600`}
             >
-              <button>Buy Stock</button>
+             <p  className="">Buy Stock</p>
               <span className=" px-4 py-2">
                 <MdOutlineAdd size={20} />
               </span>
-            </div>
+            </label>
           )
         )}
 
         <div></div>
       </div>
-      {id && <Modal id={id} setId={setId} />}
+      {id && <DrawModal id={id} setId={setId} />}
     </>
   );
 };

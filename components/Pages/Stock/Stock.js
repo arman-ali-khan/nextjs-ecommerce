@@ -3,14 +3,15 @@ import { useAllContext } from "@/context/ContextProvider";
 import axios from "axios";
 
 import StocksCard from "@/components/Stock/StocksCard";
+import actionTypes from "@/state/ProductState/actionTypes";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { v4 as uuidv4 } from "uuid";
 
 const Stock = () => {
-  const { state, dbUser, user, setUpdateMoney, updateMoney } = useAllContext();
-
+  const { dispatch,state, dbUser, user, setUpdateMoney, updateMoney } = useAllContext();
+ 
   // // next router
   const router = useRouter();
 
@@ -63,6 +64,7 @@ const Stock = () => {
       .then((res) => {
         setOldStocks(res.data);
         setOldStockLoad(false);
+       
         // router.push('/user/stocks')
       })
       .catch((err) => {
@@ -90,6 +92,8 @@ const Stock = () => {
         setLoading(false);
         setUpdate(!update);
         setUpdateMoney(!updateMoney)
+        dispatch({ type: actionTypes.REMOVE_ALL_STOCK, payload: [] });
+        router.push('/user/stocks')
       })
       .catch((err) => {
         console.log(err);
@@ -112,7 +116,7 @@ const Stock = () => {
           </div>
         </div> */}
         {/* Cart */}
-        <div className="flex px-1 w-full md:w-2/3 md:my-12 flex-col mx-auto md:p-6  space-y-6 divide-y sm:p-10 divide-gray-300 bg-gray-50 text-gray-800">
+        <div className="flex px-1 w-full md:w-2/3 md:my-12 flex-col mx-auto md:p-6  space-y-6 divide-y sm:p-10 divide-gray-300 bg-base-100 ">
           <h2 className="md:text-2xl text-xl font-bold">Stock items</h2>
           <ul className="grid md:grid-cols-4 grid-cols-2 gap-1 pt-4 space-y-2">
             {products?.map((product, i) => (

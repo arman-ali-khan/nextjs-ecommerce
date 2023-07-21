@@ -8,7 +8,12 @@
  font-family: 'Poppins', sans-serif;
   }
 @layer utilities {
-
+  label.modal-backdrop {
+    width: 98vw;
+    position: absolute;
+    height: 100vh;
+    z-index: -2;
+}
   .bg-card {
     background: radial-gradient(black, transparent 60%);
     transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1);

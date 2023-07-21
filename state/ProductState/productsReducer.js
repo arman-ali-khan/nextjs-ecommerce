@@ -165,6 +165,12 @@ export const productsReducer = (state, action) => {
           (product) => product._id !== action.payload._id
         ),
       };
+
+      case actionTypes.REMOVE_ALL_STOCK:
+        return {
+          ...state,
+          stocks: action.payload
+        };
  // Draw
     case actionTypes.ADD_TO_DRAW:
       if (selectedStocks) {
@@ -200,6 +206,7 @@ export const productsReducer = (state, action) => {
           (product) => product._id !== action.payload?._id
         ),
       };
+   
     case actionTypes.DECREMENT_STOCK:
       if (selectedStocks.quantity > 1) {
         const newDraw = state.draws.filter(
