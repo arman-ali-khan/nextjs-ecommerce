@@ -2,11 +2,12 @@ import { useAllContext } from "@/context/ContextProvider";
 import actionTypes from "@/state/ProductState/actionTypes";
 import Link from "next/link";
 import { useState } from "react";
-import { CheckmarkIcon, toast } from "react-hot-toast";
+import { toast } from "react-hot-toast";
+import { BiTrash } from "react-icons/bi";
+import { BsPencilSquare } from "react-icons/bs";
 import { MdOutlineAdd } from "react-icons/md";
-import DrawModal from "./DrawModal";
 
-const DrawCard = ({ product,update,setUpdate }) => {
+const AllDrawCard = ({ product,update,setUpdate }) => {
   const { dispatch, state, dbUser, user, setLoading, loading } =
     useAllContext();
     // quantity
@@ -89,47 +90,43 @@ const DrawCard = ({ product,update,setUpdate }) => {
           </div>
         </div>
         {/* Add to cart */}
-        {added ? (
-          <div
-            className={`flex cursor-pointer select-none  items-center bg-gray-100 duration-300 border border-teal-600  rounded text-white `}
+        <div
+            className={`flex cursor-pointer select-none  items-center  duration-300 border border-teal-600  rounded  `}
           >
-            {/* Remove btn */}
+            {/* Edit btn */}
             <button
               onClick={() => handleRemoveFromCart()}
-              className="px-3 w-full flex items-center justify-between py-2 bg-teal-100 text-teal-600"
+              className="px-3 w-full flex items-center justify-center py-2 text-teal-600 hover:text-white hover:bg-teal-600 border-r"
             >
-             Remove <CheckmarkIcon />
+              <BsPencilSquare />
+            </button>
+            {/* Delete btn */}
+            <button
+              onClick={() => handleRemoveFromCart()}
+              className="px-3 w-full flex items-center justify-center py-2 text-error hover:text-white hover:bg-error"
+            >
+              <BiTrash />
             </button>
            
            
           </div>
-        ) : (
-          product?.stock > 0 ? (
-            <label  onClick={()=>setId(product.id)} htmlFor="my_modal_7"
-              className={`flex cursor-pointer select-none justify-between items-center bg-base-100 duration-300 border border-teal-600  pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600`}
-            >
-             <p  className="">Buy Ticket</p>
-              <span className=" px-4 py-2">
-                <MdOutlineAdd size={20} />
-              </span>
-            </label>
-          ):(
-            <Link href={'/result/draw/123'}
-            className={`flex cursor-pointer select-none justify-between items-center bg-base-100 duration-300 border border-teal-600  pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600`}
-          >
-           <p  className="">See Result</p>
-            <span className=" px-4 py-2">
-              <MdOutlineAdd size={20} />
-            </span>
-          </Link>
-          )
-        )}
+        {
+            
+          product?.stock > 0 || <Link href={'/result/draw/123'}
+          className={`flex cursor-pointer select-none justify-between items-center bg-base-100 duration-300 border border-teal-600  pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600`}
+        >
+         <p  className="">See Result</p>
+          <span className=" px-4 py-2">
+            <MdOutlineAdd size={20} />
+          </span>
+        </Link>
+        }
 
         <div></div>
       </div>
-      {id && <DrawModal setUpdate={setUpdate} update={update} id={id} setId={setId} />}
+     
     </>
   );
 };
 
-export default DrawCard;
+export default AllDrawCard;
