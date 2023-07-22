@@ -2,8 +2,7 @@ import { useAllContext } from "@/context/ContextProvider";
 import axios from "axios";
 import moment from "moment";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { BiTrash } from "react-icons/bi";
+import { useEffect, useState } from "react";
 import { GiTakeMyMoney } from "react-icons/gi";
 import { RiSendPlaneLine } from "react-icons/ri";
 import { TbCurrencyTaka } from "react-icons/tb";
@@ -76,11 +75,11 @@ const MoneyOrder = () => {
                   <span
                       className={`${
                         (send.type === "send" &&
-                          "bg-blue-100 text-blue-600 rounded px-2") ||
+                          "bg-blue-100 text-blue-600 rounded px-2 flex") ||
                         (send.type === "out" &&
-                          "bg-orange-100 text-orange-600 rounded px-2") ||
+                          "bg-orange-100 text-orange-600 rounded px-2 flex") ||
                         (send.type === "in" &&
-                          "bg-teal-100 text-teal-600 rounded px-2") ||
+                          "bg-teal-100 text-teal-600 rounded px-2 flex") ||
                         "bg-blue-100 rounded px-2"
                       }`}
                     >

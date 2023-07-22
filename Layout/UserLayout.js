@@ -4,10 +4,11 @@ import AgentSideNav from "@/components/Pages/Shared/AdminNav/Navtype/AgentSideNa
 import UserSideNav from "@/components/Pages/Shared/AdminNav/Navtype/UserSideNav";
 import PrivateRoutes from "@/components/PrivateRoutes/PrivateRoutes";
 import { useAllContext } from "@/context/ContextProvider";
+import axios from "axios";
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 function UserLayout({ children, title, description, thumb }) {
-  const { user, dbUser, loading } = useAllContext();
+  const { user, loading,updateMoney,setUpdateMoney } = useAllContext();
 
   const [showMony, setShowMoney] = useState(false);
   const [moneyClass, setMoneyClass] = useState("");
@@ -24,6 +25,36 @@ function UserLayout({ children, title, description, thumb }) {
       setMoneyLoading(false);
     };
   };
+
+  // user loading
+  const [userLoading,setUserLoading] = useState(true)
+  const [dbUser, setDbUser] = useState({});
+
+  // call data from local storage in nextjs
+  const token =  typeof window !== "undefined" &&
+  localStorage.getItem("accessToken")
+  useEffect(() => {
+  
+    axios
+    .get(`/api/getUser?email=${user?.email}`, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    })
+    .then((res) => {
+      setDbUser(res.data);
+      setUserLoading(false)
+    })
+    .catch((err) => {
+      console.log(err);
+      if (err.response.status === 401) {
+        toast.error("Access Token is invalid");
+        setUserLoading(false)
+        
+        return logOut()
+      }
+    });
+  }, [user,updateMoney]);
   return (
     <PrivateRoutes>
       <AdminNavbar />
@@ -53,38 +84,65 @@ function UserLayout({ children, title, description, thumb }) {
             />
           )}
           </div>
-          <div className="w-72 mx-auto text-center bg-base-100 border  overflow-hidden relative  px-6 rounded-md my-3 py-4">
-            <h2 className="text-xl md:text-2xl font-bold">{dbUser?.name}({dbUser.type})</h2>
-            <p>{dbUser?.phone}</p>
-            <p>{dbUser?.email}</p>
+          {
+            userLoading ? 
+            <div className="w-72 mx-auto animate-pulse text-center bg-base-100 border  overflow-hidden relative  px-6 rounded-md my-3 py-4">
+            <h2 className="text-xl md:text-2xl font-bold bg-base-200"></h2>
+            <p className="w-full rounded-full my-2 bg-teal-600 py-2"></p>
+            <p className="w-full rounded-full my-2 bg-teal-600 py-2"></p>
             <div className={`mx-auto flex  justify-center relative`}>
               <p
-                className={`${dbUser?.balance < 20 ? 'bg-rose-300':'bg-blue-400 text-white px-2 py-1 rounded-full'}`}
-                onClickCapture={() => setMoneyLoading(false)}
-                onClick={() => setMoneyClass("")}
+                className={` bg-teal-300  text-white px-2 py-1 w-32 h-4 rounded-full`}
+               
               >
-                Your balance is <span className="font-bold">${(dbUser?.balance)}</span>
+               
               </p>
              
               <button
-                onClickCapture={() => setMoneyLoading(true)}
-                onClick={handleMoneyShow}
-                className={`absolute text-white py-2 inline-block bg-teal-600 rounded-full top-0 duration-300 w-full  ${
-                  moneyClass === "" ? "left-0" : "-left-96"
-                }`}
+                
+                className={`absolute text-white py-2 inline-block bg-teal-600 rounded-full top-0 duration-300 w-full h-8 `}
               >
-                {moneyLoading ? (
-                  <span className="h-3 px-3 py-2 rounded-full border border-teal-600 animate-pulse bg-teal-600 border-dashed">
-                    Money Loading...
-                  </span>
-                ) : (
-                  "See your money"
-                )}
+                
               </button>
               
             </div>
             
           </div>
+          :
+          <div className="w-72 mx-auto text-center bg-base-100 border  overflow-hidden relative  px-6 rounded-md my-3 py-4">
+          <h2 className="text-xl md:text-2xl font-bold">{dbUser?.name}({dbUser.type?dbUser.type:<button onClick={()=>setUpdateMoney(!updateMoney)} className="btn btn-warning btn-sm">Reload</button>})</h2>
+          <p>{dbUser?.phone}</p>
+          <p>{dbUser?.email}</p>
+          <div className={`mx-auto flex  justify-center relative`}>
+            <p
+              className={`${dbUser?.balance < 20 ? 'bg-rose-300':'bg-blue-400 text-white px-2 py-1 rounded-full'}`}
+              onClickCapture={() => setMoneyLoading(false)}
+              onClick={() => setMoneyClass("")}
+            >
+              Your balance is <span className="font-bold">${(dbUser?.balance)}</span>
+            </p>
+           
+            <button
+              onClickCapture={() => setMoneyLoading(true)}
+              onClick={handleMoneyShow}
+              className={`absolute text-white py-2 inline-block bg-teal-600 rounded-full top-0 duration-300 w-full  ${
+                moneyClass === "" ? "left-0" : "-left-96"
+              }`}
+            >
+              {moneyLoading ? (
+                <span className="h-3 px-3 py-2 rounded-full border border-teal-600 animate-pulse bg-teal-600 border-dashed">
+                  Money Loading...
+                </span>
+              ) : (
+                "See your money"
+              )}
+            </button>
+            
+          </div>
+          
+        </div>
+          }
+         
         </div>
       
         <div>

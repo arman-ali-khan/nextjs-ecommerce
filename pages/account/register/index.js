@@ -1,16 +1,16 @@
 import Layout from "@/Layout/Layout";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { authentication } from "@/firebase/firebase.config";
 import { useAllContext } from "@/context/ContextProvider";
+import { authentication } from "@/firebase/firebase.config";
+import setToken from "@/hooks/setToken";
+import useToken from "@/hooks/useToken";
 import actionTypes from "@/state/ProductState/actionTypes";
 import axios from "axios";
-import { toast } from "react-hot-toast";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import Link from "next/link";
 import { useRouter } from "next/router";
-import setToken, { accessToken } from "@/hooks/setToken";
-import useToken from "@/hooks/useToken";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 
 const index = () => {
   const router = useRouter();
@@ -84,6 +84,7 @@ const index = () => {
             balance: 0,
             id: "1234567890",
             revenue: 0,
+            type:'user',
             location: "",
             uid: userCredential.user.uid,
             agent: data.agent,

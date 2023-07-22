@@ -38,6 +38,8 @@ const [showCategory, setShowCategory] = useState(false);
 const[updateMoney,setUpdateMoney] = useState(false);
 
 
+  // user loading
+  const [userLoading,setUserLoading] = useState(true)
   // loadin until the get user from firebase
   const [loading, setLoading] = useState(true);
 
@@ -108,8 +110,6 @@ const[updateMoney,setUpdateMoney] = useState(false);
     fetchData();
   }, [loading,currentPage]);
 
-  // user loading
-  const [userLoading,setUserLoading] = useState(true)
 
   const [dbUser, setDbUser] = useState({});
 
@@ -117,6 +117,7 @@ const[updateMoney,setUpdateMoney] = useState(false);
   const token =  typeof window !== "undefined" &&
   localStorage.getItem("accessToken")
   useEffect(() => {
+  
     axios
     .get(`/api/getUser?email=${user?.email}`, {
       headers: {

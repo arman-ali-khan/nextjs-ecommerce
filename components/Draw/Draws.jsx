@@ -13,7 +13,8 @@ const Draws = () => {
     const [products,setProducts] = useState([])
 
 
-    
+// update after buy
+const [update,setUpdate] = useState(false)
 
     useEffect(() => {
       axios.get(`/api/draw`)
@@ -22,7 +23,7 @@ const Draws = () => {
           setLoading(false)
       })
      
-    }, [loading]);
+    }, [loading,update]);
 
 
 
@@ -75,10 +76,10 @@ const Draws = () => {
     }
 
     if(!loading  && products?.length){
-      content =   products?.map((product,i)=>  <DrawCard key={i} product={product} />)
+      content =   products?.map((product,i)=>  <DrawCard setUpdate={setUpdate} update={update} key={i} product={product} />)
     }
     return (
-        <section className='container mx-auto md:my-12 my-3 overflow-hidden'>
+        <section className='container mx-auto my-3 overflow-hidden'>
             {/* Title */}
          <div className='flex items-center justify-between px-3 md:px-0'>
                 <h2 className='md:text-2xl px-4 py-2 md:uppercase text-teal-600 flex items-center gap-2 border-b border-teal-600'> <span><BiTrendingUp /></span>Raffle Draw</h2>

@@ -3,10 +3,10 @@ import { useRouter } from "next/router";
 
 const PrivateRoutes = ({ children }) => {
   const router = useRouter();
-  const {user,dbUser,userLoading} = useAllContext()
+  const {user,dbUser,loading} = useAllContext()
  
 
-  if (userLoading) {
+  if (loading) {
      return <div className="w-screen h-screen flex items-center justify-center">
       <div className="flex justify-center flex-col items-center">
         <div

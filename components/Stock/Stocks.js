@@ -96,7 +96,7 @@ const count = Math.ceil((productCount?.count || 10 )/ 10)
     // show All category
     const [showCat,setShowCat] = useState(false)
     return (
-        <section className='container mx-auto md:my-12 my-3 overflow-hidden'>
+        <section className='container mx-auto my-3 overflow-hidden'>
           {/* Stocks category */}
           <div className='my-6'>
             <div>

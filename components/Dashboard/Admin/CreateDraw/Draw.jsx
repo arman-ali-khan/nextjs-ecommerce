@@ -3,7 +3,6 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "react-hot-toast";
 import { v4 as uuidv4 } from 'uuid';
 
 
@@ -60,6 +59,7 @@ const CreateDraw = () => {
       const id = uuidv4().split('-')[0]
     
       const onSubmit = (data) => {
+       
         setProductLoading(true);
         const drawData = {
           title: data.title,

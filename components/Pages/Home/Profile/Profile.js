@@ -64,10 +64,10 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
                 </svg>
               </div>
               <div>
-                <h5 className="leading-none mb-2 text-sm md:text-base font-medium text-gray-700">
+                <h5 className="font-blod">
                   Total Order
                 </h5>
-                <p className="md:text-xl text-base font-bold leading-none text-gray-800">
+                <p className="md:text-xl text-base font-bold leading-none ">
                   {total}
                 </p>
               </div>
@@ -93,10 +93,10 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
                 </svg>
               </div>
               <div>
-                <h5 className="leading-none mb-2 text-sm md:text-base font-medium text-gray-700">
+                <h5 className="leading-none mb-2 text-sm md:text-base font-medium ">
                   Pending Order
                 </h5>
-                <p className="md:text-xl text-base font-bold leading-none text-gray-800">
+                <p className="md:text-xl text-base font-bold leading-none">
                   {processing}
                 </p>
               </div>
@@ -123,10 +123,10 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
                 </svg>
               </div>
               <div>
-                <h5 className="leading-none mb-2 text-sm md:text-base font-medium text-gray-700">
+                <h5 className="leading-none mb-2 text-sm md:text-base font-medium">
                   Out for Delivery
                 </h5>
-                <p className="md:text-xl text-base font-bold leading-none text-gray-800">
+                <p className="md:text-xl text-base font-bold leading-none">
                   {outForDelivery}
                 </p>
               </div>
@@ -150,10 +150,10 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
                 </svg>
               </div>
               <div>
-                <h5 className="leading-none mb-2 text-sm md:text-base font-medium text-gray-700">
+                <h5 className="leading-none mb-2 text-sm md:text-base font-medium">
                   Complete Order
                 </h5>
-                <p className="md:text-xl text-base font-bold leading-none text-gray-800">
+                <p className="md:text-xl text-base font-bold leading-none">
                   {delivered}
                 </p>
               </div>
