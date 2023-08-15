@@ -1,4 +1,3 @@
-import UserLayout from '@/Layout/UserLayout';
 import MoneyOrder from '@/components/User/MoneyOrder/MoneyOrder';
 import { useAllContext } from '@/context/ContextProvider';
 import axios from 'axios';
@@ -42,7 +41,7 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
   const delivered = orders.filter(order => order.status === 'Delivered').length 
 
     return (
-            <UserLayout>
+            <div>
             <div className="grid md:gap-4 mb-16 grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
           <div className="flex h-full">
             <div className="flex items-center border border-gray-200 w-full rounded-lg p-1 md:p-2">
@@ -163,7 +162,7 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
         <div>
           <MoneyOrder />
         </div>
-            </UserLayout>
+            </div>
     );
 };
 

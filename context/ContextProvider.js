@@ -28,6 +28,7 @@ export const ALL_CONTEXT = createContext();
 
 
 
+
 const ProductsProvider = ({ children,data }) => {
 
   // show nav category 
@@ -89,9 +90,9 @@ const[updateMoney,setUpdateMoney] = useState(false);
       setLoading(false);
     });
     return () => unsubscribe();
-  }, []);
+  }, [!user?.email]);
 
-  
+  console.log(user)
   // pagination
   const [currentPage,setCurrentPage] = useState(0)
 
@@ -136,7 +137,7 @@ const[updateMoney,setUpdateMoney] = useState(false);
         return logOut()
       }
     });
-  }, [user,updateMoney]);
+  }, [user?.email,updateMoney]);
 
 
 console.log(dbUser);

@@ -44,13 +44,14 @@ function UserLayout({ children, title, description, thumb }) {
     .then((res) => {
       setDbUser(res.data);
       setUserLoading(false)
+      setUpdateMoney(!updateMoney)
     })
     .catch((err) => {
       console.log(err);
       if (err.response.status === 401) {
         toast.error("Access Token is invalid");
         setUserLoading(false)
-        
+        setUpdateMoney(!updateMoney)
         return logOut()
       }
     });
@@ -119,7 +120,7 @@ function UserLayout({ children, title, description, thumb }) {
               onClickCapture={() => setMoneyLoading(false)}
               onClick={() => setMoneyClass("")}
             >
-              Your balance is <span className="font-bold">${(dbUser?.balance)}</span>
+              Your balance is <span className="font-bold">{ dbUser && ((dbUser?.balance).toFixed(2))}</span>
             </p>
            
             <button

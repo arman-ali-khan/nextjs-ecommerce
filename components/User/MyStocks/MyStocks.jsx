@@ -105,9 +105,12 @@ const MyStocks = () => {
           </div>
           :
              <div className="mb-12">
-            {oldStocks?.map((stock) => (
+            { oldStocks.length ?
+            oldStocks?.map((stock) => (
               <SellStock update={update} setUpdate={setUpdate} stock={stock} key={stock._id} />
-            ))}
+            ))
+          :
+          <p className="text-teal-600"> You have no stock</p>}
           </div>
          }
        

@@ -16,11 +16,11 @@ export default async function handler(req, res) {
       const user = await db.collection("users").findOne({ email: email });
       // get stock
       const stock = await db.collection("stocks").findOne({ id: stockId });
-
+console.log(stock)
       // get stock count
       const stockCount = parseInt(product.stock);
       // add 1 and make this string
-      const productStr = (stockCount + 1).toString();
+      const productStr = (stockCount + parseInt( stock.products[0].quantity)).toString();
       const updateProduct = {
         $set: { stock: productStr },
       };
@@ -32,7 +32,7 @@ export default async function handler(req, res) {
       // update user balance
       if (update.acknowledged) {
         const userBalance =
-          parseFloat(user.balance) + parseFloat(product.price);
+          parseFloat(user.balance) + (parseFloat(product.price) * stock.products[0].quantity);
         const userFilter = { email: email };
         const updateUser = {
           $set: { balance: userBalance },

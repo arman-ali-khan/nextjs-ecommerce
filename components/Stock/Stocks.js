@@ -98,7 +98,7 @@ const count = Math.ceil((productCount?.count || 10 )/ 10)
     return (
         <section className='container mx-auto my-3 overflow-hidden'>
           {/* Stocks category */}
-          <div className='my-6'>
+          <div className='mt-14'>
             <div>
               <ul className='grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-6'>
                 {
@@ -119,10 +119,12 @@ const count = Math.ceil((productCount?.count || 10 )/ 10)
                 <h2 className='md:text-2xl w-full py-6 md:uppercase text-teal-600 flex items-center gap-2 border-b border-teal-600'> <span><BiTrendingUp /></span> Our Stocks</h2>
             </div>
             {/* Card */}
-            <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 sm:gap-2'>
+            { content ?  <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 sm:gap-2 gap-1'>
+           {content}
+        </div> : <div className='flex w-full justify-center text-center'>
+              <div>Check your internet connection and <button onClick={()=>setLoading(!loading)} className='btn btn-warning btn-sm'>Reload</button></div>
+              </div>}
            
-            { content}
-        </div>
         <div className='flex justify-center my-2'>
           
         <div className="btn-group rounded-md">

@@ -93,11 +93,11 @@ export const productsReducer = (state, action) => {
           (product) => product._id !== selectedStocks._id
         );
       
-        selectedStocks.quantity += 1;
+      const selectedQ =   selectedStocks.quantity += 1;
 
         axios
         .patch(`/api/updateStock/update?id=${id}`, {
-          stock: (stockDown -= selectedStocks.quantity += 1).toString(),
+          stock: (stockDown -= selectedQ).toString(),
         })
         .then((res) => {
           console.log(res.data);

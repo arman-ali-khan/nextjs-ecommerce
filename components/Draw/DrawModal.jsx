@@ -1,12 +1,15 @@
 import { useAllContext } from "@/context/ContextProvider";
 import axios from "axios";
 import crypto from "crypto";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 
 const DrawModal = ({id,setId,update,setUpdate}) => {
 
+  // router
+  const router = useRouter()
   // context 
   const {user} = useAllContext()
   
@@ -53,6 +56,7 @@ const [loading,setLoading] = useState(false)
       console.log(res.data)
       toast.success('Tickets buy successfully')
       setUpdate(!update)
+      router.push('/user/ticket')
     })
   }
    
