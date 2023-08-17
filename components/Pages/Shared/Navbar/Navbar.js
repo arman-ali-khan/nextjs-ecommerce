@@ -220,7 +220,7 @@ const orderPath = router.pathname
                     showUser && "text-teal-600"
                   } px-4 py-2`}
                 >
-                  {user.displayName} 
+                  {user.displayName} ({dbUser.balance} )
                 </Link>
                 <li>
                   <button onClick={handleLogout}>Logout</button>

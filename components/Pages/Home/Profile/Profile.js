@@ -17,6 +17,7 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
 
   // get orders from mongodb
   useEffect(()=>{
+   if(user?.email){
     axios.get(`/api/order?email=${user?.email}`,{
       headers: {
         'authorization': `Bearer ${token}`
@@ -30,7 +31,8 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
               return logOut() 
             }
           })
-  },[])
+   }
+  },[user?.email])
 
   const total = orders.length 
 
@@ -52,7 +54,7 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
                   strokeWidth="2"
                   viewBox="0 0 24 24"
                   strokeLinecap="round"
-                  stroke-linejoin="round"
+                  strokeLinejoin="round"
                   height="1em"
                   width="1em"
                   xmlns="http://www.w3.org/2000/svg"
@@ -81,7 +83,7 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
                   strokeWidth="2"
                   viewBox="0 0 24 24"
                   strokeLinecap="round"
-                  stroke-linejoin="round"
+                  strokeLinejoin="round"
                   height="1em"
                   width="1em"
                   xmlns="http://www.w3.org/2000/svg"
@@ -110,7 +112,7 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
                   strokeWidth="2"
                   viewBox="0 0 24 24"
                   strokeLinecap="round"
-                  stroke-linejoin="round"
+                  strokeLinejoin="round"
                   height="1em"
                   width="1em"
                   xmlns="http://www.w3.org/2000/svg"
@@ -140,7 +142,7 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
                   strokeWidth="2"
                   viewBox="0 0 24 24"
                   strokeLinecap="round"
-                  stroke-linejoin="round"
+                  strokeLinejoin="round"
                   height="1em"
                   width="1em"
                   xmlns="http://www.w3.org/2000/svg"

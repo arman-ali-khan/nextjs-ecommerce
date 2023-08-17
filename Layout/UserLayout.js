@@ -4,11 +4,10 @@ import AgentSideNav from "@/components/Pages/Shared/AdminNav/Navtype/AgentSideNa
 import UserSideNav from "@/components/Pages/Shared/AdminNav/Navtype/UserSideNav";
 import PrivateRoutes from "@/components/PrivateRoutes/PrivateRoutes";
 import { useAllContext } from "@/context/ContextProvider";
-import axios from "axios";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 function UserLayout({ children, title, description, thumb }) {
-  const { user, loading,updateMoney,setUpdateMoney } = useAllContext();
+  const { user, loading,updateMoney,setUpdateMoney,dbUser,userLoading } = useAllContext();
 
   const [showMony, setShowMoney] = useState(false);
   const [moneyClass, setMoneyClass] = useState("");
@@ -26,36 +25,9 @@ function UserLayout({ children, title, description, thumb }) {
     };
   };
 
-  // user loading
-  const [userLoading,setUserLoading] = useState(true)
-  const [dbUser, setDbUser] = useState({});
 
-  // call data from local storage in nextjs
-  const token =  typeof window !== "undefined" &&
-  localStorage.getItem("accessToken")
-  useEffect(() => {
-  
-    axios
-    .get(`/api/getUser?email=${user?.email}`, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    })
-    .then((res) => {
-      setDbUser(res.data);
-      setUserLoading(false)
-      setUpdateMoney(!updateMoney)
-    })
-    .catch((err) => {
-      console.log(err);
-      if (err.response.status === 401) {
-        toast.error("Access Token is invalid");
-        setUserLoading(false)
-        setUpdateMoney(!updateMoney)
-        return logOut()
-      }
-    });
-  }, [user,updateMoney]);
+
+
   return (
     <PrivateRoutes>
       <AdminNavbar />
@@ -111,16 +83,26 @@ function UserLayout({ children, title, description, thumb }) {
           </div>
           :
           <div className="w-72 mx-auto text-center bg-base-100 border  overflow-hidden relative  px-6 rounded-md my-3 py-4">
-          <h2 className="text-xl md:text-2xl font-bold">{dbUser?.name}({dbUser.type?dbUser.type:<button onClick={()=>setUpdateMoney(!updateMoney)} className="btn btn-warning btn-sm">Reload</button>})</h2>
+          <h2 className="text-xl md:text-2xl font-bold">{dbUser?.name}
+          
+          (
+            {
+            dbUser?.type?
+          dbUser.type
+          :
+          <button onClick={()=>setUpdateMoney(!updateMoney)} className="btn btn-warning btn-sm">Reload</button>
+          }
+          )</h2>
+
           <p>{dbUser?.phone}</p>
           <p>{dbUser?.email}</p>
           <div className={`mx-auto flex  justify-center relative`}>
             <p
-              className={`${dbUser?.balance < 20 ? 'bg-rose-300':'bg-blue-400 text-white px-2 py-1 rounded-full'}`}
+              className={`${dbUser?.balance < 20 ? 'bg-rose-300 text-black px-2 py-1 rounded-full':'bg-blue-400 text-white px-2 py-1 rounded-full'}`}
               onClickCapture={() => setMoneyLoading(false)}
               onClick={() => setMoneyClass("")}
             >
-              Your balance is <span className="font-bold">{ dbUser && ((dbUser?.balance).toFixed(2))}</span>
+              Your balance is <span className="font-bold">{ dbUser?.balance && ((dbUser?.balance).toFixed(2))}</span>
             </p>
            
             <button

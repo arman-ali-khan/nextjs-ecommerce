@@ -27,13 +27,15 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
   const [currentPage,setCurrentPage] = useState(0)
   // get orders from mongodb
   useEffect(()=>{
-    
+   if(currentPage){
+     
     axios.get(`/api/products?page=${currentPage}`)
     .then(res=>{
         setProducts(res.data.allFiles)
         setProductCount(res.data)
         setLoading(false)
           })
+   }
   },[loading,currentPage])
 
   const [productLoading,setProductLoading] = useState(false)

@@ -3,7 +3,7 @@ import ProductCard from '@/components/Products/ProductCard';
 import { useAllContext } from '@/context/ContextProvider';
 import axios from 'axios';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BiTrendingUp } from 'react-icons/bi';
 import { BsArrowRight } from 'react-icons/bs';
 
@@ -15,8 +15,10 @@ const index = () => {
 
     // fetch search data 
     useEffect(()=>{
+       if(search){
         axios.get(`/api/search/q?title=${search}`)
         .then(res=>setSearchData(res.data))
+       }
     },[search])
 
     return (

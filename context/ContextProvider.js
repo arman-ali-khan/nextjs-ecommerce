@@ -26,21 +26,15 @@ import { toast } from "react-hot-toast";
 
 export const ALL_CONTEXT = createContext();
 
+const ProductsProvider = ({ children, data }) => {
+  // show nav category
+  const [showCategory, setShowCategory] = useState(false);
 
-
-
-const ProductsProvider = ({ children,data }) => {
-
-  // show nav category 
-const [showCategory, setShowCategory] = useState(false);
-
-
-// update money
-const[updateMoney,setUpdateMoney] = useState(false);
-
+  // update money
+  const [updateMoney, setUpdateMoney] = useState(false);
 
   // user loading
-  const [userLoading,setUserLoading] = useState(true)
+  const [userLoading, setUserLoading] = useState(true);
   // loadin until the get user from firebase
   const [loading, setLoading] = useState(true);
 
@@ -52,7 +46,7 @@ const[updateMoney,setUpdateMoney] = useState(false);
   const [userState, userDispatch] = useReducer(userReducer, userInitialState);
 
   // get search data
-  const [search,setSearch] = useState('')
+  const [search, setSearch] = useState("");
 
   const updateUser = (info) => {
     updateProfile(authentication.currentUser, info)
@@ -90,11 +84,11 @@ const[updateMoney,setUpdateMoney] = useState(false);
       setLoading(false);
     });
     return () => unsubscribe();
-  }, [!user?.email]);
+  }, [user?.email]);
 
-  console.log(user)
+
   // pagination
-  const [currentPage,setCurrentPage] = useState(0)
+  const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
     dispatch({ type: actionTypes.FETCHING_START });
@@ -102,45 +96,43 @@ const[updateMoney,setUpdateMoney] = useState(false);
       try {
         const response = await fetch(`/api/products?page=${currentPage}`);
         const jsonData = await response.json();
-        dispatch({ type: actionTypes.FETCHING_SUCCESS, payload: jsonData})
+        dispatch({ type: actionTypes.FETCHING_SUCCESS, payload: jsonData });
       } catch (error) {
-        dispatch({ type: actionTypes.FETCHING_ERROR, payload: error})
+        dispatch({ type: actionTypes.FETCHING_ERROR, payload: error });
       }
     };
 
     fetchData();
-  }, [loading,currentPage]);
-
+  }, [currentPage]);
 
   const [dbUser, setDbUser] = useState({});
 
   // call data from local storage in nextjs
-  const token =  typeof window !== "undefined" &&
-  localStorage.getItem("accessToken")
+  const token =
+    typeof window !== "undefined" && localStorage.getItem("accessToken");
   useEffect(() => {
-  
-    axios
-    .get(`/api/getUser?email=${user?.email}`, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    })
-    .then((res) => {
-      setDbUser(res.data);
-      setUserLoading(false)
-    })
-    .catch((err) => {
-      console.log(err);
-      if (err.response.status === 401) {
-        toast.error("Access Token is invalid");
-        setUserLoading(false)
-        return logOut()
-      }
-    });
-  }, [user?.email,updateMoney]);
+    if (user?.email) {
+      axios
+        .get(`/api/getUser?email=${user?.email}`, {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          setDbUser(res.data);
+          setUserLoading(false);
+        })
+        .catch((err) => {
+          if (err.response.status === 401 || !token) {
+            setUserLoading(false);
+            logOut().then(() => {
+              router.push(`account/login`);
+            })
+          }
+        });
+    }
+  }, [user?.email, updateMoney]);
 
-
-console.log(dbUser);
  
 
   const value = {
@@ -157,14 +149,14 @@ console.log(dbUser);
     setLoading,
     search,
     setSearch,
-    showCategory, 
+    showCategory,
     setShowCategory,
     setUpdateMoney,
     updateMoney,
     // pagination
     currentPage,
     setCurrentPage,
-    userLoading
+    userLoading,
   };
 
   return <ALL_CONTEXT.Provider value={value}>{children}</ALL_CONTEXT.Provider>;
@@ -176,4 +168,3 @@ export const useAllContext = () => {
 };
 
 export default ProductsProvider;
-

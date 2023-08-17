@@ -1,21 +1,23 @@
 import { useAllContext } from '@/context/ContextProvider';
 import axios from 'axios';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const ClientTable = ({client}) => {
     const {user} = useAllContext()
     const [orders,setOrders] =useState([])
 
     useEffect(() => {
-        axios.get(`/api/orders/getclientorders?client=${client.email}&email=${user.email}`)
-               .then(res => {
-            setOrders(res.data)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    }, [client])
+      if(client?.email && user?.email){
+        axios.get(`/api/orders/getclientorders?client=${client?.email}&email=${user?.email}`)
+        .then(res => {
+     setOrders(res.data)
+ })
+ .catch(err => {
+     console.log(err)
+ })
+      }
+    }, [client?.email,user?.email])
     return (
         <tr key={client._id}>
        <th>{client.stock}</th>

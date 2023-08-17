@@ -1,9 +1,8 @@
-import { useEffect } from "react";
 
 
 const setToken = (data) => {
     typeof window !== 'undefined' && localStorage.setItem('accessToken', JSON.stringify(data));
-
+console.log(data,'Token')
 };
 
 export default setToken;

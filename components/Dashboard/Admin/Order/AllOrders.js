@@ -1,13 +1,12 @@
 import UserLayout from '@/Layout/UserLayout';
+import PrivateRoutes from '@/components/PrivateRoutes/PrivateRoutes';
 import { useAllContext } from '@/context/ContextProvider';
-import { accessToken } from '@/hooks/setToken';
 import axios from 'axios';
 import moment from 'moment';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
-import { TbCurrencyTaka } from 'react-icons/tb';
+import { useEffect, useState } from 'react';
 import { BiTrash } from 'react-icons/bi';
-import PrivateRoutes from '@/components/PrivateRoutes/PrivateRoutes';
+import { TbCurrencyTaka } from 'react-icons/tb';
 
 const AllOrders = () => {
       // get context
@@ -20,7 +19,8 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
 
   // get orders from mongodb
   useEffect(()=>{
-    axios.get(`/api/orders?email=${user.email}`,{
+   if(user?.email){
+    axios.get(`/api/orders?email=${user?.email}`,{
       headers: {
         'authorization': `Bearer ${token}`
       }
@@ -28,7 +28,8 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
     .then(res=>{
             setOrders(res.data)
           })
-  },[])
+   }
+  },[user?.email])
     return (
        <PrivateRoutes>
          <UserLayout title={'Orders'}>
