@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   if (req.method === "GET") {
     const result = await db.collection("drawticket").find({ id: id }).toArray();
     
-console.log(result,id)    
+ 
     if(result.length){
     // draw 
     const drawData = await db.collection('draws').findOne({id:result[0].id})
@@ -52,24 +52,63 @@ console.log(result,id)
 
     // find user 
     const user = await db.collection('users').findOne({email:winnerEmail})
+    // find agent 
+    const agent = await db.collection('users').findOne({email:user.agent})
+    // find admin 
+    const admin = await db.collection('users').findOne({email: process.env.NEXT_PUBLIC_ADMIN})
+
+
     // user balance
     const userBalance = parseFloat(user.balance)
+    // user balance
+    const agentBalance = parseFloat(agent.balance)
+    // user balance
+    const adminBalance = parseFloat(admin.balance)
     // total amount float
     const totalAmountFloat = parseFloat(total)
-    // final winner user amount
-    const finalAmount = userBalance+totalAmountFloat
-     
+ 
+
     
-     
+     // get 10% for agent
+     const agentPercent = ((10/ 100) * totalAmountFloat)
+
+     // user percent 85%
+     const userPercent = ((85/ 100) * totalAmountFloat)
+
+     // admin percent 5%
+     const adminPercent = ((85/ 100) * totalAmountFloat)
+    
+   
+
     //  update user
     const updateUser = await db.collection("users").updateOne(
       { email: winnerEmail },
       {
-        $set: { balance: finalAmount },
+        $set: { balance: userBalance + userPercent },
       },
       {upsert:true}
     );
-    if(updateUser.acknowledged){
+
+    // update agent balance
+    const updateAgent = await db.collection("users").updateOne(
+      { email: user.agent },
+      {
+        $set: { balance: agentBalance + agentPercent },
+      },
+      {upsert:true}
+    );
+
+    // update admin balance
+    const updateAdmin = await db.collection("users").updateOne(
+      { email: admin.email },
+      {
+        $set: { balance: adminBalance + adminPercent },
+      },
+      {upsert:true}
+    );
+
+      // show final result
+    if(updateUser.acknowledged && updateAgent.acknowledged && updateAdmin.acknowledged ){
       // update draw status
      const drawId = result[0].id
      const updateDraw = await db.collection("draws").updateOne(
@@ -80,7 +119,10 @@ console.log(result,id)
       {upsert:true}
     );
     if(updateDraw.acknowledged){
-    return  res.status(200).json({message:'Draw Result Published','winnder':user.email,windTicket:winner});
+     const result =  await db.collection('drawResults').insertOne({winnder:user,ticket:winner,draw:drawData})
+     if(result.acknowledged){
+       return  res.status(200).json({message:'Draw Result Published','winnder':user.email,windTicket:winner,draw:drawData});
+     }
     }else{
       res.status(200).json({'status':'Draw status false'});
     }
