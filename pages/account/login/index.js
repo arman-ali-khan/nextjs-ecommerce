@@ -10,7 +10,7 @@ import { toast } from "react-hot-toast";
 
 const index = () => {
   const router = useRouter();
-  const { loginUser, userDispatch, userState } = useAllContext();
+  const { loginUser, userDispatch, userState,user } = useAllContext();
 
   // get params url
   const { next } = router.query;
@@ -26,9 +26,15 @@ const index = () => {
 
   useToken(loginEmail);
 
-  // get token from cookie
-  const token =
-    typeof window !== "undefined" && localStorage.getItem("accessToken");
+   // get token from cookie
+   const token =
+   typeof window !== "undefined" && localStorage.getItem("accessToken");
+
+  if (user?.email && token) {
+    router.push("/user");
+  }
+
+ 
 
   const handleLoginUser = (data) => {
     userDispatch({ type: actionTypes.GETTING_USER_START });
@@ -39,9 +45,7 @@ const index = () => {
         // Signed in
 
         const user = userCredential.user;
-        if (user?.email) {
-          router.push("/user");
-        }
+        
         userDispatch({
           type: actionTypes.GETTING_USER_SUCCESS,
           payload: { user },

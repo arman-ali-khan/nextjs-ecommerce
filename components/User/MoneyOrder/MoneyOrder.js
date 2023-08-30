@@ -74,28 +74,28 @@ const MoneyOrder = () => {
                  <div>
                   <span
                       className={`${
-                        (send.type === "send" &&
+                        (send?.type === "send" &&
                           "bg-blue-100 text-blue-600 rounded px-2 flex") ||
-                        (send.type === "out" &&
+                        (send?.type === "out" &&
                           "bg-orange-100 text-orange-600 rounded px-2 flex") ||
-                        (send.type === "in" &&
+                        (send?.type === "in" &&
                           "bg-teal-100 text-teal-600 rounded px-2 flex") ||
                         "bg-blue-100 rounded px-2"
                       }`}
                     >
-                      {(send.type === "send" && "Send Money") ||
-                        (send.type === "out" && "Cashout") ||
-                        (send.type === "in" && "Cash In") ||
+                      {(send?.type === "send" && "Send Money") ||
+                        (send?.type === "out" && "Cashout") ||
+                        (send?.type === "in" && "Cash In") ||
                         "Send"}
                     </span>
-                    <span  className={`font-thin px-2 rounded-full ${send.status ==='accept' && 'bg-green-400' || send.status ==='pending' && 'bg-orange-400' || send.status ==='cancel' && 'bg-rose-400'  || 'bg-none' } text-white`}>
-                    {send.status ==='accept' && 'Accepted' || send.status ==='pending' && 'Pending' || send.status ==='cancel' && 'Cancelled' }
+                    <span  className={`font-thin px-2 rounded-full ${send?.status ==='accept' && 'bg-green-400' || send?.status ==='pending' && 'bg-orange-400' || send?.status ==='cancel' && 'bg-rose-400'  || 'bg-none' } text-white`}>
+                    {send?.status ==='accept' && 'Accepted' || send?.status ==='pending' && 'Pending' || send?.status ==='cancel' && 'Cancelled' }
                      </span>
                   </div>
                 
                   <div>
                    <span className="text-xs">
-                   {moment(send.date).add("days").calendar() || "A day ago"}
+                   {moment(send?.date).add("days").calendar() || "A day ago"}
                    </span>
                   </div>
                  </div>
@@ -103,31 +103,31 @@ const MoneyOrder = () => {
               
                 <div>
                 <span className="flex items-center">
-                      {send.recipient.name}
+                      {send?.type === 'out' ? send?.agent?.name : send?.recipient?.name}
                     </span>
                    
                   </div>
                   <div className="flex items-center font-bold">
                    
-                  ID:  {send.transaction}
+                  ID:  {send?.transaction}
                   </div>
                 </div>
                   <div className="flex justify-between items-center">
-                  <div> {send.recipient.phone}</div>
+                  <div>  {send?.type === 'out' ? send?.agent?.phone : send?.recipient?.phone}</div>
                   <div>
                   <div >
                     <div  className={`flex font-bold ${
-                        (send.type === "send" &&
+                        (send?.type === "send" &&
                           "bg-orange-100 text-orange-600 rounded px-2") ||
-                        (send.type === "out" &&
+                        (send?.type === "out" &&
                           "bg-rose-100 text-rose-600 rounded px-2") ||
-                        (send.type === "in" &&
+                        (send?.type === "in" &&
                           "bg-teal-100 text-teal-600 rounded px-2") ||
                         "bg-blue-100 rounded px-2"
                       }`}>
-                       {(send.type === "send" && "-") ||
-                        (send.type === "out" && "-") ||
-                        (send.type === "in" && "+") ||
+                       {(send?.type === "send" && "-") ||
+                        (send?.type === "out" && "-") ||
+                        (send?.type === "in" && "+") ||
                         "Send"}  
                         <span className="flex items-center">
                         <TbCurrencyTaka className="font-bold" size={20} /> {parseFloat(send?.amount).toFixed(2)}

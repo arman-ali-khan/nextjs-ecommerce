@@ -12,8 +12,9 @@ export default async function handler(req, res) {
     if(result.length){
     // draw 
     const drawData = await db.collection('draws').findOne({id:result[0].id})
+    console.log(drawData)
      
-    if(result[0].status && drawData?.stock === '0'){
+    if(drawData.status && drawData?.stock === '0'){
 
 
     // get all ticket numbers
@@ -69,14 +70,14 @@ export default async function handler(req, res) {
  
 
     
-     // get 10% for agent
-     const agentPercent = ((10/ 100) * totalAmountFloat)
+     // get 15% for agent
+     const agentPercent = ((15/ 100) * totalAmountFloat)
 
-     // user percent 85%
-     const userPercent = ((85/ 100) * totalAmountFloat)
+     // user percent 75%
+     const userPercent = ((75/ 100) * totalAmountFloat)
 
-     // admin percent 5%
-     const adminPercent = ((85/ 100) * totalAmountFloat)
+     // admin percent 10%
+     const adminPercent = ((10/ 100) * totalAmountFloat)
     
    
 
@@ -119,16 +120,16 @@ export default async function handler(req, res) {
       {upsert:true}
     );
     if(updateDraw.acknowledged){
-     const result =  await db.collection('drawResults').insertOne({winnder:user,ticket:winner,draw:drawData})
+     const result =  await db.collection('drawResults').insertOne({winner:user,ticket:winner,draw:drawData,windTicket:drawResult})
      if(result.acknowledged){
-       return  res.status(200).json({message:'Draw Result Published','winnder':user.email,windTicket:winner,draw:drawData});
+       return  res.status(200).json({message:'Draw Result Published','winner':user.email,windTicket:drawResult,draw:drawData});
      }
     }else{
       res.status(200).json({'status':'Draw status false'});
     }
     }    }
     else{
-      res.json({message:'Draw Already Played'})
+      res.json({message:'Draw Result Already Published'})
     }
   }else{
     res.json({message:'No ticket found'})

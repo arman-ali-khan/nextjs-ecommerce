@@ -98,7 +98,7 @@ const AllMoneyRequest = () => {
               </div>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 md:gap-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:gap-1">
               {/* row 1 */}
               {sendMoney.map((send, i) => (
                 send.type==='in' && <div className="px-2 mt-12 relative border py-3 rounded-md" key={i}>

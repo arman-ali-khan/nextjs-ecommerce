@@ -70,6 +70,7 @@ const ProductsProvider = ({ children, data }) => {
   const logOut = () => {
     signOut(authentication)
       .then(() => {
+        typeof window !== "undefined" && localStorage.removeItem("accessToken");
         toast.success("Logout success!");
         setUser({});
       })

@@ -24,17 +24,21 @@ const CashOut = () => {
   // get agent
   const [agent, setAgent] = useState({});
 
-
+// agent loading
+const [agentLoading,setAgentLoading] = useState(false)
   useEffect(() => {
+    setAgentLoading(true)
     axios
-      .get(`/api/money/getagent?email=${dbUser.agent}`)
-      .then((res) => {
-        setAgent(res.data);
-      })
-      .catch((err) => {
+    .get(`/api/money/getagent?email=${dbUser.agent}`)
+    .then((res) => {
+      setAgent(res.data);
+      setAgentLoading(false)
+    })
+    .catch((err) => {
+        setAgentLoading(false)
         console.log(err);
       });
-  }, [phone]);
+  }, [phone,dbUser?.email]);
 
 
 
@@ -45,36 +49,40 @@ const CashOut = () => {
 
   // transaction id
   const transaction = uuidv4().split('-')[0]
-
+// cashout loading
+const [loading,setLoading] = useState(false)
+// handle cashout
   const handleCashOut = () =>{
-    
+    setLoading(true)
     const cashOutData = {
       amount: cashOut,
       sender: dbUser.name,
       senderEmail: dbUser.email,
-      recipient: agent,
+      agent: agent,
       transaction,
-      recipientEmail: agent.email,
+      agentEmail: agent.email,
       date: Date.now(),
       type:'out'
     }
     if(dbUser.email){
-      axios.post(`/api/money/send/create?email=${dbUser.email}`,cashOutData,{
+      axios.post(`/api/money/send/cashout?email=${dbUser.email}`,cashOutData,{
         headers:{
           authorization: `Bearer ${token}`
         }
       })
-    .then(response =>{
-      toast.success('Cashout success')
-      setUpdateMoney(!updateMoney)
-      if(response.data){
-        router.push('/user/moneyorder')
-      }
+      .then(response =>{
+        toast.success('Cashout success')
+        setUpdateMoney(!updateMoney)
+        setLoading(false)
+        if(response.data){
+          router.push('/user/moneyorder')
+        }
      
-    })
-       .catch(err =>{
+      })
+      .catch(err =>{
+         setLoading(false)
       console.log(err);
-      toast.error(err.message)
+      toast.error("Try Again")
     })
      
     }
@@ -99,11 +107,14 @@ const CashOut = () => {
        
           <div class="mt-6">
             <div class="flex justify-between">
-              <span class="font-semibold text-[#191D23]">Your agent</span>
+              <span class="font-semibold ">Your agent</span>
             </div>
+            {
+              agentLoading ? 'Loading Agent':''
+            }
             {agent?.name &&
-              <div class="flex  justify-between items-center gap-x-[10px] bg-neutral-100 md:p-3 mt-2 rounded-[4px]">
-                <div className="flex  items-center gap-x-[10px] bg-neutral-100 p-3 mt-2 rounded-[4px]">
+              <div class="flex  justify-between items-center gap-x-[10px] bg-base-300 md:p-3 mt-2 rounded-[4px]">
+                <div className="flex  items-center gap-x-[10px] 0 p-3 mt-2 rounded-[4px]">
                   <div className="w-10">
                     <img
                       class="h-10 w-10 rounded-full"
@@ -131,11 +142,14 @@ const CashOut = () => {
             <button
             onClick={()=>handleCashOut()}
               disabled={
-                balance < cashOut || cashOut < 50
+                balance < cashOut || cashOut < 50  || !agent?.email
               }
               class="w-full cursor-pointer rounded-[4px] bg-teal-600 hover:bg-teal-700 px-3 py-[6px] text-center font-semibold text-white disabled:bg-gray-200 disabled:text-gray-600"
             >
-              Cashout ${ cashOut}
+              {
+                loading ? 'Loading...' : <p>Cashout ${ cashOut}</p>
+              }
+              
             </button>
             {
               cashOut < 50 && <p className="text-error">Send minimum 50 Taka</p>
