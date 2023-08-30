@@ -65,7 +65,7 @@ const [loading,setLoading] = useState(false)
       type:'out'
     }
     if(dbUser.email){
-      axios.post(`/api/money/send/cashout?email=${dbUser.email}`,cashOutData,{
+      axios.post(`/api/money/send/cashout?email=${dbUser?.email}`,cashOutData,{
         headers:{
           authorization: `Bearer ${token}`
         }
@@ -82,7 +82,7 @@ const [loading,setLoading] = useState(false)
       .catch(err =>{
          setLoading(false)
       console.log(err);
-      toast.error("Try Again")
+      toast.error(err.message)
     })
      
     }
