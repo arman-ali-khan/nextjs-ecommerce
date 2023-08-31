@@ -80,7 +80,7 @@ export default async function handler(req, res) {
         { upsert: true }
       );
 
-      if(updateAdmin.acknowledged){
+      if(updateAdmin){
         const updateAgent = await db.collection('users').updateOne(
             { email: agentEmail },
             {
@@ -90,7 +90,7 @@ export default async function handler(req, res) {
             },
             { upsert: true }
           );
-          if(updateAgent.acknowledged){
+          if(updateAgent){
             await db.collection('users').updateOne(
                 { email: userEmail },
                 {
