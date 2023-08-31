@@ -8,10 +8,10 @@ export default async function handler(req, res) {
 
   const { email } = req.query;
 
+
   if (req.decoded.email !== email) {
     return res.status(401).send({ message: "Unauthenticated" });
   } else {
-    if (req.method === "POST") {
         // body
       const sendData = req.body;
       // user email
@@ -109,9 +109,6 @@ export default async function handler(req, res) {
       res.status(200).json(result);
 
 
-    } else {
-      res.setHeader("Allow", ["POST"]);
-      res.status(405).end(`Method ${req.method} Not Allowed`);
     }
-  }
+   
 }
