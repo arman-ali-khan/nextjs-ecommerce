@@ -11,7 +11,7 @@ export default async function handler(req, res) {
   if (req?.decoded?.email !== email) {
     return res.status(401).send({ message: "Unauthenticated" });
   } else {
-    if (req.method === "GET") {
+    if (req.method === "POST") {
         // body
       const sendData = req.body;
       // user email
@@ -91,7 +91,7 @@ export default async function handler(req, res) {
             { upsert: true }
           );
           if(updateAgent){
-            await db.collection('users').updateOne(
+        const updateUser =    await db.collection('users').updateOne(
                 { email: userEmail },
                 {
                   $set: {
@@ -100,17 +100,26 @@ export default async function handler(req, res) {
                 },
                 { upsert: true }
               );
+              if(updateUser){
+                const result = await db.collection("sendMoney").insertOne(sendData);
+                res.status(200).json(result);
+              }else{
+                res.status(200).send({message:'User Email Not Found'});
+              }
+          }else{
+            res.status(200).send({message:'Agent Email Not Found'});
           }
       }
-      
+      else{
+        res.status(200).send({message:'Admin Email Not Found'});
+      }
       
 
-      const result = await db.collection("sendMoney").insertOne(sendData);
-      res.status(200).json(result);
+    
 
 
     } else {
-      res.setHeader("Allow", ["GET"]);
+      res.setHeader("Allow", ["POST"]);
       res.status(405).send(`Method ${req.method} Not Allowed`)
     }
   }
