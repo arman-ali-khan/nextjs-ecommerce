@@ -28,7 +28,7 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
   // get orders from mongodb
   useEffect(()=>{
     
-    axios.get(`/api/stocks?page=${currentPage}`)
+    axios.get(`/api/stocks?page=${currentPage}&filter=`)
     .then(res=>{
         setProducts(res.data.stocks)
         setProductCount(res.data)
@@ -57,6 +57,7 @@ const token = typeof window !== 'undefined' && localStorage.getItem('accessToken
         toast.error("Something went wrong");
       });
   }
+  console.log(products)
 
     return (
              <div className="overflow-x-auto text-sm md:text-base w-full md:my-4 mb-12">

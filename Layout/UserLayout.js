@@ -102,7 +102,7 @@ function UserLayout({ children, title, description, thumb }) {
               onClickCapture={() => setMoneyLoading(false)}
               onClick={() => setMoneyClass("")}
             >
-              Your balance is <span className="font-bold">{ dbUser?.balance && ((dbUser?.balance).toFixed(2))}</span>
+              Your balance is <span className="font-bold">{ dbUser?.balance && (dbUser?.balance)}</span>
             </p>
            
             <button

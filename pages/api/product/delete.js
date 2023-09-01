@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   
   verifyJWT(req, res)
   const user = req.decoded;
-  if(user.user !== email){
+  if(user.email !== email){
     return res.status(401).json({
       message: "Unauthorized",
     });

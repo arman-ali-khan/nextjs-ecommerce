@@ -1,8 +1,7 @@
 import UserLayout from '@/Layout/UserLayout';
 import { useAllContext } from '@/context/ContextProvider';
-import { accessToken } from '@/hooks/setToken';
 import axios from 'axios';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { MdCancel } from 'react-icons/md';
@@ -50,6 +49,10 @@ const NewCategory = () => {
       });
     }
 
+    // category type
+    const [catType,setCatType] = useState('product')
+  
+
     const token = typeof window !== 'undefined' && localStorage.getItem('accessToken')
 
     const handleCreateCategory = (data) => {
@@ -60,6 +63,7 @@ const NewCategory = () => {
             label: data.label,
             value: value.toLowerCase(),
             icon: image,
+            type:catType,
         }
         axios.post(`/api/category/create?email=${user.email}`, categoryData,{
             headers: {
@@ -90,6 +94,12 @@ const NewCategory = () => {
                   }
                     <p className='font-bold'>{category}</p>
                   </div>
+                <label className='w-full' htmlFor="type">Select Type</label>
+                    {/* Category type */}
+                    <select className='select select-bordered w-full' key="type" onChange={(e)=>setCatType(e.target.value)}>
+                      <option value="product" >Product</option>
+                      <option value="stock">Stock</option>
+                    </select>
                 <label className='w-full' htmlFor="name">image</label>
                     <input 
                     onChange={(e)=>handleUploadImage(e)} type='file' className='file-input file-input-bordered w-full'/>

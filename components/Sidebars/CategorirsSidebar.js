@@ -38,16 +38,13 @@ const CategorirsSidebar = () => {
              {/* Menu */}
            <ul>
             <li>
+                <Link className='border-teal-600 w-full px-2 py-1 border-b flex items-center gap-2' href={'/'}>Home</Link>
+            </li>
+            <li>
                 <Link className='border-teal-600 w-full px-2 py-1 border-b flex items-center gap-2' href={'/@stock'}>Stocks</Link>
             </li>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-1 border-b flex items-center gap-2' href={'#'}>Menu</Link>
-            </li>
-            <li>
-                <Link className='border-teal-600 w-full px-2 py-1 border-b flex items-center gap-2' href={'#'}>Menu</Link>
-            </li>
-            <li>
-                <Link className='border-teal-600 w-full px-2 py-1 border-b flex items-center gap-2' href={'#'}>Menu</Link>
+                <Link className='border-teal-600 w-full px-2 py-1 border-b flex items-center gap-2' href={'/draw'}>Draw</Link>
             </li>
            </ul>
            </>

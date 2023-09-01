@@ -10,7 +10,7 @@ const HeroCategories = () => {
   const [loading,setLoading] = useState(false)
   const [categories,setCategories] = useState([])
 
-
+// get all categories
   useEffect(() => {
     setLoading(true)
     axios.get("/api/categories")
