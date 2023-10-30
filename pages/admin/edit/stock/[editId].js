@@ -1,4 +1,4 @@
-import EditProduct from '@/components/Dashboard/Admin/Products/EditProduct';
+import EditStockProduct from '@/components/Dashboard/Admin/Products/EditStockProduct';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -10,7 +10,7 @@ const editId = () => {
   const [product,setProduct] = useState({})
 
   useEffect(()=>{
-    axios.get(`/api/product/${editId}`)
+    axios.get(`/api/stock/${editId}`)
     .then(res=>{
       setProduct(res?.data)
       console.log(product)
@@ -21,7 +21,7 @@ const editId = () => {
     
     return (
         <div>
-            <EditProduct product={product} />
+            <EditStockProduct product={product} />
         </div>
     );
 };

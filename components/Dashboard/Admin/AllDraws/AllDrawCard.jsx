@@ -23,11 +23,8 @@ const AllDrawCard = ({ product,update,setUpdate }) => {
   }, 0);
 
   // add product to cart with enough money
-  const handleAddToCart = () => {
-   setId(product.id)
-    toast.success("Added to Cart");
-  };
 
+// delete lottery
   const handleDeleteLottery = (id) => {
    axios.delete(`/api/draw/delete?id=${id}`)
    .then(res=>{

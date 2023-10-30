@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { AiOutlineStock } from 'react-icons/ai';
 import { BiCategory, BiHomeAlt2, BiMenuAltRight } from 'react-icons/bi';
 import { BsCartCheck } from 'react-icons/bs';
-import { CiPercent } from 'react-icons/ci';
 import { MdOutlineRequestPage } from 'react-icons/md';
 import { TbReportMoney, TbUsers } from 'react-icons/tb';
 
@@ -52,9 +51,9 @@ const AdminSideNav = () => {
             <li>
             <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/user/stocks'}><AiOutlineStock size={25} />Stocks</Link>
             </li>
-            <li>
+            {/* <li>
                 <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'#'}> <CiPercent size={25} />My Revenue</Link>
-            </li>
+            </li> */}
             <li>
             <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/user/moneyorder'}> <TbReportMoney size={25} />Money Orders</Link>
             </li>

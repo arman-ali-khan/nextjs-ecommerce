@@ -3,7 +3,6 @@ import { useState } from "react";
 import { AiOutlineStock } from "react-icons/ai";
 import { BiCategory, BiMenuAltRight, BiMoneyWithdraw } from "react-icons/bi";
 import { BsCartCheck } from "react-icons/bs";
-import { CiPercent } from "react-icons/ci";
 import { FiShoppingCart, FiUsers } from "react-icons/fi";
 import { MdOutlineDashboard, MdSupportAgent } from "react-icons/md";
 import { TbCarouselHorizontal, TbReportMoney, TbUsers } from "react-icons/tb";
@@ -159,7 +158,7 @@ const AdminSideNav = () => {
                 Orders
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 className="border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2"
                 href={"#"}
@@ -168,7 +167,7 @@ const AdminSideNav = () => {
                 <CiPercent size={25} />
                 Revenue
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link
                 className="border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2"

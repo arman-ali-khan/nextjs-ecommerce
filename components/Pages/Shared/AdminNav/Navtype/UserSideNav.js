@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { AiOutlineStock } from 'react-icons/ai';
 import { BiCategory, BiHomeAlt2, BiMenuAltRight } from 'react-icons/bi';
 import { BsCartCheck } from 'react-icons/bs';
-import { CiPercent } from 'react-icons/ci';
 import { TbReportMoney } from 'react-icons/tb';
 
 const AdminSideNav = () => {
@@ -46,15 +45,12 @@ const AdminSideNav = () => {
                 <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/user/ticket'}> <BsCartCheck size={25} />My Ticket</Link>
             </li>
             <li>
-                <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/user/ticket'}> <BsCartCheck size={25} />My Ticket</Link>
-            </li>
-            <li>
                 <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/user/orders'}> <BsCartCheck size={25} />My Orders</Link>
             </li>
-            <li>
+            {/* <li>
                 <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/user/orders'}> <CiPercent size={25} />My Revenue</Link>
-            </li>
-            <li>
+            </li> */}
+            <li>4
                 <Link className='border-teal-600 w-full px-2 py-1 text-teal-600 flex items-center gap-2' href={'/user/moneyorder'}> <TbReportMoney size={25} />Money Orders</Link>
             </li>
            </ul>

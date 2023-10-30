@@ -11,7 +11,7 @@ import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import CreatableSelect from 'react-select/creatable';
 
-const EditProduct = ({product}) => {
+const EditStockProduct = ({product}) => {
   const { state,user } = useAllContext();
  
 // router
@@ -104,7 +104,7 @@ const router = useRouter();
     };
 
     axios
-      .put(`/api/product/update?id=${product?.id}&email=${user.email}`, productData,{
+      .put(`/api/stock/update?id=${product?.id}&email=${user.email}`, productData,{
         headers: {
                   authorization: `Bearer ${token}`,
                 },
@@ -305,4 +305,4 @@ const router = useRouter();
   );
 };
 
-export default EditProduct;
+export default EditStockProduct;
