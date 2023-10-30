@@ -138,7 +138,7 @@ export const productsReducer = (state, action) => {
         ),
       };
     case actionTypes.DECREMENT_STOCK:
-      if (selectedStocks.quantity > 1) {
+      if (selectedStocks?.quantity > 1) {
         const newStock = state.stocks.filter(
           (product) => product._id !== selectedStocks._id
         );

@@ -77,9 +77,9 @@ const orderPath = router.pathname
       {/* Right side cart button */}
       <div
         onClick={() => setShowCart(true)}
-        className={`fixed cursor-pointer select-none right-0 top-1/2 md:block hidden  bg-base-200 px-4 z-10 py-2 rounded-l-md ${orderPath==='/order' && 'md:hidden'} `}
+        className={`fixed cursor-pointer select-none right-0 top-1/2 md:block hidden  bg-teal-200 px-4 z-10 py-2 rounded-l-md ${orderPath==='/order' && 'md:hidden'} `}
       >
-        <p className="dark:text-white text-teal-600 font-bold flex items-center gap-2 py-2">
+        <p className=" text-teal-600 font-bold flex items-center gap-2 py-2">
           {" "}
           <span>
             <BsCartCheckFill />

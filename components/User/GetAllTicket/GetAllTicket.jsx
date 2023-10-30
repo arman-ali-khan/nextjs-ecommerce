@@ -17,7 +17,7 @@ const GetAllTicket = () => {
     }
   }, [user?.email]);
   return (
-    <div className="grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
+    <div className="grid mb-14 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
       {allTicket?.length ?
       allTicket.map((ticket) => {
         return (

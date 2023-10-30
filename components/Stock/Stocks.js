@@ -15,7 +15,6 @@ const Stocks = () => {
 
 
   useEffect(() => {
-    setCatLoading(true)
     axios.get("/api/categories")
     .then((response) =>{
       setCatLoading(false)
@@ -121,10 +120,14 @@ const count = Math.ceil((productCount?.count || 10 )/ 10)
           <div className='mt-14'>
             <div>
               <ul className='grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-6'>
+              <li  onClick={()=>setFilterCat('')} className={`w-full flex justify-center `}>
+                  <button className={`bg-base-200 ${filterCat==='' ?"bg-base-300":''} hover:bg-base-300 w-full rounded py-4 border border-teal-400  items-center gap-2`} onClick={()=>setFilterCat('')}  > <span className='w-full flex justify-center '><img className='rounded-full w-14' src='https://res.cloudinary.com/dcckbmhft/image/upload/v1693587597/nobinImage/st1jj8jfoyo6yk8gmo1f.webp' alt="" /></span> ALL</button>
+                </li>
                 { catLoading ? <div className='flex justify-center w-full'>Loading...</div>:
                  categories.map((category,i)=>{
+                  console.log(category)
                   return  <li key={i} onClick={()=>setFilterCat(category.value)} className={`w-full flex justify-center  ${category.type==='stock'?'':'hidden'}`}>
-                  <button className={`bg-base-200 ${filterCat==='' ?"bg-base-300":''} hover:bg-base-300 w-full rounded py-4 border border-teal-400  items-center gap-2`} onClick={()=>setFilterCat('')}  > <span className='w-full flex justify-center '><img className='rounded-full w-14' src="https://res.cloudinary.com/dcckbmhft/image/upload/v1689330390/nobinImage/c0iq5awgopbluhxoe0lo.webp" alt="" /></span> {category.label}</button>
+                  <button className={`bg-base-200 ${filterCat==='' ?"bg-base-300":''} hover:bg-base-300 w-full rounded py-4 border border-teal-400  items-center gap-2`} onClick={()=>setFilterCat('')}  > <span className='w-full flex justify-center '><img className='rounded-full w-14' src={category?.icon} alt="" /></span> {category.label}</button>
                 </li>
                   })
                 }

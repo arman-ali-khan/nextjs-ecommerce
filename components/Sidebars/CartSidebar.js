@@ -41,7 +41,7 @@ const CartSidebar = ({ showCart, setShowCart }) => {
         <p className="text-white">Shopping Cart</p>
         <button
           onClick={() => setShowCart(false)}
-          className="px-4 py-2 rounded bg-base-200 text-white"
+          className="px-4 py-2 rounded bg-base-200 "
         >
           Close
         </button>

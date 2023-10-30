@@ -39,7 +39,7 @@ const SellStockCard = ({ product, stockId, update, setUpdate }) => {
 
   // stock current price
   const [currentProduct, setCurrentProduct] = useState({});
-  const currentPrice = parseFloat(currentProduct.price) - 1;
+  const currentPrice = parseFloat(currentProduct?.price) ||0;
   useEffect(() => {
     axios.get(`/api/stock/${product.id}`).then((res) => {
       setCurrentProduct(res.data);
@@ -60,7 +60,7 @@ const SellStockCard = ({ product, stockId, update, setUpdate }) => {
       )
       .then((res) => {
         console.log(res.data);
-        toast.success("Stock Sell Successfull");
+        toast.success("Stock Sell Successful");
         setUpdate(!update);
         setLoadingStock(false);
         setUpdateMoney(!updateMoney)
@@ -76,7 +76,7 @@ const SellStockCard = ({ product, stockId, update, setUpdate }) => {
             <div className="absolute top-1 px-2 right-1 bg-green-500 rounded-full p-1 text-white text-xs">
               Stock {product.stock}
             </div>
-            <div className="absolute top-1 px-2 left-1 bg-base-200 font-bold rounded-full p-1 text-white text-xs">
+            <div className="absolute top-1 px-2 left-1 bg-base-200 font-bold rounded-full p-1  text-xs">
               My Stock {product.quantity}
             </div>
           </div>

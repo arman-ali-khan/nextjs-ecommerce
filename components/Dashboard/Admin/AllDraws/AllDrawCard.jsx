@@ -1,10 +1,9 @@
 import { useAllContext } from "@/context/ContextProvider";
-import actionTypes from "@/state/ProductState/actionTypes";
+import axios from "axios";
 import Link from "next/link";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { BiTrash } from "react-icons/bi";
-import { BsPencilSquare } from "react-icons/bs";
 import { MdOutlineAdd } from "react-icons/md";
 
 const AllDrawCard = ({ product,update,setUpdate }) => {
@@ -29,9 +28,13 @@ const AllDrawCard = ({ product,update,setUpdate }) => {
     toast.success("Added to Cart");
   };
 
-  const handleRemoveFromCart = () => {
-    dispatch({ type: actionTypes.DECREMENT_STOCK, payload: product });
-    toast.success("Remove from cart");
+  const handleDeleteLottery = (id) => {
+   axios.delete(`/api/draw/delete?id=${id}`)
+   .then(res=>{
+    console.log(res)
+    toast.success('Draw Deleted')
+    setUpdate(!update)
+   })
   };
 
   const [id, setId] = useState("");
@@ -94,15 +97,15 @@ const AllDrawCard = ({ product,update,setUpdate }) => {
             className={`flex cursor-pointer select-none  items-center  duration-300 border border-teal-600  rounded  `}
           >
             {/* Edit btn */}
-            <button
+            {/* <button
               onClick={() => handleRemoveFromCart()}
               className="px-3 w-full flex items-center justify-center py-2 text-teal-600 hover:text-white hover:bg-teal-600 border-r"
             >
               <BsPencilSquare />
-            </button>
+            </button> */}
             {/* Delete btn */}
             <button
-              onClick={() => handleRemoveFromCart()}
+              onClick={() => handleDeleteLottery(product.id)}
               className="px-3 w-full flex items-center justify-center py-2 text-error hover:text-white hover:bg-error"
             >
               <BiTrash />

@@ -1,17 +1,15 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import makeAnimated from "react-select/animated";
-import Creatable from 'react-select/creatable';
-import Select from "react-select";
+import UserLayout from "@/Layout/UserLayout";
 import { useAllContext } from "@/context/ContextProvider";
 import axios from "axios";
-import { toast } from "react-hot-toast";
-import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
-import { MdCancel } from "react-icons/md";
-import CreatableSelect from 'react-select/creatable';
-import UserLayout from "@/Layout/UserLayout";
 import { useRouter } from "next/router";
-import { accessToken } from "@/hooks/setToken";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
+import { AiOutlineRight } from "react-icons/ai";
+import { MdCancel } from "react-icons/md";
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
+import CreatableSelect from 'react-select/creatable';
 
 const EditProduct = ({product}) => {
   const { state,user } = useAllContext();
@@ -32,18 +30,18 @@ const router = useRouter();
   ];
 
   // get categories
-  const [categories, setCategories] = useState(product.categories);
+  const [categories, setCategories] = useState(product?.categories);
   // get tags
-  const [tags, setTags] = useState(product.tags);
+  const [tags, setTags] = useState(product?.tags);
   // get unit
-  const [unit,setUnit] = useState(product.unit);
-  const [qunatity,setQunatity] = useState(product.qunatity);
+  const [unit,setUnit] = useState(product?.unit);
+  const [qunatity,setQunatity] = useState(product?.qunatity);
 
   /// image upload to cloudinary
   const [loading, setLoading] = useState(false);
   const [productLoading, setProductLoading] = useState(false);
 
-  const [imageUrl, setImageUrl] = useState(product.images);
+  const [imageUrl, setImageUrl] = useState(product?.images);
 
 
   // image upload
@@ -106,7 +104,7 @@ const router = useRouter();
     };
 
     axios
-      .put(`/api/product/update?id=${product.id}&email=${user.email}`, productData,{
+      .put(`/api/product/update?id=${product?.id}&email=${user.email}`, productData,{
         headers: {
                   authorization: `Bearer ${token}`,
                 },
@@ -129,14 +127,14 @@ const router = useRouter();
   }
   
   return (
-   <UserLayout title={`Edit ${product.title}`}>
+   <UserLayout title={`Edit ${product?.title}`}>
      <div className="md:flex justify-center max-w-4xl px-2">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <label className="w-full"> 
             Title:
             <input
-            defaultValue={product.title}
+            defaultValue={product?.title}
               {...register("title", { required: true })}
               className="input w-full  rounded input-bordered border-teal-600 form-control"
               type="text"
@@ -152,7 +150,7 @@ const router = useRouter();
         <label className="w-full">
             Price* :
             <input
-            defaultValue={product.price}
+            defaultValue={product?.price}
              {...register("oldPrice", { required: true })}
               
               className="input w-full rounded input-bordered border-teal-600 form-control"
@@ -164,7 +162,7 @@ const router = useRouter();
             <span className="flex items-center">
               <AiOutlineRight />
               <input
-              defaultValue={product.oldPrice}
+              defaultValue={product?.oldPrice}
                {...register("price", { required: true })}
                 className="input w-full rounded input-bordered border-teal-600 form-control"
                 type="text"
@@ -176,7 +174,7 @@ const router = useRouter();
          
           <label className="w-full flex flex-col">
             Per:
-            <select defaultValue={product.qunatityPrice} onChange={(e)=>setQunatity(e.target.value)} className="select w-full select-bordered">
+            <select defaultValue={product?.qunatityPrice} onChange={(e)=>setQunatity(e.target.value)} className="select w-full select-bordered">
               <option key={''} value={''} >Select setQunatity</option>
               <option key={'1/2'} value={'1/2'}>1/2</option>
               <option key={'1'} value={'1'}>1</option>
@@ -193,7 +191,7 @@ const router = useRouter();
          
           <label className="w-full flex flex-col">
             Unit:
-            <select defaultValue={product.unit} onChange={(e)=>setUnit(e.target.value)} className="select w-full select-bordered">
+            <select defaultValue={product?.unit} onChange={(e)=>setUnit(e.target.value)} className="select w-full select-bordered">
               <option key={''} value={''}>Select Category</option>
               <option key={'Liter'} value={'Liter'}>Liter</option>
               <option key={'Piece'} value={'Piece'}>Piece</option>
@@ -208,7 +206,7 @@ const router = useRouter();
           <label className="w-full">
             Description:
             <textarea
-            defaultValue={product.description}
+            defaultValue={product?.description}
               {...register("description", { required: true })}
               className="textarea w-full rounded textarea-bordered border-teal-600 form-control"
               type="text"
@@ -220,7 +218,7 @@ const router = useRouter();
           <label className="w-full">
             SKU:
             <input placeholder="VG123A"
-            defaultValue={product.SKU}
+            defaultValue={product?.SKU}
               {...register("sku", { required: true })}
               className="input w-full rounded input-bordered border-teal-600 form-control"
               type="text"
@@ -229,7 +227,7 @@ const router = useRouter();
           <label className="w-full">
             Stock:
             <input placeholder="123"
-            defaultValue={product.stock}
+            defaultValue={product?.stock}
               {...register("stock", { required: true })}
               className="input w-full rounded input-bordered border-teal-600 form-control"
               type="text"
@@ -278,7 +276,7 @@ const router = useRouter();
               components={animatedComponents}
               isMulti
               options={categoriesData}
-              defaultValue={product.categories} 
+              defaultValue={product?.categories} 
             />
           </label>
           <br />
@@ -290,7 +288,7 @@ const router = useRouter();
               components={animatedComponents}
               isMulti
               options={tagsData}
-              defaultValue={product.tags}
+              defaultValue={product?.tags}
             />
           </label>
         </div>

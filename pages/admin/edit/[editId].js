@@ -1,6 +1,5 @@
 import EditProduct from '@/components/Dashboard/Admin/Products/EditProduct';
 import { useRouter } from 'next/router';
-import React from 'react';
 
 const editId = ({product}) => {
     const router = useRouter();
