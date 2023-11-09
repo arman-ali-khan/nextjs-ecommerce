@@ -1,7 +1,7 @@
 import axios from "axios";
-import Lottie from "lottie-react";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import loader from "../../public/loader.json";
+import toast from "react-hot-toast";
 import ResultCard from "./ResultCard";
 const Results = () => {
 
@@ -11,18 +11,21 @@ const Results = () => {
     // loading
     const [loading,setLoading] = useState(false)
 
+    const router = useRouter()
+    // get params
+    const drawId = router.query.resutlId
+
+    // draw result api call
     useEffect(()=>{
-      setLoading(true)
-        axios.get(`/api/draw/getResult`)
+       if(drawId){
+        axios.get(`/api/draw/getAllTicket?drawId=${drawId}`)
         .then(res=>{
           setAllResults(res.data)
-          setLoading(false)
+            toast.success(res.data.message)
+          console.log(res.data)
         })
-        .catch(err=>{
-          console.error(err);
-          setLoading(false)
-        })
-    },[])
+       }
+    },[drawId])
   return (
     <div className="container mx-auto ">
       <div className="px-4 py-2 bg-teal-600 rounded-md font-bold text-white">
@@ -31,15 +34,15 @@ const Results = () => {
       {/* Result body */}
      { loading ?<div className="flex items-center justify-center w-full h-screen">
           <div className="w-96 mx-auto">
-          <Lottie animationData={loader} loop={true} />
+          {/* <Lottie animationData={loader} loop={true} /> */}
           </div>
         </div>
         :
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 w-full my-2 sm:gap-2 gap-1">
-        {  allResults.length ?
-            allResults.map((result,i)=><ResultCard result={result} key={i} />)
+      <div className="w-full sm:m-12">
+        {  allResults?.length ?
+            allResults?.map((result,i)=><ResultCard result={result} key={i} />)
             :
-            'Loading...'
+            'No data'
         }
       </div>
         }

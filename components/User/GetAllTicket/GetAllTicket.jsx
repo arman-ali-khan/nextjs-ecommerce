@@ -31,7 +31,7 @@ const GetAllTicket = () => {
               <h2>Date:</h2>
               <p>{moment(ticket.date).fromNow()}</p>
             </div>
-            <div className="text-white p-2  gap-1 rounded">
+            <div className=" p-2  gap-1 rounded">
               <div>
                 <div>Tickets Numbers:</div>
                 <div className="px-2">
