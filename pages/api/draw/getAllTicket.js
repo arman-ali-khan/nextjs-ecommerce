@@ -10,7 +10,12 @@ export default async function handler(req, res) {
 
   if (req.method === "GET") {
     if(drawId){
-      const result = await db.collection("newDrawResults").find({draw:drawId}).sort({_id:-1}).toArray();
+      const result = await db.collection("newAllTickets").find({draw:drawId}).sort({_id:-1}).toArray();
+      res.status(200).json(result);
+    }
+    else if(email){
+      
+      const result = await db.collection("newAllTickets").find({email:email}).sort({_id:-1}).toArray();
       res.status(200).json(result);
     }
   } else {

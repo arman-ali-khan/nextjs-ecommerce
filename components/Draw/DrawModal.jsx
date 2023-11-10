@@ -50,17 +50,17 @@ const DrawModal = ({ id, setId, update, setUpdate }) => {
     setTicketLoading(true);
     if (count > 0) {
       const ticketData = {
-        ticketList: ticket.slice(0, parseInt(count)),
-        quantity: data.ticket,
-        email: user.email,
-        id: getDraw.id,
-        price: getDraw.price,
-        drawname: "one",
+        ticketList: ticket?.slice(0, parseInt(count)),
+        quantity: data?.ticket,
+        email: user?.email,
+        id: getDraw?.id,
+        price: getDraw?.price,
+        draw: getDraw?.id,
         date: Date(),
       };
       if (user?.email) {
         axios
-          .post(`/api/draw/createticket?email=${user?.email}`, ticketData)
+          .post(`/api/draw/createticket`, ticketData)
           .then((res) => {
             toast.success(res.data.message);
             setUpdate(!update);

@@ -13,7 +13,12 @@ const ResultCard = ({result}) => {
                            <p className="relative"> {i+1===1 && <div><p className="font-bold text-teal-500 absolute left-0">1st</p><GiChessKing className="fill-orange-400 absolute left-1/2 -top-10" size={44} /></div>} 
                            {i+1===2 && <p className="font-bold text-teal-500 absolute left-0">2nd</p>}
                            {i+1===3 && <p className="font-bold text-teal-500 absolute left-0">3rd</p>}
-                            <span className="font-bold pl-12">Name:</span> {ticket?.email}</p>
+                           {i+1===4 && <p className="font-bold text-teal-500 absolute left-0">4rd</p>}
+                           
+                           {i+1===5 && <p className="font-bold text-teal-500 absolute left-0">5th</p>}
+                           {i+1===6 && <p className="font-bold text-teal-500 absolute left-0">6th</p>}
+                           {i+1===7 && <p className="font-bold text-teal-500 absolute left-0">7th</p>}
+                            <span className="font-bold pl-12">Email:</span> {ticket?.email}</p>
                           <p className="font-bold">Ticket: {ticket?.ticket}</p>
                           {
                             user?.email===ticket?.email && <label htmlFor="howToMoney" className="px-2 py-1 rounded bg-teal-600 cursor-pointer">Withdraw</label>

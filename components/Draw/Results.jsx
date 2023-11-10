@@ -18,10 +18,11 @@ const Results = () => {
     // draw result api call
     useEffect(()=>{
        if(drawId){
-        axios.get(`/api/draw/getAllTicket?drawId=${drawId}`)
+        axios.get(`/api/draw/getResult?drawId=${drawId}`)
         .then(res=>{
           setAllResults(res.data)
             toast.success(res.data.message)
+            setLoadingI(false)
           console.log(res.data)
         })
        }
