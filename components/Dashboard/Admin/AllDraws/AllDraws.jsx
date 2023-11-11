@@ -86,7 +86,7 @@ const [update,setUpdate] = useState(false)
     <Link className='border-teal-600 px-2 py-1 text-white flex items-center gap-2' href={'/admin/@add-draw'}><BiCategory size={25} />Add New Draw</Link>
     </div>
             {/* Card */}
-            <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4  sm:gap-2'>
+            <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4  sm:gap-2'>
            
             { content}
         </div>

@@ -38,7 +38,7 @@ const AllDrawCard = ({ product,update,setUpdate }) => {
 
   return (
     <>
-      <div className={`shadow-xl rounded-md relative`}>
+      <div className={`shadow-xl rounded-md  mb-12 md:mb-0 relative`}>
         {/* stock */}
         <div>
           {product?.stock > 0 ? (
@@ -111,9 +111,8 @@ const AllDrawCard = ({ product,update,setUpdate }) => {
            
           </div>
         {
-            
-          product?.stock > 0 || <Link href={`/admin/draw/${product?.id}`}
-          className={`flex cursor-pointer select-none justify-between items-center bg-base-100 duration-300 border border-teal-600  pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600`}
+          product?.stock > 0 || <Link href={`/draw/result/${product?.id}`}
+          className={`flex cursor-pointer select-none  justify-between items-center bg-base-100 duration-300 border border-teal-600  pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600`}
         >
          <p  className="">See Result</p>
           <span className=" px-4 py-2">
@@ -125,7 +124,7 @@ const AllDrawCard = ({ product,update,setUpdate }) => {
 {
            
             product?.stock > 0 || <Link href={`/admin/draw/${product?.id}`}
-            className={`flex cursor-pointer select-none justify-between items-center bg-base-100 duration-300 border border-teal-600  pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600`}
+            className={`flex cursor-pointer select-none justify-between items-center bg-base-100 duration-300 border border-teal-600 pl-4 hover:bg-teal-600 rounded hover:text-white text-teal-600`}
           >
            <p  className="">Select winner</p>
             <span className=" px-4 py-2">

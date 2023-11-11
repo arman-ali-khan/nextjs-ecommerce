@@ -1,7 +1,8 @@
+import loader from '@/public/loader.json';
 import axios from "axios";
+import Lottie from "lottie-react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 import ResultCard from "./ResultCard";
 const Results = () => {
 
@@ -15,14 +16,17 @@ const Results = () => {
     // get params
     const drawId = router.query.resutlId
 
+    // loading
+
+
     // draw result api call
     useEffect(()=>{
+      setLoading(true)
        if(drawId){
         axios.get(`/api/draw/getResult?drawId=${drawId}`)
         .then(res=>{
           setAllResults(res.data)
-            toast.success(res.data.message)
-            setLoadingI(false)
+            setLoading(false)
           console.log(res.data)
         })
        }
@@ -35,7 +39,7 @@ const Results = () => {
       {/* Result body */}
      { loading ?<div className="flex items-center justify-center w-full h-screen">
           <div className="w-96 mx-auto">
-          {/* <Lottie animationData={loader} loop={true} /> */}
+          <Lottie animationData={loader} loop={true} />
           </div>
         </div>
         :
@@ -43,7 +47,7 @@ const Results = () => {
         {  allResults?.length ?
             allResults?.map((result,i)=><ResultCard result={result} key={i} />)
             :
-            'No data'
+            'Result Not Published'
         }
       </div>
         }

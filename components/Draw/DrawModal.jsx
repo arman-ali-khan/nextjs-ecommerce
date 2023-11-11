@@ -60,7 +60,7 @@ const DrawModal = ({ id, setId, update, setUpdate }) => {
       };
       if (user?.email) {
         axios
-          .post(`/api/draw/createticket`, ticketData)
+          .post(`/api/draw/createticket?email=${user?.email}`, ticketData)
           .then((res) => {
             toast.success(res.data.message);
             setUpdate(!update);

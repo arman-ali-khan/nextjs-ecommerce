@@ -24,9 +24,10 @@ function SelectWInner() {
     },[drawId])
     // state
     const [resultData,setResultData] = useState([])
-    console.log(resultData)
+    const [btn,setBtn] = useState('Publish Result') 
     // publish result
     const handlePublishResult = () =>{
+        setBtn('Publishing....')
         const results = {
             id:getRandomNumber(10),
             winnerTickets:resultData,
@@ -36,24 +37,26 @@ function SelectWInner() {
         .then(res=>{
             console.log(res.data)
             toast.success('Result Published')
+            setBtn('Published')
         }).catch(err=>{
+            setBtn('Try Again')
             console.error(err.message);
             toast.error('Something want wrong')
         })
     }
     return (
         <Layout title={'Select Winner'}>
-            <div className="mt-32 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
+            <div className="mt-32 flex flex-wrap">
             {!loading?
             ticketData?.map((ticket,i)=>{
-                return <div className="w-56 p-4 border-teal-500 border" key={i}>
+                return <div className="md:w-56 w-auto max-w-full p-4 border-teal-500 border" key={i}>
                     <h1 className="font-bold">{ticket?.email}</h1>
                     <ul className="flex flex-col justify-start">
                       {
                         ticket?.ticketList?.map((list,i)=>{
                              
                             return   <li key={i+list}>
-                            <label className="flex items-center justify-start text-left" htmlFor={i+list}>
+                            <label className="flex items-center gap-2 justify-start text-left" htmlFor={i+list}>
                             <input onClick={(e)=>setResultData([...resultData,{ticket:e.target.value,email:ticket?.email}])} className="checkbox checkbox-secondary" type="checkbox" value={list} id={i+list} /> {list}
                             </label>
                           </li>
@@ -65,7 +68,7 @@ function SelectWInner() {
                        
                     </div>
                 </div>
-            }):<div className="flex justify-center">
+            }):<div className="flex text-center justify-center">
                             <p>Loading...</p>
                         </div>
             }
@@ -73,7 +76,9 @@ function SelectWInner() {
             </div>
             <dir>
                 {/* result */}
-                <p>Selected ticket</p>
+              {resultData?.length ?
+                  <p>Selected ticket</p>:''
+              }
                 <div className="flex flex-wrap">
                     {
                         resultData?.map((item,i)=>(
