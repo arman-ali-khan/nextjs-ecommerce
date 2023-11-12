@@ -48,7 +48,7 @@ const DrawModal = ({ id, setId, update, setUpdate }) => {
   // handle ticket
   const handleTicket = (data) => {
     setTicketLoading(true);
-    if (count > 0) {
+    if (count > 0 ) {
       const ticketData = {
         ticketList: ticket?.slice(0, parseInt(count)),
         quantity: data?.ticket,
