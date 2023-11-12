@@ -42,7 +42,7 @@ const handleAddToCart = () => {
   
  const [id,setId]  = useState('')
 
-
+console.log(product)
 
 
   return (
@@ -51,7 +51,7 @@ const handleAddToCart = () => {
       className={`shadow-xl rounded-md relative`}>
         {/* stock */}
         <div>
-          {product.stock > 0? (
+          {product?.stock > 0? (
             <div className="absolute top-1 px-2 right-1 bg-green-500 rounded-full p-1 text-white text-xs">
               In Stock
             </div>
@@ -63,7 +63,7 @@ const handleAddToCart = () => {
         </div>
       <div >
         <label onClick={()=>setId(product.id)} className={`h-60 bg-base-100 cursor-pointer`}>
-          <img  className="h-60 w-full object-cover" src={product&& product?.images[0]?.original} alt="" />
+          <img  className="h-60 w-full object-cover" src={product?.images && product?.images[0]?.original} alt="" />
         </label>
 
         <div className={`flex items-center justify-between `}>

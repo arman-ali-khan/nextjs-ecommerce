@@ -1,10 +1,13 @@
 import { useAllContext } from "@/context/ContextProvider";
 import actionTypes from "@/state/ProductState/actionTypes";
+
 import Link from "next/link";
 import { useState } from "react";
 import { CheckmarkIcon, toast } from "react-hot-toast";
 import { MdOutlineAdd } from "react-icons/md";
 import DrawModal from "./DrawModal";
+import VideoModal from "./VideoModal";
+
 
 const DrawCard = ({ product,update,setUpdate }) => {
   const { dispatch, state, dbUser, user, setLoading, loading } =
@@ -34,6 +37,9 @@ const DrawCard = ({ product,update,setUpdate }) => {
   };
 
   const [id, setId] = useState("");
+  console.log(product)
+  const [videoUrl,setVideoUrl] = useState('')
+ 
 
   return (
     <>
@@ -42,7 +48,7 @@ const DrawCard = ({ product,update,setUpdate }) => {
         <div>
           {product?.stock > 0 ? (
             <div className="absolute top-1 px-2 right-1 bg-green-500 rounded-full p-1 text-white text-xs">
-              {product.stock}
+              {product?.stock}
             </div>
           ) : (
             <div className="absolute top-1 px-2 right-1 bg-red-500 rounded-full p-1 text-white text-xs">
@@ -55,11 +61,12 @@ const DrawCard = ({ product,update,setUpdate }) => {
             className={`h-60 bg-base-100 cursor-pointer`}
           >
             {product?.images && (
-              <img
-                className="h-60 w-full object-cover"
-                src={product.images}
-                alt=""
-              />
+             <label onClick={()=>setVideoUrl(product?.videoUrl)} htmlFor="my_modal_7" className="h-60 w-full object-cover"> <img
+              className="h-60 w-full object-cover"
+              src={product.images}
+              alt=""
+            /></label>
+            
             )}
           </div>
 
@@ -128,6 +135,15 @@ const DrawCard = ({ product,update,setUpdate }) => {
         <div></div>
       </div>
       {id && <DrawModal setUpdate={setUpdate} update={update} id={id} setId={setId} />}
+
+{/* The button to open modal */}
+{console.log(product?.videoUrl)}
+
+{/* Put this part before </body> tag */}
+{
+  videoUrl && <VideoModal product={videoUrl} setVideoUrl={setVideoUrl} />
+}
+
     </>
   );
 };
