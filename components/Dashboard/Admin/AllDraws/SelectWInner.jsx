@@ -10,6 +10,8 @@ function SelectWInner() {
 
     // loading
     const [loading,setLoading] = useState(true)
+    // video code
+    const [videoCode,setVideoCode] = useState('')
 
     // get all tickets by id
     const [ticketData,setTicketData] = useState([])
@@ -31,7 +33,8 @@ function SelectWInner() {
         const results = {
             id:getRandomNumber(10),
             winnerTickets:resultData,
-            draw:drawId
+            draw:drawId,
+            videoCode:JSON.stringify(videoCode)
         }
         axios.post('/api/draw/createResult',results)
         .then(res=>{
@@ -46,7 +49,7 @@ function SelectWInner() {
     }
     return (
         <Layout title={'Select Winner'}>
-            <div className="mt-32 flex flex-wrap">
+            <div className="mt-32 px-4 flex flex-wrap">
             {!loading?
             ticketData?.map((ticket,i)=>{
                 return <div className="md:w-56 w-auto max-w-full p-4 border-teal-500 border" key={i}>
@@ -85,6 +88,10 @@ function SelectWInner() {
                             <p className="px-4 py-2"><span className="bg-base-300 mx-2 px-1">{i+1}</span>{item?.ticket} <span onClick={()=>setResultData(resultData?.filter(data=>data.ticket!==item?.ticket))} className="px-2 cursor-pointer rounded-full bg-rose-100 text-rose-500">X</span></p> 
                         ))
                     }
+                </div>
+                {/* video code */}
+                <div className="flex justify-center">
+                    <textarea onChange={(e)=>setVideoCode(e.target.value)} className="textarea textarea-bordered w-9/12 mx-auto" placeholder="code"></textarea>
                 </div>
             </dir>
             <div className="flex justify-center my-12">

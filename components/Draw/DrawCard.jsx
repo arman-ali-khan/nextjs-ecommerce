@@ -6,7 +6,6 @@ import { useState } from "react";
 import { CheckmarkIcon, toast } from "react-hot-toast";
 import { MdOutlineAdd } from "react-icons/md";
 import DrawModal from "./DrawModal";
-import VideoModal from "./VideoModal";
 
 
 const DrawCard = ({ product,update,setUpdate }) => {
@@ -58,14 +57,21 @@ const DrawCard = ({ product,update,setUpdate }) => {
         </div>
         <div>
           <div
-            className={`h-60 bg-base-100 cursor-pointer`}
+            className={`h-60 bg-base-100 `}
           >
             {product?.images && (
-             <label onClick={()=>setVideoUrl(product?.videoUrl)} htmlFor="my_modal_7" className="h-60 w-full object-cover"> <img
+              product?.stock > 0 ? 
+             <div href={`/draw/result/${product.id}`} className="h-60 w-full object-cover"> <img
               className="h-60 w-full object-cover"
               src={product.images}
               alt=""
-            /></label>
+            /></div>
+            :
+            <Link href={`/draw/result/${product.id}`} className="h-60 w-full object-cover"> <img
+            className="h-60 w-full object-cover"
+            src={product.images}
+            alt=""
+          /></Link>
             
             )}
           </div>
@@ -136,13 +142,6 @@ const DrawCard = ({ product,update,setUpdate }) => {
       </div>
       {id && <DrawModal setUpdate={setUpdate} update={update} id={id} setId={setId} />}
 
-{/* The button to open modal */}
-{console.log(product?.videoUrl)}
-
-{/* Put this part before </body> tag */}
-{
-  videoUrl && <VideoModal product={videoUrl} setVideoUrl={setVideoUrl} />
-}
 
     </>
   );

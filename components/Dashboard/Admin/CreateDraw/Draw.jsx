@@ -70,7 +70,6 @@ const CreateDraw = () => {
           email: user.email,
           images: imageUrl,
           price: data.price,
-          videoUrl:JSON.stringify(data?.videoUrl),
           stock: data.stock,
           date: new Date()
         };
@@ -127,18 +126,6 @@ const CreateDraw = () => {
               {...register("stock", { required: true })}
               className="input w-full rounded input-bordered border-teal-600 form-control"
               type="text"
-            />
-          </label>
-        </div>
-        {/* draw video url */}
-        <div className="flex w-full">
-                                    
-          <label className="w-full">
-            Video Url:
-            <textarea placeholder="https://www.youtube.com/watch?v=T-vbeP3gHYA"
-              {...register("videoUrl", { required: true })}
-              className="textarea w-full rounded textarea-bordered border-teal-600 form-control"
-             
             />
           </label>
         </div>
