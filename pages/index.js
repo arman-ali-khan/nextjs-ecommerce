@@ -8,11 +8,12 @@ import Products from '@/components/Products/Products'
 
 export default function Home() {
   return (
-     <Layout title={'Nobin Udyokta || Home'} thumb={'/social.png'} description={'Buy Products and stocks'}>
-	<Hero />
-	<Products />
-	<OfferUderPopular />
-	<AppDownload />
-   </Layout>
+ <div className='text-xl flex justify-center'> টাকা দে  </div>
   )
 }
+// <Layout title={'Nobin Udyokta || Home'} thumb={'/social.png'} description={'Buy Products and stocks'}>
+	// <Hero />
+	// <Products />
+	// <OfferUderPopular />
+	// <AppDownload />
+ //   </Layout>
